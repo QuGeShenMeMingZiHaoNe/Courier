@@ -2,844 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/2DShapes.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/2DUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/3DUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/AboutButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/AdjustableTrailed.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Balls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Balls2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/BarChart0.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/BarChart1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/BarChart2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/BarChart3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/BellyButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/BellyButtonPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/BoxPlot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/BubbleChart.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Camera.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/CameraButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/CameraPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Celegans.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Chart.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Chart.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ChartExpanded.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ChartUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Cliques.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/CloseBox.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/CloseBoxPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/ClosedHand.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ColorCube.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ColorWell.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Console.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Console2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Console3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Console4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ConsoleButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ConsoleInspectors.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ConsoleInspectors2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ConsoleInspectors3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ContinuousUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ContinuousVsGrid.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Disclosure1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Disclosure2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/DiscretizationExample.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Display2D.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Display2DNew.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Display2DNew.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Display3D.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Display3D.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/DisplaysButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/DownArrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/DownArrowPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/DrawInfo2D.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/EngineUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/FileMenu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Flockers.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/FlockersConsole.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/GUIUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/GridUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Histogram.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Inspect.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Inspect.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/InspectPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/InspectorUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/InspectorsButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/Java3D.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Java3DLayout.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/LabelledCircledOriented.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/LabelledList.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Layers.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/LayersButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/LayersPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/LeftArrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/LeftArrowPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/LightCycles.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MASONLayout.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MagnifyingGlassButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MeshPortrayal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MeshPortrayalEdges.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MeshPortrayalImage.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MeshPortrayalVertices.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MiniHistogram.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ModelAndVisualization.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ModelButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/MovieButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/MovieOff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/MovieOffPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/MovieOn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/MovieOnPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/NetworkUML.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/NewSimulationPanel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Newton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/NotPlaying.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/NotRecording.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/NotStopped.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/NumberTextField.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/OpenHand.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Options.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/OptionsButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/OptionsPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/OrientationCompass.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/OrientationKite.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/OrientationLine.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/OrientationOutlineCompass.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/OrientationOutlineKite.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Particles3D.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/PauseButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/PauseOff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/PauseOn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/PieChart.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/PlayButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Playing.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display2D.graffle/QuickLook/Preview.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/QuickLook/Preview.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Recording.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/RedrawField.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/RefreshRateButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Reload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/ReloadPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/RightArrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/RightArrowPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Ring.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Robots.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ScaleField.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ScatterPlot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Schoolyard.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Schoolyard1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Schoolyard2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Schoolyard3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Schoolyard4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/SchoolyardIcon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/SimulatorLayout.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/StepButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/StepOff.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/StepOn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/StopButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Stopped.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Students3D.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/SwarmGame.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display2D.graffle/QuickLook/Thumbnail.tiff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/QuickLook/Thumbnail.tiff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/TilePortrayal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/TilePortrayalEdges.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/TilePortrayalZero.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/TimeButton.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/UpArrow.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/UpArrowPressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/Update.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Update.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/UpdatePressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ValueGridPortrayal3D.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ValueGridPortrayal3DEdges.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ValueGridPortrayal3DSmaller.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/WordWrap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/ants.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/beacons.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/blinkyd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/blinkyl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/blinkyr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/blinkyu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/bsh-2.0b4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/cells.ace4.gz" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/chart.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/clyded.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/clydel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/clyder.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/clydeu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/console-about.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/console-console.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/console-displays.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/console-inspectors.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/console-intro.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/console-model.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/display-3d.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/display-intro.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/dragon.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/earthmap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/frightened.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/frightened2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/gluegen-rt-natives-linux-amd64.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/gluegen-rt-natives-linux-armv6.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/gluegen-rt-natives-linux-armv6hf.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/gluegen-rt-natives-linux-i586.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/gluegen-rt-natives-macosx-universal.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/windos/gluegen-rt-natives-windows-amd64.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/windos/gluegen-rt-natives-windows-i586.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/gluegen-rt.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/gosper.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/grids.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/heatbugs3d.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/heatbugs3dmesh.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/hexabugs.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/hexabugs.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/antsforage/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/crowd3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/cto/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/flockers/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lightcycles/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mav/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/networktest/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/particles3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/schelling/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/swarmgame/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial3/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial7/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial13/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial14/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display2D.graffle/image1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/image1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/image2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/image3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/image4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/inkyd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/inkyl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/inkyr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/inkyu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/inspector-agent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/inspector-heat.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/inspector-select.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/island.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/itext-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/j3d-core-1.3.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/j3dcore.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/j3dutils.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/jcommon-1.0.21.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/jfreechart-1.0.17.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/jmf.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/joal-natives-linux-amd64.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/joal-natives-linux-armv6.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/joal-natives-linux-armv6hf.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/linux/joal-natives-linux-i586.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/joal-natives-macosx-universal.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/windos/joal-natives-windows-amd64.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/rest/windos/joal-natives-windows-i586.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/joal.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/jogl-all.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/jupitermap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/koch1.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/koch2.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/koch3.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/koch4.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/koch5.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/manual.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/marsmap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/maze0.pbm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/maze1.pbm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/mercurymap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/neptunemap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/options.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/pinkyd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/pinkyl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/pinkyr.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/images/pinkyu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/plutomap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/pop-up-inspector.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/portfolio.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/radial.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/radicans.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/saturnmap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/sierpinski.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/starting.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/sunmap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/teapot.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/tree1.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/tree2.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/tree3.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/tree4.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/tree5.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/tree6.lss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/uranusmap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/vecmath.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/venusmap.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/woims.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/2DShapes.graffle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/AbstractContinousDistribution.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/AbstractDiscreteDistribution.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/AbstractDistribution.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/AbstractGrid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/AbstractGrid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/AbstractScrollable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/AbstractShapePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/AdjustablePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/crowd3d/Agent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Agent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/schelling/Agent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/swarmgame/Agent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/Agent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/antsforage/Ant.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/antsforage/AntsForage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/antsforage/AntsForageWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Arithmetic.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/Arrow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/ArrowEdgePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Asteroid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Asteroids.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/AsteroidsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/AsynchronousSteppable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/AxesPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Bag.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/Ball.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/Ball.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps/Ball.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/Ball.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/BallPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/Balls3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/Balls3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/Band.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/Band.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/BandPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/BarChartChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/BarChartGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/BarChartSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Beta.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/BigParticle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/BigParticleInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Binomial.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Blinky.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/Body.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/Booth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/Bot.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/BoxPlotChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/BoxPlotGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/BoxPlotSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/BranchGroupPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/BreitWigner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/BreitWignerMeanSquare.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/BubbleChartChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/BubbleChartGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/BubbleChartSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Bullet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/ByteList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/CA.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CHANGES" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/cto/CTOAgent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display3d/CapturingCanvas3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/CausedRuntimeException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/Celegans.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/CelegansWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/Cell.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/CellPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/Cells.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/ChartGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/ChartUtilities.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/ChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/ChiSquare.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/CircledPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/CircledPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Clyde.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/CollectionProperties.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/ColorMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/ColorWell.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/ConeEdgePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/ConePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Console.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Constants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/continuous/Continuous2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/continuous/Continuous3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/continuous/ContinuousPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/continuous/ContinuousPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lightcycles/ControlUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Controller.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/cto/CooperativeObservation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/cto/CooperativeObservationWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Courier.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/crowd3d/Crowd3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/crowd3d/CrowdSim.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/CubePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/networktest/CustomNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lightcycles/Cycle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/CylinderEdgePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/CylinderPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/DataCuller.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/DenseGrid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/DenseGrid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/DenseGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/Diffuser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/DisclosurePanel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Display2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display3d/Display3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Distributions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Dot.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Double2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Double3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/DoubleBag.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/DoubleGrid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/DoubleGrid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/DrawInfo2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/DrawPolicy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/DrawUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/network/Edge.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/network/EdgeDrawInfo2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/networktest/EdgeInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Element.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Empirical.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/EmpiricalWalker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Energizer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/Entity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/Evaluatable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/Evaluatable3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/Evil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Exponential.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/ExponentialPower.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/FacetedPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/FastHexaObjectGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/FastHexaValueGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/FastObjectGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/FastValueGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/FieldPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/FieldPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/FieldPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Fire.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Fixed2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/flockers/Flocker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/flockers/Flockers.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/flockers/FlockersWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial7/Fly.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Fun.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/GUIState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Gamma.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Ghost.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/Good.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/Grid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/Grid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/Griewangk.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/Griewangk3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/crowd3d/GullCG.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/HTMLBrowser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Heap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/HeatBug.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/HeatBugs.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs3d/HeatBugs3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/HeatBugsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/HexaBug.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/HexaBugs.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/HexaBugsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/HexaDenseGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/HexaDiffuser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/HexaObjectGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/HexaSparseGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/HexaValueGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/HexagonalPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/HistogramChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/HistogramGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/HistogramSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/Human.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/HyperGeometric.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Hyperbolic.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/ImagePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/ImagePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Indexed.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Inky.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Inspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Int2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Int3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/IntBag.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/IntGrid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/IntGrid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Interval.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/Java3D.graffle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/cto/KMeansEngine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/Keepaway.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/KeepawayWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/LSystem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/LSystemData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/LSystemDrawer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/LSystemWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/LabelledList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/LabelledPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/LabelledPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lightcycles/LightCycles.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lightcycles/LightCyclesWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/LightPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/LocationLog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/LocationWrapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Logarithmic.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/MASON.graffle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/MakesSimState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Manipulating2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mav/Mav.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mav/MavDemo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mav/MavDemoWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/MazeCellPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ec/util/MersenneTwisterFast.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/quad/MeshPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/MethodStep.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/MinGapDataCuller.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/MiniHistogram.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps/MouseTrap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps/MouseTraps.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps3d/MouseTraps3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps/MouseTrapsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/MovablePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/MovieEncoder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/MovieMaker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/MultiStep.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/MutableDouble.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/MutableDouble2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/MutableDouble3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/MutableInt2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/MutableInt3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/NegativeBinomial.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/Neighborhood3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/network/Network.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/network/NetworkPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/NetworkPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/networktest/NetworkTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/networktest/NetworkTestWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Normal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/NumberTextField.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/ObjectGrid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/ObjectGrid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/ObjectGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/ObjectGridPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/Obstacle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/Obstacle3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Orientable2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Oriented2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/OrientedPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/OvalPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Overlay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Overlay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/PDFEncoder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/PNGEncoder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/PSO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/PSO3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/PSO3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/PSOWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Pac.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/PacMan.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/PacManWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/PacPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/ParallelSequence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/particles3d/Particle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/Particle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial3/Particle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/Particle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/Particle3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/particles3d/Particles3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/particles3d/Particles3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/PieChartChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/PieChartGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/PieChartSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/Pinky.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Poisson.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/PoissonSlow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Polynomial.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Portrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Portrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/Portrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/Prefs.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/PrimitiveEdgePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/PrimitivePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Probability.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Propertied.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Properties.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/PropertyField.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/PropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Proxiable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/quad/QuadPortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ec/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ec/util/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/jar/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/particles3d/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/scheme/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display3d/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/continuous/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/network/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/continuous/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/network/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/continuous/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/quad/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/inspector/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/shapes/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/start/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/README_MAPS" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/RandomSequence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/Rastrigin.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/Rastrigin3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/RateAdjuster.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/RateAdjuster.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/RectanglePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mav/Region.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/Repeat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/Rosenbrock.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/Rosenbrock3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/Rule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/RuleUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/Scalable2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/ScatterPlotGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/ScatterPlotSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/Schedule.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/schelling/Schelling.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/schelling/SchellingWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/Segment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display3d/SelectionBehavior.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/Sequence.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/SeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/Shape3DPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/ShapePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Shard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/SharedPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/Ship.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/SimApplet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/SimApplet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/SimState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/SimpleColorMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/SimpleController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/network/SimpleEdgePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/SimpleEdgePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/SimpleInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/SimplePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/SimplePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/SimpleProperties.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/SimulatorLayout.graffle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/SparseField.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/SparseField2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/SparseField3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/SparseFieldPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/SparseGrid2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/SparseGrid2DPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/field/grid/SparseGrid3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/SparseGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/SparseGridPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/network/SpatialNetwork2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/network/SpatialNetwork3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/SpherePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/StableDouble2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/inspector/StableDouble3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/StableInt2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/inspector/StableInt3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/StableLocation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/Steppable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/Stoppable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/StreamingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial02/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial03/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial04/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial05/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial06/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial07/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial08/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial09/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial10/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial11/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial12/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial13/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial14/Student.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/StudentT.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial01/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial02/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial03/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial04/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial05/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial06/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial07/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial08/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial09/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial10/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial11/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial12/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial13/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial14/Students.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial04/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial05/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial06/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial07/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial08/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial09/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial10/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial11/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial12/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial13/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial14/StudentsWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/swarmgame/SwarmGame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/swarmgame/SwarmGameWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/SwitchedPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/Synapse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/TabbedInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/TableLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/TentativeStep.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/ThreadedDiffuser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/ThreadedHexaDiffuser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/quad/TilePortrayal.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/TimeSeriesAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/TimeSeriesChartGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display3d/ToolTipBehavior.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/TrailedPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/TransformedPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/TransformedPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/Tutorial1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/Tutorial2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial3/Tutorial3.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial3/Tutorial3WithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/Tutorial4.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/Tutorial4WithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/Tutorial5.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/Tutorial5WithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/Tutorial6.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/Tutorial6WithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial7/Tutorial7.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial7/Tutorial7WithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Uniform.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/Utilities.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/Valuable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/ValueGrid2DPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/quad/ValueGridCellInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/grid/ValueGridPortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/grid/ValueGridPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/simple/ValuePortrayal2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/ValuePortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/Vector2D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/Vector3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/VirusInfectionDemo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/VirusInfectionDemoWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/VonMises.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/engine/WeakStep.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/WireFrameBoxPortrayal3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/Woim.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/Woim3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/WoimsDemo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/WoimsDemo3D.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/WoimsDemo3DWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/WoimsDemoWithUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/gui/WordWrap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/media/chart/XYChartGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/util/distribution/Zeta.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/scheme/ca.scm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display2D.graffle/data.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/Display3D.graffle/data.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/grids.graffle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/howto.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/start/ignoreme.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/tutorial0/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/antsforage/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/asteroids/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/balls3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/celegans/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/crowd3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/cto/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/flockers/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/heatbugs3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/hexabugs/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/keepaway/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lightcycles/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/lsystem/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mav/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/mousetraps3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/networktest/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pacman/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/particles3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/pso3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/schelling/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/swarmgame/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial3/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial7/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/virus/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial13/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/wcss/tutorial14/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/woims3d/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/manual.bib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/manual.tex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/start/mason.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/start/mason.command" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/start/mason.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/shapes/monkey.mtl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/shapes/monkey.obj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/notes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/overview.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/shapes/palmtree.mtl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/shapes/palmtree.obj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal/inspector/propertyinspector.classes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/docs/manual/originalsources/radial.graffle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/scheme/run1.scm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/scheme/run2.scm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/display/simulation.classes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/portrayal3d/simple/shapes/teapot.obj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/tutorial1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/scheme/tutorial1.scm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial1and2/tutorial2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/scheme/tutorial2.scm" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial3/tutorial3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial4/tutorial4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial5/tutorial5.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial6/tutorial6.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sim/app/tutorial7/tutorial7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/bsh_2_0b4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Courier.iml" afterPath="$PROJECT_DIR$/Courier.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -863,12 +29,66 @@
     <favorites_list name="Courier" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Display3D.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sim/display3d/Display3D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="33690">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Console.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sim/display/Console.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="23774" max-vertical-offset="44265">
+              <caret line="1823" column="63" selection-start-line="1823" selection-start-column="63" selection-end-line="1823" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Students.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Courier/Main/Students.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+              <folding>
+                <element signature="e#120#121#0" expanded="true" />
+                <element signature="e#147#148#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StudentsWithUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sim/app/wcss/tutorial07/StudentsWithUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.17612524" vertical-offset="0" max-vertical-offset="1275">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Courier/Main/Students.java" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-4" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
@@ -880,7 +100,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -947,6 +167,102 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wcss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wcss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tutorial07" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Courier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -962,13 +278,16 @@
     <property name="options.lastSelected" value="reference.settings.project.maven.importing" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -1006,6 +325,7 @@
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/src/lib/bsh-2.0b4.jar" />
       <envs />
       <method />
     </configuration>
@@ -1122,9 +442,33 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="false" name="Main" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="sim.app.wcss.tutorial14.StudentsWithUI" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Courier" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="" />
@@ -1135,8 +479,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <frame x="-4" y="23" width="1440" height="873" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1145,22 +489,23 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -1185,11 +530,52 @@
     <breakpoint-manager />
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/CHANGES">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42525774" vertical-offset="0" max-vertical-offset="40980">
           <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sim/display3d/Display3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="33690">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sim/display/Console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="23774" max-vertical-offset="44265">
+          <caret line="1823" column="63" selection-start-line="1823" selection-start-column="63" selection-end-line="1823" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Courier/Main/Students.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <folding>
+            <element signature="e#120#121#0" expanded="true" />
+            <element signature="e#147#148#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sim/app/wcss/tutorial07/StudentsWithUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17612524" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
