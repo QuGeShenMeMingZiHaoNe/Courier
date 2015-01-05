@@ -1,12 +1,9 @@
 package courier;
 
-import com.sun.tools.classfile.Synthetic_attribute;
 import sim.engine.SimState;
 import sim.engine.Steppable;
-import sim.field.SparseField;
 import sim.util.Int2D;
 
-import javax.xml.stream.Location;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -17,8 +14,11 @@ public class Tramline implements Steppable {
     public Station a;
     public Station b;
     public int tramlineID;
+    public Map map;
 
-    public Tramline(Station a, Station b, int tramlineID){
+    public Tramline(){}
+
+    public Tramline(Station a, Station b, int tramlineID, Map map){
         if(a.stationID>=b.stationID) {
             this.a = a;
             this.b = b;
@@ -26,13 +26,16 @@ public class Tramline implements Steppable {
             this.a = b;
             this.b = a;
         }
+        this.map = map;
         this.tramlineID = tramlineID;
     }
 
-    private LinkedList<Int2D> getPath(Station a, Station b){
+    // return each step of path from a to b
+    public LinkedList<Int2D> getStepsNB(Station a, Station b){
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
         if(a.equals(b)){
+            System.out.println("Attempting to find the route to itself");
             return null;
         }
 
@@ -86,14 +89,14 @@ public class Tramline implements Steppable {
         return result;
     }
 
-    private int findTramlineIndex(Station a, Station b, LinkedList<Tramline> tramlines){
+    private int findTramlineIndexNB(Station a, Station b){
         int result = -1;
         Station c;
         Tramline temp;
 
         if(a.stationID < b.stationID){
-            for(int i=0; i<tramlines.size();i++){
-                temp = tramlines.get(i);
+            for(int i=0; i<map.tramlines.size();i++){
+                temp = map.tramlines.get(i);
                 if(temp.a.stationID == a.stationID && temp.b.stationID == b.stationID){
                     return i;
                 }
@@ -102,8 +105,8 @@ public class Tramline implements Steppable {
             c=a;
             a=b;
             b=c;
-            for(int i=0; i<tramlines.size();i++){
-                temp = tramlines.get(i);
+            for(int i=0; i<map.tramlines.size();i++){
+                temp = map.tramlines.get(i);
                 if(temp.a.stationID == a.stationID && temp.b.stationID == b.stationID){
                     return i;
                 }
@@ -115,14 +118,23 @@ public class Tramline implements Steppable {
         return result;
     }
 
-    public Tramline getTramline(Station a, Station b, LinkedList<Tramline> tramlines){
-        int index = findTramlineIndex(a, b, tramlines);
+    public LinkedList<Tramline> getPathGlobal(Station a, Station b){
+        LinkedList<Tramline> result = new LinkedList<Tramline>();
+
+
+        // if it is neighbour
+        int index = findTramlineIndexNB(a, b);
         if(index>=0){
-            return tramlines.get(index);
+            result.add(map.tramlines.get(index));
+            return result;
         }
 
-        // ERROR
-        System.out.println("No such tramline!");
+        // not neighbour
+
+        //TODO!!!!!!!!!!!!!!!!!!!!!!
+
+        // ERROR no connection
+        System.out.println(a.stationID+"can not reach!"+b.stationID);
         return null;
     }
 

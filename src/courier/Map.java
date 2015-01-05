@@ -18,10 +18,10 @@ import java.util.LinkedList;
  * Created by daniel on 15/1/4.
  */
 public class Map extends SimState {
-    LinkedList<Station> stations = new LinkedList<Station>();
-    LinkedList<Parcel> parcels = new LinkedList<Parcel>();
-    LinkedList<Tramline> tramlines = new LinkedList<Tramline>();
-    LinkedList<Car> cars = new LinkedList<Car>();
+    public LinkedList<Station> stations = new LinkedList<Station>();
+    public LinkedList<Parcel> parcels = new LinkedList<Parcel>();
+    public LinkedList<Tramline> tramlines = new LinkedList<Tramline>();
+    public LinkedList<Car> cars = new LinkedList<Car>();
 
     private int serialStationID =1;
     private int serialParcelID=1;
@@ -29,16 +29,19 @@ public class Map extends SimState {
     private int serialCarID=1;
     private int initNumOfCarsInStation = 1;
     private int initNumOfParcelsInStation = 3;
+    private int smallPackageSize = 1;
+    private int mediumPackageSize = 3;
+    private int largePackageSize = 8;
 
     public Map(long seed) {
         super(seed);
     }
-//
-//
-//        public IntGrid2D map = new IntGrid2D(100,100);
-//
-//        public Network tramline = new Network(false);
-//
+
+
+       public IntGrid2D mapGrid = new IntGrid2D(100,100);
+
+       public Network tramlineNet = new Network(false);
+
 //        public void start()
 //        {
 //            super.start();
@@ -94,25 +97,14 @@ public class Map extends SimState {
 //    }
 
     private void initStations(){
-        stations.add(new Station("A",serialStationID,new Int2D(10,10)));
+        stations.add(new Station("A",serialStationID,new Int2D(10,10),this));
         serialStationID++;
-        stations.add(new Station("B",serialStationID,new Int2D(90,90)));
+        stations.add(new Station("B",serialStationID,new Int2D(90,90),this));
         serialStationID++;
     }
 
     private void initTramlines(){
-//        int next;
-//        for(Station s :stations){
-//
-//            do
-//            {
-//               next = random.nextInt(stations.size());
-//            } while ((next-1)>=0 && (next-1)!=stations.indexOf(s));
-//
-//            new Tramline(s,stations.get(next));
-//        }
-
-        tramlines.add( new Tramline(stations.get(0),stations.get(1),serialTramlineID));
+        tramlines.add( new Tramline(stations.get(0),stations.get(1),serialTramlineID,this));
         serialTramlineID++;
     }
 
@@ -120,7 +112,7 @@ public class Map extends SimState {
         Car car;
         for(Station s : stations){
             for(int i =0; i<initNumOfCarsInStation;i++){
-                car = new Car(serialCarID,s.location);
+                car = new Car(serialCarID,s.location,this);
                 s.carPark.add(car);
                 cars.add(car);
                 serialCarID++;
@@ -138,7 +130,7 @@ public class Map extends SimState {
                     next = random.nextInt(stations.size());
                 } while (stations.get(next).stationID != s.stationID);
 
-                p = new Parcel(serialParcelID,stations.get(next).stationID,1);
+                p = new Parcel(serialParcelID,stations.get(next).stationID,smallPackageSize,this);
                 serialParcelID++;
                 s.pToBeSent.add(p);
             }

@@ -18,11 +18,14 @@ public class Station  implements Steppable {
     public Int2D location;
     public List<Parcel> pToBeSent = new LinkedList<Parcel>();
     public List<Parcel> pArrived = new LinkedList<Parcel>();
+    public Map map;
 
-    public Station(String name,int stationID,Int2D location){
+    public  Station(){};
+    public Station(String name,int stationID,Int2D location, Map map){
         this.name = name;
         this.stationID = stationID;
         this.location = location;
+        this.map = map;
     }
 
     @Override
@@ -30,5 +33,35 @@ public class Station  implements Steppable {
 
     }
 
+    @Override
     public String toString() { return "Station: "+name;}
+
+    public Boolean isStation(Int2D loc){
+    	for(Station s: map.stations){
+    		if(s.location.equals(loc)){
+                return true;
+            }
+    	}
+        return false;
+    }
+
+    public Station findStationByLoc(Int2D loc){
+        for(Station s: map.stations){
+            if(s.location.equals(loc)){
+                return s;
+            }
+        }
+        System.out.println("No such Station");
+        return null;
+    }
+
+    public Station findStationByID(int id){
+        for(Station s: map.stations){
+            if(s.stationID == id){
+                return s;
+            }
+        }
+        System.out.println("No such Station");
+        return null;
+    }
 }

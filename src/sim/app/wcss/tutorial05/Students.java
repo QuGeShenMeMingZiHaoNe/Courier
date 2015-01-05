@@ -42,6 +42,11 @@ public class Students extends SimState
 
             schedule.scheduleRepeating(student);
             }
+            Student student = new Student();
+            yard.setObjectLocation(student,
+                    new Double2D(1,1));
+
+            schedule.scheduleRepeating(student);
         }
         
     public static void main(String[] args)

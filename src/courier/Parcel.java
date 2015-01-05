@@ -6,12 +6,14 @@ package courier;
 public class Parcel {
     public int parcelID;
     public double weight;
-    public int destination;
+    public Station destination;
+    public Map map;
 
-    Parcel(int parcelID,int destination, double weight){
+    Parcel(int parcelID,Station destination, double weight,Map map){
         this.parcelID = parcelID;
         this.weight = weight;
         this.destination = destination;
+        this.map = map;
     }
 
 }
