@@ -22,7 +22,7 @@ public class Map extends SimState {
     private int serialTramlineID=1;
     private int serialCarID=1;
     private int initNumOfCarsInStation = 1;
-    private int initNumOfParcelsInStation = 2;
+    private int initNumOfParcelsInStation = 1000;
     private int smallPackageSize = 1;
     private int mediumPackageSize = 3;
     private int largePackageSize = 8;
@@ -32,7 +32,6 @@ public class Map extends SimState {
 
 
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth,gridHeight);
-
     public Network tramlineNet = new Network(false);
 
     public Map(long seed) {
@@ -40,15 +39,16 @@ public class Map extends SimState {
     }
 
     public void start() {
-           super.start();
+        super.start();
 
-           // clear the buddies
-           tramlineNet.clear();
+        // clear the buddies
+        tramlineNet.clear();
 
-           initStations();
-           initTramlines();
-           initCars();
-           initParcels();
+        initStations();
+        initTramlines();
+        initCars();
+        initParcels();
+        initeTramlineNet();
        }
 
        public static void main(String[] args)
@@ -66,9 +66,9 @@ public class Map extends SimState {
         mapGrid.setObjectLocation(station,new Int2D(10,10));
         serialStationID++;
 
-        station = new Station("B",serialStationID,new Int2D(90,90),this);
+        station = new Station("B",serialStationID,new Int2D(15,70),this);
         stations.add(station);
-        mapGrid.setObjectLocation(station,new Int2D(90,90));
+        mapGrid.setObjectLocation(station,new Int2D(15,70));
         serialStationID++;
     }
 
@@ -105,6 +105,14 @@ public class Map extends SimState {
                 serialParcelID++;
                 s.pToBeSent.add(p);
             }
+        }
+    }
+
+    private void initeTramlineNet(){
+        for(Station s: stations)
+            tramlineNet.addNode(s);
+        for(Tramline tl:tramlines){
+            tramlineNet.addEdge(tl.a,tl.b,tl.tramlineID);
         }
     }
 

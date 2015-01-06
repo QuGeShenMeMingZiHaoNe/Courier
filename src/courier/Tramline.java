@@ -47,10 +47,14 @@ public class Tramline implements Steppable {
             a = b;
             b = c;
             result=buildPath(a,b);
+//            while(result.get(0).equals(a))
+//                result.pop();
         }
 
         if(c != null){
             Collections.reverse(result);
+//            while(result.get(0).equals(b))
+//                result.pop();
         }
         result.pop();
         return result;
@@ -59,32 +63,48 @@ public class Tramline implements Steppable {
     private LinkedList<Int2D> buildPath(Station a, Station b){
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
-        int xStep,yStep;
-        xStep = -1;
-        yStep = -1;
+        int xDiff,yDiff,intXStep,intYStep;
+        xDiff = b.location.getX()-a.location.getX();
+        yDiff = b.location.getY()-a.location.getY();
+        Double xStep,yStep;
+        xStep = 0.0;
+        yStep = 0.0;
 
+        Double distance = a.location.distance(b.location);
 
-        do {
-            // set x step
-            if (a.location.getX() < b.location.getX()) {
-                xStep += 1;
-            } else if (a.location.getX() > b.location.getX()) {
-                xStep += -1;
-            } else {
-                xStep += 0;
-            }
+        result.add(a.location);
+        while(!(result.get(result.size()-1).getX() == b.location.getX() && result.get(result.size()-1).getY() == b.location.getY())){
 
-            // set y step
-            if (a.location.getY() < b.location.getY()) {
-                yStep += 1;
-            } else if (a.location.getY() > b.location.getY()) {
-                yStep += -1;
-            } else {
-                yStep += 0;
-            }
-            result.add(new Int2D(a.location.x+xStep,a.location.y+yStep));
-        }        while(!(result.get(result.size()-1).getX() == b.location.getX() && result.get(result.size()-1).getY() == b.location.getY()));
+//            if (Math.abs(result.get(result.size()-1).getX()-b.location.getX())<1)
 
+            xStep += xDiff / distance;
+            yStep += yDiff/distance;
+
+            intXStep = xStep.intValue();
+            intYStep = yStep.intValue();
+
+            result.add(new Int2D(a.location.getX()+intXStep,a.location.getY()+intYStep));
+//            // set x step
+//            if (result.get(result.size()-1).getX() < b.location.getX()) {
+//                xStep += 1;
+//            } else if (result.get(result.size()-1).getX() > b.location.getX()) {
+//                xStep += -1;
+//            } else {
+//                xStep += 0;
+//            }
+//
+//            // set y step
+//            if (result.get(result.size()-1).getY() < b.location.getY()) {
+//                yStep += 1;
+//            } else if (result.get(result.size()-1).getY() > b.location.getY()) {
+//                yStep += -1;
+//            } else {
+//                yStep += 0;
+//            }
+//            result.add(new Int2D(a.location.x+xStep,a.location.y+yStep));
+
+        }
+        result.pop();
         return result;
     }
 

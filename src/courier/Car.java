@@ -123,6 +123,7 @@ public class Car implements Steppable {
             arriveStation();
             leaveStation();
         }
+
         if(!carrying.isEmpty()) {
             Int2D nextStep = this.pathLocal.pop();
             this.location = nextStep;

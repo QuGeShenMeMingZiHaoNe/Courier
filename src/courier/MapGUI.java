@@ -5,6 +5,9 @@ import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.portrayal.grid.SparseGridPortrayal2D;
+import sim.portrayal.network.NetworkPortrayal2D;
+import sim.portrayal.network.SimpleEdgePortrayal2D;
+import sim.portrayal.network.SpatialNetwork2D;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +22,7 @@ public class MapGUI extends GUIState {
     }
 
     SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
+    NetworkPortrayal2D tramlinePortrayal = new NetworkPortrayal2D();
 
     public static void main(String[] args)
     {
@@ -55,21 +59,25 @@ public class MapGUI extends GUIState {
 
     public void setupPortrayals()
     {
+        Map map = ((Map)state);
         // tell the portrayals what to portray and how to portray them
-        mapGridPortrayal.setField(((Map)state).mapGrid);
+        mapGridPortrayal.setField(map.mapGrid);
 
         mapGridPortrayal.setPortrayalForClass(
-                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE,1.5) );
+                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE,3) );
 
         mapGridPortrayal.setPortrayalForClass(
-                Car.class, new sim.portrayal.simple.RectanglePortrayal2D(Color.pink));
+                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta,2));
 //                {
 //                    public Inspector getInspector(LocationWrapper wrapper, GUIState state)
 //                    {
-//                        make the inspector
+////                        make the inspector
 //                        return new BigParticleInspector(super.getInspector(wrapper,state), wrapper, state);
 //                    }
 //                });
+
+        tramlinePortrayal.setField( new SpatialNetwork2D(map.mapGrid,map.tramlineNet));
+        tramlinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
 
         // reschedule the displayer
         display.reset();
@@ -86,8 +94,9 @@ public class MapGUI extends GUIState {
         displayFrame = display.createFrame();
         c.registerFrame(displayFrame);
         displayFrame.setVisible(true);
-        display.setBackdrop(Color.lightGray);
+        display.setBackdrop(Color.WHITE);
         display.attach(mapGridPortrayal,"Map");
+        display.attach(tramlinePortrayal,"Tramline");
 
     }
 
