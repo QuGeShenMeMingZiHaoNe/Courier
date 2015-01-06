@@ -9,7 +9,7 @@ public class Parcel {
     public Station destination;
     public Map map;
 
-    Parcel(int parcelID,Station destination, double weight,Map map){
+    Parcel(int parcelID, Station destination, double weight, Map map) {
         this.parcelID = parcelID;
         this.weight = weight;
         this.destination = destination;
