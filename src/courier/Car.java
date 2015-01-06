@@ -3,6 +3,7 @@ package courier;
 import sim.engine.SimState;
 import sim.engine.Steppable;
 import sim.field.grid.IntGrid2D;
+import sim.field.grid.SparseGrid2D;
 import sim.util.Int2D;
 
 import java.util.LinkedList;
@@ -13,22 +14,22 @@ public class Car implements Steppable {
     public double maxWeight = 50;
     public List<Parcel> carrying = new LinkedList<Parcel>();
     public int speed;
-    public LinkedList<Station> pathLocal;
-    public LinkedList<Station> pathGlobal;
+    public LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
+    public Station nextStation;
     public Int2D location;
     public Map map;
 
-    public Car(int carID, Int2D location,Map map){
+
+    public Car(int carID, Int2D location,Map map,Station nextStation){
         this.carID = carID;
         this.location = location;
         this.map = map;
+        this.nextStation = nextStation;
     }
 
 
     public boolean loadParcel(){
-        Station s = new Station();
-        s = s.findStationByLoc(this.location);
-
+        Station s = currStation();
         if(s.pToBeSent.size()==0) return false;
         // TODO load package number
         Parcel p = s.pToBeSent.get(0);
@@ -39,8 +40,7 @@ public class Car implements Steppable {
 
     // unload parcel
     public void unloadParcel(){
-        Station s = new Station();
-        s = s.findStationByLoc(this.location);
+        Station s = currStation();
 
         List<Parcel> unload= parcelsToUnload(s);
         carrying.removeAll(unload);
@@ -60,11 +60,10 @@ public class Car implements Steppable {
 
     // arrive carpark
     public boolean arriveStation(){
-        Station s = new Station();
-        s = s.findStationByLoc(this.location);
+        Station s = currStation();
         s.carPark.add(this);
         pathLocal.clear();
-        pathGlobal.clear();
+        nextStation=null;
         unloadParcel();
         loadParcel();
         return true;
@@ -72,13 +71,21 @@ public class Car implements Steppable {
 
     private boolean setPathLocal(Station from,Station to){
         Tramline tl = new Tramline();
-        tl.getStepsNB(from,to);
+        pathLocal = tl.getStepsNB(from,to);
         return true;
     }
 
     private boolean setPathGlobal(Station from, Station to){
         Tramline tl = new Tramline();
-        tl.getPathGlobal(from,to);
+        Station currStation = currStation();
+
+        // TODO get 0 , return a station??
+        tl = tl.getPathGlobal(from, to).get(0);
+        if(tl.a.equals(currStation)){
+            nextStation = tl.b;
+        }else{
+            nextStation = tl.a;
+        }
         return true;
     }
 
@@ -91,20 +98,26 @@ public class Car implements Steppable {
             Station targetStation = new Station();
             targetStation = targetStation.findStationByID(p.destination.stationID);
 
-            Station currStation = targetStation.findStationByLoc(this.location);
+            Station currStation = currStation();
 
             setPathGlobal(currStation,targetStation);
-            setPathLocal(currStation,pathGlobal.get(0));
+            setPathLocal(currStation, nextStation);
 
             currStation.carPark.remove(this);
         }
         return true;
     }
 
-        @Override
+    private Station currStation(){
+        return map.stations.get(0).findStationByLoc(this.location);
+    }
+
+    @Override
     public void step(SimState state) {
-            Map map = (Map) state;
-            IntGrid2D mapGrid = map.mapGrid;
+        Map map = (Map) state;
+        SparseGrid2D mapGrid = map.mapGrid;
+
+        Station currStation = currStation();
 
     }
 }
