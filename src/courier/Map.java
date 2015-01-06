@@ -20,7 +20,8 @@ public class Map extends SimState {
     private int serialParcelID = 1;
     private int serialTramlineID = 1;
     private int serialCarID = 1;
-    private int initNumOfCarsInStation = 1;
+    public int serialTrafficLightID = 1;
+    private int initNumOfCarsInStation = 5;
     private int initNumOfParcelsInStation = 1000;
     private int smallPackageSize = 1;
     private int mediumPackageSize = 3;
@@ -77,7 +78,6 @@ public class Map extends SimState {
                 serialCarID++;
                 schedule.scheduleRepeating(car);
                 mapGrid.setObjectLocation(car, s.location);
-                car.arriveStation();
             }
         }
     }

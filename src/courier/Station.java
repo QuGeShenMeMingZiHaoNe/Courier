@@ -19,6 +19,7 @@ public class Station implements Steppable {
     public Map map;
     private String name;
 
+
     public Station() {
     }
 

@@ -13,10 +13,15 @@ public class Car implements Steppable {
     public List<Parcel> carrying = new LinkedList<Parcel>();
     public int speed;
     public LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
-    public Station nextStation;
+    public Station stationFrom;
+    public Station stationTo;
     public Int2D location;
     public Map map;
-    private int step = 0;
+    public Station direction;
+    private int stepCount=0;
+    private boolean hasArrived = false;
+    private boolean hasLeaved = false;
+
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -58,22 +63,47 @@ public class Car implements Steppable {
 
     // arrive carpark
     public boolean arriveStation() {
-        Station s = currStation();
-        s.carPark.add(this);
+        Station currStation = currStation();
+        currStation.carPark.add(this);
         pathLocal.clear();
-        nextStation = null;
+        this.stationFrom = currStation;
+        stepCount = 0;
+        hasArrived = true;
         unloadParcel();
         loadParcel();
+
+        // if there are something to be delivered
+        if (!carrying.isEmpty()) {
+            // get the parcel with highest priority
+            Parcel p = carrying.get(0);
+
+            // find the final destination of the parcel as target Station.
+            Station targetStation = map.stations.get(0).findStationByID(p.destination.stationID);
+
+            // set the current station as station from, the next station as station to.
+            setPathGlobal(currStation, targetStation);
+            // calculate the path from current station to the next station
+            setPathLocal(currStation, stationTo);
+
+            // remove the car from the road into station
+            Tramline tramLine = map.tramlines.get(0).findTramLine(stationFrom,stationTo);
+            tramLine.carsOnTramline.remove(this);
+
+        }
         return true;
     }
 
-    private boolean setPathLocal(Station from, Station to) {
+    // leave carpark
+    public void leaveStation() {
+        hasLeaved = true;
+    }
+
+    private void setPathLocal(Station from, Station to) {
         Tramline tl = map.tramlines.get(0);
         pathLocal = tl.getStepsNB(from, to);
-        return true;
     }
 
-    private boolean setPathGlobal(Station from, Station to) {
+    private void setPathGlobal(Station from, Station to) {
         Tramline tl = map.tramlines.get(0);
         Station currStation = currStation();
 
@@ -81,31 +111,15 @@ public class Car implements Steppable {
         tl = tl.getPathGlobal(from, to);
 
         if (tl.a.equals(currStation)) {
-            nextStation = tl.b;
+            stationTo = tl.b;
+            direction = tl.b;
         } else {
-            nextStation = tl.a;
+            stationTo = tl.a;
+            direction = tl.a;
         }
-        return true;
     }
 
-    // leave carpark
-    public boolean leaveStation() {
-        if (!carrying.isEmpty()) {
-            // get the top parcel
-            Parcel p = carrying.get(0);
 
-            Station targetStation = map.stations.get(0);
-            targetStation = targetStation.findStationByID(p.destination.stationID);
-
-            Station currStation = currStation();
-
-            setPathGlobal(currStation, targetStation);
-            setPathLocal(currStation, nextStation);
-
-            currStation.carPark.remove(this);
-        }
-        return true;
-    }
 
     private Station currStation() {
         return map.stations.get(0).findStationByLoc(this.location);
@@ -113,19 +127,55 @@ public class Car implements Steppable {
 
     @Override
     public void step(SimState state) {
-//        Map map = ((Map)state);
-//        SparseGrid2D mapGrid = map.mapGrid;
 
         Station currStation = currStation();
         if (currStation != null) {
-            arriveStation();
-            leaveStation();
+            if(!hasArrived) {
+                arriveStation();
+                // this return is for waite one step after arrival
+                return;
+            }
+
+            Tramline tramLine = map.tramlines.get(0).findTramLine(stationFrom,stationTo);
+
+            if (!hasLeaved) {
+                if(tramLine.okToLeave(currStation)) {
+                    // leave the car park one by one -- FIFO
+                    if (tramLine.currLeavingCar!=null) {
+                        return;
+                    }
+                    tramLine.currLeavingCar = this;
+                    leaveStation();
+                    tramLine.carsOnTramline.add(this);
+                    return;
+            }else{
+                tramLine.tryOccupyTraffic(currStation);
+                return;
+            }
+            }
+
+            // delay one step of leaving the car park, Truly leave
+            if(hasLeaved){
+                if(tramLine.currLeavingCar.equals(this)){
+                    tramLine.currLeavingCar = null;
+                }
+                if(tramLine.a.equals(currStation)){
+                    tramLine.quota1--;
+                }else{
+                    tramLine.quota2--;
+                }
+                currStation.carPark.remove(this);
+                hasArrived = false;
+                hasLeaved = false;
+            }
         }
 
+
         if (!carrying.isEmpty()) {
-            Int2D nextStep = this.pathLocal.pop();
+            Int2D nextStep = this.pathLocal.get(stepCount);
             this.location = nextStep;
-            ((Map) state).mapGrid.setObjectLocation(this, nextStep);
+            map.mapGrid.setObjectLocation(this, nextStep);
+            stepCount++;
         }
     }
 }

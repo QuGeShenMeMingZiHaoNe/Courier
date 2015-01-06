@@ -64,7 +64,7 @@ public class MapGUI extends GUIState {
                 Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, 3));
 
         mapGridPortrayal.setPortrayalForClass(
-                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, 2));
+                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta,1.5));
 //                {
 //                    public Inspector getInspector(LocationWrapper wrapper, GUIState state)
 //                    {
