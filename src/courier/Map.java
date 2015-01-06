@@ -22,7 +22,7 @@ public class Map extends SimState {
     private int serialTramlineID=1;
     private int serialCarID=1;
     private int initNumOfCarsInStation = 1;
-    private int initNumOfParcelsInStation = 3;
+    private int initNumOfParcelsInStation = 2;
     private int smallPackageSize = 1;
     private int mediumPackageSize = 3;
     private int largePackageSize = 8;
@@ -81,7 +81,7 @@ public class Map extends SimState {
         Car car;
         for(Station s : stations){
             for(int i =0; i<initNumOfCarsInStation;i++){
-                car = new Car(serialCarID,s.location,this,s);
+                car = new Car(serialCarID,s.location,this);
                 cars.add(car);
                 serialCarID++;
                 schedule.scheduleRepeating(car);
@@ -99,7 +99,7 @@ public class Map extends SimState {
                 do
                 {
                     next = random.nextInt(stations.size());
-                } while (stations.get(next).stationID != s.stationID);
+                } while (stations.get(next).stationID == s.stationID);
 
                 p = new Parcel(serialParcelID,stations.get(next),smallPackageSize,this);
                 serialParcelID++;

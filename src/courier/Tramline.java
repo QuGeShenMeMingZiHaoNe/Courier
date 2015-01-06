@@ -19,7 +19,7 @@ public class Tramline implements Steppable {
     public Tramline(){}
 
     public Tramline(Station a, Station b, int tramlineID, Map map){
-        if(a.stationID>=b.stationID) {
+        if(a.stationID<b.stationID) {
             this.a = a;
             this.b = b;
         }else{
@@ -38,22 +38,21 @@ public class Tramline implements Steppable {
             System.out.println("Attempting to find the route to itself");
             return null;
         }
-
         Station c = null;
 
         if(a.stationID<b.stationID){
-            buildPath(a,b);
+            result=buildPath(a,b);
         } else {
             c = a;
             a = b;
             b = c;
-            buildPath(a,b);
+            result=buildPath(a,b);
         }
 
         if(c != null){
             Collections.reverse(result);
         }
-
+        result.pop();
         return result;
     }
 
@@ -65,26 +64,26 @@ public class Tramline implements Steppable {
         yStep = -1;
 
 
-        while(xStep!=0 && yStep!=0) {
+        do {
             // set x step
             if (a.location.getX() < b.location.getX()) {
-                xStep = 1;
+                xStep += 1;
             } else if (a.location.getX() > b.location.getX()) {
-                xStep = -1;
+                xStep += -1;
             } else {
-                xStep = 0;
+                xStep += 0;
             }
 
             // set y step
             if (a.location.getY() < b.location.getY()) {
-                xStep = 1;
+                yStep += 1;
             } else if (a.location.getY() > b.location.getY()) {
-                xStep = -1;
+                yStep += -1;
             } else {
-                xStep = 0;
+                yStep += 0;
             }
-            result.add(new Int2D(xStep,yStep));
-        }
+            result.add(new Int2D(a.location.x+xStep,a.location.y+yStep));
+        }        while(!(result.get(result.size()-1).getX() == b.location.getX() && result.get(result.size()-1).getY() == b.location.getY()));
 
         return result;
     }
@@ -118,15 +117,12 @@ public class Tramline implements Steppable {
         return result;
     }
 
-    public LinkedList<Tramline> getPathGlobal(Station a, Station b){
-        LinkedList<Tramline> result = new LinkedList<Tramline>();
-
+    public Tramline getPathGlobal(Station a, Station b){
 
         // if it is neighbour
         int index = findTramlineIndexNB(a, b);
         if(index>=0){
-            result.add(map.tramlines.get(index));
-            return result;
+            return map.tramlines.get(index);
         }
 
         // not neighbour

@@ -51,7 +51,6 @@ public class Station  implements Steppable {
                 return s;
             }
         }
-        System.out.println("Not at Station");
         return null;
     }
 
@@ -61,7 +60,6 @@ public class Station  implements Steppable {
                 return s;
             }
         }
-        System.out.println("No such Station");
         return null;
     }
 }

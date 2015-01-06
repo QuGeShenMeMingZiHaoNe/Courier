@@ -1,12 +1,9 @@
 package courier;
 
-import sim.app.tutorial4.Tutorial4;
-import sim.app.tutorial4.Tutorial4WithUI;
 import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
-import sim.portrayal.grid.FastValueGridPortrayal2D;
 import sim.portrayal.grid.SparseGridPortrayal2D;
 
 import javax.swing.*;
@@ -60,9 +57,9 @@ public class MapGUI extends GUIState {
     {
         // tell the portrayals what to portray and how to portray them
         mapGridPortrayal.setField(((Map)state).mapGrid);
+
         mapGridPortrayal.setPortrayalForClass(
                 Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE,1.5) );
-
 
         mapGridPortrayal.setPortrayalForClass(
                 Car.class, new sim.portrayal.simple.RectanglePortrayal2D(Color.pink));

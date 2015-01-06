@@ -18,13 +18,13 @@ public class Car implements Steppable {
     public Station nextStation;
     public Int2D location;
     public Map map;
+    private int step =0;
 
 
-    public Car(int carID, Int2D location,Map map,Station nextStation){
+    public Car(int carID, Int2D location,Map map){
         this.carID = carID;
         this.location = location;
         this.map = map;
-        this.nextStation = nextStation;
     }
 
 
@@ -70,17 +70,18 @@ public class Car implements Steppable {
     }
 
     private boolean setPathLocal(Station from,Station to){
-        Tramline tl = new Tramline();
+        Tramline tl = map.tramlines.get(0);
         pathLocal = tl.getStepsNB(from,to);
         return true;
     }
 
     private boolean setPathGlobal(Station from, Station to){
-        Tramline tl = new Tramline();
+        Tramline tl = map.tramlines.get(0);
         Station currStation = currStation();
 
         // TODO get 0 , return a station??
-        tl = tl.getPathGlobal(from, to).get(0);
+        tl = tl.getPathGlobal(from, to);
+
         if(tl.a.equals(currStation)){
             nextStation = tl.b;
         }else{
@@ -95,7 +96,7 @@ public class Car implements Steppable {
             // get the top parcel
             Parcel p = carrying.get(0);
 
-            Station targetStation = new Station();
+            Station targetStation = map.stations.get(0);
             targetStation = targetStation.findStationByID(p.destination.stationID);
 
             Station currStation = currStation();
@@ -114,11 +115,19 @@ public class Car implements Steppable {
 
     @Override
     public void step(SimState state) {
-        Map map = (Map) state;
-        SparseGrid2D mapGrid = map.mapGrid;
+//        Map map = ((Map)state);
+//        SparseGrid2D mapGrid = map.mapGrid;
 
         Station currStation = currStation();
-
+        if(currStation!=null){
+            arriveStation();
+            leaveStation();
+        }
+        if(!carrying.isEmpty()) {
+            Int2D nextStep = this.pathLocal.pop();
+            this.location = nextStep;
+            ((Map) state).mapGrid.setObjectLocation(this, nextStep);
+        }
     }
 }
 
