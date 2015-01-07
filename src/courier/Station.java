@@ -20,11 +20,6 @@ public class Station implements Steppable {
     private String name;
 
 
-    public Station() {
-    }
-
-    ;
-
     public Station(String name, int stationID, Int2D location, Map map) {
         this.name = name;
         this.stationID = stationID;

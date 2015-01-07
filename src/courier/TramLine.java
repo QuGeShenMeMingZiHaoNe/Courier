@@ -19,9 +19,6 @@ public class TramLine implements Steppable {
     // whom is controlling the traffic
     public Station trafficLightOccupant;
     public Car currLeavingCar;
-    // count the requirements for station a and b
-//    public int requireAccessCount1 =0;
-//    public int requireAccessCount2 =0;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
     private int requirementThreshold = 3;
     public int quota1 = requirementThreshold;

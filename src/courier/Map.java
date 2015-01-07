@@ -46,31 +46,33 @@ public class Map extends SimState {
         tramLineNet.clear();
 
         initStations();
-        initTramlines();
+        initTramLines();
         initCars();
         initParcels();
         initTramLineNet();
     }
 
     private void initStations() {
-        Station station = new Station("A", serialStationID, new Int2D(10, 10), this);
-        stations.add(station);
-        mapGrid.setObjectLocation(station, new Int2D(10, 10));
-        serialStationID++;
+        addStation("A",new Int2D(10,20));
+        addStation("B",new Int2D(45,50));
+        addStation("C",new Int2D(90,20));
 
-        station = new Station("B", serialStationID, new Int2D(15, 70), this);
-        stations.add(station);
-        mapGrid.setObjectLocation(station, new Int2D(15, 70));
-        serialStationID++;
+    }
 
-        station = new Station("C", serialStationID, new Int2D(55, 70), this);
+    private void addStation(String name,Int2D loc){
+        Station station = new Station(name, serialStationID, loc, this);
         stations.add(station);
-        mapGrid.setObjectLocation(station, new Int2D(55, 70));
+        mapGrid.setObjectLocation(station, loc);
         serialStationID++;
     }
 
-    private void initTramlines() {
-        tramLines.add(new TramLine(stations.get(0), stations.get(1), serialTramLineID, this));
+    private void initTramLines() {
+        addTramLine(stations.get(0),stations.get(1));
+        addTramLine(stations.get(1),stations.get(2));
+    }
+
+    private void addTramLine(Station a, Station b){
+        tramLines.add(new TramLine(a,b, serialTramLineID, this));
         serialTramLineID++;
     }
 
@@ -105,7 +107,6 @@ public class Map extends SimState {
                 for (int i = 0; i < initNumOfParcelsInStation; i++) {
                     do {
                         next = random.nextInt(stations.size());
-//                    System.out.println(next + " " +(stations.get(next).stationID != s.stationID) + " "+(s.reachable(stations.get(next))));
                     } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
 
                     p = new Parcel(serialParcelID, stations.get(next), smallPackageSize, this);

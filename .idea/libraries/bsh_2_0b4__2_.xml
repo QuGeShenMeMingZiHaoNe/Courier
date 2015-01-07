@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="bsh-2.0b4 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/bsh-2.0b4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/gluegen-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/gluegen-rt-natives-macosx-universal.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/itext-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/j3d-core-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/j3dcore.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/j3dutils.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jcommon-1.0.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jfreechart-1.0.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jmf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/joal.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/joal-natives-macosx-universal.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jogl-all.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/portfolio.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/vecmath.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <NATIVE>
+      <root url="jar://$PROJECT_DIR$/src/lib/joal-natives-macosx-universal.jar!/" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>

@@ -185,7 +185,7 @@ public class Car implements Steppable {
 
             // if the next step location has been occupied then waite
 //            for (Car c : map.cars) {
-//                if (!c.equals(this) && c.location.equals(nextStep)&&(map.stations.get(0).findStationByLoc(nextStep)!=null))
+//                if ( c.location.equals(nextStep)&&(!map.stations.get(0).isStation(nextStep)))
 //                    return;
 //            }
 
