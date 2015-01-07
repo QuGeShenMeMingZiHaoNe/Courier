@@ -48,6 +48,7 @@ public class Car implements Steppable {
         List<Parcel> unload = parcelsToUnload(s);
         carrying.removeAll(unload);
         s.pArrived.addAll(unload);
+        System.out.println(map.parcelTotal-=(unload.size()));
     }
 
     // for the parcels that have arrived the final destination
@@ -63,10 +64,19 @@ public class Car implements Steppable {
 
     // arrive carpark
     public boolean arriveStation() {
+        // get current statition
         Station currStation = currStation();
+
+        // remove the car from the road
+        TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
+
+        if (tramLine != null)
+            tramLine.carsOnTramLine.remove(this);
+
         currStation.carPark.add(this);
         pathLocal.clear();
         this.stationFrom = currStation;
+        stationTo = null;
         stepCount = 0;
         hasArrived = true;
         unloadParcel();
@@ -74,6 +84,7 @@ public class Car implements Steppable {
 
         // if there are something to be delivered
         if (!carrying.isEmpty()) {
+
             // get the parcel with highest priority
             Parcel p = carrying.get(0);
 
@@ -82,14 +93,9 @@ public class Car implements Steppable {
 
             // set the current station as station from, the next station as station to.
             setPathGlobal(currStation, targetStation);
+
             // calculate the path from current station to the next station
             setPathLocal(currStation, stationTo);
-
-            // remove the car from the road into station
-            TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
-
-            if (tramLine != null)
-                tramLine.carsOnTramLine.remove(this);
 
         }
         return true;
@@ -190,6 +196,11 @@ public class Car implements Steppable {
 //            }
 
             // move
+            while (this.location.equals(nextStep)){
+                stepCount++;
+                nextStep = this.pathLocal.get(stepCount);
+            }
+
             this.location = nextStep;
             map.mapGrid.setObjectLocation(this, nextStep);
             stepCount++;

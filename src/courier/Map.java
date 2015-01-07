@@ -16,13 +16,14 @@ public class Map extends SimState {
     public LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     public LinkedList<Car> cars = new LinkedList<Car>();
     public Network tramLineNet = new Network(false);
-    public int serialTrafficLightID = 1;
+    public int parcelTotal=0;
+
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    private int initNumOfCarsInStation = 5;
-    private int initNumOfParcelsInStation = 1000;
+    private int initNumOfCarsInStation = 1;
+    private int initNumOfParcelsInStation = 9;
     private int smallPackageSize = 1;
     private int mediumPackageSize = 3;
     private int largePackageSize = 8;
@@ -50,12 +51,14 @@ public class Map extends SimState {
         initCars();
         initParcels();
         initTramLineNet();
+        parcelTotal = stations.size()*initNumOfParcelsInStation;
     }
 
     private void initStations() {
-        addStation("A",new Int2D(10,20));
-        addStation("B",new Int2D(45,50));
-        addStation("C",new Int2D(90,20));
+        addStation("A",new Int2D(10,40));
+        addStation("B",new Int2D(40,50));
+        addStation("C",new Int2D(50,66));
+        addStation("D",new Int2D(90,50));
 
     }
 
@@ -69,6 +72,9 @@ public class Map extends SimState {
     private void initTramLines() {
         addTramLine(stations.get(0),stations.get(1));
         addTramLine(stations.get(1),stations.get(2));
+        addTramLine(stations.get(2),stations.get(3));
+//        addTramLine(stations.get(3),stations.get(0));
+
     }
 
     private void addTramLine(Station a, Station b){

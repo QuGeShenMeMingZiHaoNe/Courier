@@ -67,8 +67,8 @@ public class TramLine implements Steppable {
         if (c != null) {
             Collections.reverse(result);
         }
-        if (result != null)
-            result.pop();
+//        if (result != null)
+//            result.pop();
 
         return result;
     }
@@ -97,7 +97,9 @@ public class TramLine implements Steppable {
 
             result.add(new Int2D(a.location.getX() + intXStep, a.location.getY() + intYStep));
         }
-        result.pop();
+//        result.pop();
+        if(!result.contains(b.location))
+            result.add(b.location);
         return result;
     }
 
@@ -136,8 +138,8 @@ public class TramLine implements Steppable {
     // find the given tram line in map.tramlines
     public TramLine findTramLine(Station a, Station b) {
 
-        if (a.equals(b) || b == null)
-            return null;
+        if(a == null || b == null) return null;
+        if (a.equals(b)) return null;
 
         int index = findTramLineIndexNB(a, b);
         if (index >= 0) {
@@ -206,7 +208,7 @@ public class TramLine implements Steppable {
         }
         if (demander.equals(a)) {
             // give the traffic to a
-            if (quota2 <= 0 || b.carPark.isEmpty()) {
+            if (quota2 <= 0 || b.carPark.isEmpty()||noCarIsComing(b,a)) {
                 trafficLightOccupant = a;
                 clearingTheRoad = true;
                 quota2 = 0;
@@ -214,13 +216,25 @@ public class TramLine implements Steppable {
             }
         } else {
             // give the traffic to b
-            if (quota1 <= 0 || a.carPark.isEmpty()) {
+            if (quota1 <= 0 || a.carPark.isEmpty()||noCarIsComing(a,b)) {
                 trafficLightOccupant = b;
                 clearingTheRoad = true;
                 quota1 = 0;
                 quota2 = requirementThreshold;
             }
         }
+    }
+
+    // the holder station of tram line has no car want to come into asker station
+    private boolean noCarIsComing(Station b,Station a){
+        if(b.carPark==null) return true;
+
+        for(Car c :b.carPark){
+            if(c.stationTo!=null)
+            if(c.stationTo.equals(a))
+                return false;
+        }
+        return true;
     }
 
     // check if there is any car on the road.
