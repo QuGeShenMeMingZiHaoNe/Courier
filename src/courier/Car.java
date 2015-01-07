@@ -18,10 +18,9 @@ public class Car implements Steppable {
     public Int2D location;
     public Map map;
     public Station direction;
-    private int stepCount=0;
+    private int stepCount = 0;
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
-
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -86,8 +85,8 @@ public class Car implements Steppable {
             setPathLocal(currStation, stationTo);
 
             // remove the car from the road into station
-            Tramline tramLine = map.tramlines.get(0).findTramLine(stationFrom,stationTo);
-            tramLine.carsOnTramline.remove(this);
+            TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
+            tramLine.carsOnTramLine.remove(this);
 
         }
         return true;
@@ -99,12 +98,12 @@ public class Car implements Steppable {
     }
 
     private void setPathLocal(Station from, Station to) {
-        Tramline tl = map.tramlines.get(0);
+        TramLine tl = map.tramLines.get(0);
         pathLocal = tl.getStepsNB(from, to);
     }
 
     private void setPathGlobal(Station from, Station to) {
-        Tramline tl = map.tramlines.get(0);
+        TramLine tl = map.tramLines.get(0);
         Station currStation = currStation();
 
         // TODO get 0 , return a station??
@@ -120,7 +119,6 @@ public class Car implements Steppable {
     }
 
 
-
     private Station currStation() {
         return map.stations.get(0).findStationByLoc(this.location);
     }
@@ -130,38 +128,38 @@ public class Car implements Steppable {
 
         Station currStation = currStation();
         if (currStation != null) {
-            if(!hasArrived) {
+            if (!hasArrived) {
                 arriveStation();
                 // this return is for waite one step after arrival
                 return;
             }
 
-            Tramline tramLine = map.tramlines.get(0).findTramLine(stationFrom,stationTo);
+            TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
             if (!hasLeaved) {
-                if(tramLine.okToLeave(currStation)) {
+                if (tramLine.okToLeave(currStation)) {
                     // leave the car park one by one -- FIFO
-                    if (tramLine.currLeavingCar!=null) {
+                    if (tramLine.currLeavingCar != null) {
                         return;
                     }
                     tramLine.currLeavingCar = this;
                     leaveStation();
-                    tramLine.carsOnTramline.add(this);
+                    tramLine.carsOnTramLine.add(this);
                     return;
-            }else{
-                tramLine.tryOccupyTraffic(currStation);
-                return;
-            }
+                } else {
+                    tramLine.tryOccupyTraffic(currStation);
+                    return;
+                }
             }
 
             // delay one step of leaving the car park, Truly leave
-            if(hasLeaved){
-                if(tramLine.currLeavingCar.equals(this)){
+            if (hasLeaved) {
+                if (tramLine.currLeavingCar.equals(this)) {
                     tramLine.currLeavingCar = null;
                 }
-                if(tramLine.a.equals(currStation)){
+                if (tramLine.a.equals(currStation)) {
                     tramLine.quota1--;
-                }else{
+                } else {
                     tramLine.quota2--;
                 }
                 currStation.carPark.remove(this);
@@ -172,24 +170,22 @@ public class Car implements Steppable {
 
 
         if (!carrying.isEmpty()) {
+            // get the next step location
             Int2D nextStep = this.pathLocal.get(stepCount);
+
+            // if the next step location has been occupied then waite
+            for (Car c : map.cars) {
+                if (!c.equals(this) && c.location.equals(nextStep))
+                    return;
+            }
+
+            // move
             this.location = nextStep;
             map.mapGrid.setObjectLocation(this, nextStep);
             stepCount++;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

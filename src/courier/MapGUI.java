@@ -17,7 +17,8 @@ public class MapGUI extends GUIState {
     public Display2D display;
     public JFrame displayFrame;
     SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
-    NetworkPortrayal2D tramlinePortrayal = new NetworkPortrayal2D();
+    NetworkPortrayal2D tramLinePortrayal = new NetworkPortrayal2D();
+
     public MapGUI(SimState state) {
         super(state);
     }
@@ -64,7 +65,7 @@ public class MapGUI extends GUIState {
                 Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, 3));
 
         mapGridPortrayal.setPortrayalForClass(
-                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta,1.5));
+                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, 1.5));
 //                {
 //                    public Inspector getInspector(LocationWrapper wrapper, GUIState state)
 //                    {
@@ -73,8 +74,8 @@ public class MapGUI extends GUIState {
 //                    }
 //                });
 
-        tramlinePortrayal.setField(new SpatialNetwork2D(map.mapGrid, map.tramlineNet));
-        tramlinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
+        tramLinePortrayal.setField(new SpatialNetwork2D(map.mapGrid, map.tramLineNet));
+        tramLinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
 
         // reschedule the displayer
         display.reset();
@@ -92,7 +93,7 @@ public class MapGUI extends GUIState {
         displayFrame.setVisible(true);
         display.setBackdrop(Color.WHITE);
         display.attach(mapGridPortrayal, "Map");
-        display.attach(tramlinePortrayal, "Tramline");
+        display.attach(tramLinePortrayal, "Tram Line");
 
     }
 

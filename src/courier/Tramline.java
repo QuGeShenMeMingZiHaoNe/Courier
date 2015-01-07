@@ -8,15 +8,17 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class Tramline implements Steppable {
+public class TramLine implements Steppable {
     public Station a;
     public Station b;
     public int tramlineID;
     public Map map;
 
     // record of all the cars on the tram line
-    public LinkedList<Car> carsOnTramline = new LinkedList<Car>();
-
+    public LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
+    // whom is controlling the traffic
+    public Station trafficLightOccupant;
+    public Car currLeavingCar;
     // count the requirements for station a and b
 //    public int requireAccessCount1 =0;
 //    public int requireAccessCount2 =0;
@@ -24,15 +26,11 @@ public class Tramline implements Steppable {
     private int requirementThreshold = 3;
     public int quota1 = requirementThreshold;
     public int quota2 = requirementThreshold;
+    // clear the road when the traffic control right was swapped
     private boolean clearingTheRoad = false;
-    // whom is controlling the traffic
-    public Station trafficLightOccupant;
-    public Car currLeavingCar;
 
 
-
-
-    public Tramline(Station a, Station b, int tramlineID, Map map) {
+    public TramLine(Station a, Station b, int tramLineID, Map map) {
         if (a.stationID < b.stationID) {
             this.a = a;
             this.b = b;
@@ -41,17 +39,17 @@ public class Tramline implements Steppable {
             this.b = a;
         }
         this.map = map;
-        this.tramlineID = tramlineID;
+        this.tramlineID = tramLineID;
 
         // randomly assign trafficLightOccupant to one of the station
-        if(new Random().nextInt(2)==0){
-            trafficLightOccupant =a;
-        }else{
+        if (new Random().nextInt(2) == 0) {
+            trafficLightOccupant = a;
+        } else {
             trafficLightOccupant = b;
         }
     }
 
-    // return each step of path from a to b
+    // return each coordinates of the path from neighbour station a to b
     public LinkedList<Int2D> getStepsNB(Station a, Station b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
@@ -77,6 +75,7 @@ public class Tramline implements Steppable {
         return result;
     }
 
+    // the helper function of getStepsNB
     private LinkedList<Int2D> buildPath(Station a, Station b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
@@ -104,14 +103,15 @@ public class Tramline implements Steppable {
         return result;
     }
 
+    // return the index of given tram line in map.tramlines
     private int findTramLineIndexNB(Station a, Station b) {
         int result = -1;
         Station c;
-        Tramline temp;
+        TramLine temp;
 
         if (a.stationID < b.stationID) {
-            for (int i = 0; i < map.tramlines.size(); i++) {
-                temp = map.tramlines.get(i);
+            for (int i = 0; i < map.tramLines.size(); i++) {
+                temp = map.tramLines.get(i);
                 if (temp.a.stationID == a.stationID && temp.b.stationID == b.stationID) {
                     return i;
                 }
@@ -120,8 +120,8 @@ public class Tramline implements Steppable {
             c = a;
             a = b;
             b = c;
-            for (int i = 0; i < map.tramlines.size(); i++) {
-                temp = map.tramlines.get(i);
+            for (int i = 0; i < map.tramLines.size(); i++) {
+                temp = map.tramLines.get(i);
                 if (temp.a.stationID == a.stationID && temp.b.stationID == b.stationID) {
                     return i;
                 }
@@ -131,16 +131,18 @@ public class Tramline implements Steppable {
         return result;
     }
 
-    public Tramline findTramLine(Station a, Station b){
-        return map.tramlines.get(findTramLineIndexNB(a,b));
+    // find the given tram line in map.tramlines
+    public TramLine findTramLine(Station a, Station b) {
+        return map.tramLines.get(findTramLineIndexNB(a, b));
     }
 
-    public Tramline getPathGlobal(Station a, Station b) {
+    // return the next tram line of the path from a to b,
+    public TramLine getPathGlobal(Station a, Station b) {
 
         // if it is neighbour
         int index = findTramLineIndexNB(a, b);
         if (index >= 0) {
-            return map.tramlines.get(index);
+            return map.tramLines.get(index);
         }
 
         // not neighbour
@@ -152,44 +154,52 @@ public class Tramline implements Steppable {
         return null;
     }
 
-
-    public void tryOccupyTraffic(Station demander){
-        if(clearingTheRoad){
-            if(roadClean()){
+    // try to get the traffic control, if the quota of the other end station has ran out
+    // or the current holder's car park is empty.
+    public void tryOccupyTraffic(Station demander) {
+        if (clearingTheRoad) {
+            if (roadClear()) {
                 clearingTheRoad = false;
             }
             return;
         }
-        if(demander.equals(a)){
+        if (demander.equals(a)) {
             // give the traffic to a
-            if(quota2==0||b.carPark.isEmpty()){
+            if (quota2 <= 0 || b.carPark.isEmpty()) {
                 trafficLightOccupant = a;
                 clearingTheRoad = true;
-                quota2=0;
-                quota1=requirementThreshold;
+                quota2 = 0;
+                quota1 = requirementThreshold;
             }
-        }else{
+        } else {
             // give the traffic to b
-            if(quota1==0||a.carPark.isEmpty()){
+            if (quota1 <= 0 || a.carPark.isEmpty()) {
                 trafficLightOccupant = b;
                 clearingTheRoad = true;
-                quota1=0;
-                quota2=requirementThreshold;
+                quota1 = 0;
+                quota2 = requirementThreshold;
             }
         }
     }
 
-    public boolean roadClean(){
-        return carsOnTramline.isEmpty();
+    // check if there is any car on the road.
+    public boolean roadClear() {
+        return carsOnTramLine.isEmpty();
     }
 
-    public boolean isController(Station asker){
+    // return if the asker is the controller
+    public boolean isController(Station asker) {
         return asker.equals(trafficLightOccupant);
     }
 
-    public boolean okToLeave(Station asker){
+    // return the condition of the car to leave the station
+    public boolean okToLeave(Station asker) {
         return !clearingTheRoad && trafficLightOccupant.equals(asker);
     }
+
+    //    private LinkedList<Station> getNeighbours(){
+//
+//    }
     @Override
     public void step(SimState state) {
 

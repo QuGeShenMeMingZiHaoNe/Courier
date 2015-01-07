@@ -13,14 +13,14 @@ import java.util.LinkedList;
 public class Map extends SimState {
     public LinkedList<Station> stations = new LinkedList<Station>();
     public LinkedList<Parcel> parcels = new LinkedList<Parcel>();
-    public LinkedList<Tramline> tramlines = new LinkedList<Tramline>();
+    public LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     public LinkedList<Car> cars = new LinkedList<Car>();
-    public Network tramlineNet = new Network(false);
+    public Network tramLineNet = new Network(false);
+    public int serialTrafficLightID = 1;
     private int serialStationID = 1;
     private int serialParcelID = 1;
-    private int serialTramlineID = 1;
+    private int serialTramLineID = 1;
     private int serialCarID = 1;
-    public int serialTrafficLightID = 1;
     private int initNumOfCarsInStation = 5;
     private int initNumOfParcelsInStation = 1000;
     private int smallPackageSize = 1;
@@ -43,13 +43,13 @@ public class Map extends SimState {
         super.start();
 
         // clear the buddies
-        tramlineNet.clear();
+        tramLineNet.clear();
 
         initStations();
         initTramlines();
         initCars();
         initParcels();
-        initeTramlineNet();
+        initTramLineNet();
     }
 
     private void initStations() {
@@ -65,8 +65,8 @@ public class Map extends SimState {
     }
 
     private void initTramlines() {
-        tramlines.add(new Tramline(stations.get(0), stations.get(1), serialTramlineID, this));
-        serialTramlineID++;
+        tramLines.add(new TramLine(stations.get(0), stations.get(1), serialTramLineID, this));
+        serialTramLineID++;
     }
 
     private void initCars() {
@@ -98,11 +98,11 @@ public class Map extends SimState {
         }
     }
 
-    private void initeTramlineNet() {
+    private void initTramLineNet() {
         for (Station s : stations)
-            tramlineNet.addNode(s);
-        for (Tramline tl : tramlines) {
-            tramlineNet.addEdge(tl.a, tl.b, tl.tramlineID);
+            tramLineNet.addNode(s);
+        for (TramLine tl : tramLines) {
+            tramLineNet.addEdge(tl.a, tl.b, tl.tramlineID);
         }
     }
 
