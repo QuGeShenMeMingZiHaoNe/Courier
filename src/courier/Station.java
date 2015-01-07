@@ -74,8 +74,8 @@ public class Station implements Steppable {
         LinkedList<Station> result = new LinkedList<Station>();
         for (Station s : map.stations) {
             if (!s.equals(this)) {
-                map.tramLines.get(0).findTramLine(this, s);
-                result.add(s);
+                if (map.tramLines.get(0).findTramLine(this, s) != null)
+                    result.add(s);
             }
         }
         return result;
@@ -84,27 +84,31 @@ public class Station implements Steppable {
     // find all reachable station except the one whom called findNeighbours()
     public LinkedList<Station> findAllReachableStations(Station root) {
         LinkedList<Station> neighbours = this.findNeighbours();
-        LinkedList<Station> temp;
+        LinkedList<Station> temp, result;
         // does not contains the root node
         while (neighbours.contains(root))
             neighbours.remove(root);
 
         int size = neighbours.size();
+        result = (LinkedList<Station>) neighbours.clone();
         int previous = 0;
-
-        // TODO when nb = 0
 
         while (previous < size) {
             previous = size;
             for (Station nb : neighbours) {
                 temp = nb.findNeighbours();
-                neighbours.removeAll(temp);
-                neighbours.addAll(temp);
-                while (neighbours.contains(root))
-                    neighbours.remove(root);
+                result.removeAll(temp);
+                result.addAll(temp);
+                while (result.contains(root))
+                    result.remove(root);
             }
+            neighbours = (LinkedList<Station>) result.clone();
             size = neighbours.size();
         }
-        return neighbours;
+        return result;
+    }
+
+    public boolean reachable(Station b) {
+        return this.findAllReachableStations(new Station("null", -1, new Int2D(-1, -1), map)).contains(b);
     }
 }

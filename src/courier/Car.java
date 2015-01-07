@@ -34,6 +34,7 @@ public class Car implements Steppable {
         Station s = currStation();
         if (s.pToBeSent.size() == 0) return false;
         // TODO load package number
+
         Parcel p = s.pToBeSent.get(0);
         s.pToBeSent.remove(0);
         carrying.add(p);
@@ -87,7 +88,7 @@ public class Car implements Steppable {
             // remove the car from the road into station
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
-            if(tramLine!=null)
+            if (tramLine != null)
                 tramLine.carsOnTramLine.remove(this);
 
         }
@@ -100,8 +101,7 @@ public class Car implements Steppable {
     }
 
     private void setPathLocal(Station from, Station to) {
-        TramLine tl = map.tramLines.get(0);
-        pathLocal = tl.getStepsNB(from, to);
+        pathLocal = map.tramLines.get(0).getStepsNB(from, to);
     }
 
     private void setPathGlobal(Station from, Station to) {
@@ -140,6 +140,11 @@ public class Car implements Steppable {
             }
 
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
+
+            // can not find a tram Line to destination
+            if (tramLine == null) {
+                return;
+            }
 
             if (!hasLeaved) {
                 if (tramLine.okToLeave(currStation)) {

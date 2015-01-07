@@ -62,6 +62,11 @@ public class Map extends SimState {
         stations.add(station);
         mapGrid.setObjectLocation(station, new Int2D(15, 70));
         serialStationID++;
+
+        station = new Station("C", serialStationID, new Int2D(55, 70), this);
+        stations.add(station);
+        mapGrid.setObjectLocation(station, new Int2D(55, 70));
+        serialStationID++;
     }
 
     private void initTramlines() {
@@ -85,15 +90,29 @@ public class Map extends SimState {
     private void initParcels() {
         Parcel p;
         int next;
+        boolean isolated = true;
         for (Station s : stations) {
-            for (int i = 0; i < initNumOfParcelsInStation; i++) {
-                do {
-                    next = random.nextInt(stations.size());
-                } while (stations.get(next).stationID == s.stationID);
 
-                p = new Parcel(serialParcelID, stations.get(next), smallPackageSize, this);
-                serialParcelID++;
-                s.pToBeSent.add(p);
+            // to check if a station is isolated
+            for (Station s2 : stations) {
+                if (tramLines.get(0).findTramLine(s, s2) != null) {
+                    isolated = false;
+                    break;
+                }
+            }
+
+            if (!isolated) {
+                for (int i = 0; i < initNumOfParcelsInStation; i++) {
+                    do {
+                        next = random.nextInt(stations.size());
+//                    System.out.println(next + " " +(stations.get(next).stationID != s.stationID) + " "+(s.reachable(stations.get(next))));
+                    } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
+
+                    p = new Parcel(serialParcelID, stations.get(next), smallPackageSize, this);
+                    serialParcelID++;
+                    s.pToBeSent.add(p);
+                }
+                isolated = true;
             }
         }
     }

@@ -54,14 +54,13 @@ public class TramLine implements Steppable {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
         if (a.equals(b)) {
-            System.out.println("Attempting to find the route to itself");
-            return null;
+            return result;
         }
         Station c = null;
 
         if (a.stationID < b.stationID) {
             result = buildPath(a, b);
-        } else if(a.stationID != b.stationID) {
+        } else if (a.stationID != b.stationID) {
             c = a;
             a = b;
             b = c;
@@ -71,7 +70,7 @@ public class TramLine implements Steppable {
         if (c != null) {
             Collections.reverse(result);
         }
-        if(result!=null)
+        if (result != null)
             result.pop();
 
         return result;
@@ -108,9 +107,13 @@ public class TramLine implements Steppable {
     // return the index of given tram line in map.tramlines
     private int findTramLineIndexNB(Station a, Station b) {
         int result = -1;
+
+        // if a== b
+        if (a.equals(b))
+            return result;
+
         Station c;
         TramLine temp;
-
         if (a.stationID < b.stationID) {
             for (int i = 0; i < map.tramLines.size(); i++) {
                 temp = map.tramLines.get(i);
@@ -135,6 +138,10 @@ public class TramLine implements Steppable {
 
     // find the given tram line in map.tramlines
     public TramLine findTramLine(Station a, Station b) {
+
+        if (a.equals(b) || a == null || b == null)
+            return null;
+
         int index = findTramLineIndexNB(a, b);
         if (index >= 0) {
             return map.tramLines.get(index);
@@ -188,7 +195,6 @@ public class TramLine implements Steppable {
         }
 
         // ERROR no connection
-        System.out.println(a.stationID + "can not reach!" + b.stationID);
         return null;
     }
 
