@@ -11,7 +11,7 @@ import java.util.Random;
 public class TramLine implements Steppable {
     public Station a;
     public Station b;
-    public int tramlineID;
+    public int tramLineID;
     public Map map;
 
     // record of all the cars on the tram line
@@ -39,7 +39,7 @@ public class TramLine implements Steppable {
             this.b = a;
         }
         this.map = map;
-        this.tramlineID = tramLineID;
+        this.tramLineID = tramLineID;
 
         // randomly assign trafficLightOccupant to one of the station
         if (new Random().nextInt(2) == 0) {
@@ -139,7 +139,7 @@ public class TramLine implements Steppable {
     // find the given tram line in map.tramlines
     public TramLine findTramLine(Station a, Station b) {
 
-        if (a.equals(b) || a == null || b == null)
+        if (a.equals(b) || b == null)
             return null;
 
         int index = findTramLineIndexNB(a, b);

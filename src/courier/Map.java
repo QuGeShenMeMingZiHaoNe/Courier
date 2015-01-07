@@ -121,7 +121,7 @@ public class Map extends SimState {
         for (Station s : stations)
             tramLineNet.addNode(s);
         for (TramLine tl : tramLines) {
-            tramLineNet.addEdge(tl.a, tl.b, tl.tramlineID);
+            tramLineNet.addEdge(tl.a, tl.b, tl.tramLineID);
         }
     }
 
