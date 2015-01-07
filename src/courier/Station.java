@@ -68,4 +68,43 @@ public class Station implements Steppable {
         }
         return null;
     }
+
+    //
+    public LinkedList<Station> findNeighbours() {
+        LinkedList<Station> result = new LinkedList<Station>();
+        for (Station s : map.stations) {
+            if (!s.equals(this)) {
+                map.tramLines.get(0).findTramLine(this, s);
+                result.add(s);
+            }
+        }
+        return result;
+    }
+
+    // find all reachable station except the one whom called findNeighbours()
+    public LinkedList<Station> findAllReachableStations(Station root) {
+        LinkedList<Station> neighbours = this.findNeighbours();
+        LinkedList<Station> temp;
+        // does not contains the root node
+        while (neighbours.contains(root))
+            neighbours.remove(root);
+
+        int size = neighbours.size();
+        int previous = 0;
+
+        // TODO when nb = 0
+
+        while (previous < size) {
+            previous = size;
+            for (Station nb : neighbours) {
+                temp = nb.findNeighbours();
+                neighbours.removeAll(temp);
+                neighbours.addAll(temp);
+                while (neighbours.contains(root))
+                    neighbours.remove(root);
+            }
+            size = neighbours.size();
+        }
+        return neighbours;
+    }
 }

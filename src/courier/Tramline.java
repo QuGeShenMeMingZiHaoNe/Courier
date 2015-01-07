@@ -61,7 +61,7 @@ public class TramLine implements Steppable {
 
         if (a.stationID < b.stationID) {
             result = buildPath(a, b);
-        } else {
+        } else if(a.stationID != b.stationID) {
             c = a;
             a = b;
             b = c;
@@ -71,7 +71,9 @@ public class TramLine implements Steppable {
         if (c != null) {
             Collections.reverse(result);
         }
-        result.pop();
+        if(result!=null)
+            result.pop();
+
         return result;
     }
 
@@ -133,7 +135,11 @@ public class TramLine implements Steppable {
 
     // find the given tram line in map.tramlines
     public TramLine findTramLine(Station a, Station b) {
-        return map.tramLines.get(findTramLineIndexNB(a, b));
+        int index = findTramLineIndexNB(a, b);
+        if (index >= 0) {
+            return map.tramLines.get(index);
+        }
+        return null;
     }
 
     // return the next tram line of the path from a to b,
@@ -146,8 +152,40 @@ public class TramLine implements Steppable {
         }
 
         // not neighbour
+        if (index == -1) {
+            LinkedList<LinkedList<Station>> branches = new LinkedList<LinkedList<Station>>();
+            LinkedList<LinkedList<Station>> compareBranches = new LinkedList<LinkedList<Station>>();
+            LinkedList<Station> nbs = a.findNeighbours();
 
-        //TODO!!!!!!!!!!!!!!!!!!!!!!
+            for (Station s : nbs) {
+
+                LinkedList<Station> neighbours = new LinkedList<Station>();
+                neighbours.add(s);
+                neighbours.addAll(s.findAllReachableStations(a));
+                branches.add(neighbours);
+            }
+            // select all the branches that can reach station b (final destination)
+            for (LinkedList<Station> branch : branches) {
+                // TODO better function
+                if (branch.contains(b)) {
+                    compareBranches.add(branch);
+                }
+            }
+            int whichBranch = -1;
+            int minTreeSize = 999999999;
+
+            for (LinkedList<Station> branch : compareBranches) {
+                if (branch.size() < minTreeSize) {
+                    whichBranch = compareBranches.indexOf(branch);
+                }
+            }
+
+            if (whichBranch >= 0) {
+                return findTramLine(a, compareBranches.get(whichBranch).get(0));
+            } else {
+                return null;
+            }
+        }
 
         // ERROR no connection
         System.out.println(a.stationID + "can not reach!" + b.stationID);
@@ -197,9 +235,7 @@ public class TramLine implements Steppable {
         return !clearingTheRoad && trafficLightOccupant.equals(asker);
     }
 
-    //    private LinkedList<Station> getNeighbours(){
-//
-//    }
+
     @Override
     public void step(SimState state) {
 

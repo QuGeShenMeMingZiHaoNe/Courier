@@ -86,7 +86,9 @@ public class Car implements Steppable {
 
             // remove the car from the road into station
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
-            tramLine.carsOnTramLine.remove(this);
+
+            if(tramLine!=null)
+                tramLine.carsOnTramLine.remove(this);
 
         }
         return true;
@@ -106,16 +108,19 @@ public class Car implements Steppable {
         TramLine tl = map.tramLines.get(0);
         Station currStation = currStation();
 
-        // TODO get 0 , return a station??
         tl = tl.getPathGlobal(from, to);
 
-        if (tl.a.equals(currStation)) {
+        if (tl == null) {
+            stationTo = currStation;
+            direction = currStation;
+        } else if (tl.a.equals(currStation)) {
             stationTo = tl.b;
             direction = tl.b;
         } else {
             stationTo = tl.a;
             direction = tl.a;
         }
+
     }
 
 
@@ -174,10 +179,10 @@ public class Car implements Steppable {
             Int2D nextStep = this.pathLocal.get(stepCount);
 
             // if the next step location has been occupied then waite
-            for (Car c : map.cars) {
-                if (!c.equals(this) && c.location.equals(nextStep))
-                    return;
-            }
+//            for (Car c : map.cars) {
+//                if (!c.equals(this) && c.location.equals(nextStep)&&(map.stations.get(0).findStationByLoc(nextStep)!=null))
+//                    return;
+//            }
 
             // move
             this.location = nextStep;

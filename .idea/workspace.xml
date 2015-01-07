@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car.java" afterPath="$PROJECT_DIR$/src/courier/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/MapGUI.java" afterPath="$PROJECT_DIR$/src/courier/MapGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/TramLine.java" afterPath="$PROJECT_DIR$/src/courier/TramLine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Station.java" afterPath="$PROJECT_DIR$/src/courier/Station.java" />
     </list>
     <ignored path="Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,29 +31,30 @@
       <file leaf-file-name="Car.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/Car.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-98.333336" vertical-offset="0" max-vertical-offset="2955">
-              <caret line="179" column="13" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="13" />
+            <state vertical-scroll-proportion="-44.444443" vertical-offset="1170" max-vertical-offset="3030">
+              <caret line="160" column="28" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2867#2868#0" expanded="true" />
-                <element signature="e#2899#2900#0" expanded="true" />
+                <element signature="e#2903#2904#0" expanded="true" />
+                <element signature="e#2935#2936#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TramLine.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TramLine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/courier/TramLine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="79.85185" vertical-offset="2546" max-vertical-offset="3075">
-              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.4338843" vertical-offset="60" max-vertical-offset="3615">
+              <caret line="24" column="111" selection-start-line="24" selection-start-column="111" selection-end-line="24" selection-end-column="111" />
               <folding>
-                <element signature="e#4157#4158#0" expanded="true" />
-                <element signature="e#4224#4225#0" expanded="true" />
-                <element signature="e#5850#5851#0" expanded="true" />
-                <element signature="e#5907#5908#0" expanded="true" />
-                <element signature="e#6014#6015#0" expanded="true" />
-                <element signature="e#6091#6092#0" expanded="true" />
+                <element signature="e#4773#4794#0" expanded="true" />
+                <element signature="e#4874#4895#0" expanded="true" />
+                <element signature="e#5058#5067#0" expanded="true" />
+                <element signature="e#7300#7301#0" expanded="true" />
+                <element signature="e#7357#7358#0" expanded="true" />
+                <element signature="e#7464#7465#0" expanded="true" />
+                <element signature="e#7541#7542#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,9 +63,11 @@
       <file leaf-file-name="Station.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/Station.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.2592592" vertical-offset="176" max-vertical-offset="1050">
-              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-              <folding />
+            <state vertical-scroll-proportion="-25.555555" vertical-offset="0" max-vertical-offset="1635">
+              <caret line="53" column="35" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="35" />
+              <folding>
+                <element signature="e#1625#1634#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,10 +87,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/MapGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64579254" vertical-offset="975" max-vertical-offset="1515">
+            <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1515">
               <caret line="95" column="55" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -114,13 +115,13 @@
         <option value="$PROJECT_DIR$/src/sim/app/wcss/tutorial05/Students.java" />
         <option value="$PROJECT_DIR$/src/courier/Parcel.java" />
         <option value="$PROJECT_DIR$/src/courier/Graphics.java" />
-        <option value="$PROJECT_DIR$/src/courier/Station.java" />
         <option value="$PROJECT_DIR$/src/courier/TrafficLight.java" />
-        <option value="$PROJECT_DIR$/src/courier/Car.java" />
         <option value="$PROJECT_DIR$/src/courier/Tramline.java" />
-        <option value="$PROJECT_DIR$/src/courier/TramLine.java" />
         <option value="$PROJECT_DIR$/src/courier/Map.java" />
         <option value="$PROJECT_DIR$/src/courier/MapGUI.java" />
+        <option value="$PROJECT_DIR$/src/courier/Station.java" />
+        <option value="$PROJECT_DIR$/src/courier/Car.java" />
+        <option value="$PROJECT_DIR$/src/courier/TramLine.java" />
       </list>
     </option>
   </component>
@@ -760,14 +761,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/courier/TramLine.java</url>
-          <line>159</line>
-          <properties />
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="87" />
     </breakpoint-manager>
     <watches-manager />
@@ -1096,41 +1089,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/TramLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="79.85185" vertical-offset="2546" max-vertical-offset="3075">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-          <folding>
-            <element signature="e#4157#4158#0" expanded="true" />
-            <element signature="e#4224#4225#0" expanded="true" />
-            <element signature="e#5850#5851#0" expanded="true" />
-            <element signature="e#5907#5908#0" expanded="true" />
-            <element signature="e#6014#6015#0" expanded="true" />
-            <element signature="e#6091#6092#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-98.333336" vertical-offset="0" max-vertical-offset="2955">
-          <caret line="179" column="13" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2867#2868#0" expanded="true" />
-            <element signature="e#2899#2900#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Station.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2592592" vertical-offset="176" max-vertical-offset="1050">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.037037" vertical-offset="1211" max-vertical-offset="1695">
@@ -1154,10 +1112,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/MapGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64579254" vertical-offset="975" max-vertical-offset="1515">
+        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1515">
           <caret line="95" column="55" selection-start-line="95" selection-start-column="55" selection-end-line="95" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Car.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-44.444443" vertical-offset="1170" max-vertical-offset="3030">
+          <caret line="160" column="28" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2903#2904#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Station.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.555555" vertical-offset="0" max-vertical-offset="1635">
+          <caret line="53" column="35" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="35" />
+          <folding>
+            <element signature="e#1625#1634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4338843" vertical-offset="60" max-vertical-offset="3615">
+          <caret line="24" column="111" selection-start-line="24" selection-start-column="111" selection-end-line="24" selection-end-column="111" />
+          <folding>
+            <element signature="e#4773#4794#0" expanded="true" />
+            <element signature="e#4874#4895#0" expanded="true" />
+            <element signature="e#5058#5067#0" expanded="true" />
+            <element signature="e#7300#7301#0" expanded="true" />
+            <element signature="e#7357#7358#0" expanded="true" />
+            <element signature="e#7464#7465#0" expanded="true" />
+            <element signature="e#7541#7542#0" expanded="true" />
           </folding>
         </state>
       </provider>
