@@ -82,6 +82,7 @@ public class MapGUI extends GUIState {
 
         // redraw the display
         display.repaint();
+
     }
 
     public void init(Controller c) {

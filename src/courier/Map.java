@@ -22,8 +22,10 @@ public class Map extends SimState {
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
+    public  int serialCarCallerID =1;
+
     private int initNumOfCarsInStation = 1;
-    private int initNumOfParcelsInStation = 9;
+    public int initNumOfParcelsInStation = 9;
     private int smallPackageSize = 1;
     private int mediumPackageSize = 3;
     private int largePackageSize = 8;
@@ -51,7 +53,9 @@ public class Map extends SimState {
         initCars();
         initParcels();
         initTramLineNet();
+
         parcelTotal = stations.size()*initNumOfParcelsInStation;
+
     }
 
     private void initStations() {
@@ -65,6 +69,7 @@ public class Map extends SimState {
     private void addStation(String name,Int2D loc){
         Station station = new Station(name, serialStationID, loc, this);
         stations.add(station);
+        schedule.scheduleRepeating(station);
         mapGrid.setObjectLocation(station, loc);
         serialStationID++;
     }
@@ -73,7 +78,7 @@ public class Map extends SimState {
         addTramLine(stations.get(0),stations.get(1));
         addTramLine(stations.get(1),stations.get(2));
         addTramLine(stations.get(2),stations.get(3));
-//        addTramLine(stations.get(3),stations.get(0));
+        addTramLine(stations.get(3),stations.get(0));
 
     }
 
@@ -96,7 +101,6 @@ public class Map extends SimState {
     }
 
     private void initParcels() {
-        Parcel p;
         int next;
         boolean isolated = true;
         for (Station s : stations) {
@@ -115,13 +119,16 @@ public class Map extends SimState {
                         next = random.nextInt(stations.size());
                     } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
 
-                    p = new Parcel(serialParcelID, stations.get(next), smallPackageSize, this);
-                    serialParcelID++;
-                    s.pToBeSent.add(p);
+                    addParcel(s,stations.get(next),smallPackageSize);
                 }
                 isolated = true;
             }
         }
+    }
+
+    public void addParcel(Station currStation, Station parcelDestination,int packageSize){
+        currStation.pToBeSent.add(new Parcel(serialParcelID, parcelDestination, packageSize, this));
+        serialParcelID++;
     }
 
     private void initTramLineNet() {

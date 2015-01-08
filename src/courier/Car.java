@@ -47,7 +47,21 @@ public class Car implements Steppable {
 
         List<Parcel> unload = parcelsToUnload(s);
         carrying.removeAll(unload);
+
+        List<Parcel> copyOfUnload = new LinkedList<Parcel>();
+        copyOfUnload.addAll(unload);
+
+        // remove car Caller
+        for(Parcel p : copyOfUnload){
+            if(p instanceof CarCaller) {
+                currStation().carCaller=null;
+                unload.remove(p);
+            }
+        }
+
         s.pArrived.addAll(unload);
+
+
         System.out.println(map.parcelTotal-=(unload.size()));
     }
 
@@ -63,7 +77,7 @@ public class Car implements Steppable {
     }
 
     // arrive carpark
-    public boolean arriveStation() {
+    public void arriveStation() {
         // get current statition
         Station currStation = currStation();
 
@@ -73,14 +87,17 @@ public class Car implements Steppable {
         if (tramLine != null)
             tramLine.carsOnTramLine.remove(this);
 
-        currStation.carPark.add(this);
         pathLocal.clear();
         this.stationFrom = currStation;
         stationTo = null;
         stepCount = 0;
-        hasArrived = true;
         unloadParcel();
         loadParcel();
+        hasArrived = true;
+
+        // if the car has not enter the station
+        if(!currStation.carPark.contains(this))
+            currStation.carPark.add(this);
 
         // if there are something to be delivered
         if (!carrying.isEmpty()) {
@@ -98,7 +115,6 @@ public class Car implements Steppable {
             setPathLocal(currStation, stationTo);
 
         }
-        return true;
     }
 
     // leave carpark
@@ -134,6 +150,7 @@ public class Car implements Steppable {
         return map.stations.get(0).findStationByLoc(this.location);
     }
 
+
     @Override
     public void step(SimState state) {
 
@@ -143,6 +160,10 @@ public class Car implements Steppable {
                 arriveStation();
                 // this return is for waite one step after arrival
                 return;
+            }else{
+                if(this.carrying.isEmpty()){
+                    this.arriveStation();
+                }
             }
 
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
