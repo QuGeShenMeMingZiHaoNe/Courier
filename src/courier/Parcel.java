@@ -16,4 +16,9 @@ public class Parcel {
         this.map = map;
     }
 
+    @Override
+    public String toString() {
+        return "Parcel :"+parcelID;
+    }
+
 }

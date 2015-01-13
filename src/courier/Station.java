@@ -18,8 +18,8 @@ public class Station implements Steppable {
     public List<Parcel> pArrived = new LinkedList<Parcel>();
     public Map map;
     private String name;
-    public CarCaller carCaller;
-
+//    public CarCaller carCaller;
+    public int carCallerSema = 1;
 
     public Station(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -106,7 +106,9 @@ public class Station implements Steppable {
     private void callCar(){
         Station station = findStationWithFreeCar();
         if(station!=null){
+            carCallerSema--;
             station.pToBeSent.add(new CarCaller(this,map));
+            System.out.println("Log: " + this + "has put a CarCaller in"+ station +"...");
         }
     }
 
@@ -126,7 +128,7 @@ public class Station implements Steppable {
     @Override
     public void step(SimState state) {
         // if the car park is empty, has package to be sent, and the car caller is empty
-        if(this.pToBeSent.size()>0 && this.carPark.size()==0 && carCaller == null)
+        if(this.pToBeSent.size()>0 && this.carPark.size()==0 && carCallerSema > 0)
             callCar();
     }
 

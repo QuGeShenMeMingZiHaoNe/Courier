@@ -8,4 +8,9 @@ public class CarCaller extends Parcel {
         super(map.serialCarCallerID, destination, 0, map);
         map.serialCarCallerID++;
     }
+
+    @Override
+    public String toString() {
+        return "CarCaller: " + parcelID;
+    }
 }

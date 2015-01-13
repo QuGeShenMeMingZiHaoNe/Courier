@@ -29,6 +29,10 @@ public class Car implements Steppable {
         this.map = map;
     }
 
+    public String toString(){
+        return "Car :"+carID;
+    }
+
 
     public boolean loadParcel() {
         Station s = currStation();
@@ -37,6 +41,7 @@ public class Car implements Steppable {
 
         Parcel p = s.pToBeSent.get(0);
         s.pToBeSent.remove(0);
+        System.out.println("Log: " + p + " has been picked up by "+ this);
         carrying.add(p);
         return true;
     }
@@ -54,15 +59,19 @@ public class Car implements Steppable {
         // remove car Caller
         for(Parcel p : copyOfUnload){
             if(p instanceof CarCaller) {
-                currStation().carCaller=null;
+                System.out.println("Log: "+ this + " has unloaded" +
+                        " " + p+ "...");
+                currStation().carCallerSema++;
                 unload.remove(p);
             }
         }
 
         s.pArrived.addAll(unload);
 
-
-        System.out.println(map.parcelTotal-=(unload.size()));
+        if(unload.size()>0) {
+            System.out.print("Log: Global parcels remaining ");
+            System.out.println(map.parcelTotal -= (unload.size()));
+        }
     }
 
     // for the parcels that have arrived the final destination
@@ -71,6 +80,8 @@ public class Car implements Steppable {
         for (Parcel p : carrying) {
             if (p.destination.stationID == s.stationID) {
                 toUnload.add(p);
+                System.out.println("Log: "+ this + " has unloaded" +
+                        " " + p + "...");
             }
         }
         return toUnload;
