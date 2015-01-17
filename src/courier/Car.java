@@ -17,10 +17,10 @@ public class Car implements Steppable {
     protected Station stationTo;
     protected Int2D location;
     protected Map map;
-    protected Station direction;
     private int stepCount = 0;
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
+    private LinkedList<Station> globalPath;
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -51,6 +51,10 @@ public class Car implements Steppable {
         Station s = currStation();
 
         List<Parcel> unload = parcelsToUnload(s);
+        // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
+        if(unload.size()>0 && unload.get(0).equals(carrying.get(0))){
+            globalPath = null;
+        }
         carrying.removeAll(unload);
 
         List<Parcel> copyOfUnload = new LinkedList<Parcel>();
@@ -141,17 +145,16 @@ public class Car implements Steppable {
         TramLine tl = map.tramLines.get(0);
         Station currStation = currStation();
 
-        tl = tl.getPathGlobal(from, to);
+        if(globalPath==null) {
+            globalPath = tl.getPathGlobal(from, to);
+        }
 
+        // the station is the next station to not the final destination.
+        // TODO don't need null condition??
         if (tl == null) {
             stationTo = currStation;
-            direction = currStation;
-        } else if (tl.a.equals(currStation)) {
-            stationTo = tl.b;
-            direction = tl.b;
         } else {
-            stationTo = tl.a;
-            direction = tl.a;
+            stationTo = globalPath.get(globalPath.indexOf(currStation)+1);
         }
 
     }

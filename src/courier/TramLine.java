@@ -149,52 +149,64 @@ public class TramLine implements Steppable {
     }
 
     // return the next tram line of the path from a to b,
-    public TramLine getPathGlobal(Station a, Station b) {
+    public LinkedList<Station> getPathGlobal(Station a, Station b) {
 
-        // if it is neighbour
+        // a and b are neighbour
         int index = findTramLineIndexNB(a, b);
         if (index >= 0) {
-            return map.tramLines.get(index);
+            LinkedList<Station> result =  new LinkedList<Station>();
+            result.add(a);
+            result.add(b);
+            return result;
         }
 
         // not neighbour
-        if (index == -1) {
-            LinkedList<LinkedList<Station>> branches = new LinkedList<LinkedList<Station>>();
-            LinkedList<LinkedList<Station>> compareBranches = new LinkedList<LinkedList<Station>>();
-            LinkedList<Station> nbs = a.findNeighbours();
+//        if (index == -1) {
+//            LinkedList<LinkedList<Station>> branches = new LinkedList<LinkedList<Station>>();
+//            LinkedList<LinkedList<Station>> compareBranches = new LinkedList<LinkedList<Station>>();
+//            LinkedList<Station> nbs = a.findNeighbours();
+//
+//            for (Station s : nbs) {
+//
+//                LinkedList<Station> neighbours = new LinkedList<Station>();
+//                neighbours.add(s);
+//                neighbours.addAll(s.findAllReachableStations(a));
+//                branches.add(neighbours);
+//            }
+//            // select all the branches that can reach station b (final destination)
+//            for (LinkedList<Station> branch : branches) {
+//                // TODO better function
+//                if (branch.contains(b)) {
+//                    compareBranches.add(branch);
+//                }
+//            }
+//            int whichBranch = -1;
+//            int minTreeSize = 999999999;
+//
+//            for (LinkedList<Station> branch : compareBranches) {
+//                if (branch.size() < minTreeSize) {
+//                    whichBranch = compareBranches.indexOf(branch);
+//                }
+//            }
+//
+//            if (whichBranch >= 0) {
+//                return findTramLine(a, compareBranches.get(whichBranch).get(0));
+//            } else {
+//                return null;
+//            }
+//        }
 
-            for (Station s : nbs) {
+        // not neighbour
 
-                LinkedList<Station> neighbours = new LinkedList<Station>();
-                neighbours.add(s);
-                neighbours.addAll(s.findAllReachableStations(a));
-                branches.add(neighbours);
-            }
-            // select all the branches that can reach station b (final destination)
-            for (LinkedList<Station> branch : branches) {
-                // TODO better function
-                if (branch.contains(b)) {
-                    compareBranches.add(branch);
-                }
-            }
-            int whichBranch = -1;
-            int minTreeSize = 999999999;
-
-            for (LinkedList<Station> branch : compareBranches) {
-                if (branch.size() < minTreeSize) {
-                    whichBranch = compareBranches.indexOf(branch);
-                }
-            }
-
-            if (whichBranch >= 0) {
-                return findTramLine(a, compareBranches.get(whichBranch).get(0));
-            } else {
-                return null;
-            }
-        }
-
-        // ERROR no connection
-        return null;
+        // TODO move this path searcher into constructor;
+        PathSearcher pathSearcher = new PathSearcher(map);
+        // find path using breadth first search
+        LinkedList<LinkedList<Station>> paths = pathSearcher.findAllPossiblePath(a,b);
+        // sort path by distance in ascending order
+        if(paths.size()>1)
+            paths = pathSearcher.sortPathByDistance(paths);
+        // return the one with the lowest distance
+        return paths.getFirst();
     }
 
     // try to get the traffic control, if the quota of the other end station has ran out
