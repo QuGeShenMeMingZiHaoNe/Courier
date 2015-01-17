@@ -9,20 +9,20 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class TramLine implements Steppable {
-    public Station a;
-    public Station b;
-    public int tramLineID;
-    public Map map;
+    protected Station a;
+    protected Station b;
+    protected int tramLineID;
+    protected Map map;
 
     // record of all the cars on the tram line
-    public LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
+    protected LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
     // whom is controlling the traffic
-    public Station trafficLightOccupant;
-    public Car currLeavingCar;
+    protected Station trafficLightOccupant;
+    protected Car currLeavingCar;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
     private int requirementThreshold = 3;
-    public int quota1 = requirementThreshold;
-    public int quota2 = requirementThreshold;
+    protected int quota1 = requirementThreshold;
+    protected int quota2 = requirementThreshold;
     // clear the road when the traffic control right was swapped
     private boolean clearingTheRoad = false;
 
@@ -98,7 +98,7 @@ public class TramLine implements Steppable {
             result.add(new Int2D(a.location.getX() + intXStep, a.location.getY() + intYStep));
         }
 //        result.pop();
-        if(!result.contains(b.location))
+        if (!result.contains(b.location))
             result.add(b.location);
         return result;
     }
@@ -138,7 +138,7 @@ public class TramLine implements Steppable {
     // find the given tram line in map.tramlines
     public TramLine findTramLine(Station a, Station b) {
 
-        if(a == null || b == null) return null;
+        if (a == null || b == null) return null;
         if (a.equals(b)) return null;
 
         int index = findTramLineIndexNB(a, b);
@@ -208,7 +208,7 @@ public class TramLine implements Steppable {
         }
         if (demander.equals(a)) {
             // give the traffic to a
-            if (quota2 <= 0 || b.carPark.isEmpty()||noCarIsComing(b,a)) {
+            if (quota2 <= 0 || b.carPark.isEmpty() || noCarIsComing(b, a)) {
                 trafficLightOccupant = a;
                 clearingTheRoad = true;
                 quota2 = 0;
@@ -216,7 +216,7 @@ public class TramLine implements Steppable {
             }
         } else {
             // give the traffic to b
-            if (quota1 <= 0 || a.carPark.isEmpty()||noCarIsComing(a,b)) {
+            if (quota1 <= 0 || a.carPark.isEmpty() || noCarIsComing(a, b)) {
                 trafficLightOccupant = b;
                 clearingTheRoad = true;
                 quota1 = 0;
@@ -226,13 +226,13 @@ public class TramLine implements Steppable {
     }
 
     // the holder station of tram line has no car want to come into asker station
-    private boolean noCarIsComing(Station b,Station a){
-        if(b.carPark==null) return true;
+    private boolean noCarIsComing(Station b, Station a) {
+        if (b.carPark == null) return true;
 
-        for(Car c :b.carPark){
-            if(c.stationTo!=null)
-            if(c.stationTo.equals(a))
-                return false;
+        for (Car c : b.carPark) {
+            if (c.stationTo != null)
+                if (c.stationTo.equals(a))
+                    return false;
         }
         return true;
     }

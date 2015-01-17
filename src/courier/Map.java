@@ -11,21 +11,19 @@ import java.util.LinkedList;
  * Created by daniel on 15/1/4.
  */
 public class Map extends SimState {
-    public LinkedList<Station> stations = new LinkedList<Station>();
-    public LinkedList<Parcel> parcels = new LinkedList<Parcel>();
-    public LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
-    public LinkedList<Car> cars = new LinkedList<Car>();
-    public Network tramLineNet = new Network(false);
-    public int parcelTotal=0;
-
+    protected LinkedList<Station> stations = new LinkedList<Station>();
+    protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
+    protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
+    protected LinkedList<Car> cars = new LinkedList<Car>();
+    protected Network tramLineNet = new Network(false);
+    protected int parcelTotal = 0;
+    protected int serialCarCallerID = 1;
+    protected int initNumOfParcelsInStation = 9;
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    public  int serialCarCallerID =1;
-
     private int initNumOfCarsInStation = 1;
-    public int initNumOfParcelsInStation = 9;
     private int smallPackageSize = 1;
     private int mediumPackageSize = 3;
     private int largePackageSize = 8;
@@ -54,19 +52,19 @@ public class Map extends SimState {
         initParcels();
         initTramLineNet();
 
-        parcelTotal = stations.size()*initNumOfParcelsInStation;
+        parcelTotal = stations.size() * initNumOfParcelsInStation;
 
     }
 
     private void initStations() {
-        addStation("A",new Int2D(10,40));
-        addStation("B",new Int2D(40,50));
-        addStation("C",new Int2D(50,66));
-        addStation("D",new Int2D(90,50));
-        addStation("E",new Int2D(40,60));
+        addStation("A", new Int2D(10, 40));
+        addStation("B", new Int2D(40, 50));
+        addStation("C", new Int2D(50, 66));
+        addStation("D", new Int2D(90, 50));
+        addStation("E", new Int2D(40, 60));
     }
 
-    private void addStation(String name,Int2D loc){
+    private void addStation(String name, Int2D loc) {
         Station station = new Station(name, serialStationID, loc, this);
         stations.add(station);
         schedule.scheduleRepeating(station);
@@ -75,16 +73,16 @@ public class Map extends SimState {
     }
 
     private void initTramLines() {
-        addTramLine(stations.get(0),stations.get(1));
-        addTramLine(stations.get(1),stations.get(2));
-        addTramLine(stations.get(2),stations.get(3));
-        addTramLine(stations.get(3),stations.get(0));
-        addTramLine(stations.get(1),stations.get(4));
+        addTramLine(stations.get(0), stations.get(1));
+        addTramLine(stations.get(1), stations.get(2));
+        addTramLine(stations.get(2), stations.get(3));
+        addTramLine(stations.get(3), stations.get(0));
+        addTramLine(stations.get(1), stations.get(4));
 
     }
 
-    private void addTramLine(Station a, Station b){
-        tramLines.add(new TramLine(a,b, serialTramLineID, this));
+    private void addTramLine(Station a, Station b) {
+        tramLines.add(new TramLine(a, b, serialTramLineID, this));
         serialTramLineID++;
     }
 
@@ -120,14 +118,14 @@ public class Map extends SimState {
                         next = random.nextInt(stations.size());
                     } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
 
-                    addParcel(s,stations.get(next),smallPackageSize);
+                    addParcel(s, stations.get(next), smallPackageSize);
                 }
                 isolated = true;
             }
         }
     }
 
-    public void addParcel(Station currStation, Station parcelDestination,int packageSize){
+    public void addParcel(Station currStation, Station parcelDestination, int packageSize) {
         currStation.pToBeSent.add(new Parcel(serialParcelID, parcelDestination, packageSize, this));
         serialParcelID++;
     }

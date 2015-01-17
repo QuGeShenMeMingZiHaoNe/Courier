@@ -14,8 +14,8 @@ import java.awt.*;
 
 public class MapGUI extends GUIState {
 
-    public Display2D display;
-    public JFrame displayFrame;
+    protected Display2D display;
+    protected JFrame displayFrame;
     SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
     NetworkPortrayal2D tramLinePortrayal = new NetworkPortrayal2D();
 

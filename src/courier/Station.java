@@ -11,15 +11,15 @@ import java.util.List;
  * Created by daniel on 15/1/4.
  */
 public class Station implements Steppable {
-    public int stationID;
-    public List<Car> carPark = new LinkedList<Car>();
-    public Int2D location;
-    public List<Parcel> pToBeSent = new LinkedList<Parcel>();
-    public List<Parcel> pArrived = new LinkedList<Parcel>();
-    public Map map;
+    protected int stationID;
+    protected List<Car> carPark = new LinkedList<Car>();
+    protected Int2D location;
+    protected List<Parcel> pToBeSent = new LinkedList<Parcel>();
+    protected List<Parcel> pArrived = new LinkedList<Parcel>();
+    protected Map map;
+    // number of car caller of a station can have;
+    protected int carCallerSema = 1;
     private String name;
-//    public CarCaller carCaller;
-    public int carCallerSema = 1;
 
     public Station(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -103,20 +103,20 @@ public class Station implements Steppable {
         return this.findAllReachableStations(new Station("null", -1, new Int2D(-1, -1), map)).contains(b);
     }
 
-    private void callCar(){
+    private void callCar() {
         Station station = findStationWithFreeCar();
-        if(station!=null){
+        if (station != null) {
             carCallerSema--;
-            station.pToBeSent.add(new CarCaller(this,map));
-            System.out.println("Log: " + this + "has put a CarCaller in"+ station +"...");
+            station.pToBeSent.add(new CarCaller(this, map));
+            System.out.println("Log: " + this + "has put a CarCaller in" + station + "...");
         }
     }
 
-    private Station findStationWithFreeCar(){
-        for(Station s:map.stations){
-            if(s.carPark.size()>0 && s.pToBeSent.size()==0){
-                for(Car c : s.carPark){
-                    if (c.carrying.size()==0){
+    private Station findStationWithFreeCar() {
+        for (Station s : map.stations) {
+            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0) {
+                for (Car c : s.carPark) {
+                    if (c.carrying.size() == 0) {
                         return s;
                     }
                 }
@@ -128,7 +128,7 @@ public class Station implements Steppable {
     @Override
     public void step(SimState state) {
         // if the car park is empty, has package to be sent, and the car caller is empty
-        if(this.pToBeSent.size()>0 && this.carPark.size()==0 && carCallerSema > 0)
+        if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
             callCar();
     }
 

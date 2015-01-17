@@ -8,16 +8,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Car implements Steppable {
-    public int carID;
-    public double maxWeight = 50;
-    public List<Parcel> carrying = new LinkedList<Parcel>();
-    public int speed;
-    public LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
-    public Station stationFrom;
-    public Station stationTo;
-    public Int2D location;
-    public Map map;
-    public Station direction;
+    protected int carID;
+    protected double maxWeight = 50;
+    protected List<Parcel> carrying = new LinkedList<Parcel>();
+    protected int speed;
+    protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
+    protected Station stationFrom;
+    protected Station stationTo;
+    protected Int2D location;
+    protected Map map;
+    protected Station direction;
     private int stepCount = 0;
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
@@ -29,8 +29,8 @@ public class Car implements Steppable {
         this.map = map;
     }
 
-    public String toString(){
-        return "Car :"+carID;
+    public String toString() {
+        return "Car :" + carID;
     }
 
 
@@ -41,7 +41,7 @@ public class Car implements Steppable {
 
         Parcel p = s.pToBeSent.get(0);
         s.pToBeSent.remove(0);
-        System.out.println("Log: " + p + " has been picked up by "+ this);
+        System.out.println("Log: " + p + " has been picked up by " + this);
         carrying.add(p);
         return true;
     }
@@ -57,10 +57,10 @@ public class Car implements Steppable {
         copyOfUnload.addAll(unload);
 
         // remove car Caller
-        for(Parcel p : copyOfUnload){
-            if(p instanceof CarCaller) {
-                System.out.println("Log: "+ this + " has unloaded" +
-                        " " + p+ "...");
+        for (Parcel p : copyOfUnload) {
+            if (p instanceof CarCaller) {
+                System.out.println("Log: " + this + " has unloaded" +
+                        " " + p + "...");
                 currStation().carCallerSema++;
                 unload.remove(p);
             }
@@ -68,7 +68,7 @@ public class Car implements Steppable {
 
         s.pArrived.addAll(unload);
 
-        if(unload.size()>0) {
+        if (unload.size() > 0) {
             System.out.print("Log: Global parcels remaining ");
             System.out.println(map.parcelTotal -= (unload.size()));
         }
@@ -80,7 +80,7 @@ public class Car implements Steppable {
         for (Parcel p : carrying) {
             if (p.destination.stationID == s.stationID) {
                 toUnload.add(p);
-                System.out.println("Log: "+ this + " has unloaded" +
+                System.out.println("Log: " + this + " has unloaded" +
                         " " + p + "...");
             }
         }
@@ -107,7 +107,7 @@ public class Car implements Steppable {
         hasArrived = true;
 
         // if the car has not enter the station
-        if(!currStation.carPark.contains(this))
+        if (!currStation.carPark.contains(this))
             currStation.carPark.add(this);
 
         // if there are something to be delivered
@@ -171,8 +171,8 @@ public class Car implements Steppable {
                 arriveStation();
                 // this return is for waite one step after arrival
                 return;
-            }else{
-                if(this.carrying.isEmpty()){
+            } else {
+                if (this.carrying.isEmpty()) {
                     this.arriveStation();
                 }
             }
@@ -228,7 +228,7 @@ public class Car implements Steppable {
 //            }
 
             // move
-            while (this.location.equals(nextStep)){
+            while (this.location.equals(nextStep)) {
                 stepCount++;
                 nextStep = this.pathLocal.get(stepCount);
             }
