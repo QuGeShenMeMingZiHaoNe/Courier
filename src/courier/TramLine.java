@@ -20,7 +20,7 @@ public class TramLine implements Steppable {
     protected Station trafficLightOccupant;
     protected Car currLeavingCar;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
-    private int requirementThreshold = 3;
+    private int requirementThreshold = 1;
     protected int quota1 = requirementThreshold;
     protected int quota2 = requirementThreshold;
     // clear the road when the traffic control right was swapped

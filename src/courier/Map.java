@@ -24,9 +24,6 @@ public class Map extends SimState {
     private int serialTramLineID = 1;
     private int serialCarID = 1;
     private int initNumOfCarsInStation = 1;
-    private int smallPackageSize = 1;
-    private int mediumPackageSize = 3;
-    private int largePackageSize = 8;
     private int gridWidth = 100;
     private int gridHeight = 100;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
@@ -62,7 +59,7 @@ public class Map extends SimState {
         addStation("C", new Int2D(50, 66));
         addStation("D", new Int2D(90, 50));
         addStation("E", new Int2D(40, 60));
-        addStation("F", new Int2D(99, 99));
+//        addStation("F", new Int2D(99, 99));
     }
 
     private void addStation(String name, Int2D loc) {
@@ -80,8 +77,6 @@ public class Map extends SimState {
         addTramLine(stations.get(3), stations.get(0));
         addTramLine(stations.get(1), stations.get(4));
         addTramLine(stations.get(3), stations.get(4));
-
-
     }
 
     private void addTramLine(Station a, Station b) {
@@ -121,11 +116,19 @@ public class Map extends SimState {
                         next = random.nextInt(stations.size());
                     } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
 
-                    addParcel(s, stations.get(next), smallPackageSize);
+                    addParcel(s, stations.get(next), getNextInt(cars.getFirst().maxWeight));
                 }
                 isolated = true;
             }
         }
+    }
+
+    // return a number beyond limit and greater than 0
+    private int getNextInt(int limit){
+        int result;
+        do{
+        result = random.nextInt(limit);} while (result==0);
+        return result;
     }
 
     public void addParcel(Station currStation, Station parcelDestination, int packageSize) {

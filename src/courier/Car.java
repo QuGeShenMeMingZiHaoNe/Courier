@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Car implements Steppable {
     protected int carID;
-    protected double maxWeight = 5;
+    protected int maxWeight = 5;
     protected List<Parcel> carrying = new LinkedList<Parcel>();
     protected int speed;
     protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
@@ -37,12 +37,9 @@ public class Car implements Steppable {
     public boolean loadParcel() {
         Station s = currStation();
         if (s.pToBeSent.size() == 0) return false;
-        // TODO load package number
-
-        Parcel p = s.pToBeSent.get(0);
-        s.pToBeSent.remove(0);
-        System.out.println("Log: " + p + " has been picked up by " + this);
-        carrying.add(p);
+        LinkedList<Parcel> parcelsCouldBeLoad = new LinkedList<Parcel>();
+        parcelLoader(parcelsCouldBeLoad);
+        carrying.addAll(parcelsCouldBeLoad);
         return true;
     }
 
@@ -71,8 +68,9 @@ public class Car implements Steppable {
         LinkedList<Parcel> carCallerToUnload = new LinkedList<Parcel>();
         for (Parcel p : carrying) {
             if (p.destination.stationID == s.stationID) {
-                System.out.println("Log: " + this + " has unloaded" + " " + p + " with time spending "+p.getTimeSpending()+"...");
-
+                System.out.println("Log: " + this + " has unloaded" + " " + p +" with wight " +p.weight +" with time spending "+p.getTimeSpending()+"...");
+                // restore the released weight to the car
+                this.maxWeight+=p.weight;
                 if (p instanceof CarCaller) {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
@@ -157,6 +155,26 @@ public class Car implements Steppable {
 
     private Station currStation() {
         return map.stations.get(0).findStationByLoc(this.location);
+    }
+
+    // calculate what parcel can be put into the car with the given loading weight
+    private void parcelLoader(LinkedList<Parcel> parcelsCouldBeLoad){
+        boolean newParcelAdded = false;
+        Station currStation = currStation();
+
+        for(Parcel p : currStation.pToBeSent){
+            if(p.weight<= maxWeight){
+                maxWeight-=p.weight;
+                newParcelAdded = true;
+                parcelsCouldBeLoad.add(p);
+                System.out.println("Log: " + p + " with weight " + p.weight + " has been picked up by " + this);
+                break;
+            }
+        }
+        if(newParcelAdded) {
+            currStation.pToBeSent.remove(parcelsCouldBeLoad.getLast());
+            parcelLoader(parcelsCouldBeLoad);
+        }
     }
 
 
