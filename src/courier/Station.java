@@ -1,16 +1,17 @@
 package courier;
 
+import sim.app.networktest.NetworkTest;
 import sim.engine.SimState;
 import sim.engine.Steppable;
+import sim.portrayal.DrawInfo2D;
+import sim.portrayal.SimplePortrayal2D;
 import sim.util.Int2D;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by daniel on 15/1/4.
- */
-public class Station implements Steppable {
+public class Station extends SimplePortrayal2D implements Steppable {
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
     protected Int2D location;
@@ -19,6 +20,8 @@ public class Station implements Steppable {
     protected Map map;
     // number of car caller of a station can have;
     protected int carCallerSema = 1;
+    private int stationDisplaySize = 5;
+    public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     private String name;
 
     public Station(String name, int stationID, Int2D location, Map map) {
@@ -125,6 +128,18 @@ public class Station implements Steppable {
         // if the car park is empty, has package to be sent, and the car caller is empty
         if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
             callCar();
+    }
+
+    @Override
+    public final void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
+        double diamx = info.draw.width * NetworkTest.DIAMETER / 1.5;
+        double diamy = info.draw.height * NetworkTest.DIAMETER / 1.5;
+
+        graphics.setColor(Color.blue);
+        graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
+        graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
+        graphics.setColor(Color.black);
+        graphics.drawString("S" + String.valueOf(stationID), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
     }
 
 }

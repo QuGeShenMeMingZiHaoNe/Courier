@@ -2,9 +2,6 @@ package courier;
 
 import java.text.SimpleDateFormat;
 
-/**
- * Created by daniel on 15/1/4.
- */
 public class Parcel {
     protected int parcelID;
     protected double weight;
@@ -27,9 +24,9 @@ public class Parcel {
         return "Parcel :" + parcelID;
     }
 
-    public String getTimeSpending(){
+    public String getTimeSpending() {
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
-        return (sdf.format(System.currentTimeMillis()-releaseTime));
+        return (sdf.format(System.currentTimeMillis() - releaseTime));
     }
 
 

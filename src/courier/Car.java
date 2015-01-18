@@ -1,23 +1,20 @@
 package courier;
 
-import sim.app.asteroids.Asteroids;
 import sim.engine.SimState;
 import sim.engine.Steppable;
 import sim.portrayal.DrawInfo2D;
-import sim.util.Double2D;
 import sim.util.Int2D;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
-    protected int carID;
     public static final int maxSpace = 5;
+    public Shape shape;
+    protected int carID;
     protected int spaceRemaining = maxSpace;
     protected List<Parcel> carrying = new LinkedList<Parcel>();
     protected int speed;
@@ -26,15 +23,13 @@ public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
     protected Station stationTo;
     protected Int2D location;
     protected Map map;
+    Ellipse2D.Double preciseEllipse = new Ellipse2D.Double();
     private int stepCount = 0;
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
     private LinkedList<Station> globalPath;
     private int maxCarDisplaySize = 2;
     private int basicCarDisplaySize = 2;
-    public Shape shape;
-
-
 
     public Car(int carID, Int2D location, Map map) {
         this.carID = carID;
@@ -45,7 +40,6 @@ public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
     public String toString() {
         return "Car :" + carID;
     }
-
 
     public boolean loadParcel() {
         Station s = currStation();
@@ -81,14 +75,14 @@ public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
         LinkedList<Parcel> carCallerToUnload = new LinkedList<Parcel>();
         for (Parcel p : carrying) {
             if (p.destination.stationID == s.stationID) {
-                System.out.println("Log: " + this + " has unloaded" + " " + p +" with wight " +p.weight +" with time spending "+p.getTimeSpending()+"...");
+                System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " with time spending " + p.getTimeSpending() + "...");
                 // restore the released weight to the car
-                this.spaceRemaining +=p.weight;
+                this.spaceRemaining += p.weight;
                 if (p instanceof CarCaller) {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
                     globalPath = null;
-                }else {
+                } else {
                     toUnload.add(p);
                 }
             }
@@ -165,48 +159,46 @@ public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
 
     }
 
-
     private Station currStation() {
         return map.stations.get(0).findStationByLoc(this.location);
     }
 
     // calculate what parcel can be put into the car with the given loading weight
-    private void parcelLoader(LinkedList<Parcel> parcelsCouldBeLoad){
+    private void parcelLoader(LinkedList<Parcel> parcelsCouldBeLoad) {
         boolean newParcelAdded = false;
         Station currStation = currStation();
 
-        for(Parcel p : currStation.pToBeSent){
-            if(p.weight<= spaceRemaining){
-                spaceRemaining -=p.weight;
+        for (Parcel p : currStation.pToBeSent) {
+            if (p.weight <= spaceRemaining) {
+                spaceRemaining -= p.weight;
                 newParcelAdded = true;
                 parcelsCouldBeLoad.add(p);
                 System.out.println("Log: " + p + " with weight " + p.weight + " has been picked up by " + this);
                 break;
             }
         }
-        if(newParcelAdded) {
+        if (newParcelAdded) {
             currStation.pToBeSent.remove(parcelsCouldBeLoad.getLast());
             parcelLoader(parcelsCouldBeLoad);
         }
     }
 
     //  graphics
-    public void draw(Object object, Graphics2D graphics, DrawInfo2D info)
-    {
+    public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
         double scale = 2.8;
         Color paint;
 
         // colour of cars change by the loading of the cars
-        if(spaceRemaining>=0.8*maxSpace){
+        if (spaceRemaining >= 0.8 * maxSpace) {
             paint = Color.green;
-        }else if(spaceRemaining>=0.4*maxSpace){
+        } else if (spaceRemaining >= 0.4 * maxSpace) {
             paint = Color.orange;
-        }else{
+        } else {
             paint = Color.red;
         }
         Rectangle2D.Double draw = info.draw;
-        final double width = draw.width*(scale)+basicCarDisplaySize;
-        final double height = draw.height*(scale)+basicCarDisplaySize;
+        final double width = draw.width * (scale) + basicCarDisplaySize;
+        final double height = draw.height * (scale) + basicCarDisplaySize;
 
         graphics.setPaint(paint);
         // we are doing a simple draw, so we ignore the info.clip
@@ -214,27 +206,26 @@ public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
 
         // we must be transient because Ellipse2D.Double is not serializable.
         // We also check to see if it's null elsewhere (because it's transient).
-        Ellipse2D.Double preciseEllipse = new Ellipse2D.Double();
 
-        if (info.precise)
-        {
-            if (preciseEllipse == null) preciseEllipse = new Ellipse2D.Double();    // could get reset because it's transient
-            preciseEllipse.setFrame(info.draw.x - width/2.0, info.draw.y - height/2.0, width, height);
+        if (info.precise) {
+            if (preciseEllipse == null)
+                preciseEllipse = new Ellipse2D.Double();    // could get reset because it's transient
+            preciseEllipse.setFrame(info.draw.x - width / 2.0, info.draw.y - height / 2.0, width, height);
             if (true) graphics.fill(preciseEllipse);
             else graphics.draw(preciseEllipse);
             return;
         }
 
-        final int x = (int)(draw.x - width / 2.0);
-        final int y = (int)(draw.y - height / 2.0);
-        int w = (int)(width);
-        int h = (int)(height);
+        final int x = (int) (draw.x - width / 2.0);
+        final int y = (int) (draw.y - height / 2.0);
+        int w = (int) (width);
+        int h = (int) (height);
 
         // draw centered on the origin
         if (true)
-            graphics.fillOval(x,y,w,h);
+            graphics.fillOval(x, y, w, h);
         else
-            graphics.drawOval(x,y,w,h);
+            graphics.drawOval(x, y, w, h);
     }
 
     @Override

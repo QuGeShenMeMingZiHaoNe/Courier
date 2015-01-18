@@ -1,6 +1,5 @@
 package courier;
 
-import sim.app.asteroids.RateAdjuster;
 import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
@@ -14,10 +13,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MapGUI extends GUIState {
-
-    private int maxCarDisplaySize = 2;
-    private int basicCarDisplaySize = 2;
-    private int stationDisplaySize = 5;
 
     protected Display2D display;
     protected JFrame displayFrame;
@@ -67,13 +62,12 @@ public class MapGUI extends GUIState {
         mapGridPortrayal.setField(map.mapGrid);
 
         // display of stations
-        mapGridPortrayal.setPortrayalForClass(
-                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, stationDisplaySize));
+//        mapGridPortrayal.setPortrayalForClass(
+//                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, stationDisplaySize));
 
         // display of cars
-        mapGridPortrayal.setPortrayalForClass(
-                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, basicCarDisplaySize));
-
+//        mapGridPortrayal.setPortrayalForClass(
+//                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, basicCarDisplaySize));
 
 
 //                {

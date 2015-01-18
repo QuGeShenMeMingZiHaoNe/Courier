@@ -7,9 +7,6 @@ import sim.util.Int2D;
 
 import java.util.LinkedList;
 
-/**
- * Created by daniel on 15/1/4.
- */
 public class Map extends SimState {
     protected LinkedList<Station> stations = new LinkedList<Station>();
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
@@ -124,10 +121,11 @@ public class Map extends SimState {
     }
 
     // return a number beyond limit and greater than 0
-    private int getNextInt(int limit){
+    private int getNextInt(int limit) {
         int result;
-        do{
-        result = random.nextInt(limit);} while (result==0);
+        do {
+            result = random.nextInt(limit);
+        } while (result == 0);
         return result;
     }
 

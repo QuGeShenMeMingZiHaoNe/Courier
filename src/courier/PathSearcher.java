@@ -3,9 +3,6 @@ package courier;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/**
- * Created by daniel on 15/1/17.
- */
 public class PathSearcher {
 
     // we are using breadth first search in this path searching class
