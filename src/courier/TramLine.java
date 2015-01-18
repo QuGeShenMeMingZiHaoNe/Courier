@@ -154,7 +154,7 @@ public class TramLine implements Steppable {
         // a and b are neighbour
         int index = findTramLineIndexNB(a, b);
         if (index >= 0) {
-            LinkedList<Station> result =  new LinkedList<Station>();
+            LinkedList<Station> result = new LinkedList<Station>();
             result.add(a);
             result.add(b);
             return result;
@@ -201,12 +201,16 @@ public class TramLine implements Steppable {
         // TODO move this path searcher into constructor;
         PathSearcher pathSearcher = new PathSearcher(map);
         // find path using breadth first search
-        LinkedList<LinkedList<Station>> paths = pathSearcher.findAllPossiblePath(a,b);
+        LinkedList<LinkedList<Station>> paths = pathSearcher.findAllPossiblePath(a, b);
         // sort path by distance in ascending order
-        if(paths.size()>1)
+        if (paths.size() > 1)
             paths = pathSearcher.sortPathByDistance(paths);
         // return the one with the lowest distance
-        return paths.getFirst();
+        if (paths.size() > 0) {
+            return paths.getFirst();
+        } else {
+            return null;
+        }
     }
 
     // try to get the traffic control, if the quota of the other end station has ran out

@@ -62,6 +62,7 @@ public class Map extends SimState {
         addStation("C", new Int2D(50, 66));
         addStation("D", new Int2D(90, 50));
         addStation("E", new Int2D(40, 60));
+        addStation("F", new Int2D(99, 99));
     }
 
     private void addStation(String name, Int2D loc) {
@@ -78,6 +79,8 @@ public class Map extends SimState {
         addTramLine(stations.get(2), stations.get(3));
         addTramLine(stations.get(3), stations.get(0));
         addTramLine(stations.get(1), stations.get(4));
+        addTramLine(stations.get(3), stations.get(4));
+
 
     }
 

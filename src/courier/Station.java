@@ -72,13 +72,10 @@ public class Station implements Steppable {
         return result;
     }
 
-    // find all reachable station except the one whom called findNeighbours()
-    public LinkedList<Station> findAllReachableStations(Station root) {
+    // find all reachable station
+    public LinkedList<Station> findAllReachableStations() {
         LinkedList<Station> neighbours = this.findNeighbours();
         LinkedList<Station> temp, result;
-        // does not contains the root node
-        while (neighbours.contains(root))
-            neighbours.remove(root);
 
         int size = neighbours.size();
         result = (LinkedList<Station>) neighbours.clone();
@@ -90,8 +87,6 @@ public class Station implements Steppable {
                 temp = nb.findNeighbours();
                 result.removeAll(temp);
                 result.addAll(temp);
-                while (result.contains(root))
-                    result.remove(root);
             }
             neighbours = (LinkedList<Station>) result.clone();
             size = neighbours.size();
@@ -100,7 +95,7 @@ public class Station implements Steppable {
     }
 
     public boolean reachable(Station b) {
-        return this.findAllReachableStations(new Station("null", -1, new Int2D(-1, -1), map)).contains(b);
+        return this.findAllReachableStations().contains(b);
     }
 
     private void callCar() {
@@ -108,13 +103,13 @@ public class Station implements Steppable {
         if (station != null) {
             carCallerSema--;
             station.pToBeSent.add(new CarCaller(this, map));
-            System.out.println("Log: " + this + "has put a CarCaller in" + station + "...");
+            System.out.println("Log: " + this + " has put a CarCaller in" + station + "...");
         }
     }
 
     private Station findStationWithFreeCar() {
         for (Station s : map.stations) {
-            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0) {
+            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
                 for (Car c : s.carPark) {
                     if (c.carrying.size() == 0) {
                         return s;

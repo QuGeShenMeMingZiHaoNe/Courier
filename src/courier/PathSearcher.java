@@ -1,10 +1,5 @@
 package courier;
 
-import sim.util.Double2D;
-
-import java.nio.file.Path;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,14 +10,14 @@ public class PathSearcher {
 
     // we are using breadth first search in this path searching class
 
-    private Map map;
     protected LinkedList<LinkedList<Station>> paths;
+    private Map map;
 
-    PathSearcher(Map map){
+    PathSearcher(Map map) {
         this.map = map;
     }
 
-    public LinkedList<LinkedList<Station>> findAllPossiblePath(Station from, Station to){
+    public LinkedList<LinkedList<Station>> findAllPossiblePath(Station from, Station to) {
         initPathSearch();
         LinkedList<Station> path = new LinkedList<Station>();
         path.add(from);
@@ -30,64 +25,64 @@ public class PathSearcher {
         return paths;
     }
 
-    private void initPathSearch(){
+    private void initPathSearch() {
         this.paths = new LinkedList<LinkedList<Station>>();
     }
 
-    private void findAllPossiblePathHelper(Station from, Station to,LinkedList<Station> result){
-        LinkedList<Station> neighbours  = from.findNeighbours();
+    private void findAllPossiblePathHelper(Station from, Station to, LinkedList<Station> result) {
+        LinkedList<Station> neighbours = from.findNeighbours();
 
         // if node is isolated then just return
-        if(neighbours.size()==0)
+        if (neighbours.size() == 0)
             return;
 
         boolean sizeIncrease = false;
 
-        for(Station station : neighbours){
-            if(!result.contains(station)){
+        for (Station station : neighbours) {
+            if (!result.contains(station)) {
                 // make a copy of result
                 LinkedList<Station> copy = (LinkedList<Station>) result.clone();
                 copy.add(station);
 
                 // if we are at the final destination
-                if(station.equals(to)){
+                if (station.equals(to)) {
                     paths.add(copy);
-                }else {
+                } else {
                     findAllPossiblePathHelper(station, to, copy);
                 }
             }
         }
     }
 
-    private double calPathDistance(LinkedList<Station> path){
+    private double calPathDistance(LinkedList<Station> path) {
         Iterator<Station> iterator = path.iterator();
         Station first = iterator.next();
         Station second;
         double distance = 0;
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             second = iterator.next();
-            distance = distance+first.location.distance(second.location);
+            distance = distance + first.location.distance(second.location);
             first = second;
         }
         return distance;
     }
 
     // insert sort
-    public LinkedList<LinkedList<Station>> sortPathByDistance(LinkedList<LinkedList<Station>> target){
+    public LinkedList<LinkedList<Station>> sortPathByDistance(LinkedList<LinkedList<Station>> target) {
         LinkedList<LinkedList<Station>> result = new LinkedList<LinkedList<Station>>();
-        LinkedList<Double> distances= new LinkedList<Double>() ;
+        LinkedList<Double> distances = new LinkedList<Double>();
 
         int index = distances.size();
-        for(LinkedList<Station> path: target){
+        for (LinkedList<Station> path : target) {
             double currDistance = calPathDistance(path);
-            for(double distance : distances){
-                if(distance>currDistance) {
+            for (double distance : distances) {
+                if (distance > currDistance) {
                     index = distances.indexOf(distance);
                     break;
                 }
             }
-            distances.add(index,currDistance);
-            result.add(index,path);
+            distances.add(index, currDistance);
+            result.add(index, path);
         }
         return result;
     }

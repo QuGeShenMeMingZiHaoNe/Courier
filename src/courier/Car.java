@@ -52,7 +52,7 @@ public class Car implements Steppable {
 
         List<Parcel> unload = parcelsToUnload(s);
         // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
-        if(unload.size()>0 && unload.get(0).equals(carrying.get(0))){
+        if (unload.size() > 0 && unload.get(0).equals(carrying.get(0))) {
             globalPath = null;
         }
         carrying.removeAll(unload);
@@ -145,16 +145,16 @@ public class Car implements Steppable {
         TramLine tl = map.tramLines.get(0);
         Station currStation = currStation();
 
-        if(globalPath==null) {
+        if (globalPath == null) {
             globalPath = tl.getPathGlobal(from, to);
         }
 
         // the station is the next station to not the final destination.
         // TODO don't need null condition??
-        if (tl == null) {
+        if (globalPath == null) {
             stationTo = currStation;
         } else {
-            stationTo = globalPath.get(globalPath.indexOf(currStation)+1);
+            stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
         }
 
     }
