@@ -95,7 +95,7 @@ public class Map extends SimState {
         int next;
         for (Station s : stations) {
             // if the station is not isolated
-            if (s.findNeighbours().size()>0) {
+            if (s.findNeighbours().size() > 0) {
                 for (int i = 0; i < initNumOfParcelsInStation; i++) {
                     // add a parcel to current station;
                     addParcel(s);
