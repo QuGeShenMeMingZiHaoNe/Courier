@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Car implements Steppable {
     protected int carID;
-    protected double maxWeight = 50;
+    protected double maxWeight = 5;
     protected List<Parcel> carrying = new LinkedList<Parcel>();
     protected int speed;
     protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
@@ -57,19 +57,6 @@ public class Car implements Steppable {
         }
         carrying.removeAll(unload);
 
-        List<Parcel> copyOfUnload = new LinkedList<Parcel>();
-        copyOfUnload.addAll(unload);
-
-        // remove car Caller
-        for (Parcel p : copyOfUnload) {
-            if (p instanceof CarCaller) {
-                System.out.println("Log: " + this + " has unloaded" +
-                        " " + p + "...");
-                currStation().carCallerSema++;
-                unload.remove(p);
-            }
-        }
-
         s.pArrived.addAll(unload);
 
         if (unload.size() > 0) {
@@ -81,13 +68,21 @@ public class Car implements Steppable {
     // for the parcels that have arrived the final destination
     private List<Parcel> parcelsToUnload(Station s) {
         List<Parcel> toUnload = new LinkedList<Parcel>();
+        LinkedList<Parcel> carCallerToUnload = new LinkedList<Parcel>();
         for (Parcel p : carrying) {
             if (p.destination.stationID == s.stationID) {
-                toUnload.add(p);
-                System.out.println("Log: " + this + " has unloaded" +
-                        " " + p + "...");
+                System.out.println("Log: " + this + " has unloaded" + " " + p + " with time spending "+p.getTimeSpending()+"...");
+
+                if (p instanceof CarCaller) {
+                    currStation().carCallerSema++;
+                    carCallerToUnload.add(p);
+                    globalPath = null;
+                }else {
+                    toUnload.add(p);
+                }
             }
         }
+        carrying.removeAll(carCallerToUnload);
         return toUnload;
     }
 

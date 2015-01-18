@@ -102,7 +102,7 @@ public class Station implements Steppable {
         Station station = findStationWithFreeCar();
         if (station != null) {
             carCallerSema--;
-            station.pToBeSent.add(new CarCaller(this, map));
+            station.pToBeSent.add(new CarCaller(station, this, map));
             System.out.println("Log: " + this + " has put a CarCaller in" + station + "...");
         }
     }

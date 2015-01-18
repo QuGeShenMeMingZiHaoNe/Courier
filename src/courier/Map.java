@@ -129,7 +129,7 @@ public class Map extends SimState {
     }
 
     public void addParcel(Station currStation, Station parcelDestination, int packageSize) {
-        currStation.pToBeSent.add(new Parcel(serialParcelID, parcelDestination, packageSize, this));
+        currStation.pToBeSent.add(new Parcel(serialParcelID, currStation, parcelDestination, packageSize, this));
         serialParcelID++;
     }
 
