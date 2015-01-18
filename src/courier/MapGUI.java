@@ -1,5 +1,6 @@
 package courier;
 
+import sim.app.asteroids.RateAdjuster;
 import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
@@ -72,6 +73,9 @@ public class MapGUI extends GUIState {
         // display of cars
         mapGridPortrayal.setPortrayalForClass(
                 Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, basicCarDisplaySize));
+
+
+
 //                {
 //                    public Inspector getInspector(LocationWrapper wrapper, GUIState state)
 //                    {
@@ -82,6 +86,7 @@ public class MapGUI extends GUIState {
 
         tramLinePortrayal.setField(new SpatialNetwork2D(map.mapGrid, map.tramLineNet));
         tramLinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
+
 
         // reschedule the displayer
         display.reset();

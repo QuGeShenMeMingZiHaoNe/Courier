@@ -88,7 +88,7 @@ public class AsteroidsWithUI extends GUIState
 
         fieldPortrayal.setField(asteroids.field);
         fieldPortrayal.setDisplayingToroidally(true);
-                
+
         scheduleRepeatingImmediatelyAfter(new RateAdjuster(FRAMES_PER_SECOND));
                 
         // reschedule the displayer
