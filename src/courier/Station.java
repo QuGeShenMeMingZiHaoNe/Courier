@@ -10,6 +10,7 @@ import sim.util.Int2D;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Station extends SimplePortrayal2D implements Steppable {
     protected int stationID;
@@ -18,11 +19,14 @@ public class Station extends SimplePortrayal2D implements Steppable {
     protected List<Parcel> pToBeSent = new LinkedList<Parcel>();
     protected List<Parcel> pArrived = new LinkedList<Parcel>();
     protected Map map;
+    protected static final int MAX_PACKAGES = 10;
     // number of car caller of a station can have;
     protected int carCallerSema = 1;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     private String name;
+    // busy indicates how busy the station is, the number should between 100 and 0, the bigger the number, the more busy it is
+    private int busy = 20;
 
     public Station(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -128,6 +132,23 @@ public class Station extends SimplePortrayal2D implements Steppable {
         // if the car park is empty, has package to be sent, and the car caller is empty
         if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
             callCar();
+
+        if(pToBeSent.size()<MAX_PACKAGES && genParcelOrNot()&& carPark.size()==0){
+            map.addParcel(this);
+            map.parcelTotal++;
+        }
+    }
+
+    private boolean genParcelOrNot(){
+        Random random = new Random();
+        // this number indicate how busy the station is
+        int j = random.nextInt(100-busy);
+
+        // if i is smaller than busy then generalize a parcles
+        if(1>j)
+            return true;
+        else
+            return false;
     }
 
     @Override

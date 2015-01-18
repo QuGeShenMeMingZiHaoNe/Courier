@@ -15,7 +15,7 @@ public class Map extends SimState {
     protected Network tramLineNet = new Network(false);
     protected int parcelTotal = 0;
     protected int serialCarCallerID = 1;
-    protected int initNumOfParcelsInStation = 9;
+    protected int initNumOfParcelsInStation = 3;
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
@@ -45,9 +45,6 @@ public class Map extends SimState {
         initCars();
         initParcels();
         initTramLineNet();
-
-        parcelTotal = stations.size() * initNumOfParcelsInStation;
-
     }
 
     private void initStations() {
@@ -56,7 +53,7 @@ public class Map extends SimState {
         addStation("C", new Int2D(50, 66));
         addStation("D", new Int2D(90, 50));
         addStation("E", new Int2D(40, 60));
-//        addStation("F", new Int2D(99, 99));
+        addStation("F", new Int2D(99, 99));
     }
 
     private void addStation(String name, Int2D loc) {
@@ -96,26 +93,14 @@ public class Map extends SimState {
 
     private void initParcels() {
         int next;
-        boolean isolated = true;
         for (Station s : stations) {
-
-            // to check if a station is isolated
-            for (Station s2 : stations) {
-                if (tramLines.get(0).findTramLine(s, s2) != null) {
-                    isolated = false;
-                    break;
-                }
-            }
-
-            if (!isolated) {
+            // if the station is not isolated
+            if (s.findNeighbours().size()>0) {
                 for (int i = 0; i < initNumOfParcelsInStation; i++) {
-                    do {
-                        next = random.nextInt(stations.size());
-                    } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
-
-                    addParcel(s, stations.get(next), getNextInt(cars.getFirst().spaceRemaining));
+                    // add a parcel to current station;
+                    addParcel(s);
+                    parcelTotal++;
                 }
-                isolated = true;
             }
         }
     }
@@ -129,8 +114,13 @@ public class Map extends SimState {
         return result;
     }
 
-    public void addParcel(Station currStation, Station parcelDestination, int packageSize) {
-        currStation.pToBeSent.add(new Parcel(serialParcelID, currStation, parcelDestination, packageSize, this));
+    public void addParcel(Station currStation) {
+        int next;
+        do {
+            next = random.nextInt(stations.size());
+        } while (!(stations.get(next).stationID != currStation.stationID && currStation.reachable(stations.get(next))));
+
+        currStation.pToBeSent.add(new Parcel(serialParcelID, currStation, stations.get(next), getNextInt(cars.getFirst().maxSpace), this));
         serialParcelID++;
     }
 
