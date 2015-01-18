@@ -24,8 +24,8 @@ public class Map extends SimState {
     private int serialTramLineID = 1;
     private int serialCarID = 1;
     private int initNumOfCarsInStation = 1;
-    private int gridWidth = 100;
-    private int gridHeight = 100;
+    private int gridWidth = 180;
+    private int gridHeight = 180;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
 
     public Map(long seed) {
@@ -116,7 +116,7 @@ public class Map extends SimState {
                         next = random.nextInt(stations.size());
                     } while (!(stations.get(next).stationID != s.stationID && s.reachable(stations.get(next))));
 
-                    addParcel(s, stations.get(next), getNextInt(cars.getFirst().maxWeight));
+                    addParcel(s, stations.get(next), getNextInt(cars.getFirst().spaceRemaining));
                 }
                 isolated = true;
             }

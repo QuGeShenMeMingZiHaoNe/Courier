@@ -14,6 +14,10 @@ import java.awt.*;
 
 public class MapGUI extends GUIState {
 
+    private int maxCarDisplaySize = 2;
+    private int basicCarDisplaySize = 2;
+    private int stationDisplaySize = 5;
+
     protected Display2D display;
     protected JFrame displayFrame;
     SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
@@ -61,11 +65,13 @@ public class MapGUI extends GUIState {
         // tell the portrayals what to portray and how to portray them
         mapGridPortrayal.setField(map.mapGrid);
 
+        // display of stations
         mapGridPortrayal.setPortrayalForClass(
-                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, 3));
+                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, stationDisplaySize));
 
+        // display of cars
         mapGridPortrayal.setPortrayalForClass(
-                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, 1.5));
+                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, basicCarDisplaySize));
 //                {
 //                    public Inspector getInspector(LocationWrapper wrapper, GUIState state)
 //                    {
@@ -88,7 +94,7 @@ public class MapGUI extends GUIState {
     public void init(Controller c) {
         super.init(c);
 
-        display = new Display2D(680, 680, this);
+        display = new Display2D(540, 540, this);
         displayFrame = display.createFrame();
         c.registerFrame(displayFrame);
         displayFrame.setVisible(true);

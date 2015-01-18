@@ -87,34 +87,4 @@ public class PathSearcher {
         return result;
     }
 
-//    insert in the order of distance
-//    private void insertPath(LinkedList<LinkedList<Station>> result, LinkedList<Double> distances){
-//
-//    }
-
-//    private LinkedList<Integer> rankByDistance(LinkedList<Double> distances) {
-//        LinkedList<Integer> result = new LinkedList<Integer>();
-//    }
-
-//
-//    private class ComparablePath implements Comparable<LinkedList<Station>>{
-//
-//        @Override
-//        public int compareTo(LinkedList<Station> o) {
-//            int comparedSize = o.size();
-//        }
-//
-//        public int compareTo(House o) {
-//            int comparedSize = o.size;
-//            if (this.size > comparedSize) {
-//                return 1;
-//            } else if (this.size == comparedSize) {
-//                return 0;
-//            } else {
-//                return -1;
-//            }
-//        }
-
-//    }
-
 }

@@ -9,7 +9,8 @@ import java.util.List;
 
 public class Car implements Steppable {
     protected int carID;
-    protected int maxWeight = 5;
+    public static int maxSpace = 5;
+    protected int spaceRemaining = maxSpace;
     protected List<Parcel> carrying = new LinkedList<Parcel>();
     protected int speed;
     protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
@@ -70,7 +71,7 @@ public class Car implements Steppable {
             if (p.destination.stationID == s.stationID) {
                 System.out.println("Log: " + this + " has unloaded" + " " + p +" with wight " +p.weight +" with time spending "+p.getTimeSpending()+"...");
                 // restore the released weight to the car
-                this.maxWeight+=p.weight;
+                this.spaceRemaining +=p.weight;
                 if (p instanceof CarCaller) {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
@@ -163,8 +164,8 @@ public class Car implements Steppable {
         Station currStation = currStation();
 
         for(Parcel p : currStation.pToBeSent){
-            if(p.weight<= maxWeight){
-                maxWeight-=p.weight;
+            if(p.weight<= spaceRemaining){
+                spaceRemaining -=p.weight;
                 newParcelAdded = true;
                 parcelsCouldBeLoad.add(p);
                 System.out.println("Log: " + p + " with weight " + p.weight + " has been picked up by " + this);
