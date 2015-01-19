@@ -3,6 +3,7 @@ package courier;
 import sim.engine.SimState;
 import sim.engine.Steppable;
 import sim.portrayal.DrawInfo2D;
+import sim.portrayal.simple.OvalPortrayal2D;
 import sim.util.Int2D;
 
 import java.awt.*;
@@ -11,12 +12,12 @@ import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
+public class Car extends OvalPortrayal2D implements Steppable {
     public static final int maxSpace = 5;
     public Shape shape;
     protected int carID;
     protected int spaceRemaining = maxSpace;
-    protected List<Parcel> carrying = new LinkedList<Parcel>();
+    private LinkedList<Parcel> carrying = new LinkedList<Parcel>();
     protected int speed;
     protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
     protected Station stationFrom;
@@ -28,13 +29,20 @@ public class Car extends sim.portrayal.SimplePortrayal2D implements Steppable {
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
     private LinkedList<Station> globalPath;
-    private int maxCarDisplaySize = 2;
     private int basicCarDisplaySize = 2;
 
     public Car(int carID, Int2D location, Map map) {
         this.carID = carID;
         this.location = location;
         this.map = map;
+    }
+
+    public int getCurrLoading(){
+        return maxSpace-spaceRemaining;
+    }
+
+    public LinkedList<Parcel> getCarrying(){
+        return carrying;
     }
 
     public String toString() {

@@ -5,6 +5,7 @@ import sim.engine.SimState;
 import sim.engine.Steppable;
 import sim.portrayal.DrawInfo2D;
 import sim.portrayal.SimplePortrayal2D;
+import sim.portrayal.simple.OvalPortrayal2D;
 import sim.util.Int2D;
 
 import java.awt.*;
@@ -12,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Station extends SimplePortrayal2D implements Steppable {
+public class Station extends OvalPortrayal2D implements Steppable {
     protected static final int MAX_PACKAGES = 10;
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
@@ -119,7 +120,7 @@ public class Station extends SimplePortrayal2D implements Steppable {
         for (Station s : map.stations) {
             if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
                 for (Car c : s.carPark) {
-                    if (c.carrying.size() == 0) {
+                    if (c.getCarrying().size() == 0) {
                         return s;
                     }
                 }

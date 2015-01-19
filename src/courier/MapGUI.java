@@ -4,6 +4,7 @@ import sim.display.Controller;
 import sim.display.Display2D;
 import sim.display.GUIState;
 import sim.engine.SimState;
+import sim.portrayal.Inspector;
 import sim.portrayal.grid.SparseGridPortrayal2D;
 import sim.portrayal.network.NetworkPortrayal2D;
 import sim.portrayal.network.SimpleEdgePortrayal2D;
@@ -56,18 +57,20 @@ public class MapGUI extends GUIState {
         setupPortrayals();
     }
 
+
     public void setupPortrayals() {
         Map map = ((Map) state);
         // tell the portrayals what to portray and how to portray them
         mapGridPortrayal.setField(map.mapGrid);
 
+
         // display of stations
 //        mapGridPortrayal.setPortrayalForClass(
-//                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, stationDisplaySize));
+//                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, 1));
 
         // display of cars
 //        mapGridPortrayal.setPortrayalForClass(
-//                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, basicCarDisplaySize));
+//                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, 1));
 
 
 //                {
@@ -90,22 +93,28 @@ public class MapGUI extends GUIState {
 
     }
 
+    public Object getSimulationInspectedObject() { return state; }
+
+    public Inspector getInspector()
+    {
+        Inspector i = super.getInspector();
+        i.setVolatile(true);
+        return i;
+    }
+
     public void init(Controller c) {
         super.init(c);
 
+
         display = new Display2D(540, 540, this);
         displayFrame = display.createFrame();
+
         c.registerFrame(displayFrame);
         displayFrame.setVisible(true);
         display.setBackdrop(Color.WHITE);
+
         display.attach(mapGridPortrayal, "Map");
         display.attach(tramLinePortrayal, "Tram Line");
-
     }
-
-    public Object getSimulationInspectedObject() {
-        return state;
-    }
-
 
 }

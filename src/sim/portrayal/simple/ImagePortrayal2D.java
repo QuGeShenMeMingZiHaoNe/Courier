@@ -54,7 +54,7 @@ public class ImagePortrayal2D extends RectanglePortrayal2D
         }
 
     /** Creates an ImagePortrayal2D by loading an Image resource using getClass().getResource() */
-    public ImagePortrayal2D(Class c, String resourceName)
+    public  ImagePortrayal2D(Class c, String resourceName)
         {
         this(c, resourceName, 1.0);
         }
