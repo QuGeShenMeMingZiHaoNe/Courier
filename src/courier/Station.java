@@ -28,13 +28,18 @@ public class Station extends OvalPortrayal2D implements Steppable {
     private String name;
     // busy indicates how busy the station is, the number should between 100 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 20;
+    private int busy = 99;
+    protected boolean addingParcels = false;
 
     public Station(String name, int stationID, Int2D location, Map map) {
         this.name = name;
         this.stationID = stationID;
         this.location = location;
         this.map = map;
+    }
+
+    public List<Parcel> getpToBeSent(){
+        return pToBeSent;
     }
 
     @Override
@@ -117,7 +122,10 @@ public class Station extends OvalPortrayal2D implements Steppable {
     }
 
     private Station findStationWithFreeCar() {
-        for (Station s : map.stations) {
+        LinkedList<Station> searchStations = new LinkedList<Station>();
+        searchStations.addAll(map.stations);
+        searchStations.addAll(map.garages);
+        for (Station s : searchStations) {
             if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
                 for (Car c : s.carPark) {
                     if (c.getCarrying().size() == 0) {
@@ -132,10 +140,10 @@ public class Station extends OvalPortrayal2D implements Steppable {
     @Override
     public void step(SimState state) {
         // if the car park is empty, has package to be sent, and the car caller is empty
-        if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
+        if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0 && findNeighbours().size()>0)
             callCar();
 
-        if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && carPark.size() == 0) {
+        if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && findNeighbours().size()>0) {
             map.addParcel(this);
             map.parcelTotal++;
         }
@@ -162,7 +170,7 @@ public class Station extends OvalPortrayal2D implements Steppable {
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);
-        graphics.drawString("S" + String.valueOf(stationID), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
+        graphics.drawString("S:"+name+" C:"+carPark.size()+" P:"+pToBeSent.size(), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
     }
 
 }

@@ -168,7 +168,14 @@ public class Car extends OvalPortrayal2D implements Steppable {
     }
 
     private Station currStation() {
-        return map.stations.get(0).findStationByLoc(this.location);
+        Station s;
+//        if(map.garages.size()>0) {
+//            s = map.garages.get(0).findGarageByLoc(this.location);
+//            if(s != null)
+//                return s;
+//        }
+        s = map.stations.get(0).findStationByLoc(this.location);
+        return s;
     }
 
     // calculate what parcel can be put into the car with the given loading weight
@@ -250,6 +257,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     this.arriveStation();
                 }
             }
+
+            // if the car has not carrying any thing that it don't need to leave the station
+            if(carrying.isEmpty())
+                return;
 
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 

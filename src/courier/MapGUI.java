@@ -9,16 +9,20 @@ import sim.portrayal.grid.SparseGridPortrayal2D;
 import sim.portrayal.network.NetworkPortrayal2D;
 import sim.portrayal.network.SimpleEdgePortrayal2D;
 import sim.portrayal.network.SpatialNetwork2D;
+import sim.portrayal.simple.ImagePortrayal2D;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MapGUI extends GUIState {
 
-    protected Display2D display;
-    protected JFrame displayFrame;
-    SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
-    NetworkPortrayal2D tramLinePortrayal = new NetworkPortrayal2D();
+    private Display2D display;
+    private JFrame displayFrame;
+    private SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
+    private NetworkPortrayal2D tramLinePortrayal = new NetworkPortrayal2D();
+    private ImagePortrayal2D backGround ;
+    private Image image;
+
 
     public MapGUI(SimState state) {
         super(state);
@@ -80,10 +84,12 @@ public class MapGUI extends GUIState {
 //                        return new BigParticleInspector(super.getInspector(wrapper,state), wrapper, state);
 //                    }
 //                });
-
         tramLinePortrayal.setField(new SpatialNetwork2D(map.mapGrid, map.tramLineNet));
         tramLinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
 
+
+
+        backGround = new ImagePortrayal2D(image);
 
         // reschedule the displayer
         display.reset();
@@ -110,11 +116,27 @@ public class MapGUI extends GUIState {
         displayFrame = display.createFrame();
 
         c.registerFrame(displayFrame);
+
+
+//        try {
+//            File image2 = new File("/Users/daniel/Documents/Courier/src/media/tubmap.png");
+//            image = ImageIO.read(image2);
+//            displayFrame.setContentPane(new JPanel(new BorderLayout()) {
+//                @Override
+//                public void paintComponent(Graphics g) {
+//                    g.drawImage(image, 0, 0, null);
+//                }
+//            });
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
         displayFrame.setVisible(true);
-        display.setBackdrop(Color.WHITE);
+        display.setBackdrop(Color.LIGHT_GRAY);
 
         display.attach(mapGridPortrayal, "Map");
         display.attach(tramLinePortrayal, "Tram Line");
+
     }
 
 }
