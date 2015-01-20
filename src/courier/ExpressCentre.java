@@ -27,7 +27,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     private String name;
     // busy indicates how busy the station is, the number should between 100 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 99;
+    private int busy = 20;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
