@@ -22,7 +22,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected Map map;
     // number of car caller of a station can have;
     protected int carCallerSema = 1;
-    protected boolean addingParcels = false;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     private String name;
@@ -35,6 +34,11 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         this.stationID = stationID;
         this.location = location;
         this.map = map;
+    }
+
+
+    public double getProfit(){
+        return map.profit;
     }
 
     public List<Parcel> getpToBeSent() {
@@ -159,8 +163,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     @Override
     public final void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
-        double diamx = info.draw.width * NetworkTest.DIAMETER / 1.5;
-        double diamy = info.draw.height * NetworkTest.DIAMETER / 1.5;
+        double diamx = info.draw.width * NetworkTest.DIAMETER / 2;
+        double diamy = info.draw.height * NetworkTest.DIAMETER / 2;
 
         graphics.setColor(Color.blue);
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));

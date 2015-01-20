@@ -51,7 +51,7 @@ public class PathSearcher {
         }
     }
 
-    private double calPathDistance(LinkedList<ExpressCentre> path) {
+    public double calPathDistance(LinkedList<ExpressCentre> path) {
         Iterator<ExpressCentre> iterator = path.iterator();
         ExpressCentre first = iterator.next();
         ExpressCentre second;

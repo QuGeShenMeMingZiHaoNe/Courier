@@ -23,10 +23,15 @@ public class Map extends SimState {
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    private int initNumOfCarsInStation = 1000;
+    private int initNumOfCarsInStation = 10;
     private int gridWidth = 180;
     private int gridHeight = 180;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
+
+    public double profit = 0;
+//    public double retainedProfit = 0;
+    public double profitMargin = 2.45;
+
 
     public Map(long seed) {
         super(seed);

@@ -1,5 +1,6 @@
 package courier;
 
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 
 public class Parcel {
@@ -29,5 +30,16 @@ public class Parcel {
         return (sdf.format(System.currentTimeMillis() - releaseTime));
     }
 
+    // TODO: better simulation as the distance does not == car step
+    private double getMinimumCost(){
+        PathSearcher ps = new PathSearcher(map);
+        // find the minimum cost base on the shortest path
+        double minimumCost = ps.calPathDistance(ps.sortPathByDistance(ps.findAllPossiblePath(from,destination)).getFirst());
+        return minimumCost;
+    }
+
+    public double getProfit(){
+        return getMinimumCost()*map.profitMargin;
+    }
 
 }

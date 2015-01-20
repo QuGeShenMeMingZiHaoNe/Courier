@@ -31,6 +31,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private LinkedList<ExpressCentre> globalPath;
     private int basicCarDisplaySize = 2;
 
+
     public Car(int carID, Int2D location, Map map) {
         this.carID = carID;
         this.location = location;
@@ -83,9 +84,14 @@ public class Car extends OvalPortrayal2D implements Steppable {
         LinkedList<Parcel> carCallerToUnload = new LinkedList<Parcel>();
         for (Parcel p : carrying) {
             if (p.destination.stationID == s.stationID) {
+                // TODO: does car caller earn money??
+                map.profit+=p.getProfit();
+
                 System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " with time spending " + p.getTimeSpending() + "...");
                 // restore the released weight to the car
                 this.spaceRemaining += p.weight;
+
+                // if the parcel is car caller
                 if (p instanceof CarCaller) {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
@@ -200,7 +206,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     //  graphics
     public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
-        double scale = 2.8;
+        double scale = 2.0;
         Color paint;
 
         // colour of cars change by the loading of the cars
@@ -245,6 +251,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
+        if(!(currStation() instanceof Garage)) {
+            Int2D d = new Int2D(1, 1);
+            map.profit -= d.distance(new Int2D(2, 2));
+        }
 
         ExpressCentre currStation = currStation();
         if (currStation != null) {
