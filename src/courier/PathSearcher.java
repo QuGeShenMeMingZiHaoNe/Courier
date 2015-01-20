@@ -7,27 +7,27 @@ public class PathSearcher {
 
     // we are using breadth first search in this path searching class
 
-    protected LinkedList<LinkedList<ExpressCenter>> paths;
+    protected LinkedList<LinkedList<ExpressCentre>> paths;
     private Map map;
 
     PathSearcher(Map map) {
         this.map = map;
     }
 
-    public LinkedList<LinkedList<ExpressCenter>> findAllPossiblePath(ExpressCenter from, ExpressCenter to) {
+    public LinkedList<LinkedList<ExpressCentre>> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
         initPathSearch();
-        LinkedList<ExpressCenter> path = new LinkedList<ExpressCenter>();
+        LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
         path.add(from);
         findAllPossiblePathHelper(from, to, path);
         return paths;
     }
 
     private void initPathSearch() {
-        this.paths = new LinkedList<LinkedList<ExpressCenter>>();
+        this.paths = new LinkedList<LinkedList<ExpressCentre>>();
     }
 
-    private void findAllPossiblePathHelper(ExpressCenter from, ExpressCenter to, LinkedList<ExpressCenter> result) {
-        LinkedList<ExpressCenter> neighbours = from.findNeighbours();
+    private void findAllPossiblePathHelper(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> result) {
+        LinkedList<ExpressCentre> neighbours = from.findNeighbours();
 
         // if node is isolated then just return
         if (neighbours.size() == 0)
@@ -35,26 +35,26 @@ public class PathSearcher {
 
         boolean sizeIncrease = false;
 
-        for (ExpressCenter expressCenter : neighbours) {
-            if (!result.contains(expressCenter)) {
+        for (ExpressCentre expressCentre : neighbours) {
+            if (!result.contains(expressCentre)) {
                 // make a copy of result
-                LinkedList<ExpressCenter> copy = (LinkedList<ExpressCenter>) result.clone();
-                copy.add(expressCenter);
+                LinkedList<ExpressCentre> copy = (LinkedList<ExpressCentre>) result.clone();
+                copy.add(expressCentre);
 
                 // if we are at the final destination
-                if (expressCenter.equals(to)) {
+                if (expressCentre.equals(to)) {
                     paths.add(copy);
                 } else {
-                    findAllPossiblePathHelper(expressCenter, to, copy);
+                    findAllPossiblePathHelper(expressCentre, to, copy);
                 }
             }
         }
     }
 
-    private double calPathDistance(LinkedList<ExpressCenter> path) {
-        Iterator<ExpressCenter> iterator = path.iterator();
-        ExpressCenter first = iterator.next();
-        ExpressCenter second;
+    private double calPathDistance(LinkedList<ExpressCentre> path) {
+        Iterator<ExpressCentre> iterator = path.iterator();
+        ExpressCentre first = iterator.next();
+        ExpressCentre second;
         double distance = 0;
         while (iterator.hasNext()) {
             second = iterator.next();
@@ -65,12 +65,12 @@ public class PathSearcher {
     }
 
     // insert sort
-    public LinkedList<LinkedList<ExpressCenter>> sortPathByDistance(LinkedList<LinkedList<ExpressCenter>> target) {
-        LinkedList<LinkedList<ExpressCenter>> result = new LinkedList<LinkedList<ExpressCenter>>();
+    public LinkedList<LinkedList<ExpressCentre>> sortPathByDistance(LinkedList<LinkedList<ExpressCentre>> target) {
+        LinkedList<LinkedList<ExpressCentre>> result = new LinkedList<LinkedList<ExpressCentre>>();
         LinkedList<Double> distances = new LinkedList<Double>();
 
         int index = distances.size();
-        for (LinkedList<ExpressCenter> path : target) {
+        for (LinkedList<ExpressCentre> path : target) {
             double currDistance = calPathDistance(path);
             for (double distance : distances) {
                 if (distance > currDistance) {

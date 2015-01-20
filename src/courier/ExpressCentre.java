@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class ExpressCenter extends OvalPortrayal2D implements Steppable {
+public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected static final int MAX_PACKAGES = 10;
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
@@ -30,7 +30,7 @@ public class ExpressCenter extends OvalPortrayal2D implements Steppable {
     // the bigger the number, the more busy it is
     private int busy = 99;
 
-    public ExpressCenter(String name, int stationID, Int2D location, Map map) {
+    public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
         this.stationID = stationID;
         this.location = location;
@@ -47,7 +47,7 @@ public class ExpressCenter extends OvalPortrayal2D implements Steppable {
     }
 
     public Boolean isStation(Int2D loc) {
-        for (ExpressCenter s : map.allStations) {
+        for (ExpressCentre s : map.allStations) {
             if (s.location.equals(loc)) {
                 return true;
             }
@@ -55,8 +55,8 @@ public class ExpressCenter extends OvalPortrayal2D implements Steppable {
         return false;
     }
 
-    public ExpressCenter findStationByLoc(Int2D loc) {
-        for (ExpressCenter s : map.allStations) {
+    public ExpressCentre findStationByLoc(Int2D loc) {
+        for (ExpressCentre s : map.allStations) {
             if (s.location.equals(loc)) {
                 return s;
             }
@@ -64,8 +64,8 @@ public class ExpressCenter extends OvalPortrayal2D implements Steppable {
         return null;
     }
 
-    public ExpressCenter findStationByID(int id) {
-        for (ExpressCenter s : map.allStations) {
+    public ExpressCentre findStationByID(int id) {
+        for (ExpressCentre s : map.allStations) {
             if (s.stationID == id) {
                 return s;
             }
@@ -74,9 +74,9 @@ public class ExpressCenter extends OvalPortrayal2D implements Steppable {
     }
 
     //
-    public LinkedList<ExpressCenter> findNeighbours() {
-        LinkedList<ExpressCenter> result = new LinkedList<ExpressCenter>();
-        for (ExpressCenter s : map.allStations) {
+    public LinkedList<ExpressCentre> findNeighbours() {
+        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+        for (ExpressCentre s : map.allStations) {
             if (!s.equals(this)) {
                 if (map.tramLines.get(0).findTramLine(this, s) != null)
                     result.add(s);
@@ -86,42 +86,42 @@ public class ExpressCenter extends OvalPortrayal2D implements Steppable {
     }
 
     // find all reachable station
-    public LinkedList<ExpressCenter> findAllReachableStations() {
-        LinkedList<ExpressCenter> neighbours = this.findNeighbours();
-        LinkedList<ExpressCenter> temp, result;
+    public LinkedList<ExpressCentre> findAllReachableStations() {
+        LinkedList<ExpressCentre> neighbours = this.findNeighbours();
+        LinkedList<ExpressCentre> temp, result;
 
         int size = neighbours.size();
-        result = (LinkedList<ExpressCenter>) neighbours.clone();
+        result = (LinkedList<ExpressCentre>) neighbours.clone();
         int previous = 0;
 
         while (previous < size) {
             previous = size;
-            for (ExpressCenter nb : neighbours) {
+            for (ExpressCentre nb : neighbours) {
                 temp = nb.findNeighbours();
                 result.removeAll(temp);
                 result.addAll(temp);
             }
-            neighbours = (LinkedList<ExpressCenter>) result.clone();
+            neighbours = (LinkedList<ExpressCentre>) result.clone();
             size = neighbours.size();
         }
         return result;
     }
 
-    public boolean reachable(ExpressCenter b) {
+    public boolean reachable(ExpressCentre b) {
         return this.findAllReachableStations().contains(b);
     }
 
     private void callCar() {
-        ExpressCenter expressCenter = findStationWithFreeCar();
-        if (expressCenter != null) {
+        ExpressCentre expressCentre = findStationWithFreeCar();
+        if (expressCentre != null) {
             carCallerSema--;
-            expressCenter.pToBeSent.add(new CarCaller(expressCenter, this, map));
-            System.out.println("Log: " + this + " has put a CarCaller in" + expressCenter + "...");
+            expressCentre.pToBeSent.add(new CarCaller(expressCentre, this, map));
+            System.out.println("Log: " + this + " has put a CarCaller in" + expressCentre + "...");
         }
     }
 
-    private ExpressCenter findStationWithFreeCar() {
-        for (ExpressCenter s : map.allStations) {
+    private ExpressCentre findStationWithFreeCar() {
+        for (ExpressCentre s : map.allStations) {
             if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
                 for (Car c : s.carPark) {
                     if (c.getCarrying().size() == 0) {
