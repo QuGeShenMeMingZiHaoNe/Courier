@@ -24,8 +24,8 @@ public class Map extends SimState {
     private int serialTramLineID = 1;
     private int serialCarID = 1;
     private int initNumOfCarsInStation = 10;
-    private int gridWidth = 180;
-    private int gridHeight = 180;
+    private int gridWidth = 2800;
+    private int gridHeight = 1800;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
 
     public double profit = 0;
@@ -59,17 +59,19 @@ public class Map extends SimState {
     }
 
     private void initExpressCenter() {
-        addExpressCentre("A", new Int2D(10, 40));
-        addExpressCentre("B", new Int2D(40, 50));
-        addExpressCentre("C", new Int2D(50, 66));
-        addExpressCentre("D", new Int2D(90, 50));
-        addExpressCentre("E", new Int2D(40, 60));
-        addExpressCentre("F", new Int2D(99, 99));
+        InitExpressCentre i = new InitExpressCentre(this);
+        i.initExpressCentre();
+//        addExpressCentre("A", new Int2D(10, 40));
+//        addExpressCentre("B", new Int2D(40, 50));
+//        addExpressCentre("C", new Int2D(50, 66));
+//        addExpressCentre("D", new Int2D(90, 50));
+//        addExpressCentre("E", new Int2D(40, 60));
+//        addExpressCentre("F", new Int2D(99, 99));
     }
 
 
 
-    private void addExpressCentre(String name, Int2D loc) {
+    public void addExpressCentre(String name, Int2D loc) {
         ExpressCentre expressCentre = new ExpressCentre(name, serialStationID, loc, this);
         expressCentres.add(expressCentre);
         schedule.scheduleRepeating(expressCentre);
