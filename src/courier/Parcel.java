@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat;
 public class Parcel {
     protected int parcelID;
     protected double weight;
-    protected Station from;
-    protected Station destination;
+    protected ExpressCenter from;
+    protected ExpressCenter destination;
     protected Map map;
     protected long releaseTime = System.currentTimeMillis();
 
-    Parcel(int parcelID, Station from, Station destination, double weight, Map map) {
+    Parcel(int parcelID, ExpressCenter from, ExpressCenter destination, double weight, Map map) {
         this.parcelID = parcelID;
         this.weight = weight;
         this.destination = destination;

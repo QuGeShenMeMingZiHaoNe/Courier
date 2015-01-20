@@ -20,7 +20,7 @@ public class MapGUI extends GUIState {
     private JFrame displayFrame;
     private SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
     private NetworkPortrayal2D tramLinePortrayal = new NetworkPortrayal2D();
-    private ImagePortrayal2D backGround ;
+    private ImagePortrayal2D backGround;
     private Image image;
 
 
@@ -68,7 +68,7 @@ public class MapGUI extends GUIState {
         mapGridPortrayal.setField(map.mapGrid);
 
 
-        // display of stations
+        // display of allStations
 //        mapGridPortrayal.setPortrayalForClass(
 //                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, 1));
 
@@ -88,7 +88,6 @@ public class MapGUI extends GUIState {
         tramLinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
 
 
-
         backGround = new ImagePortrayal2D(image);
 
         // reschedule the displayer
@@ -99,10 +98,11 @@ public class MapGUI extends GUIState {
 
     }
 
-    public Object getSimulationInspectedObject() { return state; }
+    public Object getSimulationInspectedObject() {
+        return state;
+    }
 
-    public Inspector getInspector()
-    {
+    public Inspector getInspector() {
         Inspector i = super.getInspector();
         i.setVolatile(true);
         return i;

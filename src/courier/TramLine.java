@@ -9,15 +9,15 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class TramLine implements Steppable {
-    protected Station a;
-    protected Station b;
+    protected ExpressCenter a;
+    protected ExpressCenter b;
     protected int tramLineID;
     protected Map map;
 
     // record of all the cars on the tram line
     protected LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
     // whom is controlling the traffic
-    protected Station trafficLightOccupant;
+    protected ExpressCenter trafficLightOccupant;
     protected Car currLeavingCar;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
     private int requirementThreshold = 1;
@@ -27,7 +27,7 @@ public class TramLine implements Steppable {
     private boolean clearingTheRoad = false;
 
 
-    public TramLine(Station a, Station b, int tramLineID, Map map) {
+    public TramLine(ExpressCenter a, ExpressCenter b, int tramLineID, Map map) {
         if (a.stationID < b.stationID) {
             this.a = a;
             this.b = b;
@@ -47,13 +47,13 @@ public class TramLine implements Steppable {
     }
 
     // return each coordinates of the path from neighbour station a to b
-    public LinkedList<Int2D> getStepsNB(Station a, Station b) {
+    public LinkedList<Int2D> getStepsNB(ExpressCenter a, ExpressCenter b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
         if (a.equals(b)) {
             return result;
         }
-        Station c = null;
+        ExpressCenter c = null;
 
         if (a.stationID < b.stationID) {
             result = buildPath(a, b);
@@ -74,7 +74,7 @@ public class TramLine implements Steppable {
     }
 
     // the helper function of getStepsNB
-    private LinkedList<Int2D> buildPath(Station a, Station b) {
+    private LinkedList<Int2D> buildPath(ExpressCenter a, ExpressCenter b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
         int xDiff, yDiff, intXStep, intYStep;
@@ -104,14 +104,14 @@ public class TramLine implements Steppable {
     }
 
     // return the index of given tram line in map.tramlines
-    private int findTramLineIndexNB(Station a, Station b) {
+    private int findTramLineIndexNB(ExpressCenter a, ExpressCenter b) {
         int result = -1;
 
         // if a== b
         if (a.equals(b))
             return result;
 
-        Station c;
+        ExpressCenter c;
         TramLine temp;
         if (a.stationID < b.stationID) {
             for (int i = 0; i < map.tramLines.size(); i++) {
@@ -136,7 +136,7 @@ public class TramLine implements Steppable {
     }
 
     // find the given tram line in map.tramlines
-    public TramLine findTramLine(Station a, Station b) {
+    public TramLine findTramLine(ExpressCenter a, ExpressCenter b) {
 
         if (a == null || b == null) return null;
         if (a.equals(b)) return null;
@@ -149,12 +149,12 @@ public class TramLine implements Steppable {
     }
 
     // return the next tram line of the path from a to b,
-    public LinkedList<Station> getPathGlobal(Station a, Station b) {
+    public LinkedList<ExpressCenter> getPathGlobal(ExpressCenter a, ExpressCenter b) {
 
         // a and b are neighbour
         int index = findTramLineIndexNB(a, b);
         if (index >= 0) {
-            LinkedList<Station> result = new LinkedList<Station>();
+            LinkedList<ExpressCenter> result = new LinkedList<ExpressCenter>();
             result.add(a);
             result.add(b);
             return result;
@@ -201,7 +201,7 @@ public class TramLine implements Steppable {
         // TODO move this path searcher into constructor;
         PathSearcher pathSearcher = new PathSearcher(map);
         // find path using breadth first search
-        LinkedList<LinkedList<Station>> paths = pathSearcher.findAllPossiblePath(a, b);
+        LinkedList<LinkedList<ExpressCenter>> paths = pathSearcher.findAllPossiblePath(a, b);
         // sort path by distance in ascending order
         if (paths.size() > 1)
             paths = pathSearcher.sortPathByDistance(paths);
@@ -215,7 +215,7 @@ public class TramLine implements Steppable {
 
     // try to get the traffic control, if the quota of the other end station has ran out
     // or the current holder's car park is empty.
-    public void tryOccupyTraffic(Station demander) {
+    public void tryOccupyTraffic(ExpressCenter demander) {
         if (clearingTheRoad) {
             if (roadClear()) {
                 clearingTheRoad = false;
@@ -242,7 +242,7 @@ public class TramLine implements Steppable {
     }
 
     // the holder station of tram line has no car want to come into asker station
-    private boolean noCarIsComing(Station b, Station a) {
+    private boolean noCarIsComing(ExpressCenter b, ExpressCenter a) {
         if (b.carPark == null) return true;
 
         for (Car c : b.carPark) {
@@ -259,12 +259,12 @@ public class TramLine implements Steppable {
     }
 
     // return if the asker is the controller
-    public boolean isController(Station asker) {
+    public boolean isController(ExpressCenter asker) {
         return asker.equals(trafficLightOccupant);
     }
 
     // return the condition of the car to leave the station
-    public boolean okToLeave(Station asker) {
+    public boolean okToLeave(ExpressCenter asker) {
         return !clearingTheRoad && trafficLightOccupant.equals(asker);
     }
 

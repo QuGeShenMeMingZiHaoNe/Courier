@@ -17,18 +17,18 @@ public class Car extends OvalPortrayal2D implements Steppable {
     public Shape shape;
     protected int carID;
     protected int spaceRemaining = maxSpace;
-    private LinkedList<Parcel> carrying = new LinkedList<Parcel>();
     protected int speed;
     protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
-    protected Station stationFrom;
-    protected Station stationTo;
+    protected ExpressCenter stationFrom;
+    protected ExpressCenter stationTo;
     protected Int2D location;
     protected Map map;
     Ellipse2D.Double preciseEllipse = new Ellipse2D.Double();
+    private LinkedList<Parcel> carrying = new LinkedList<Parcel>();
     private int stepCount = 0;
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
-    private LinkedList<Station> globalPath;
+    private LinkedList<ExpressCenter> globalPath;
     private int basicCarDisplaySize = 2;
 
     public Car(int carID, Int2D location, Map map) {
@@ -37,11 +37,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
         this.map = map;
     }
 
-    public int getCurrLoading(){
-        return maxSpace-spaceRemaining;
+    public int getCurrLoading() {
+        return maxSpace - spaceRemaining;
     }
 
-    public LinkedList<Parcel> getCarrying(){
+    public LinkedList<Parcel> getCarrying() {
         return carrying;
     }
 
@@ -50,7 +50,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     }
 
     public boolean loadParcel() {
-        Station s = currStation();
+        ExpressCenter s = currStation();
         if (s.pToBeSent.size() == 0) return false;
         LinkedList<Parcel> parcelsCouldBeLoad = new LinkedList<Parcel>();
         parcelLoader(parcelsCouldBeLoad);
@@ -60,7 +60,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     // unload parcel
     public void unloadParcel() {
-        Station s = currStation();
+        ExpressCenter s = currStation();
 
         List<Parcel> unload = parcelsToUnload(s);
         // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
@@ -78,7 +78,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     }
 
     // for the parcels that have arrived the final destination
-    private List<Parcel> parcelsToUnload(Station s) {
+    private List<Parcel> parcelsToUnload(ExpressCenter s) {
         List<Parcel> toUnload = new LinkedList<Parcel>();
         LinkedList<Parcel> carCallerToUnload = new LinkedList<Parcel>();
         for (Parcel p : carrying) {
@@ -102,7 +102,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     // arrive carpark
     public void arriveStation() {
         // get current statition
-        Station currStation = currStation();
+        ExpressCenter currExpressCenter = currStation();
 
         // remove the car from the road
         TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
@@ -111,7 +111,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             tramLine.carsOnTramLine.remove(this);
 
         pathLocal.clear();
-        this.stationFrom = currStation;
+        this.stationFrom = currExpressCenter;
         stationTo = null;
         stepCount = 0;
         unloadParcel();
@@ -119,8 +119,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
         hasArrived = true;
 
         // if the car has not enter the station
-        if (!currStation.carPark.contains(this))
-            currStation.carPark.add(this);
+        if (!currExpressCenter.carPark.contains(this))
+            currExpressCenter.carPark.add(this);
 
         // if there are something to be delivered
         if (!carrying.isEmpty()) {
@@ -129,13 +129,13 @@ public class Car extends OvalPortrayal2D implements Steppable {
             Parcel p = carrying.get(0);
 
             // find the final destination of the parcel as target Station.
-            Station targetStation = map.stations.get(0).findStationByID(p.destination.stationID);
+            ExpressCenter targetStation = map.allStations.get(0).findStationByID(p.destination.stationID);
 
             // set the current station as station from, the next station as station to.
-            setPathGlobal(currStation, targetStation);
+            setPathGlobal(currExpressCenter, targetStation);
 
             // calculate the path from current station to the next station
-            setPathLocal(currStation, stationTo);
+            setPathLocal(currExpressCenter, stationTo);
 
         }
     }
@@ -145,13 +145,13 @@ public class Car extends OvalPortrayal2D implements Steppable {
         hasLeaved = true;
     }
 
-    private void setPathLocal(Station from, Station to) {
+    private void setPathLocal(ExpressCenter from, ExpressCenter to) {
         pathLocal = map.tramLines.get(0).getStepsNB(from, to);
     }
 
-    private void setPathGlobal(Station from, Station to) {
+    private void setPathGlobal(ExpressCenter from, ExpressCenter to) {
         TramLine tl = map.tramLines.get(0);
-        Station currStation = currStation();
+        ExpressCenter currExpressCenter = currStation();
 
         if (globalPath == null) {
             globalPath = tl.getPathGlobal(from, to);
@@ -160,30 +160,30 @@ public class Car extends OvalPortrayal2D implements Steppable {
         // the station is the next station to not the final destination.
         // TODO don't need null condition??
         if (globalPath == null) {
-            stationTo = currStation;
+            stationTo = currExpressCenter;
         } else {
-            stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
+            stationTo = globalPath.get(globalPath.indexOf(currExpressCenter) + 1);
         }
 
     }
 
-    private Station currStation() {
-        Station s;
+    private ExpressCenter currStation() {
+        ExpressCenter s;
 //        if(map.garages.size()>0) {
 //            s = map.garages.get(0).findGarageByLoc(this.location);
 //            if(s != null)
 //                return s;
 //        }
-        s = map.stations.get(0).findStationByLoc(this.location);
+        s = map.allStations.get(0).findStationByLoc(this.location);
         return s;
     }
 
     // calculate what parcel can be put into the car with the given loading weight
     private void parcelLoader(LinkedList<Parcel> parcelsCouldBeLoad) {
         boolean newParcelAdded = false;
-        Station currStation = currStation();
+        ExpressCenter currExpressCenter = currStation();
 
-        for (Parcel p : currStation.pToBeSent) {
+        for (Parcel p : currExpressCenter.pToBeSent) {
             if (p.weight <= spaceRemaining) {
                 spaceRemaining -= p.weight;
                 newParcelAdded = true;
@@ -193,7 +193,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             }
         }
         if (newParcelAdded) {
-            currStation.pToBeSent.remove(parcelsCouldBeLoad.getLast());
+            currExpressCenter.pToBeSent.remove(parcelsCouldBeLoad.getLast());
             parcelLoader(parcelsCouldBeLoad);
         }
     }
@@ -246,8 +246,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
     @Override
     public void step(SimState state) {
 
-        Station currStation = currStation();
-        if (currStation != null) {
+        ExpressCenter currExpressCenter = currStation();
+        if (currExpressCenter != null) {
             if (!hasArrived) {
                 arriveStation();
                 // this return is for waite one step after arrival
@@ -259,7 +259,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             }
 
             // if the car has not carrying any thing that it don't need to leave the station
-            if(carrying.isEmpty())
+            if (carrying.isEmpty())
                 return;
 
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
@@ -270,7 +270,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             }
 
             if (!hasLeaved) {
-                if (tramLine.okToLeave(currStation)) {
+                if (tramLine.okToLeave(currExpressCenter)) {
                     // leave the car park one by one -- FIFO
                     if (tramLine.currLeavingCar != null) {
                         return;
@@ -280,7 +280,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     tramLine.carsOnTramLine.add(this);
                     return;
                 } else {
-                    tramLine.tryOccupyTraffic(currStation);
+                    tramLine.tryOccupyTraffic(currExpressCenter);
                     return;
                 }
             }
@@ -290,12 +290,12 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 if (tramLine.currLeavingCar.equals(this)) {
                     tramLine.currLeavingCar = null;
                 }
-                if (tramLine.a.equals(currStation)) {
+                if (tramLine.a.equals(currExpressCenter)) {
                     tramLine.quota1--;
                 } else {
                     tramLine.quota2--;
                 }
-                currStation.carPark.remove(this);
+                currExpressCenter.carPark.remove(this);
                 hasArrived = false;
                 hasLeaved = false;
             }
@@ -308,7 +308,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             // if the next step location has been occupied then waite
 //            for (Car c : map.cars) {
-//                if ( c.location.equals(nextStep)&&(!map.stations.get(0).isStation(nextStep)))
+//                if ( c.location.equals(nextStep)&&(!map.allStations.get(0).isStation(nextStep)))
 //                    return;
 //            }
 

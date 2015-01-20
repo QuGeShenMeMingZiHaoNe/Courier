@@ -4,7 +4,6 @@ import sim.app.networktest.NetworkTest;
 import sim.engine.SimState;
 import sim.engine.Steppable;
 import sim.portrayal.DrawInfo2D;
-import sim.portrayal.SimplePortrayal2D;
 import sim.portrayal.simple.OvalPortrayal2D;
 import sim.util.Int2D;
 
@@ -13,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Station extends OvalPortrayal2D implements Steppable {
+public class ExpressCenter extends OvalPortrayal2D implements Steppable {
     protected static final int MAX_PACKAGES = 10;
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
@@ -23,22 +22,22 @@ public class Station extends OvalPortrayal2D implements Steppable {
     protected Map map;
     // number of car caller of a station can have;
     protected int carCallerSema = 1;
+    protected boolean addingParcels = false;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     private String name;
     // busy indicates how busy the station is, the number should between 100 and 0,
     // the bigger the number, the more busy it is
     private int busy = 99;
-    protected boolean addingParcels = false;
 
-    public Station(String name, int stationID, Int2D location, Map map) {
+    public ExpressCenter(String name, int stationID, Int2D location, Map map) {
         this.name = name;
         this.stationID = stationID;
         this.location = location;
         this.map = map;
     }
 
-    public List<Parcel> getpToBeSent(){
+    public List<Parcel> getpToBeSent() {
         return pToBeSent;
     }
 
@@ -48,7 +47,7 @@ public class Station extends OvalPortrayal2D implements Steppable {
     }
 
     public Boolean isStation(Int2D loc) {
-        for (Station s : map.stations) {
+        for (ExpressCenter s : map.allStations) {
             if (s.location.equals(loc)) {
                 return true;
             }
@@ -56,8 +55,8 @@ public class Station extends OvalPortrayal2D implements Steppable {
         return false;
     }
 
-    public Station findStationByLoc(Int2D loc) {
-        for (Station s : map.stations) {
+    public ExpressCenter findStationByLoc(Int2D loc) {
+        for (ExpressCenter s : map.allStations) {
             if (s.location.equals(loc)) {
                 return s;
             }
@@ -65,8 +64,8 @@ public class Station extends OvalPortrayal2D implements Steppable {
         return null;
     }
 
-    public Station findStationByID(int id) {
-        for (Station s : map.stations) {
+    public ExpressCenter findStationByID(int id) {
+        for (ExpressCenter s : map.allStations) {
             if (s.stationID == id) {
                 return s;
             }
@@ -75,9 +74,9 @@ public class Station extends OvalPortrayal2D implements Steppable {
     }
 
     //
-    public LinkedList<Station> findNeighbours() {
-        LinkedList<Station> result = new LinkedList<Station>();
-        for (Station s : map.stations) {
+    public LinkedList<ExpressCenter> findNeighbours() {
+        LinkedList<ExpressCenter> result = new LinkedList<ExpressCenter>();
+        for (ExpressCenter s : map.allStations) {
             if (!s.equals(this)) {
                 if (map.tramLines.get(0).findTramLine(this, s) != null)
                     result.add(s);
@@ -87,45 +86,42 @@ public class Station extends OvalPortrayal2D implements Steppable {
     }
 
     // find all reachable station
-    public LinkedList<Station> findAllReachableStations() {
-        LinkedList<Station> neighbours = this.findNeighbours();
-        LinkedList<Station> temp, result;
+    public LinkedList<ExpressCenter> findAllReachableStations() {
+        LinkedList<ExpressCenter> neighbours = this.findNeighbours();
+        LinkedList<ExpressCenter> temp, result;
 
         int size = neighbours.size();
-        result = (LinkedList<Station>) neighbours.clone();
+        result = (LinkedList<ExpressCenter>) neighbours.clone();
         int previous = 0;
 
         while (previous < size) {
             previous = size;
-            for (Station nb : neighbours) {
+            for (ExpressCenter nb : neighbours) {
                 temp = nb.findNeighbours();
                 result.removeAll(temp);
                 result.addAll(temp);
             }
-            neighbours = (LinkedList<Station>) result.clone();
+            neighbours = (LinkedList<ExpressCenter>) result.clone();
             size = neighbours.size();
         }
         return result;
     }
 
-    public boolean reachable(Station b) {
+    public boolean reachable(ExpressCenter b) {
         return this.findAllReachableStations().contains(b);
     }
 
     private void callCar() {
-        Station station = findStationWithFreeCar();
-        if (station != null) {
+        ExpressCenter expressCenter = findStationWithFreeCar();
+        if (expressCenter != null) {
             carCallerSema--;
-            station.pToBeSent.add(new CarCaller(station, this, map));
-            System.out.println("Log: " + this + " has put a CarCaller in" + station + "...");
+            expressCenter.pToBeSent.add(new CarCaller(expressCenter, this, map));
+            System.out.println("Log: " + this + " has put a CarCaller in" + expressCenter + "...");
         }
     }
 
-    private Station findStationWithFreeCar() {
-        LinkedList<Station> searchStations = new LinkedList<Station>();
-        searchStations.addAll(map.stations);
-        searchStations.addAll(map.garages);
-        for (Station s : searchStations) {
+    private ExpressCenter findStationWithFreeCar() {
+        for (ExpressCenter s : map.allStations) {
             if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
                 for (Car c : s.carPark) {
                     if (c.getCarrying().size() == 0) {
@@ -140,10 +136,10 @@ public class Station extends OvalPortrayal2D implements Steppable {
     @Override
     public void step(SimState state) {
         // if the car park is empty, has package to be sent, and the car caller is empty
-        if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0 && findNeighbours().size()>0)
+        if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0 && findNeighbours().size() > 0)
             callCar();
 
-        if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && findNeighbours().size()>0) {
+        if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && findNeighbours().size() > 0) {
             map.addParcel(this);
             map.parcelTotal++;
         }
@@ -170,7 +166,7 @@ public class Station extends OvalPortrayal2D implements Steppable {
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);
-        graphics.drawString("S:"+name+" C:"+carPark.size()+" P:"+pToBeSent.size(), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
+        graphics.drawString("S:" + name + " C:" + carPark.size() + " P:" + pToBeSent.size(), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
     }
 
 }
