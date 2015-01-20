@@ -23,7 +23,7 @@ public class Map extends SimState {
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    private int initNumOfCarsInStation = 10;
+    private int initNumOfCarsInStation = 100;
     private int gridWidth = 2800;
     private int gridHeight = 1800;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
@@ -83,7 +83,8 @@ public class Map extends SimState {
     // add garage with number of cars
     private void addGarage() {
         Int2D loc = new Int2D(90, 90);
-        Garage g = new Garage("garage", 99, loc, this);
+        Garage g = new Garage("garage",serialStationID , loc, this);
+        serialStationID++;
         mapGrid.setObjectLocation(g, loc);
 
         Car car;
@@ -152,7 +153,7 @@ public class Map extends SimState {
         do {
             next = random.nextInt(expressCentres.size());
         }
-        while (!(expressCentres.get(next).stationID != currExpressCentre.stationID && currExpressCentre.reachable(expressCentres.get(next))));
+        while (!(!expressCentres.get(next).equals(currExpressCentre)&& currExpressCentre.reachable(expressCentres.get(next))));
 
         currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
         serialParcelID++;

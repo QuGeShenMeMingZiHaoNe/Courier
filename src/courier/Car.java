@@ -83,7 +83,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         List<Parcel> toUnload = new LinkedList<Parcel>();
         LinkedList<Parcel> carCallerToUnload = new LinkedList<Parcel>();
         for (Parcel p : carrying) {
-            if (p.destination.stationID == s.stationID) {
+            if (p.destination.equals(s)) {
                 // TODO: does car caller earn money??
                 map.profit+=p.getProfit();
 

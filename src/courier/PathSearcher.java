@@ -33,14 +33,13 @@ public class PathSearcher {
         if (neighbours.size() == 0)
             return;
 
-        boolean sizeIncrease = false;
+        // TODO stop calculating by distance
 
         for (ExpressCentre expressCentre : neighbours) {
             if (!result.contains(expressCentre)) {
                 // make a copy of result
                 LinkedList<ExpressCentre> copy = (LinkedList<ExpressCentre>) result.clone();
                 copy.add(expressCentre);
-
                 // if we are at the final destination
                 if (expressCentre.equals(to)) {
                     paths.add(copy);

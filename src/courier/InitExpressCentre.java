@@ -93,7 +93,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Watford Junction", new Int2D(648, 127));
         map.addExpressCentre("West Ruislip", new Int2D(239, 283));
         map.addExpressCentre("Bushey", new Int2D(712, 193));
-        map.addExpressCentre("Carpenders Park", new Int2D(656, 226));
+//        map.addExpressCentre("Carpenders Park", new Int2D(656, 226));
         map.addExpressCentre("Hatch End", new Int2D(695, 259));
         map.addExpressCentre("North Wembley", new Int2D(653, 470));
         map.addExpressCentre("West Brompton", new Int2D(753, 1173));
