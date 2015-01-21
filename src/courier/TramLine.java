@@ -48,6 +48,14 @@ public class TramLine implements Steppable {
         }
     }
 
+    public LinkedList<Car> getCarsOnTramLine(){
+        return carsOnTramLine;
+    }
+
+    public ExpressCentre getTrafficLightOccupant(){
+        return trafficLightOccupant;
+    }
+
     // return each coordinates of the path from neighbour station a to b
     public LinkedList<Int2D> getPathBetweenNBStations(ExpressCentre a, ExpressCentre b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
@@ -208,7 +216,7 @@ public class TramLine implements Steppable {
     }
 
     // the holder station of tram line has no car want to come into asker station
-    private boolean noCarIsComing(ExpressCentre to, ExpressCentre from) {
+    private boolean noCarIsComing(ExpressCentre from,ExpressCentre to) {
 //        if (to.carPark == null) return true;
 
         for (Car c : from.carPark) {

@@ -30,6 +30,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private boolean hasLeaved = false;
     private LinkedList<ExpressCentre> globalPath;
     private int basicCarDisplaySize = 2;
+    private boolean moving = true;
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -109,7 +110,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     public void arriveStation() {
         // get current statition
         ExpressCentre currStation = currStation();
-
+        moving = false;
         // remove the car from the road
         TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
@@ -311,7 +312,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
 
 
-        if (!carrying.isEmpty()) {
+//        if (!carrying.isEmpty()) {
             // get the next step location
             Int2D nextStep = this.pathLocal.get(stepCount);
 
@@ -324,7 +325,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             this.location = nextStep;
             map.mapGrid.setObjectLocation(this, nextStep);
             stepCount++;
-        }
+//        }
     }
 }
 

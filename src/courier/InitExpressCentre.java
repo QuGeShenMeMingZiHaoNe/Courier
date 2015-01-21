@@ -319,7 +319,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Bond Street", new Int2D(1069, 883));
         map.addExpressCentre("Tower Hill", new Int2D(1670, 1025));
         map.addExpressCentre("Westminster", new Int2D(1192, 1118));
-        map.addExpressCentre("Tottenham Court Road", new Int2D(1248, 926));
+        map.addExpressCentre("Tottenham Court Road", new Int2D(1260, 900));
         map.addExpressCentre("Piccadilly Circus", new Int2D(1205, 999));
         map.addExpressCentre("Charing Cross", new Int2D(1263, 1045));
         map.addExpressCentre("Holborn", new Int2D(1395, 916));
