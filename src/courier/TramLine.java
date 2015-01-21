@@ -107,7 +107,7 @@ public class TramLine implements Steppable {
     }
 
     // return the index of given tram line in map.tramlines
-    private int findTramLineIndexByNB(ExpressCentre a, ExpressCentre b) {
+    public int findTramLineIndexByNB(ExpressCentre a, ExpressCentre b) {
         int result = -1;
 
         // if a== b

@@ -28,7 +28,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public String name;
     // busy indicates how busy the station is, the number should between 100 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 20;
+    private int busy = 5;
     private int count = 0;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
@@ -91,36 +91,10 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     //
     public LinkedList<ExpressCentre> findNeighbours() {
-//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-//        for (ExpressCentre s : map.allStations) {
-//            if (!s.equals(this)) {
-//                if(map.tramLines.size()>0) {
-//                    if (map.tramLines.get(0).findTramLine(this, s) != null)
-//                        result.add(s);
-//                }
-//            }
-//        }
-//        return result;
-
-//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-//        result.addAll(neighbours);
-//        return result;
         return neighbours;
     }
 
     public Boolean hasNeighbour() {
-//
-//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-//        for (ExpressCentre s : map.allStations) {
-//            if (!s.equals(this)) {
-//                if(map.tramLines.size()>0) {
-//                    if (map.tramLines.get(0).findTramLine(this, s) != null)
-//                        return true;
-//                }
-//            }
-//        }
-//        return false;
-
      return neighbours.size()>0;
     }
 
@@ -138,13 +112,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
             for (ExpressCentre nb : neighbours) {
                 temp = nb.findNeighbours();
                 // TODO improve performance -> removeAll
-                for(ExpressCentre tempNB : neighbours){
-                    if(tempNB.equals(b))
+                    if(temp.contains(b))
                         return true;
-
-//                    if(!temp.contains(tempNB))
-//                        result.add(tempNB);
-                }
                 result.removeAll(temp);
                 result.addAll(temp);
             }
@@ -157,11 +126,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public boolean reachable(ExpressCentre b) {
         return this.reachableHelper(b);
     }
-
-//    public boolean reachable(ExpressCentre b) {
-//    PathSearcher ps = new PathSearcher(map);
-//        return !(ps.findAllPossiblePath(this,b).isEmpty());
-//    }
 
 
     private void callCar() {
@@ -185,6 +149,19 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         }
         return null;
     }
+
+//    private ExpressCentre findStationWithFreeCar() {
+//        for (ExpressCentre s : map.allStations) {
+//            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
+//                for (Car c : s.carPark) {
+//                    if (c.getCarrying().size() == 0) {
+//                        return s;
+//                    }
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
     @Override
     public void step(SimState state) {
