@@ -316,12 +316,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
             // get the next step location
             Int2D nextStep = this.pathLocal.get(stepCount);
 
-            // if the next step location has been occupied then waite
-//            for (Car c : map.cars) {
-//                if ( c.location.equals(nextStep)&&(!map.allStations.get(0).isStation(nextStep)))
-//                    return;
-//            }
-
             // move
             while (this.location.equals(nextStep)) {
                 stepCount++;

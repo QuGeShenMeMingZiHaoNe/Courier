@@ -125,7 +125,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
     // find all reachable station
-    public LinkedList<ExpressCentre> findAllReachableStations() {
+    public boolean reachableHelper(ExpressCentre b) {
         LinkedList<ExpressCentre> neighbours = this.findNeighbours();
         LinkedList<ExpressCentre> temp, result;
 
@@ -137,18 +137,32 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
             previous = size;
             for (ExpressCentre nb : neighbours) {
                 temp = nb.findNeighbours();
+                // TODO improve performance -> removeAll
+                for(ExpressCentre tempNB : neighbours){
+                    if(tempNB.equals(b))
+                        return true;
+
+//                    if(!temp.contains(tempNB))
+//                        result.add(tempNB);
+                }
                 result.removeAll(temp);
                 result.addAll(temp);
             }
             neighbours = (LinkedList<ExpressCentre>) result.clone();
             size = neighbours.size();
         }
-        return result;
+        return false;
     }
 
     public boolean reachable(ExpressCentre b) {
-        return this.findAllReachableStations().contains(b);
+        return this.reachableHelper(b);
     }
+
+//    public boolean reachable(ExpressCentre b) {
+//    PathSearcher ps = new PathSearcher(map);
+//        return !(ps.findAllPossiblePath(this,b).isEmpty());
+//    }
+
 
     private void callCar() {
         ExpressCentre expressCentre = findStationWithFreeCar();
@@ -174,7 +188,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
-        if(count>100) {
+//        if(count>100) {
 //            if the car park is empty, has package to be sent, and the car caller is empty
             if(hasNeighbour()) {
                 if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
@@ -185,9 +199,9 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
                     map.parcelTotal++;
                 }
             }
-            count=0;
-        }
-        count++;
+//            count=0;
+//        }
+//        count++;
     }
 
     private boolean genParcelOrNot() {
