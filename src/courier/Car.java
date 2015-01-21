@@ -65,7 +65,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
         List<Parcel> unload = parcelsToUnload(s);
         // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
-        if (unload.size() > 0 && unload.get(0).equals(carrying.get(0))) {
+        if (unload.size() > 0) {
             globalPath = null;
         }
         carrying.removeAll(unload);
@@ -165,11 +165,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
         // the station is the next station to not the final destination.
         // TODO don't need null condition??
-        if (globalPath == null) {
+//        if (globalPath == null) {
             stationTo = currStation;
-        } else {
+//        } else {
             stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
-        }
+//        }
 
     }
 
@@ -251,11 +251,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
-        if (!(currStation() instanceof Garage)) {
-            Int2D d = new Int2D(1, 1);
-            map.profit -= d.distance(new Int2D(2, 2));
-        }
-
+//        if (!(currStation() instanceof Garage)) {
+//            Int2D d = new Int2D(1, 1);
+//            map.profit -= d.distance(new Int2D(2, 2));
+//        }
         ExpressCentre currStation = currStation();
         if (currStation != null) {
             if (!hasArrived) {
@@ -282,10 +281,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if (!hasLeaved) {
                 if (tramLine.okToLeave(currStation)) {
                     // leave the car park one by one -- FIFO
-                    if (tramLine.currLeavingCar != null) {
+                    if (tramLine.currLeavingCars != null) {
                         return;
                     }
-                    tramLine.currLeavingCar = this;
+                    tramLine.currLeavingCars = this;
                     leaveStation();
                     tramLine.carsOnTramLine.add(this);
                     return;
@@ -297,8 +296,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             // delay one step of leaving the car park, Truly leave
             if (hasLeaved) {
-                if (tramLine.currLeavingCar.equals(this)) {
-                    tramLine.currLeavingCar = null;
+                if (tramLine.currLeavingCars.equals(this)) {
+                    tramLine.currLeavingCars = null;
                 }
                 if (tramLine.a.equals(currStation)) {
                     tramLine.quota1--;
