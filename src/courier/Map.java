@@ -20,7 +20,7 @@ public class Map extends SimState {
     protected int parcelTotal = 0;
 
     public static final int initNumOfParcelsInStation = 3;
-    public static final int initNumOfCarsInStation = 30;
+    public static final int initNumOfCarsInStation = 10;
 
     protected int serialCarCallerID = 1;
     private int serialStationID = 1;

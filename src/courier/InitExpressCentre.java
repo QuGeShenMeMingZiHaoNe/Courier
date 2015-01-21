@@ -295,7 +295,6 @@ public class InitExpressCentre {
         map.addExpressCentre("Shepherd's Bush Market", new Int2D(650, 986));
         map.addExpressCentre("Goldhawk Road", new Int2D(654, 1032));
         map.addExpressCentre("Hammersmith", new Int2D(664, 1070));
-        // map.addExpressCentre("Hammersmith", new Int2D(664, 1070));
         map.addExpressCentre("Bayswater", new Int2D(942, 835));
         map.addExpressCentre("Warren Street", new Int2D(1225, 783));
         map.addExpressCentre("Aldgate", new Int2D(1688, 944));

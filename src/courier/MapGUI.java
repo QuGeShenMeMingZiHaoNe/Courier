@@ -117,20 +117,6 @@ public class MapGUI extends GUIState {
 
         c.registerFrame(displayFrame);
 
-
-//        try {
-//            File image2 = new File("/Users/daniel/Documents/Courier/src/media/tubmap.png");
-//            image = ImageIO.read(image2);
-//            displayFrame.setContentPane(new JPanel(new BorderLayout()) {
-//                @Override
-//                public void paintComponent(Graphics g) {
-//                    g.drawImage(image, 0, 0, null);
-//                }
-//            });
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-
         displayFrame.setVisible(true);
         display.setBackdrop(Color.LIGHT_GRAY);
 
