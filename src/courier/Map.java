@@ -20,7 +20,7 @@ public class Map extends SimState {
     protected int parcelTotal = 0;
 
     public static final int initNumOfParcelsInStation = 3;
-    public static final int initNumOfCarsInStation = 100;
+    public static final int initNumOfCarsInStation = 30;
 
     protected int serialCarCallerID = 1;
     private int serialStationID = 1;
@@ -133,7 +133,8 @@ public class Map extends SimState {
     public void addTramLine(String line, String a, String b) {
         ExpressCentre ec1 = expressCentres.getFirst().findStationByName(a);
         ExpressCentre ec2 = expressCentres.getFirst().findStationByName(b);
-
+        ec1.neighbours.add(ec2);
+        ec2.neighbours.add(ec1);
         if(ec1 != null && ec2!=null) {
             TramLine tl = new TramLine(line, ec1, ec2, serialTramLineID, this);
             tramLines.add(tl);
@@ -142,6 +143,8 @@ public class Map extends SimState {
     }
 
     public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
+        a.neighbours.add(b);
+        b.neighbours.add(a);
         tramLines.add(new TramLine(line, a, b, serialTramLineID, this));
         serialTramLineID++;
     }

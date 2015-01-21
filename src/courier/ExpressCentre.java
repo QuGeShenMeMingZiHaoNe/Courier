@@ -19,6 +19,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected Int2D location;
     protected List<Parcel> pToBeSent = new LinkedList<Parcel>();
     protected List<Parcel> pArrived = new LinkedList<Parcel>();
+    protected LinkedList<ExpressCentre> neighbours = new LinkedList<ExpressCentre>();
     protected Map map;
     // number of car caller of a station can have;
     protected int carCallerSema = 1;
@@ -90,29 +91,37 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     //
     public LinkedList<ExpressCentre> findNeighbours() {
-        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-        for (ExpressCentre s : map.allStations) {
-            if (!s.equals(this)) {
-                if(map.tramLines.size()>0) {
-                    if (map.tramLines.get(0).findTramLine(this, s) != null)
-                        result.add(s);
-                }
-            }
-        }
-        return result;
+//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+//        for (ExpressCentre s : map.allStations) {
+//            if (!s.equals(this)) {
+//                if(map.tramLines.size()>0) {
+//                    if (map.tramLines.get(0).findTramLine(this, s) != null)
+//                        result.add(s);
+//                }
+//            }
+//        }
+//        return result;
+
+//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+//        result.addAll(neighbours);
+//        return result;
+        return neighbours;
     }
 
     public Boolean hasNeighbour() {
-        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-        for (ExpressCentre s : map.allStations) {
-            if (!s.equals(this)) {
-                if(map.tramLines.size()>0) {
-                    if (map.tramLines.get(0).findTramLine(this, s) != null)
-                        return true;
-                }
-            }
-        }
-        return false;
+//
+//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+//        for (ExpressCentre s : map.allStations) {
+//            if (!s.equals(this)) {
+//                if(map.tramLines.size()>0) {
+//                    if (map.tramLines.get(0).findTramLine(this, s) != null)
+//                        return true;
+//                }
+//            }
+//        }
+//        return false;
+
+     return neighbours.size()>0;
     }
 
     // find all reachable station
@@ -166,13 +175,15 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     @Override
     public void step(SimState state) {
         if(count>100) {
-            // if the car park is empty, has package to be sent, and the car caller is empty
-            if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0 && findNeighbours().size() > 0)
-                callCar();
+//            if the car park is empty, has package to be sent, and the car caller is empty
+            if(hasNeighbour()) {
+                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
+                    callCar();
 
-            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && findNeighbours().size() > 0) {
-                map.addParcel(this);
-                map.parcelTotal++;
+                if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot()) {
+                    map.addParcel(this);
+                    map.parcelTotal++;
+                }
             }
             count=0;
         }
