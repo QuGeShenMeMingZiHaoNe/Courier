@@ -48,11 +48,11 @@ public class TramLine implements Steppable {
         }
     }
 
-    public LinkedList<Car> getCarsOnTramLine(){
+    public LinkedList<Car> getCarsOnTramLine() {
         return carsOnTramLine;
     }
 
-    public ExpressCentre getTrafficLightOccupant(){
+    public ExpressCentre getTrafficLightOccupant() {
         return trafficLightOccupant;
     }
 
@@ -216,7 +216,7 @@ public class TramLine implements Steppable {
     }
 
     // the holder station of tram line has no car want to come into asker station
-    private boolean noCarIsComing(ExpressCentre from,ExpressCentre to) {
+    private boolean noCarIsComing(ExpressCentre from, ExpressCentre to) {
 //        if (to.carPark == null) return true;
 
         for (Car c : from.carPark) {

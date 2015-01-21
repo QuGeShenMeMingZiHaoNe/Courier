@@ -26,7 +26,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected int carCallerSema = 1;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
-    // busy indicates how busy the station is, the number should between 100 and 0,
+    // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
     private int busy = 5;
     private int count = 0;
@@ -187,7 +187,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     private boolean genParcelOrNot() {
         Random random = new Random();
         // this number indicate how busy the station is
-        int j = random.nextInt(Math.abs(100 - busy));
+        int j = random.nextInt(Math.abs(1000 - busy));
 
         // if i is smaller than busy then generalize a parcles
         if (1 > j)

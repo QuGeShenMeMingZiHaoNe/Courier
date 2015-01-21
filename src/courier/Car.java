@@ -167,9 +167,9 @@ public class Car extends OvalPortrayal2D implements Steppable {
         // the station is the next station to not the final destination.
         // TODO don't need null condition??
 //        if (globalPath == null) {
-            stationTo = currStation;
+        stationTo = currStation;
 //        } else {
-            stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
+        stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
 //        }
 
     }
@@ -313,18 +313,18 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
 
 //        if (!carrying.isEmpty()) {
-            // get the next step location
-            Int2D nextStep = this.pathLocal.get(stepCount);
+        // get the next step location
+        Int2D nextStep = this.pathLocal.get(stepCount);
 
-            // move
-            while (this.location.equals(nextStep)) {
-                stepCount++;
-                nextStep = this.pathLocal.get(stepCount);
-            }
-
-            this.location = nextStep;
-            map.mapGrid.setObjectLocation(this, nextStep);
+        // move
+        while (this.location.equals(nextStep)) {
             stepCount++;
+            nextStep = this.pathLocal.get(stepCount);
+        }
+
+        this.location = nextStep;
+        map.mapGrid.setObjectLocation(this, nextStep);
+        stepCount++;
 //        }
     }
 }
