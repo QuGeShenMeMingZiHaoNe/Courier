@@ -27,9 +27,12 @@ public class Map extends SimState {
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    private int gridWidth = 2800;
-    private int gridHeight = 1800;
+    private  static final int gridWidth = 2800;
+    private  static final int gridHeight = 1800;
+    private static final Int2D centre = new Int2D(gridWidth/2,gridHeight/2);
+    private static final int distanceToCentre = 300;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
+
 
     public double profit = 0;
 //    public double retainedProfit = 0;
@@ -64,7 +67,7 @@ public class Map extends SimState {
 
 //         initCars();
 
-        initParcels();
+//        initParcels();
         initTramLineNet();
     }
 
@@ -82,20 +85,21 @@ public class Map extends SimState {
 
 
     public void addExpressCentre(String name, Int2D loc) {
-        Boolean b = true;
-        for(ExpressCentre e: expressCentres){
-            if(e.location.equals(loc))
-            {
-                b = false;
-                System.out.println(name+" and "+e.name+" has same location");
+        if(loc.distance(centre)<= distanceToCentre) {
+            Boolean b = true;
+            for (ExpressCentre e : expressCentres) {
+                if (e.location.equals(loc)) {
+                    b = false;
+                    System.out.println(name + " and " + e.name + " has same location");
+                }
             }
-        }
-        if(b) {
-            ExpressCentre expressCentre = new ExpressCentre(name, serialStationID, loc, this);
-            expressCentres.add(expressCentre);
-            schedule.scheduleRepeating(expressCentre);
-            mapGrid.setObjectLocation(expressCentre, loc);
-            serialStationID++;
+            if (b) {
+                ExpressCentre expressCentre = new ExpressCentre(name, serialStationID, loc, this);
+                expressCentres.add(expressCentre);
+                schedule.scheduleRepeating(expressCentre);
+                mapGrid.setObjectLocation(expressCentre, loc);
+                serialStationID++;
+            }
         }
     }
 
@@ -131,17 +135,20 @@ public class Map extends SimState {
     }
 
     public void addTramLine(String line, String a, String b) {
+
         ExpressCentre ec1 = expressCentres.getFirst().findStationByName(a);
         ExpressCentre ec2 = expressCentres.getFirst().findStationByName(b);
 
-        if(tramLines.getFirst().findTramLineIndexByNB(ec1,ec2)<0) {
-            ec1.neighbours.add(ec2);
-            ec2.neighbours.add(ec1);
-            if (ec1 != null && ec2 != null) {
-                TramLine tl = new TramLine(line, ec1, ec2, serialTramLineID, this);
-                tramLines.add(tl);
+        if(ec1 != null && ec2 != null) {
+            if (tramLines.getFirst().findTramLineIndexByNB(ec1, ec2) < 0) {
+                ec1.neighbours.add(ec2);
+                ec2.neighbours.add(ec1);
+                if (ec1 != null && ec2 != null) {
+                    TramLine tl = new TramLine(line, ec1, ec2, serialTramLineID, this);
+                    tramLines.add(tl);
+                }
+                serialTramLineID++;
             }
-            serialTramLineID++;
         }
     }
 
@@ -188,14 +195,20 @@ public class Map extends SimState {
     }
 
     public void addParcel(ExpressCentre currExpressCentre) {
-        int next;
-        do {
-            next = random.nextInt(expressCentres.size());
-        }
-        while (!(!expressCentres.get(next).equals(currExpressCentre)&& currExpressCentre.reachable(expressCentres.get(next))));
+        if(currExpressCentre.hasNeighbour()) {
+            // TODO dangerous garages.get first
+            if(currExpressCentre.neighbours.contains(garages.getFirst()) && currExpressCentre.neighbours.size()==garages.size()) {
+                return;
+            }
+            int next;
+            do {
+                next = random.nextInt(expressCentres.size());
+            }
+            while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
 
-        currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
-        serialParcelID++;
+            currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
+            serialParcelID++;
+        }
     }
 
     private void initTramLineNet() {

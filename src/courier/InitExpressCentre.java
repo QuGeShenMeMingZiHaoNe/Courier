@@ -313,8 +313,8 @@ public class InitExpressCentre {
         map.addExpressCentre("Victoria", new Int2D(1092, 1084));
         map.addExpressCentre("Aldgate East", new Int2D(1758, 901));
         map.addExpressCentre("Blackfriars", new Int2D(1419, 1056));
-        map.addExpressCentre("Mansion House", new Int2D(1415, 1030));
-        map.addExpressCentre("Cannon Street", new Int2D(1448, 1004));
+        map.addExpressCentre("Mansion House", new Int2D(1435, 1030));
+        map.addExpressCentre("Cannon Street", new Int2D(1460, 1004));
         map.addExpressCentre("Oxford Circus", new Int2D(1144, 883));
         map.addExpressCentre("Bond Street", new Int2D(1069, 883));
         map.addExpressCentre("Tower Hill", new Int2D(1670, 1025));

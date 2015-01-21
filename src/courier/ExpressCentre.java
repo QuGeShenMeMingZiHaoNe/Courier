@@ -8,6 +8,7 @@ import sim.portrayal.simple.OvalPortrayal2D;
 import sim.util.Int2D;
 
 import java.awt.*;
+import java.security.spec.ECField;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -76,7 +77,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
                 return s;
             }
         }
-        System.out.println("ERROR: Can not find station "+ inName);
+//        System.out.println("ERROR: Can not find station "+ inName);
         return null;
     }
 
@@ -99,34 +100,37 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
     // find all reachable station
-    public boolean reachableHelper(ExpressCentre b) {
-        LinkedList<ExpressCentre> neighbours = this.findNeighbours();
-        LinkedList<ExpressCentre> temp, result;
+//    public boolean reachableHelper(ExpressCentre b) {
+//        LinkedList<ExpressCentre> neighbours = this.findNeighbours();
+//        LinkedList<ExpressCentre> temp, result;
+//
+//        int size = neighbours.size();
+//        result = (LinkedList<ExpressCentre>) neighbours.clone();
+//        int previous = 0;
+//
+//        while (previous < size) {
+//            previous = size;
+//            for (ExpressCentre nb : neighbours) {
+//                temp = nb.findNeighbours();
+//                // TODO improve performance -> removeAll
+//                    if(temp.contains(b))
+//                        return true;
+//                result.removeAll(temp);
+//                result.addAll(temp);
+//            }
+//            neighbours = (LinkedList<ExpressCentre>) result.clone();
+//            size = neighbours.size();
+//        }
+//        return false;
+//    }
+//
+//    public boolean reachable(ExpressCentre b) {
+//        return this.reachableHelper(b);
+//    }
 
-        int size = neighbours.size();
-        result = (LinkedList<ExpressCentre>) neighbours.clone();
-        int previous = 0;
-
-        while (previous < size) {
-            previous = size;
-            for (ExpressCentre nb : neighbours) {
-                temp = nb.findNeighbours();
-                // TODO improve performance -> removeAll
-                    if(temp.contains(b))
-                        return true;
-                result.removeAll(temp);
-                result.addAll(temp);
-            }
-            neighbours = (LinkedList<ExpressCentre>) result.clone();
-            size = neighbours.size();
-        }
-        return false;
+    public boolean reachable(ExpressCentre b){
+        return !(new PathSearcher(map).findAllPossiblePath(this,b).isEmpty());
     }
-
-    public boolean reachable(ExpressCentre b) {
-        return this.reachableHelper(b);
-    }
-
 
     private void callCar() {
         ExpressCentre expressCentre = findStationWithFreeCar();
