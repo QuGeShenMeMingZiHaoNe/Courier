@@ -152,7 +152,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     }
 
     private void setPathLocal(ExpressCentre from, ExpressCentre to) {
-        pathLocal = map.tramLines.get(0).getStepsNB(from, to);
+        pathLocal = map.tramLines.get(0).getPathBetweenNBStations(from, to);
     }
 
     private void setPathGlobal(ExpressCentre from, ExpressCentre to) {

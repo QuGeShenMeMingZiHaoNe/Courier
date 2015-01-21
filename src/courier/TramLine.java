@@ -20,14 +20,16 @@ public class TramLine implements Steppable {
     protected ExpressCentre trafficLightOccupant;
     protected Car currLeavingCar;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
-    private int requirementThreshold = 1;
-    protected int quota1 = requirementThreshold;
-    protected int quota2 = requirementThreshold;
+    private int maximunCarLeavingBeforeRedLight = (int) Math.round(0.1*map.initNumOfCarsInStation);
+    protected int quota1 = maximunCarLeavingBeforeRedLight;
+    protected int quota2 = maximunCarLeavingBeforeRedLight;
     // clear the road when the traffic control right was swapped
     private boolean clearingTheRoad = false;
+    private String line;
 
 
-    public TramLine(ExpressCentre a, ExpressCentre b, int tramLineID, Map map) {
+
+    public TramLine(String line, ExpressCentre a, ExpressCentre b, int tramLineID, Map map) {
         if (a.stationID < b.stationID) {
             this.a = a;
             this.b = b;
@@ -37,6 +39,7 @@ public class TramLine implements Steppable {
         }
         this.map = map;
         this.tramLineID = tramLineID;
+        this.line = line;
 
         // randomly assign trafficLightOccupant to one of the station
         if (new Random().nextInt(2) == 0) {
@@ -47,7 +50,7 @@ public class TramLine implements Steppable {
     }
 
     // return each coordinates of the path from neighbour station a to b
-    public LinkedList<Int2D> getStepsNB(ExpressCentre a, ExpressCentre b) {
+    public LinkedList<Int2D> getPathBetweenNBStations(ExpressCentre a, ExpressCentre b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
         if (a.equals(b)) {
@@ -73,7 +76,7 @@ public class TramLine implements Steppable {
         return result;
     }
 
-    // the helper function of getStepsNB
+    // the helper function of getPathBetweenNBStations
     private LinkedList<Int2D> buildPath(ExpressCentre a, ExpressCentre b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
@@ -104,7 +107,7 @@ public class TramLine implements Steppable {
     }
 
     // return the index of given tram line in map.tramlines
-    private int findTramLineIndexNB(ExpressCentre a, ExpressCentre b) {
+    private int findTramLineIndexByNB(ExpressCentre a, ExpressCentre b) {
         int result = -1;
 
         // if a== b
@@ -141,7 +144,7 @@ public class TramLine implements Steppable {
         if (a == null || b == null) return null;
         if (a.equals(b)) return null;
 
-        int index = findTramLineIndexNB(a, b);
+        int index = findTramLineIndexByNB(a, b);
         if (index >= 0) {
             return map.tramLines.get(index);
         }
@@ -152,49 +155,13 @@ public class TramLine implements Steppable {
     public LinkedList<ExpressCentre> getPathGlobal(ExpressCentre a, ExpressCentre b) {
 
         // a and b are neighbour
-        int index = findTramLineIndexNB(a, b);
+        int index = findTramLineIndexByNB(a, b);
         if (index >= 0) {
             LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
             result.add(a);
             result.add(b);
             return result;
         }
-
-        // not neighbour
-//        if (index == -1) {
-//            LinkedList<LinkedList<Station>> branches = new LinkedList<LinkedList<Station>>();
-//            LinkedList<LinkedList<Station>> compareBranches = new LinkedList<LinkedList<Station>>();
-//            LinkedList<Station> nbs = a.findNeighbours();
-//
-//            for (Station s : nbs) {
-//
-//                LinkedList<Station> neighbours = new LinkedList<Station>();
-//                neighbours.add(s);
-//                neighbours.addAll(s.findAllReachableStations(a));
-//                branches.add(neighbours);
-//            }
-//            // select all the branches that can reach station b (final destination)
-//            for (LinkedList<Station> branch : branches) {
-//                // TODO better function
-//                if (branch.contains(b)) {
-//                    compareBranches.add(branch);
-//                }
-//            }
-//            int whichBranch = -1;
-//            int minTreeSize = 999999999;
-//
-//            for (LinkedList<Station> branch : compareBranches) {
-//                if (branch.size() < minTreeSize) {
-//                    whichBranch = compareBranches.indexOf(branch);
-//                }
-//            }
-//
-//            if (whichBranch >= 0) {
-//                return findTramLine(a, compareBranches.get(whichBranch).get(0));
-//            } else {
-//                return null;
-//            }
-//        }
 
         // not neighbour
 
@@ -213,7 +180,7 @@ public class TramLine implements Steppable {
         }
     }
 
-    // try to get the traffic control, if the quota of the other end station has ran out
+    // try to get the traffic control, release the control if the holder station has ran out quota
     // or the current holder's car park is empty.
     public void tryOccupyTraffic(ExpressCentre demander) {
         if (clearingTheRoad) {
@@ -228,7 +195,7 @@ public class TramLine implements Steppable {
                 trafficLightOccupant = a;
                 clearingTheRoad = true;
                 quota2 = 0;
-                quota1 = requirementThreshold;
+                quota1 = maximunCarLeavingBeforeRedLight;
             }
         } else {
             // give the traffic to b
@@ -236,18 +203,18 @@ public class TramLine implements Steppable {
                 trafficLightOccupant = b;
                 clearingTheRoad = true;
                 quota1 = 0;
-                quota2 = requirementThreshold;
+                quota2 = maximunCarLeavingBeforeRedLight;
             }
         }
     }
 
     // the holder station of tram line has no car want to come into asker station
-    private boolean noCarIsComing(ExpressCentre b, ExpressCentre a) {
-        if (b.carPark == null) return true;
+    private boolean noCarIsComing(ExpressCentre to, ExpressCentre from) {
+//        if (to.carPark == null) return true;
 
-        for (Car c : b.carPark) {
+        for (Car c : from.carPark) {
             if (c.stationTo != null)
-                if (c.stationTo.equals(a))
+                if (c.stationTo.equals(to))
                     return false;
         }
         return true;

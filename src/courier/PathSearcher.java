@@ -1,5 +1,6 @@
 package courier;
 
+import javax.xml.stream.Location;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -9,6 +10,8 @@ public class PathSearcher {
 
     protected LinkedList<LinkedList<ExpressCentre>> paths;
     private Map map;
+    private final double MAX_DISTANCE = 999999999;
+    private double currMinDistance;
 
     PathSearcher(Map map) {
         this.map = map;
@@ -18,33 +21,39 @@ public class PathSearcher {
         initPathSearch();
         LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
         path.add(from);
-        findAllPossiblePathHelper(from, to, path);
+        findAllPossiblePathHelper(from, to, path,0);
         return paths;
     }
 
     private void initPathSearch() {
         this.paths = new LinkedList<LinkedList<ExpressCentre>>();
+        currMinDistance = MAX_DISTANCE;
     }
 
-    private void findAllPossiblePathHelper(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> result) {
+    private void findAllPossiblePathHelper(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> result, double distance) {
         LinkedList<ExpressCentre> neighbours = from.findNeighbours();
 
         // if node is isolated then just return
         if (neighbours.size() == 0)
             return;
 
-        // TODO stop calculating by distance
-
         for (ExpressCentre expressCentre : neighbours) {
             if (!result.contains(expressCentre)) {
-                // make a copy of result
-                LinkedList<ExpressCentre> copy = (LinkedList<ExpressCentre>) result.clone();
-                copy.add(expressCentre);
-                // if we are at the final destination
-                if (expressCentre.equals(to)) {
-                    paths.add(copy);
-                } else {
-                    findAllPossiblePathHelper(expressCentre, to, copy);
+                distance += expressCentre.location.distance(result.getLast().location);
+
+                if(!(distance>currMinDistance)) {
+                    // make a copy of result
+                    LinkedList<ExpressCentre> copy = (LinkedList<ExpressCentre>) result.clone();
+                    copy.add(expressCentre);
+
+                    // if we are at the final destination
+                    if (expressCentre.equals(to)) {
+                        paths.add(copy);
+                        currMinDistance = calPathDistance(copy);
+                    } else {
+                        findAllPossiblePathHelper(expressCentre, to, copy,distance);
+                    }
+
                 }
             }
         }

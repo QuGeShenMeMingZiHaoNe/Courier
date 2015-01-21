@@ -112,7 +112,7 @@ public class MapGUI extends GUIState {
         super.init(c);
 
 
-        display = new Display2D(2800, 1800, this);
+        display = new Display2D(1000, 700, this);
         displayFrame = display.createFrame();
 
         c.registerFrame(displayFrame);

@@ -1,5 +1,6 @@
 package courier;
 
+import sim.app.pso.Booth;
 import sim.engine.SimState;
 import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
@@ -17,13 +18,15 @@ public class Map extends SimState {
     protected LinkedList<Car> cars = new LinkedList<Car>();
     protected Network tramLineNet = new Network(false);
     protected int parcelTotal = 0;
+
+    public static final int initNumOfParcelsInStation = 3;
+    public static final int initNumOfCarsInStation = 100;
+
     protected int serialCarCallerID = 1;
-    protected int initNumOfParcelsInStation = 3;
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    private int initNumOfCarsInStation = 100;
     private int gridWidth = 2800;
     private int gridHeight = 1800;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
@@ -48,14 +51,21 @@ public class Map extends SimState {
         // clear the buddies
         tramLineNet.clear();
 
+        // init Express Centres
         initExpressCenter();
+        allStations.addAll(expressCentres);
+
+        // init garage
         addGarage();
+        allStations.addAll(garages);
+
+        // init tramlines
         initTramLines();
-//        initCars();
+
+//         initCars();
+
         initParcels();
         initTramLineNet();
-        allStations.addAll(garages);
-        allStations.addAll(expressCentres);
     }
 
     private void initExpressCenter() {
@@ -72,11 +82,21 @@ public class Map extends SimState {
 
 
     public void addExpressCentre(String name, Int2D loc) {
-        ExpressCentre expressCentre = new ExpressCentre(name, serialStationID, loc, this);
-        expressCentres.add(expressCentre);
-        schedule.scheduleRepeating(expressCentre);
-        mapGrid.setObjectLocation(expressCentre, loc);
-        serialStationID++;
+        Boolean b = true;
+        for(ExpressCentre e: expressCentres){
+            if(e.location.equals(loc))
+            {
+                b = false;
+                System.out.println(name+" and "+e.name+" has same location");
+            }
+        }
+        if(b) {
+            ExpressCentre expressCentre = new ExpressCentre(name, serialStationID, loc, this);
+            expressCentres.add(expressCentre);
+            schedule.scheduleRepeating(expressCentre);
+            mapGrid.setObjectLocation(expressCentre, loc);
+            serialStationID++;
+        }
     }
 
 
@@ -95,21 +115,34 @@ public class Map extends SimState {
             schedule.scheduleRepeating(car);
             mapGrid.setObjectLocation(car, loc);
         }
-        addTramLine(g, expressCentres.get(1));
+        addTramLine("garage", g, expressCentres.get(1));
         garages.add(g);
     }
 
     private void initTramLines() {
-        addTramLine(expressCentres.get(0), expressCentres.get(1));
-        addTramLine(expressCentres.get(1), expressCentres.get(2));
-        addTramLine(expressCentres.get(2), expressCentres.get(3));
-        addTramLine(expressCentres.get(3), expressCentres.get(0));
-        addTramLine(expressCentres.get(1), expressCentres.get(4));
-        addTramLine(expressCentres.get(3), expressCentres.get(4));
+        InitTramLine init = new InitTramLine(this);
+        init.initTramLine();
+//        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
+//        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
+//        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
+//        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
+//        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
+//        addTramLine("line",expressCentres.get(3), expressCentres.get(4));
     }
 
-    private void addTramLine(ExpressCentre a, ExpressCentre b) {
-        tramLines.add(new TramLine(a, b, serialTramLineID, this));
+    public void addTramLine(String line, String a, String b) {
+        ExpressCentre ec1 = expressCentres.getFirst().findStationByName(a);
+        ExpressCentre ec2 = expressCentres.getFirst().findStationByName(b);
+
+        if(ec1 != null && ec2!=null) {
+            TramLine tl = new TramLine(line, ec1, ec2, serialTramLineID, this);
+            tramLines.add(tl);
+        }
+        serialTramLineID++;
+    }
+
+    public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
+        tramLines.add(new TramLine(line, a, b, serialTramLineID, this));
         serialTramLineID++;
     }
 
@@ -129,7 +162,7 @@ public class Map extends SimState {
     private void initParcels() {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
-            if (s.findNeighbours().size() > 0) {
+            if (s.hasNeighbour()) {
                 for (int i = 0; i < initNumOfParcelsInStation; i++) {
                     // add a parcel to current station;
                     addParcel(s);

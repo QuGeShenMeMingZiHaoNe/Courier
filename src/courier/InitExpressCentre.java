@@ -11,7 +11,6 @@ public class InitExpressCentre {
     }
 
     public void initExpressCentre() {
-
         map.addExpressCentre("Amersham", new Int2D(117, 193));
         map.addExpressCentre("Chorleywood", new Int2D(285, 207));
         map.addExpressCentre("Mill Hill East", new Int2D(1316, 261));
@@ -38,15 +37,17 @@ public class InitExpressCentre {
         map.addExpressCentre("Hampstead", new Int2D(1165, 477));
         map.addExpressCentre("Belsize Park", new Int2D(1229, 542));
         map.addExpressCentre("Chalk Farm", new Int2D(1264, 573));
-        map.addExpressCentre("Chalfont & Latimer", new Int2D(247, 152));
+        map.addExpressCentre("Chalfont And Latimer", new Int2D(247, 152));
         map.addExpressCentre("Chesham", new Int2D(116, 127));
-        map.addExpressCentre("New Cross Gate", new Int2D(1636, 1362));
+        map.addExpressCentre("New Cross Gate", new Int2D(1616, 1362));
+        map.addExpressCentre("Queen's Road Peckham", new Int2D(1636, 1362));
+        map.addExpressCentre("Peckham Rye", new Int2D(1606, 1392));
         map.addExpressCentre("Moor Park", new Int2D(438, 238));
         map.addExpressCentre("Northwood", new Int2D(468, 268));
         map.addExpressCentre("Northwood Hills", new Int2D(488, 294));
         map.addExpressCentre("Pinner", new Int2D(538, 333));
         map.addExpressCentre("North Harrow", new Int2D(564, 363));
-        map.addExpressCentre("Custom House for ExCeL", new Int2D(2363, 994));
+        map.addExpressCentre("Custom House", new Int2D(2363, 994));
         map.addExpressCentre("Prince Regent", new Int2D(2312, 1024));
         map.addExpressCentre("Royal Albert", new Int2D(2342, 1053));
         map.addExpressCentre("Beckton Park", new Int2D(2372, 1083));
@@ -58,7 +59,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Fulham Broadway", new Int2D(761, 1240));
         map.addExpressCentre("Lambeth North", new Int2D(1345, 1287));
         map.addExpressCentre("Heathrow Terminal 4", new Int2D(242, 1360));
-        map.addExpressCentre("Harrow- on-the-Hill", new Int2D(606, 390));
+        map.addExpressCentre("Harrow-on-the-Hill", new Int2D(606, 390));
         map.addExpressCentre("Kensal Rise", new Int2D(802, 573));
         map.addExpressCentre("Canonbury", new Int2D(1771, 594));
         map.addExpressCentre("Bethnal Green", new Int2D(1862, 776));
@@ -93,7 +94,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Watford Junction", new Int2D(648, 127));
         map.addExpressCentre("West Ruislip", new Int2D(239, 283));
         map.addExpressCentre("Bushey", new Int2D(712, 193));
-//        map.addExpressCentre("Carpenders Park", new Int2D(656, 226));
+        map.addExpressCentre("Carpenders Park", new Int2D(656, 226));
         map.addExpressCentre("Hatch End", new Int2D(695, 259));
         map.addExpressCentre("North Wembley", new Int2D(653, 470));
         map.addExpressCentre("West Brompton", new Int2D(753, 1173));
@@ -123,7 +124,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Greenwich", new Int2D(2006, 1366));
         map.addExpressCentre("Deptford Bridge", new Int2D(2006, 1398));
         map.addExpressCentre("South Quay", new Int2D(1906, 1175));
-        map.addExpressCentre("Crossharbour", new Int2D(1896, 1208));
+        map.addExpressCentre("Crossharbour And London Arena", new Int2D(1896, 1208));
         map.addExpressCentre("Mudchute", new Int2D(1916, 1241));
         map.addExpressCentre("Heron Quays", new Int2D(1898, 1142));
         map.addExpressCentre("West India Quay", new Int2D(2006, 1051));
@@ -147,10 +148,10 @@ public class InitExpressCentre {
         map.addExpressCentre("Manor House", new Int2D(1647, 418));
         map.addExpressCentre("Stanmore", new Int2D(876, 305));
         map.addExpressCentre("Canons Park", new Int2D(873, 338));
-        map.addExpressCentre("Queensbury", new Int2D(873, 371));
-        map.addExpressCentre("Kingsbury", new Int2D(873, 404));
+        map.addExpressCentre("Queen'sbury", new Int2D(873, 371));
+        map.addExpressCentre("King'sbury", new Int2D(873, 404));
         map.addExpressCentre("High Barnet", new Int2D(1459, 165));
-        map.addExpressCentre("Totteridge & Whetstone", new Int2D(1487, 198));
+        map.addExpressCentre("Totteridge And Whetstone", new Int2D(1487, 198));
         map.addExpressCentre("Woodside Park", new Int2D(1459, 231));
         map.addExpressCentre("West Finchley", new Int2D(1459, 264));
         map.addExpressCentre("Finchley Central", new Int2D(1459, 314));
@@ -176,17 +177,20 @@ public class InitExpressCentre {
         map.addExpressCentre("Swiss Cottage", new Int2D(884, 436));
         map.addExpressCentre("Imperial Wharf", new Int2D(946, 1246));
         map.addExpressCentre("Brixton", new Int2D(1334, 1507));
+        map.addExpressCentre("Denmark Hill", new Int2D(1355, 1457));
         map.addExpressCentre("Kilburn", new Int2D(995, 550));
         map.addExpressCentre("West Hampstead", new Int2D(1023, 579));
         map.addExpressCentre("Blackhorse Road", new Int2D(1939, 421));
         map.addExpressCentre("Acton Town", new Int2D(489, 1069));
         map.addExpressCentre("Canning Town", new Int2D(2133, 975));
         map.addExpressCentre("Finchley Road", new Int2D(1052, 607));
-        map.addExpressCentre("Highbury & Islington", new Int2D(1684, 594));
+        map.addExpressCentre("Highbury And Islington", new Int2D(1684, 594));
         map.addExpressCentre("Canary Wharf", new Int2D(1896, 1099));
         map.addExpressCentre("Stratford", new Int2D(2034, 675));
+        map.addExpressCentre("Stratford High Street", new Int2D(2144, 705));
+        map.addExpressCentre("Abbey Road", new Int2D(2144, 770));
         map.addExpressCentre("Finsbury Park", new Int2D(1734, 495));
-        map.addExpressCentre("Elephant & Castle", new Int2D(1402, 1360));
+        map.addExpressCentre("Elephant And Castle", new Int2D(1402, 1360));
         map.addExpressCentre("Stepney Green", new Int2D(1879, 891));
         map.addExpressCentre("Barking", new Int2D(2278, 731));
         map.addExpressCentre("East Ham", new Int2D(2248, 762));
@@ -194,6 +198,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Plaistow", new Int2D(2202, 809));
         map.addExpressCentre("Poplar", new Int2D(2001, 1007));
         map.addExpressCentre("West Ham", new Int2D(2144, 844));
+        map.addExpressCentre("Star Lane", new Int2D(2144, 960));
         map.addExpressCentre("Upper Holloway", new Int2D(1580, 473));
         map.addExpressCentre("Pudding Mill Lane", new Int2D(2069, 751));
         map.addExpressCentre("Kennington", new Int2D(1325, 1411));
@@ -204,7 +209,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Becontree", new Int2D(2341, 668));
         map.addExpressCentre("Upney", new Int2D(2312, 702));
         map.addExpressCentre("Heathrow Terminal 5", new Int2D(148, 1412));
-        map.addExpressCentre("Finchley Road & Frognal", new Int2D(1127, 522));
+        map.addExpressCentre("Finchley Road And Frognal", new Int2D(1127, 522));
         map.addExpressCentre("Crouch Hill", new Int2D(1538, 396));
         map.addExpressCentre("Northfields", new Int2D(338, 1113));
         map.addExpressCentre("Boston Manor", new Int2D(294, 1141));
@@ -230,9 +235,11 @@ public class InitExpressCentre {
         map.addExpressCentre("Hatton Cross", new Int2D(162, 1278));
         map.addExpressCentre("Heathrow Terminals 1, 2, 3", new Int2D(109, 1315));
         map.addExpressCentre("Clapham Junction", new Int2D(1059, 1419));
+        map.addExpressCentre("Clapham High Street", new Int2D(1150, 1437));
+        map.addExpressCentre("Wandsworth Road", new Int2D(1080, 1419));
         map.addExpressCentre("West Harrow", new Int2D(540, 438));
         map.addExpressCentre("Brondesbury", new Int2D(905, 609));
-        map.addExpressCentre("Caledonian Road & Barnsbury", new Int2D(1589, 647));
+        map.addExpressCentre("Caledonian Road And Barnsbury", new Int2D(1589, 647));
         map.addExpressCentre("Tottenham Hale", new Int2D(1843, 467));
         map.addExpressCentre("Walthamstow Central", new Int2D(1981, 467));
         map.addExpressCentre("Hackney Wick", new Int2D(1982, 712));
@@ -267,8 +274,8 @@ public class InitExpressCentre {
         map.addExpressCentre("Anerley", new Int2D(1752, 1641));
         map.addExpressCentre("Penge West", new Int2D(1748, 1608));
         map.addExpressCentre("Honor Oak Park", new Int2D(1631, 1503));
-        map.addExpressCentre("Brockely", new Int2D(1674, 1430));
-        map.addExpressCentre("Harrow & Wealdstone", new Int2D(675, 333));
+        map.addExpressCentre("Brockley", new Int2D(1674, 1430));
+        map.addExpressCentre("Harrow And Wealdstone", new Int2D(675, 333));
         map.addExpressCentre("Cutty Sark for Maritime Greenwich", new Int2D(2026, 1335));
         map.addExpressCentre("Ruislip Manor", new Int2D(400, 327));
         map.addExpressCentre("Eastcote", new Int2D(442, 363));
@@ -282,12 +289,13 @@ public class InitExpressCentre {
         map.addExpressCentre("Kilburn Park", new Int2D(690, 692));
         map.addExpressCentre("Regent's Park", new Int2D(1178, 815));
         map.addExpressCentre("Kilburn High Road", new Int2D(875, 656));
-        map.addExpressCentre("Edgware Road", new Int2D(949, 704));
+        map.addExpressCentre("Edgware Road (Bakerloo)", new Int2D(949, 704));
         map.addExpressCentre("South Hampstead", new Int2D(963, 656));
         map.addExpressCentre("Goodge Street", new Int2D(1256, 860));
         map.addExpressCentre("Shepherd's Bush Market", new Int2D(650, 986));
         map.addExpressCentre("Goldhawk Road", new Int2D(654, 1032));
         map.addExpressCentre("Hammersmith", new Int2D(664, 1070));
+        // map.addExpressCentre("Hammersmith", new Int2D(664, 1070));
         map.addExpressCentre("Bayswater", new Int2D(942, 835));
         map.addExpressCentre("Warren Street", new Int2D(1225, 783));
         map.addExpressCentre("Aldgate", new Int2D(1688, 944));
@@ -299,7 +307,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Mornington Crescent", new Int2D(1285, 659));
         map.addExpressCentre("High Street Kensington", new Int2D(942, 963));
         map.addExpressCentre("Old Street", new Int2D(1601, 777));
-        map.addExpressCentre("Stn's Wood", new Int2D(1107, 656));
+        map.addExpressCentre("St. Johns Wood", new Int2D(1107, 656));
         map.addExpressCentre("Green Park", new Int2D(1164, 967));
         map.addExpressCentre("Baker Street", new Int2D(1144, 736));
         map.addExpressCentre("Notting Hill Gate", new Int2D(928, 883));
@@ -321,7 +329,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Moorgate", new Int2D(1595, 867));
         map.addExpressCentre("Leicester Square", new Int2D(1345, 975));
         map.addExpressCentre("London Bridge", new Int2D(1587, 1138));
-        map.addExpressCentre("Stl's", new Int2D(1500, 907));
+        map.addExpressCentre("St. Paul's", new Int2D(1500, 907));
         map.addExpressCentre("Hyde Park Corner", new Int2D(989, 1000));
         map.addExpressCentre("Knightsbridge", new Int2D(984, 1026));
         map.addExpressCentre("Stamford Brook", new Int2D(622, 1119));
@@ -344,10 +352,10 @@ public class InitExpressCentre {
         map.addExpressCentre("Lancaster Gate", new Int2D(1007, 881));
         map.addExpressCentre("Warwick Avenue", new Int2D(699, 730));
         map.addExpressCentre("Maida Vale", new Int2D(716, 711));
-        map.addExpressCentre("Pmap.addington", new Int2D(853, 714));
-        map.addExpressCentre("Baron's Court", new Int2D(789, 1056));
+        map.addExpressCentre("Paddington", new Int2D(853, 714));
+        map.addExpressCentre("Barons Court", new Int2D(789, 1056));
         map.addExpressCentre("Gloucester Road", new Int2D(937, 1056));
-        map.addExpressCentre("Stes's Park", new Int2D(1156, 1067));
+        map.addExpressCentre("St. James's Park", new Int2D(1156, 1067));
         map.addExpressCentre("Temple", new Int2D(1381, 1080));
         map.addExpressCentre("Latimer Road", new Int2D(780, 847));
         map.addExpressCentre("Ladbroke Grove", new Int2D(803, 825));
@@ -362,9 +370,9 @@ public class InitExpressCentre {
         map.addExpressCentre("Wood Lane", new Int2D(685, 940));
         map.addExpressCentre("Shepherd's Bush", new Int2D(791, 879));
         map.addExpressCentre("White City", new Int2D(715, 869));
-        map.addExpressCentre("King's Cross Stcras", new Int2D(1398, 682));
+        map.addExpressCentre("King's Cross St. Pancras", new Int2D(1398, 682));
         map.addExpressCentre("Euston Square", new Int2D(1349, 780));
-        map.addExpressCentre("Edgware Road", new Int2D(982, 789));
+        map.addExpressCentre("Edgware Road (Hammersmith)", new Int2D(982, 789));
         map.addExpressCentre("Waterloo", new Int2D(1233, 1167));
         map.addExpressCentre("Southwark", new Int2D(1371, 1222));
         map.addExpressCentre("Embankment", new Int2D(1356, 1120));

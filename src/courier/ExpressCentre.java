@@ -24,10 +24,11 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected int carCallerSema = 1;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
-    private String name;
+    public String name;
     // busy indicates how busy the station is, the number should between 100 and 0,
     // the bigger the number, the more busy it is
     private int busy = 20;
+    private int count = 0;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -68,6 +69,16 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return null;
     }
 
+    public ExpressCentre findStationByName(String inName) {
+        for (ExpressCentre s : map.allStations) {
+            if (s.name.equals(inName)) {
+                return s;
+            }
+        }
+        System.out.println("ERROR: Can not find station "+ inName);
+        return null;
+    }
+
     public ExpressCentre findStationByID(int id) {
         for (ExpressCentre s : map.allStations) {
             if (s.stationID == id) {
@@ -82,11 +93,26 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
         for (ExpressCentre s : map.allStations) {
             if (!s.equals(this)) {
-                if (map.tramLines.get(0).findTramLine(this, s) != null)
-                    result.add(s);
+                if(map.tramLines.size()>0) {
+                    if (map.tramLines.get(0).findTramLine(this, s) != null)
+                        result.add(s);
+                }
             }
         }
         return result;
+    }
+
+    public Boolean hasNeighbour() {
+        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+        for (ExpressCentre s : map.allStations) {
+            if (!s.equals(this)) {
+                if(map.tramLines.size()>0) {
+                    if (map.tramLines.get(0).findTramLine(this, s) != null)
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
     // find all reachable station
@@ -139,14 +165,18 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
-        // if the car park is empty, has package to be sent, and the car caller is empty
-        if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0 && findNeighbours().size() > 0)
-            callCar();
+        if(count>100) {
+            // if the car park is empty, has package to be sent, and the car caller is empty
+            if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0 && findNeighbours().size() > 0)
+                callCar();
 
-        if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && findNeighbours().size() > 0) {
-            map.addParcel(this);
-            map.parcelTotal++;
+            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && findNeighbours().size() > 0) {
+                map.addParcel(this);
+                map.parcelTotal++;
+            }
+            count=0;
         }
+        count++;
     }
 
     private boolean genParcelOrNot() {
