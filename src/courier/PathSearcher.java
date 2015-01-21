@@ -1,6 +1,5 @@
 package courier;
 
-import javax.xml.stream.Location;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -8,9 +7,9 @@ public class PathSearcher {
 
     // we are using breadth first search in this path searching class
 
+    private final double MAX_DISTANCE = 999999999;
     protected LinkedList<LinkedList<ExpressCentre>> paths;
     private Map map;
-    private final double MAX_DISTANCE = 999999999;
     private double currMinDistance;
 
     PathSearcher(Map map) {
@@ -21,7 +20,7 @@ public class PathSearcher {
         initPathSearch();
         LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
         path.add(from);
-        findAllPossiblePathHelper(from, to, path,0);
+        findAllPossiblePathHelper(from, to, path, 0);
         return paths;
     }
 
@@ -41,7 +40,7 @@ public class PathSearcher {
             if (!result.contains(expressCentre)) {
                 distance += expressCentre.location.distance(result.getLast().location);
 
-                if(!(distance>currMinDistance)) {
+                if (!(distance > currMinDistance)) {
                     // make a copy of result
                     LinkedList<ExpressCentre> copy = (LinkedList<ExpressCentre>) result.clone();
                     copy.add(expressCentre);
@@ -53,7 +52,7 @@ public class PathSearcher {
                         currMinDistance = 0;
                         return;
                     } else {
-                        findAllPossiblePathHelper(expressCentre, to, copy,distance);
+                        findAllPossiblePathHelper(expressCentre, to, copy, distance);
                     }
 
                 }

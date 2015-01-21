@@ -85,7 +85,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         for (Parcel p : carrying) {
             if (p.destination.equals(s)) {
                 // TODO: does car caller earn money??
-                map.profit+=p.getProfit();
+                map.profit += p.getProfit();
 
                 System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " with time spending " + p.getTimeSpending() + "...");
                 // restore the released weight to the car
@@ -251,7 +251,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
-        if(!(currStation() instanceof Garage)) {
+        if (!(currStation() instanceof Garage)) {
             Int2D d = new Int2D(1, 1);
             map.profit -= d.distance(new Int2D(2, 2));
         }

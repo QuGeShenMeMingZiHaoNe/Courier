@@ -20,13 +20,12 @@ public class TramLine implements Steppable {
     protected ExpressCentre trafficLightOccupant;
     protected Car currLeavingCar;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
-    private int maximunCarLeavingBeforeRedLight = (int) Math.round(0.1*map.initNumOfCarsInStation);
+    private int maximunCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInStation);
     protected int quota1 = maximunCarLeavingBeforeRedLight;
     protected int quota2 = maximunCarLeavingBeforeRedLight;
     // clear the road when the traffic control right was swapped
     private boolean clearingTheRoad = false;
     private String line;
-
 
 
     public TramLine(String line, ExpressCentre a, ExpressCentre b, int tramLineID, Map map) {

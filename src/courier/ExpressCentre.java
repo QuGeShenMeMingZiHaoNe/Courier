@@ -8,13 +8,13 @@ import sim.portrayal.simple.OvalPortrayal2D;
 import sim.util.Int2D;
 
 import java.awt.*;
-import java.security.spec.ECField;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected static final int MAX_PACKAGES = 10;
+    public String name;
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
     protected Int2D location;
@@ -26,7 +26,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected int carCallerSema = 1;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
-    public String name;
     // busy indicates how busy the station is, the number should between 100 and 0,
     // the bigger the number, the more busy it is
     private int busy = 5;
@@ -40,7 +39,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
 
-    public double getProfit(){
+    public double getProfit() {
         return map.profit;
     }
 
@@ -96,7 +95,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
     public Boolean hasNeighbour() {
-     return neighbours.size()>0;
+        return neighbours.size() > 0;
     }
 
     // find all reachable station
@@ -128,8 +127,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 //        return this.reachableHelper(b);
 //    }
 
-    public boolean reachable(ExpressCentre b){
-        return !(new PathSearcher(map).findAllPossiblePath(this,b).isEmpty());
+    public boolean reachable(ExpressCentre b) {
+        return !(new PathSearcher(map).findAllPossiblePath(this, b).isEmpty());
     }
 
     private void callCar() {
@@ -171,15 +170,15 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public void step(SimState state) {
 //        if(count>100) {
 //            if the car park is empty, has package to be sent, and the car caller is empty
-            if(hasNeighbour()) {
-                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
-                    callCar();
+        if (hasNeighbour()) {
+            if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
+                callCar();
 
-                if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot()) {
-                    map.addParcel(this);
-                    map.parcelTotal++;
-                }
+            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot()) {
+                map.addParcel(this);
+                map.parcelTotal++;
             }
+        }
 //            count=0;
 //        }
 //        count++;

@@ -6,7 +6,7 @@ public class InitExpressCentre {
 
     private Map map;
 
-    public InitExpressCentre(Map map){
+    public InitExpressCentre(Map map) {
         this.map = map;
     }
 
@@ -247,7 +247,7 @@ public class InitExpressCentre {
         map.addExpressCentre("West Acton", new Int2D(511, 927));
         map.addExpressCentre("Limehouse", new Int2D(1880, 1010));
         map.addExpressCentre("East India", new Int2D(2085, 1011));
-        map.addExpressCentre("Crystal Palace", new Int2D(1579,1671));
+        map.addExpressCentre("Crystal Palace", new Int2D(1579, 1671));
         map.addExpressCentre("Chiswick Park", new Int2D(487, 1119));
         map.addExpressCentre("Roding Valley", new Int2D(2155, 275));
         map.addExpressCentre("Grange Hill", new Int2D(2231, 277));

@@ -1,6 +1,5 @@
 package courier;
 
-import sim.app.pso.Booth;
 import sim.engine.SimState;
 import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
@@ -9,34 +8,29 @@ import sim.util.Int2D;
 import java.util.LinkedList;
 
 public class Map extends SimState {
+    public static final int initNumOfParcelsInStation = 3;
+    public static final int initNumOfCarsInStation = 50;
+    private static final int gridWidth = 2800;
+    private static final int gridHeight = 1800;
+    private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
+    private static final int distanceToCentre = 300;
+    public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
+    public double profit = 0;
+    //    public double retainedProfit = 0;
+    public double profitMargin = 2.45;
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
-
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
     protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     protected LinkedList<Car> cars = new LinkedList<Car>();
     protected Network tramLineNet = new Network(false);
     protected int parcelTotal = 0;
-
-    public static final int initNumOfParcelsInStation = 3;
-    public static final int initNumOfCarsInStation = 50;
-
     protected int serialCarCallerID = 1;
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    private  static final int gridWidth = 2800;
-    private  static final int gridHeight = 1800;
-    private static final Int2D centre = new Int2D(gridWidth/2,gridHeight/2);
-    private static final int distanceToCentre = 300;
-    public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
-
-
-    public double profit = 0;
-//    public double retainedProfit = 0;
-    public double profitMargin = 2.45;
 
 
     public Map(long seed) {
@@ -83,9 +77,8 @@ public class Map extends SimState {
     }
 
 
-
     public void addExpressCentre(String name, Int2D loc) {
-        if(loc.distance(centre)<= distanceToCentre) {
+        if (loc.distance(centre) <= distanceToCentre) {
             Boolean b = true;
             for (ExpressCentre e : expressCentres) {
                 if (e.location.equals(loc)) {
@@ -107,7 +100,7 @@ public class Map extends SimState {
     // add garage with number of cars
     private void addGarage() {
         Int2D loc = new Int2D(90, 90);
-        Garage g = new Garage("garage",serialStationID , loc, this);
+        Garage g = new Garage("garage", serialStationID, loc, this);
         serialStationID++;
         mapGrid.setObjectLocation(g, loc);
 
@@ -139,7 +132,7 @@ public class Map extends SimState {
         ExpressCentre ec1 = expressCentres.getFirst().findStationByName(a);
         ExpressCentre ec2 = expressCentres.getFirst().findStationByName(b);
 
-        if(ec1 != null && ec2 != null) {
+        if (ec1 != null && ec2 != null) {
             if (tramLines.getFirst().findTramLineIndexByNB(ec1, ec2) < 0) {
                 ec1.neighbours.add(ec2);
                 ec2.neighbours.add(ec1);
@@ -195,9 +188,9 @@ public class Map extends SimState {
     }
 
     public void addParcel(ExpressCentre currExpressCentre) {
-        if(currExpressCentre.hasNeighbour()) {
+        if (currExpressCentre.hasNeighbour()) {
             // TODO dangerous garages.get first
-            if(currExpressCentre.neighbours.contains(garages.getFirst()) && currExpressCentre.neighbours.size()==garages.size()) {
+            if (currExpressCentre.neighbours.contains(garages.getFirst()) && currExpressCentre.neighbours.size() == garages.size()) {
                 return;
             }
             int next;
