@@ -18,6 +18,18 @@ public class Map extends SimState {
     public double profit = 0;
     //    public double retainedProfit = 0;
     public double profitMargin = 2.45;
+    protected int parcelTotal = 0;
+    protected int serialCarCallerID = 1;
+    private int serialStationID = 1;
+    private int serialParcelID = 1;
+    private int serialTramLineID = 1;
+    private int serialCarID = 1;
+
+    // Simulation mode, basic mod means set a destination without changing,
+    // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
+    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+
+
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
@@ -25,12 +37,8 @@ public class Map extends SimState {
     protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     protected LinkedList<Car> cars = new LinkedList<Car>();
     protected Network tramLineNet = new Network(false);
-    protected int parcelTotal = 0;
-    protected int serialCarCallerID = 1;
-    private int serialStationID = 1;
-    private int serialParcelID = 1;
-    private int serialTramLineID = 1;
-    private int serialCarID = 1;
+
+
 
 
     public Map(long seed) {
@@ -112,7 +120,17 @@ public class Map extends SimState {
             schedule.scheduleRepeating(car);
             mapGrid.setObjectLocation(car, loc);
         }
-        addTramLine("garage", g, expressCentres.get(1));
+        ExpressCentre closestEC = expressCentres.getFirst();
+        double distance = 999999999;
+        double tempDistance;
+        for(ExpressCentre ec : expressCentres){
+            tempDistance = loc.distance(ec.location);
+            if(tempDistance<distance){
+                distance = tempDistance;
+                closestEC = ec;
+            }
+        }
+        addTramLine("garage", g, closestEC);
         garages.add(g);
     }
 
@@ -189,8 +207,7 @@ public class Map extends SimState {
 
     public void addParcel(ExpressCentre currExpressCentre) {
         if (currExpressCentre.hasNeighbour()) {
-            // TODO dangerous garages.get first
-            if (currExpressCentre.neighbours.contains(garages.getFirst()) && currExpressCentre.neighbours.size() == garages.size()) {
+            if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
                 return;
             }
             int next;
