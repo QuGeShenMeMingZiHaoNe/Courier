@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car.java" afterPath="$PROJECT_DIR$/src/courier/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/TramLine.java" afterPath="$PROJECT_DIR$/src/courier/TramLine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Car.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Car.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/courier/Car.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.296296" vertical-offset="1909" max-vertical-offset="4980">
-              <caret line="141" column="74" selection-start-line="141" selection-start-column="74" selection-end-line="141" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.5805785" vertical-offset="1969" max-vertical-offset="4980">
+              <caret line="158" column="116" selection-start-line="158" selection-start-column="94" selection-end-line="158" selection-end-column="116" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -67,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TramLine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TramLine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/TramLine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20867768" vertical-offset="2209" max-vertical-offset="3600">
-              <caret line="164" column="48" selection-start-line="164" selection-start-column="48" selection-end-line="164" selection-end-column="48" />
+            <state vertical-scroll-proportion="-2.074074" vertical-offset="2209" max-vertical-offset="3600">
+              <caret line="161" column="110" selection-start-line="161" selection-start-column="110" selection-end-line="161" selection-end-column="110" />
               <folding />
             </state>
           </provider>
@@ -1080,21 +1078,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car.java">
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.296296" vertical-offset="1909" max-vertical-offset="4980">
-          <caret line="141" column="74" selection-start-line="141" selection-start-column="74" selection-end-line="141" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-2.074074" vertical-offset="2209" max-vertical-offset="3600">
+          <caret line="161" column="110" selection-start-line="161" selection-start-column="110" selection-end-line="161" selection-end-column="110" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/TramLine.java">
+    <entry file="file://$PROJECT_DIR$/src/courier/Car.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20867768" vertical-offset="2209" max-vertical-offset="3600">
-          <caret line="164" column="48" selection-start-line="164" selection-start-column="48" selection-end-line="164" selection-end-column="48" />
-          <folding />
+        <state vertical-scroll-proportion="0.5805785" vertical-offset="1969" max-vertical-offset="4980">
+          <caret line="158" column="116" selection-start-line="158" selection-start-column="94" selection-end-line="158" selection-end-column="116" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

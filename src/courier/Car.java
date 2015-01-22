@@ -139,7 +139,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             ExpressCentre targetStation = map.allStations.get(0).findStationByID(p.destination.stationID);
 
             // set the current station as station from, the next station as station to.
-            setPathGlobal(currStation, targetStation,SIMULATION_MODE.BASIC);
+            setPathGlobal(currStation, targetStation,null,SIMULATION_MODE.BASIC);
 
             // calculate the path from current station to the next station
             setPathLocal(currStation, stationTo);
@@ -156,12 +156,12 @@ public class Car extends OvalPortrayal2D implements Steppable {
         pathLocal = map.tramLines.get(0).getPathBetweenNBStations(from, to);
     }
 
-    private void setPathGlobal(ExpressCentre from, ExpressCentre to,SIMULATION_MODE mode) {
+    private void setPathGlobal(ExpressCentre from, ExpressCentre to,ExpressCentre avoidStation, SIMULATION_MODE mode) {
         TramLine tl = map.tramLines.get(0);
         ExpressCentre currStation = currStation();
 
         if (globalPath == null) {
-                globalPath = tl.getPathGlobal(from, to,mode);
+                globalPath = tl.getPathGlobal(from, to,avoidStation,mode);
         }
 
         // if no such path exist then set the destination to currStation which will let the car stay still
