@@ -13,6 +13,7 @@ import sim.portrayal.simple.ImagePortrayal2D;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MapGUI extends GUIState {
 
@@ -111,6 +112,11 @@ public class MapGUI extends GUIState {
     public void init(Controller c) {
         super.init(c);
 
+        try {
+            new TestReader().read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         display = new Display2D(1000, 700, this);
         displayFrame = display.createFrame();

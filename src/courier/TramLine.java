@@ -161,14 +161,15 @@ public class TramLine implements Steppable {
     // return the next tram line of the path from a to b,
     public LinkedList<ExpressCentre> getPathGlobal(ExpressCentre a, ExpressCentre b,ExpressCentre avoidStation, SIMULATION_MODE mode) {
 
+
         // a and b are neighbour
-        int index = findTramLineIndexByNB(a, b);
-        if (index >= 0) {
-            LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-            result.add(a);
-            result.add(b);
-            return result;
-        }
+//        int index = findTramLineIndexByNB(a, b);
+//        if (index >= 0) {
+//            LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+//            result.add(a);
+//            result.add(b);
+//            return result;
+//        }
 
         // not neighbour
 

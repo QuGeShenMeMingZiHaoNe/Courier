@@ -88,7 +88,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 // TODO: does car caller earn money??
                 map.profit += p.getProfit();
 
-                System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " with time spending " + p.getTimeSpending() + "...");
+                System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation()+ "...");
                 // restore the released weight to the car
                 this.spaceRemaining += p.weight;
 
