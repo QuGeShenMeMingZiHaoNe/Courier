@@ -9,11 +9,12 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class TramLine implements Steppable {
+    // clear the road when the traffic control right was swapped
+    public boolean clearingTheRoad = false;
     protected ExpressCentre a;
     protected ExpressCentre b;
     protected int tramLineID;
     protected Map map;
-
     // record of all the cars on the tram line
     protected LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
     // whom is controlling the traffic
@@ -23,8 +24,6 @@ public class TramLine implements Steppable {
     private int maximunCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInStation);
     protected int quota1 = maximunCarLeavingBeforeRedLight;
     protected int quota2 = maximunCarLeavingBeforeRedLight;
-    // clear the road when the traffic control right was swapped
-    private boolean clearingTheRoad = false;
     private String line;
 
 
@@ -159,24 +158,15 @@ public class TramLine implements Steppable {
     }
 
     // return the next tram line of the path from a to b,
-    public LinkedList<ExpressCentre> getPathGlobal(ExpressCentre a, ExpressCentre b,ExpressCentre avoidStation, SIMULATION_MODE mode) {
-
-
-        // a and b are neighbour
-//        int index = findTramLineIndexByNB(a, b);
-//        if (index >= 0) {
-//            LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-//            result.add(a);
-//            result.add(b);
-//            return result;
-//        }
-
+    public LinkedList<ExpressCentre> getPathGlobal(ExpressCentre a, ExpressCentre b) {
         // not neighbour
 
         // TODO move this path searcher into constructor;
         PathSearcher pathSearcher = new PathSearcher(map);
         // find path using breadth first search
-        LinkedList<LinkedList<ExpressCentre>> paths = pathSearcher.findAllPossiblePath(a, b);
+
+        LinkedList<LinkedList<ExpressCentre>> paths;
+        paths = pathSearcher.findAllPossiblePath(a, b);
         // sort path by distance in ascending order
         if (paths.size() > 1)
             paths = pathSearcher.sortPathByDistance(paths);
@@ -188,20 +178,50 @@ public class TramLine implements Steppable {
         }
     }
 
+    public LinkedList<ExpressCentre> getPathGlobal(ExpressCentre a, ExpressCentre b, LinkedList<ExpressCentre> avoids) {
+        // not neighbour
+
+        // TODO move this path searcher into constructor;
+        PathSearcher pathSearcher = new PathSearcher(map);
+        // find path using breadth first search
+
+        LinkedList<LinkedList<ExpressCentre>> paths;
+        paths = pathSearcher.findAllPossiblePath(a, b, avoids);
+        // sort path by distance in ascending order
+
+        // TODO do we need sort here?
+        if (paths.size() > 1)
+            paths = pathSearcher.sortPathByDistance(paths);
+
+        // return the one with the lowest distance
+        if (paths.size() > 0) {
+            return paths.getFirst();
+        } else {
+            return null;
+        }
+    }
+
     // try to get the traffic control, release the control if the holder station has ran out quota
     // or the current holder's car park is empty.
     public void tryOccupyTraffic(ExpressCentre demander) {
+
         if (clearingTheRoad) {
             if (roadClear()) {
                 clearingTheRoad = false;
             }
             return;
         }
+
+//        System.out.println(demander);
+        if (demander.equals(trafficLightOccupant))
+            return;
+
         if (demander.equals(a)) {
             // give the traffic to a
             if (quota2 <= 0 || b.carPark.isEmpty() || noCarIsComing(b, a)) {
                 trafficLightOccupant = a;
-                clearingTheRoad = true;
+                if (!roadClear())
+                    clearingTheRoad = true;
                 quota2 = 0;
                 quota1 = maximunCarLeavingBeforeRedLight;
             }
@@ -209,7 +229,8 @@ public class TramLine implements Steppable {
             // give the traffic to b
             if (quota1 <= 0 || a.carPark.isEmpty() || noCarIsComing(a, b)) {
                 trafficLightOccupant = b;
-                clearingTheRoad = true;
+                if (!roadClear())
+                    clearingTheRoad = true;
                 quota1 = 0;
                 quota2 = maximunCarLeavingBeforeRedLight;
             }

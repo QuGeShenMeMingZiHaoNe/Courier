@@ -31,6 +31,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private LinkedList<ExpressCentre> globalPath;
     private int basicCarDisplaySize = 2;
     private boolean moving = true;
+    private boolean alterPath = false;
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -67,7 +68,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         List<Parcel> unload = parcelsToUnload(s);
         // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
         if (unload.size() > 0) {
-            globalPath = null;
+            initCarState();
         }
         carrying.removeAll(unload);
 
@@ -88,7 +89,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 // TODO: does car caller earn money??
                 map.profit += p.getProfit();
 
-                System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation()+ "...");
+                System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation() + "...");
                 // restore the released weight to the car
                 this.spaceRemaining += p.weight;
 
@@ -96,7 +97,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 if (p instanceof CarCaller) {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
-                    globalPath = null;
+                    initCarState();
                 } else {
                     toUnload.add(p);
                 }
@@ -110,24 +111,33 @@ public class Car extends OvalPortrayal2D implements Steppable {
     public void arriveStation() {
         // get current statition
         ExpressCentre currStation = currStation();
-        moving = false;
-        // remove the car from the road
-        TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
-        if (tramLine != null)
-            tramLine.carsOnTramLine.remove(this);
+        if (!hasArrived) {
+            moving = false;
+            hasArrived = true;
 
-        pathLocal.clear();
-        this.stationFrom = currStation;
-        stationTo = null;
-        stepCount = 0;
-        unloadParcel();
-        loadParcel();
-        hasArrived = true;
+            // remove the car from the road
+            TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
-        // if the car has not enter the station
-        if (!currStation.carPark.contains(this))
+            // if the car has not enter the station
+//            if (!currStation.carPark.contains(this))
             currStation.carPark.add(this);
+
+            if (tramLine != null) {
+                tramLine.carsOnTramLine.remove(this);
+            }
+
+            pathLocal.clear();
+
+            stationFrom = currStation;
+            stationTo = null;
+
+            stepCount = 0;
+            unloadParcel();
+        }
+
+
+        loadParcel();
 
         // if there are something to be delivered
         if (!carrying.isEmpty()) {
@@ -136,15 +146,45 @@ public class Car extends OvalPortrayal2D implements Steppable {
             Parcel p = carrying.get(0);
 
             // find the final destination of the parcel as target Station.
-            ExpressCentre targetStation = map.allStations.get(0).findStationByID(p.destination.stationID);
+            ExpressCentre targetStation = p.destination;
 
-            // set the current station as station from, the next station as station to.
-            setPathGlobal(currStation, targetStation,null,SIMULATION_MODE.BASIC);
 
+            switch (map.mode) {
+                // set the current station as station from, the next station as station to.
+                case BASIC:
+                    setPathGlobal(currStation, targetStation);
+                    break;
+                case AVOID_TRAFFIC_JAM:
+                    LinkedList<ExpressCentre> avoids = findTrafficJam();
+
+                    if (avoids.size() < currStation.neighbours.size()) {
+                        setPathGlobal(currStation, targetStation, avoids);
+                    }
+
+                    // when we can not find the path by avoiding traffic jam, we still set the path by
+                    break;
+            }
+
+//            System.out.println(globalPath + ""+stationTo);
             // calculate the path from current station to the next station
-            setPathLocal(currStation, stationTo);
+            if (stationTo != null)
+                setPathLocal(currStation, stationTo);
 
         }
+    }
+
+    private LinkedList<ExpressCentre> findTrafficJam() {
+        LinkedList<ExpressCentre> avoids = new LinkedList<ExpressCentre>();
+        ExpressCentre currStation = currStation();
+        for (ExpressCentre nb : currStation.neighbours) {
+            TramLine tl = map.tramLines.getFirst().findTramLine(currStation, nb);
+
+            tl.tryOccupyTraffic(currStation);
+
+            if (!tl.okToLeave(currStation))
+                avoids.add(nb);
+        }
+        return avoids;
     }
 
     // leave carpark
@@ -156,30 +196,92 @@ public class Car extends OvalPortrayal2D implements Steppable {
         pathLocal = map.tramLines.get(0).getPathBetweenNBStations(from, to);
     }
 
-    private void setPathGlobal(ExpressCentre from, ExpressCentre to,ExpressCentre avoidStation, SIMULATION_MODE mode) {
+    private void setPathGlobal(ExpressCentre from, ExpressCentre to) {
         TramLine tl = map.tramLines.get(0);
         ExpressCentre currStation = currStation();
 
         if (globalPath == null) {
-                globalPath = tl.getPathGlobal(from, to,avoidStation,mode);
+            globalPath = tl.getPathGlobal(from, to);
         }
 
-        // if no such path exist then set the destination to currStation which will let the car stay still
-//        if (globalPath == null) {
-//        stationTo = currStation;
-//        } else {
         stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
-//        }
+    }
 
+    private void setPathGlobal(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
+        TramLine tl = map.tramLines.get(0);
+        ExpressCentre currStation = currStation();
+        LinkedList<ExpressCentre> old;
+
+        if (!(globalPath == null)) {
+            old = (LinkedList<ExpressCentre>) globalPath.clone();
+        } else {
+            old = null;
+        }
+
+        if (globalPath == null) {
+            globalPath = tl.getPathGlobal(from, to, avoids);
+
+        }
+
+        if (alterPath) {
+            globalPath = tl.getPathGlobal(from, to, avoids);
+
+            if (globalPath != null) {
+                ExpressCentre commonEC = findFirstCommentStation(globalPath, old);
+                double oldDistance = calPathDistanceBetween(old, currStation, commonEC);
+
+                double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
+                System.out.println("\n\n\n" + oldDistance + "  " + newDistance + "\n\n\n");
+
+                if (newDistance > 2 * oldDistance) {
+                    globalPath = old;
+                }
+            }
+        }
+
+        if (globalPath == null && old != null) {
+            globalPath = old;
+        }
+
+        if (globalPath != null) {
+            stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
+        }
+    }
+
+    private ExpressCentre findFirstCommentStation(LinkedList<ExpressCentre> newPath, LinkedList<ExpressCentre> oldPath) {
+        LinkedList<ExpressCentre> copyNew = (LinkedList<ExpressCentre>) newPath.clone();
+        copyNew.remove(0);
+
+        LinkedList<ExpressCentre> copyOld = new LinkedList<ExpressCentre>();
+        int index = oldPath.indexOf(newPath.getFirst());
+        while (index < oldPath.size()) {
+            copyOld.add(oldPath.get(index));
+            index++;
+        }
+
+        for (ExpressCentre ec : copyNew) {
+            if (copyOld.contains(ec))
+                return ec;
+        }
+
+        System.out.println("log: NEVER GETS HERE");
+        // never come to this state
+        return null;
+    }
+
+    private double calPathDistanceBetween(LinkedList<ExpressCentre> path, ExpressCentre a, ExpressCentre b) {
+        double distance = 0;
+        for (int index = path.indexOf(a); index < path.size(); index++) {
+            distance += path.get(index).location.distance(path.get(index + 1).location);
+            if (path.get(index + 1).equals(b)) {
+                return distance;
+            }
+        }
+        return distance;
     }
 
     private ExpressCentre currStation() {
         ExpressCentre s;
-//        if(map.garages.size()>0) {
-//            s = map.garages.get(0).findGarageByLoc(this.location);
-//            if(s != null)
-//                return s;
-//        }
         s = map.allStations.get(0).findStationByLoc(this.location);
         return s;
     }
@@ -249,6 +351,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
             graphics.drawOval(x, y, w, h);
     }
 
+    private void initCarState() {
+        globalPath = null;
+        stationTo = null;
+    }
+
     @Override
     public void step(SimState state) {
 //        if (!(currStation() instanceof Garage)) {
@@ -262,7 +369,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 // this return is for waite one step after arrival
                 return;
             } else {
-                if (this.carrying.isEmpty()) {
+                // TODO globalPath can be set with out using arriveStation
+                if (this.carrying.isEmpty() || globalPath == null || stationTo == null) {
                     this.arriveStation();
                 }
             }
@@ -271,14 +379,17 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if (carrying.isEmpty())
                 return;
 
+
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
-            // can not find a tram Line to destination
+//            // can not find a tram Line to destination
             if (tramLine == null) {
                 return;
             }
 
+            // prepare for leaving
             if (!hasLeaved) {
+
                 if (tramLine.okToLeave(currStation)) {
                     // leave the car park one by one -- FIFO
                     if (tramLine.currLeavingCars != null) {
@@ -290,15 +401,23 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     return;
                 } else {
                     tramLine.tryOccupyTraffic(currStation);
+                    if (map.mode == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+                        if (!tramLine.okToLeave(currStation)) {
+//                        initCarState();
+                            alterPath = true;
+                            arriveStation();
+                            alterPath = false;
+                        }
+                    }
                     return;
                 }
             }
 
             // delay one step of leaving the car park, Truly leave
             if (hasLeaved) {
-                if (tramLine.currLeavingCars.equals(this)) {
-                    tramLine.currLeavingCars = null;
-                }
+//                if (tramLine.currLeavingCars.equals(this)) {
+                tramLine.currLeavingCars = null;
+//                }
                 if (tramLine.a.equals(currStation)) {
                     tramLine.quota1--;
                 } else {
@@ -311,20 +430,20 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
 
 
-//        if (!carrying.isEmpty()) {
-        // get the next step location
-        Int2D nextStep = this.pathLocal.get(stepCount);
+        if (!carrying.isEmpty()) {
+            // get the next step location
+            Int2D nextStep = this.pathLocal.get(stepCount);
 
-        // move
-        while (this.location.equals(nextStep)) {
+            // move
+            while (this.location.equals(nextStep)) {
+                stepCount++;
+                nextStep = this.pathLocal.get(stepCount);
+            }
+
+            this.location = nextStep;
+            map.mapGrid.setObjectLocation(this, nextStep);
             stepCount++;
-            nextStep = this.pathLocal.get(stepCount);
         }
-
-        this.location = nextStep;
-        map.mapGrid.setObjectLocation(this, nextStep);
-        stepCount++;
-//        }
     }
 }
 

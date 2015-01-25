@@ -16,6 +16,7 @@ public class PathSearcher {
         this.map = map;
     }
 
+    // basic type
     public LinkedList<LinkedList<ExpressCentre>> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
         initPathSearch();
         LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
@@ -24,9 +25,52 @@ public class PathSearcher {
         return paths;
     }
 
+    // type with traffic avoiding
+    public LinkedList<LinkedList<ExpressCentre>> findAllPossiblePath(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
+        initPathSearch();
+        LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
+        path.add(from);
+        findAllPossiblePathHelper(from, to, path, 0, avoids);
+        return paths;
+    }
+
     private void initPathSearch() {
         this.paths = new LinkedList<LinkedList<ExpressCentre>>();
         currMinDistance = MAX_DISTANCE;
+    }
+
+    // TODO avoid code duplication
+    private void findAllPossiblePathHelper(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> result, double distance, LinkedList<ExpressCentre> avoids) {
+        LinkedList<ExpressCentre> neighbours = from.findNeighbours();
+
+        if (distance == 0)
+            neighbours.removeAll(avoids);
+        // if node is isolated then just return
+        if (neighbours.size() == 0)
+            return;
+
+        for (ExpressCentre expressCentre : neighbours) {
+            if (!result.contains(expressCentre)) {
+                distance += expressCentre.location.distance(result.getLast().location);
+
+                if (!(distance > currMinDistance)) {
+                    // make a copy of result
+                    LinkedList<ExpressCentre> copy = (LinkedList<ExpressCentre>) result.clone();
+                    copy.add(expressCentre);
+
+                    // if we are at the final destination
+                    if (expressCentre.equals(to)) {
+                        paths.add(copy);
+//                        currMinDistance = calPathDistance(copy);
+                        currMinDistance = 0;
+                        return;
+                    } else {
+                        findAllPossiblePathHelper(expressCentre, to, copy, distance, new LinkedList<ExpressCentre>());
+                    }
+
+                }
+            }
+        }
     }
 
     private void findAllPossiblePathHelper(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> result, double distance) {
@@ -48,8 +92,8 @@ public class PathSearcher {
                     // if we are at the final destination
                     if (expressCentre.equals(to)) {
                         paths.add(copy);
-//                        currMinDistance = calPathDistance(copy);
-                        currMinDistance = 0;
+                        currMinDistance = calPathDistance(copy);
+//                        currMinDistance = 0;
                         return;
                     } else {
                         findAllPossiblePathHelper(expressCentre, to, copy, distance);

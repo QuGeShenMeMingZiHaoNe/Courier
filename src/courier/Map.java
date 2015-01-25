@@ -9,27 +9,21 @@ import java.util.LinkedList;
 
 public class Map extends SimState {
     public static final int initNumOfParcelsInStation = 3;
-    public static final int initNumOfCarsInStation = 180;
+    public static final int initNumOfCarsInStation = 2;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
-    private static final int distanceToCentre = 300;
+    private static final int distanceToCentre = 150;
+    // Simulation mode, basic mod means set a destination without changing,
+    // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
+    public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public final boolean testModeOne = false;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
     //    public double retainedProfit = 0;
     public double profitMargin = 2.45;
     protected int parcelTotal = 0;
     protected int serialCarCallerID = 1;
-    private int serialStationID = 1;
-    private int serialParcelID = 1;
-    private int serialTramLineID = 1;
-    private int serialCarID = 1;
-
-    // Simulation mode, basic mod means set a destination without changing,
-    // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
-
-
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
@@ -37,8 +31,10 @@ public class Map extends SimState {
     protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     protected LinkedList<Car> cars = new LinkedList<Car>();
     protected Network tramLineNet = new Network(false);
-
-
+    private int serialStationID = 1;
+    private int serialParcelID = 1;
+    private int serialTramLineID = 1;
+    private int serialCarID = 1;
 
 
     public Map(long seed) {
@@ -123,9 +119,9 @@ public class Map extends SimState {
         ExpressCentre closestEC = expressCentres.getFirst();
         double distance = 999999999;
         double tempDistance;
-        for(ExpressCentre ec : expressCentres){
+        for (ExpressCentre ec : expressCentres) {
             tempDistance = loc.distance(ec.location);
-            if(tempDistance<distance){
+            if (tempDistance < distance) {
                 distance = tempDistance;
                 closestEC = ec;
             }

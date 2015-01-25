@@ -28,7 +28,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 5;
+    private int busy = 20;
     private int count = 0;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
@@ -91,7 +91,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     //
     public LinkedList<ExpressCentre> findNeighbours() {
-        return neighbours;
+        return (LinkedList<ExpressCentre>) neighbours.clone();
     }
 
     public Boolean hasNeighbour() {
@@ -205,7 +205,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);
-        graphics.drawString("S:" + name + " C:" + carPark.size() + " P:" + pToBeSent.size(), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
+        graphics.drawString("S:" + name + " C:" + carPark.size() + " P:" + pToBeSent.size() + " A:" + pArrived.size(), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
     }
 
 }

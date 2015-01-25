@@ -33,7 +33,8 @@ public class Parcel {
     private double getMinimumCost() {
         PathSearcher ps = new PathSearcher(map);
         // find the minimum cost base on the shortest path
-        double minimumCost = ps.calPathDistance(ps.sortPathByDistance(ps.findAllPossiblePath(from, destination)).getFirst());
+
+        double minimumCost = from.location.distance(destination.location);
         return minimumCost;
     }
 
