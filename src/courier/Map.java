@@ -5,21 +5,23 @@ import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
 import sim.util.Int2D;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInStation = 200;
-    public static final int initNumOfCarsInStation = 100;
+    public static final int initNumOfParcelsInGarage = 2;
+    public static final int initNumOfCarsInStation = 10;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
-    private static final int distanceToCentre = 300;
+    private static final int distanceToCentre = 1000;
+
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public final boolean testModeOne = true;
+    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public final boolean testModeOn = true;
+
+
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
     //    public double retainedProfit = 0;
@@ -38,12 +40,10 @@ public class Map extends SimState {
     private int serialTramLineID = 1;
     private int serialCarID = 1;
 
-    protected long firstParcelReleasedTime;
-    protected long lastParcelArrivedTime;
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
 
-    protected String initTime ;
+    protected String initTime = new Date().toString();
 
 
     public Map(long seed) {
@@ -57,12 +57,6 @@ public class Map extends SimState {
 
     public void start() {
         super.start();
-
-        // init the output test file
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-        initTime = sdf.format(System.currentTimeMillis());
-//        File testOutput = new File("src/courier/"+ mode+initTime +".output");
-//        testOutput.delete();
 
         // clear the buddies
         tramLineNet.clear();
@@ -78,7 +72,7 @@ public class Map extends SimState {
         // init tramlines
         initTramLines();
 
-        if(testModeOne)
+        if(testModeOn)
             initFixedLocParcels();
 
 //        initRandomParcels();
@@ -86,7 +80,6 @@ public class Map extends SimState {
         initTramLineNet();
 
         parcelTotalCopy = parcelTotal;
-        firstParcelReleasedTime = this.schedule.getSteps();
     }
 
     private void initExpressCenter() {
@@ -203,7 +196,7 @@ public class Map extends SimState {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
             if (s.hasNeighbour()) {
-                for (int i = 0; i < initNumOfParcelsInStation; i++) {
+                for (int i = 0; i < initNumOfParcelsInGarage; i++) {
                     // add a parcel to current station;
                     addRandomParcel(s);
                     parcelTotal++;
@@ -229,15 +222,15 @@ public class Map extends SimState {
         int j = 1;
         int next = (i+j)%(expressCentres.size());
 
-        // add "initNumOfParcelsInStation" numbers of parcels
-        for (int k = 0; k < initNumOfParcelsInStation; k++) {
+        // add "initNumOfParcelsInGarage" numbers of parcels
+        for (int k = 0; k < initNumOfParcelsInGarage; k++) {
             if (currExpressCentre.hasNeighbour()) {
                 if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
                     return;
                 }
                 do {
-                    j++;
                     next = (i+j)%(expressCentres.size());
+                    j++;
                 }
                 while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
 

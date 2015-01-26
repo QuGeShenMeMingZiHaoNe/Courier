@@ -29,9 +29,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
     private LinkedList<ExpressCentre> globalPath;
-    private int basicCarDisplaySize = 2;
+    private final int basicCarDisplaySize = 2;
     private boolean moving = true;
     private boolean alterPath = false;
+    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -67,9 +68,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
         List<Parcel> unload = parcelsToUnload(s);
         // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
-        if (unload.size() > 0) {
-            initCarState();
-        }
+//        if (unload.size() > 0) {
+//        }
         carrying.removeAll(unload);
 
         s.pArrived.addAll(unload);
@@ -88,6 +88,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if (p.destination.equals(s)) {
                 // TODO: does car caller earn money??
                 map.profit += p.getProfit();
+
+                // if the package is the first package
+                if(carrying.indexOf(p)==0)
+                    initCarState();
 
                 p.arriveTime = map.schedule.getSteps();
 
@@ -161,7 +165,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     break;
                 case AVOID_TRAFFIC_JAM:
                     LinkedList<ExpressCentre> avoids = findTrafficJam();
-
+                    avoids.addAll(refusedAlterPath);
                     if (avoids.size() < currStation.neighbours.size()) {
                         setPathGlobal(currStation, targetStation, avoids);
                     }
@@ -209,6 +213,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             globalPath = tl.getPathGlobal(from, to);
         }
 
+        System.out.println(from+" "+to+" "+globalPath);
         stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
     }
 
@@ -238,7 +243,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
 
                     if (newDistance >  oldDistance) {
-                    globalPath = old;
+                        refusedAlterPath.add(globalPath.get(1));
+                        globalPath = old;
                 }else{
                     System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n"+ "successfully alter "+ "\n between "+currStation+" "+commonEC);
                 }
@@ -288,6 +294,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     distance += tl.carsOnTramLine.getFirst().location.distance(a.location);
                     distance += a.location.distance(path.get(index+1).location);
                 }else{
+//                    System.out.println("fdsafdsafdsafsafdsafasfsdafdsafdsafsad!@#$%^&*()^&%$$#@!@!@#$%^&*(*)_(*&*^%$#@");
+//                    System.out.println(this+" "+a+" "+b);
                     distance += path.get(index).location.distance(path.get(index + 1).location);
                 }
             }else {
@@ -356,8 +364,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if (preciseEllipse == null)
                 preciseEllipse = new Ellipse2D.Double();    // could get reset because it's transient
             preciseEllipse.setFrame(info.draw.x - width / 2.0, info.draw.y - height / 2.0, width, height);
-            if (true) graphics.fill(preciseEllipse);
-            else graphics.draw(preciseEllipse);
+            graphics.fill(preciseEllipse);
             return;
         }
 
@@ -367,10 +374,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         int h = (int) (height);
 
         // draw centered on the origin
-        if (true)
             graphics.fillOval(x, y, w, h);
-        else
-            graphics.drawOval(x, y, w, h);
     }
 
     private void initCarState() {
@@ -380,10 +384,12 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
+        // don't increase cost if the cars in garage
 //        if (!(currStation() instanceof Garage)) {
 //            Int2D d = new Int2D(1, 1);
 //            map.profit -= d.distance(new Int2D(2, 2));
 //        }
+
         ExpressCentre currStation = currStation();
         if (currStation != null) {
             if (!hasArrived) {
@@ -420,6 +426,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     tramLine.currLeavingCars = this;
                     leaveStation();
                     tramLine.carsOnTramLine.add(this);
+                    refusedAlterPath = new LinkedList<ExpressCentre>();
                     return;
                 } else {
                     tramLine.tryOccupyTraffic(currStation);

@@ -28,7 +28,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 20;
+    private int busy = 500;
     private int count = 0;
     protected long lastVisitTime = 0;
     private long sequence = 300;
@@ -78,7 +78,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
                 return s;
             }
         }
-//        System.out.println("ERROR: Can not find station "+ inName);
         return null;
     }
 
@@ -100,37 +99,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return neighbours.size() > 0;
     }
 
-    // find all reachable station
-//    public boolean reachableHelper(ExpressCentre b) {
-//        LinkedList<ExpressCentre> neighbours = this.findNeighbours();
-//        LinkedList<ExpressCentre> temp, result;
-//
-//        int size = neighbours.size();
-//        result = (LinkedList<ExpressCentre>) neighbours.clone();
-//        int previous = 0;
-//
-//        while (previous < size) {
-//            previous = size;
-//            for (ExpressCentre nb : neighbours) {
-//                temp = nb.findNeighbours();
-//                // TODO improve performance -> removeAll
-//                    if(temp.contains(b))
-//                        return true;
-//                result.removeAll(temp);
-//                result.addAll(temp);
-//            }
-//            neighbours = (LinkedList<ExpressCentre>) result.clone();
-//            size = neighbours.size();
-//        }
-//        return false;
-//    }
-//
-//    public boolean reachable(ExpressCentre b) {
-//        return this.reachableHelper(b);
-//    }
-
     public boolean reachable(ExpressCentre b) {
-        return !(new PathSearcher(map).findAllPossiblePath(this, b).isEmpty());
+        return !(new PathSearcher(map).findAllPossiblePath(this, b) == null);
     }
 
     private void callCar() {
@@ -155,19 +125,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return null;
     }
 
-//    private ExpressCentre findStationWithFreeCar() {
-//        for (ExpressCentre s : map.allStations) {
-//            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
-//                for (Car c : s.carPark) {
-//                    if (c.getCarrying().size() == 0) {
-//                        return s;
-//                    }
-//                }
-//            }
-//        }
-//        return null;
-//    }
-
     @Override
     public void step(SimState state) {
 //      if the car park is empty, has package to be sent, and the car caller is empty
@@ -176,7 +133,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
                 if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
                     callCar();
 
-                if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && !map.testModeOne) {
+                if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && !map.testModeOn) {
                     map.addRandomParcel(this);
                     map.parcelTotal++;
                 }

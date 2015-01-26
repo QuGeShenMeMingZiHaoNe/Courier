@@ -24,21 +24,20 @@ public class Parcel {
 
     @Override
     public String toString() {
-        return "Parcel :" + parcelID;
+        return "Parcel: " + parcelID + " From "+from+" To "+destination;
     }
 
     public String getTimeSpending() {
-//        SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         timeSpending = map.schedule.getSteps() - pickUpTime;
-        if(map.testModeOne && !(this instanceof CarCaller)) {
+        if(map.testModeOn && !(this instanceof CarCaller)) {
             outputFile(this + " DELIVERED FROM " + from + " TO " + destination + "\nRELEASE TIME " + (pickUpTime) + " ARRIVED TIME " + (arriveTime) + " TIME SPENDING " + (timeSpending) + "\nPARCEL REMAINING " + map.parcelTotal+"...\n");
                 map.parcelTimeSpendingTotal+=this.timeSpending;
+
             // the ending of the output file
             if(map.parcelTotal == 0) {
-                map.lastParcelArrivedTime = this.arriveTime;
                 long timeSpendingAverage = map.parcelTimeSpendingTotal/map.parcelTotalCopy;
                 outputFile("\n\n\n\nTotal spending time: "+ (map.parcelTimeSpendingTotal) + "\nTime Spending Average: "+ (timeSpendingAverage));
-                outputFile("Mode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInStation + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size());
+                outputFile("Mode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInGarage + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size());
             }
         }
         return String.valueOf(timeSpending);
@@ -48,7 +47,7 @@ public class Parcel {
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/"+ map.mode+ map.initTime+".output", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/"+ map.mode+ " "+map.initTime+".output", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }

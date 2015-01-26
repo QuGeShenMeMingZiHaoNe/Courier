@@ -17,13 +17,19 @@ public class PathSearcher {
     }
 
     // basic type
-    public LinkedList<LinkedList<ExpressCentre>> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
-        initPathSearch();
-        LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
-        path.add(from);
-        findAllPossiblePathHelper(from, to, path, 0);
-        return paths;
-    }
+//    public LinkedList<LinkedList<ExpressCentre>> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
+//        initPathSearch();
+//        LinkedList<ExpressCentre> path = new LinkedList<ExpressCentre>();
+//        path.add(from);
+//        findAllPossiblePathHelper(from, to, path, 0);
+//        return paths;
+//    }
+
+        public LinkedList<ExpressCentre> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
+
+            return new AStar(map).findShortestPath(from,to);
+
+        }
 
     // type with traffic avoiding
     public LinkedList<LinkedList<ExpressCentre>> findAllPossiblePath(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
