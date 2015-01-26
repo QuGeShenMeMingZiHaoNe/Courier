@@ -32,7 +32,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private int basicCarDisplaySize = 2;
     private boolean moving = true;
     private boolean alterPath = false;
-    private double alterPathRatio = 1.1;
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -238,7 +237,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
 
-                if (newDistance > alterPathRatio* oldDistance) {
+                    if (newDistance >  oldDistance) {
                     globalPath = old;
                 }else{
                     System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n"+ "successfully alter "+ "\n between "+currStation+" "+commonEC);
@@ -278,8 +277,23 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     private double calPathDistanceBetween(LinkedList<ExpressCentre> path, ExpressCentre a, ExpressCentre b) {
         double distance = 0;
+        // return directly if station a and b
+        if(a.equals(b))
+            return distance;
+
         for (int index = path.indexOf(a); index < path.size(); index++) {
-            distance += path.get(index).location.distance(path.get(index + 1).location);
+            if(index == path.indexOf(a)){
+                TramLine tl = map.tramLines.getFirst().findTramLine(a,path.get(index+1));
+                if(!tl.carsOnTramLine.isEmpty()) {
+                    distance += tl.carsOnTramLine.getFirst().location.distance(a.location);
+                    distance += a.location.distance(path.get(index+1).location);
+                }else{
+                    distance += path.get(index).location.distance(path.get(index + 1).location);
+                }
+            }else {
+                distance += path.get(index).location.distance(path.get(index + 1).location);
+            }
+
             if (path.get(index + 1).equals(b)) {
                 return distance;
             }

@@ -38,7 +38,7 @@ public class Parcel {
                 map.lastParcelArrivedTime = this.arriveTime;
                 long timeSpendingAverage = map.parcelTimeSpendingTotal/map.parcelTotalCopy;
                 outputFile("\n\n\n\nTotal spending time: "+ (map.parcelTimeSpendingTotal) + "\nTime Spending Average: "+ (timeSpendingAverage));
-                outputFile("Mode: "+map.mode+" Car number: "+map.initNumOfParcelsInStation+" Parcel number: "+map.parcelTotalCopy+" ExpressCenter: "+map.expressCentres.size());
+                outputFile("Mode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInStation + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size());
             }
         }
         return String.valueOf(timeSpending);

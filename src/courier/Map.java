@@ -18,7 +18,7 @@ public class Map extends SimState {
     private static final int distanceToCentre = 300;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
     public final boolean testModeOne = true;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
