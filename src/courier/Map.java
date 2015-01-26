@@ -5,19 +5,21 @@ import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
 import sim.util.Int2D;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInStation = 3;
-    public static final int initNumOfCarsInStation = 2;
+    public static final int initNumOfParcelsInStation = 200;
+    public static final int initNumOfCarsInStation = 100;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
-    private static final int distanceToCentre = 150;
+    private static final int distanceToCentre = 300;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public final boolean testModeOne = false;
+    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public final boolean testModeOne = true;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
     //    public double retainedProfit = 0;
@@ -36,6 +38,13 @@ public class Map extends SimState {
     private int serialTramLineID = 1;
     private int serialCarID = 1;
 
+    protected long firstParcelReleasedTime;
+    protected long lastParcelArrivedTime;
+    protected long parcelTimeSpendingTotal = 0;
+    protected int parcelTotalCopy;
+
+    protected String initTime ;
+
 
     public Map(long seed) {
         super(seed);
@@ -48,6 +57,12 @@ public class Map extends SimState {
 
     public void start() {
         super.start();
+
+        // init the output test file
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        initTime = sdf.format(System.currentTimeMillis());
+//        File testOutput = new File("src/courier/"+ mode+initTime +".output");
+//        testOutput.delete();
 
         // clear the buddies
         tramLineNet.clear();
@@ -63,10 +78,15 @@ public class Map extends SimState {
         // init tramlines
         initTramLines();
 
-//         initCars();
+        if(testModeOne)
+            initFixedLocParcels();
 
-//        initParcels();
+//        initRandomParcels();
+
         initTramLineNet();
+
+        parcelTotalCopy = parcelTotal;
+        firstParcelReleasedTime = this.schedule.getSteps();
     }
 
     private void initExpressCenter() {
@@ -179,29 +199,56 @@ public class Map extends SimState {
         }
     }
 
-    private void initParcels() {
+    private void initRandomParcels() {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
             if (s.hasNeighbour()) {
                 for (int i = 0; i < initNumOfParcelsInStation; i++) {
                     // add a parcel to current station;
-                    addParcel(s);
+                    addRandomParcel(s);
                     parcelTotal++;
                 }
             }
         }
     }
 
-    // return a number beyond limit and greater than 0
-    private int getNextInt(int limit) {
-        int result;
-        do {
-            result = random.nextInt(limit);
-        } while (result == 0);
-        return result;
+    private void initFixedLocParcels() {
+        for (ExpressCentre s : expressCentres) {
+            // if the station is not isolated
+            if (s.hasNeighbour()) {
+                addFixedLocParcel(s);
+            }
+        }
     }
 
-    public void addParcel(ExpressCentre currExpressCentre) {
+
+
+    // add parcels with fixed destination and number
+    public void addFixedLocParcel(ExpressCentre currExpressCentre) {
+        int i = expressCentres.indexOf(currExpressCentre);
+        int j = 1;
+        int next = (i+j)%(expressCentres.size());
+
+        // add "initNumOfParcelsInStation" numbers of parcels
+        for (int k = 0; k < initNumOfParcelsInStation; k++) {
+            if (currExpressCentre.hasNeighbour()) {
+                if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
+                    return;
+                }
+                do {
+                    j++;
+                    next = (i+j)%(expressCentres.size());
+                }
+                while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
+
+                currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
+                serialParcelID++;
+                parcelTotal++;
+            }
+        }
+    }
+
+    public void addRandomParcel(ExpressCentre currExpressCentre) {
         if (currExpressCentre.hasNeighbour()) {
             if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
                 return;
@@ -215,6 +262,15 @@ public class Map extends SimState {
             currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
             serialParcelID++;
         }
+    }
+
+    // return a number beyond limit and greater than 0
+    private int getNextInt(int limit) {
+        int result;
+        do {
+            result = random.nextInt(limit);
+        } while (result == 0);
+        return result;
     }
 
     private void initTramLineNet() {

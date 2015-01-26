@@ -30,6 +30,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     // the bigger the number, the more busy it is
     private int busy = 20;
     private int count = 0;
+    protected long lastVisitTime = 0;
+    private long sequence = 300;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -168,20 +170,18 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
-//        if(count>100) {
-//            if the car park is empty, has package to be sent, and the car caller is empty
-        if (hasNeighbour()) {
-            if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
-                callCar();
+//      if the car park is empty, has package to be sent, and the car caller is empty
+        if(map.schedule.getSteps()-lastVisitTime>sequence) {
+            if (hasNeighbour()) {
+                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
+                    callCar();
 
-            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot()) {
-                map.addParcel(this);
-                map.parcelTotal++;
+                if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && !map.testModeOne) {
+                    map.addRandomParcel(this);
+                    map.parcelTotal++;
+                }
             }
         }
-//            count=0;
-//        }
-//        count++;
     }
 
     private boolean genParcelOrNot() {

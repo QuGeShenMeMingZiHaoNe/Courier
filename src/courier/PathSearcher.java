@@ -61,8 +61,8 @@ public class PathSearcher {
                     // if we are at the final destination
                     if (expressCentre.equals(to)) {
                         paths.add(copy);
-//                        currMinDistance = calPathDistance(copy);
-                        currMinDistance = 0;
+                        currMinDistance = calPathDistance(copy);
+//                        currMinDistance = 0;
                         return;
                     } else {
                         findAllPossiblePathHelper(expressCentre, to, copy, distance, new LinkedList<ExpressCentre>());

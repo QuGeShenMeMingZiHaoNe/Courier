@@ -32,6 +32,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private int basicCarDisplaySize = 2;
     private boolean moving = true;
     private boolean alterPath = false;
+    private double alterPathRatio = 1.1;
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -76,7 +77,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
         if (unload.size() > 0) {
             System.out.print("Log: Global parcels remaining ");
-            System.out.println(map.parcelTotal -= (unload.size()));
+            System.out.println(map.parcelTotal);
         }
     }
 
@@ -89,7 +90,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 // TODO: does car caller earn money??
                 map.profit += p.getProfit();
 
-                System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation() + "...");
+                p.arriveTime = map.schedule.getSteps();
+
                 // restore the released weight to the car
                 this.spaceRemaining += p.weight;
 
@@ -98,8 +100,12 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
                     initCarState();
+                    System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation() + "...");
+
                 } else {
+                    map.parcelTotal--;
                     toUnload.add(p);
+                    System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation() + "...");
                 }
             }
         }
@@ -115,7 +121,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         if (!hasArrived) {
             moving = false;
             hasArrived = true;
-
+            currStation.lastVisitTime = map.schedule.getSteps();
             // remove the car from the road
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
@@ -231,10 +237,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 double oldDistance = calPathDistanceBetween(old, currStation, commonEC);
 
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
-                System.out.println("\n\n\n" + oldDistance + "  " + newDistance + "\n\n\n");
 
-                if (newDistance > 2 * oldDistance) {
+                if (newDistance > alterPathRatio* oldDistance) {
                     globalPath = old;
+                }else{
+                    System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n"+ "successfully alter "+ "\n between "+currStation+" "+commonEC);
                 }
             }
         }
@@ -296,6 +303,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 spaceRemaining -= p.weight;
                 newParcelAdded = true;
                 parcelsCouldBeLoad.add(p);
+                p.pickUpTime = map.schedule.getSteps();
                 System.out.println("Log: " + p + " with weight " + p.weight + " has been picked up by " + this);
                 break;
             }
