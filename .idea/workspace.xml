@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Tramline.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/TramLine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/AStar$SearchNode.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/AStar$SearchNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/AStar.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/AStar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Car.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/Car.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/ExpressCentre.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/ExpressCentre.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Map.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/Map.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Parcel.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/Parcel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/PathSearcher.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/PathSearcher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/AStar.java" afterPath="$PROJECT_DIR$/src/courier/AStar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car.java" afterPath="$PROJECT_DIR$/src/courier/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/ExpressCentre.java" afterPath="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Parcel.java" afterPath="$PROJECT_DIR$/src/courier/Parcel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/PathSearcher.java" afterPath="$PROJECT_DIR$/src/courier/PathSearcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/TramLine.java" afterPath="$PROJECT_DIR$/src/courier/TramLine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="" />
     <ignored path="Courier.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
