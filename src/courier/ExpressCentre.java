@@ -24,14 +24,14 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected Map map;
     // number of car caller of a station can have;
     protected int carCallerSema = 1;
+    protected long lastVisitTime = 0;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 500;
+    private int busy = 990;
     private int count = 0;
-    protected long lastVisitTime = 0;
-    private long sequence = 300;
+    private long sequence = 100;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -99,6 +99,11 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return neighbours.size() > 0;
     }
 
+    public boolean reachableByGarage() {
+
+        return !(new PathSearcher(map).findAllPossiblePath(this, map.garages.getFirst()) == null);
+    }
+
     public boolean reachable(ExpressCentre b) {
         return !(new PathSearcher(map).findAllPossiblePath(this, b) == null);
     }
@@ -128,7 +133,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     @Override
     public void step(SimState state) {
 //      if the car park is empty, has package to be sent, and the car caller is empty
-        if(map.schedule.getSteps()-lastVisitTime>sequence) {
+        if (map.schedule.getSteps() - lastVisitTime > sequence) {
             if (hasNeighbour()) {
                 if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
                     callCar();

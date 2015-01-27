@@ -173,22 +173,10 @@ public class TramLine implements Steppable {
 
         // TODO move this path searcher into constructor;
         PathSearcher pathSearcher = new PathSearcher(map);
+
         // find path using breadth first search
+        return pathSearcher.findAllPossiblePath(a, b, avoids);
 
-        LinkedList<LinkedList<ExpressCentre>> paths;
-        paths = pathSearcher.findAllPossiblePath(a, b, avoids);
-        // sort path by distance in ascending order
-
-        // TODO do we need sort here?
-        if (paths.size() > 1)
-            paths = pathSearcher.sortPathByDistance(paths);
-
-        // return the one with the lowest distance
-        if (paths.size() > 0) {
-            return paths.getFirst();
-        } else {
-            return null;
-        }
     }
 
     // try to get the traffic control, release the control if the holder station has ran out quota

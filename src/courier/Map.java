@@ -9,16 +9,18 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInGarage = 2;
-    public static final int initNumOfCarsInStation = 10;
+    public static final int initNumOfParcelsInGarage = 100;
+    public static final int initNumOfCarsInStation = 5;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
-    private static final int distanceToCentre = 1000;
+    private static final int distanceToCentre = 300;
 
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+
+    public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public final boolean testModeOn = true;
 
 
@@ -35,15 +37,13 @@ public class Map extends SimState {
     protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     protected LinkedList<Car> cars = new LinkedList<Car>();
     protected Network tramLineNet = new Network(false);
+    protected long parcelTimeSpendingTotal = 0;
+    protected int parcelTotalCopy;
+    protected String initTime = new Date().toString();
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-
-    protected long parcelTimeSpendingTotal = 0;
-    protected int parcelTotalCopy;
-
-    protected String initTime = new Date().toString();
 
 
     public Map(long seed) {
@@ -72,7 +72,7 @@ public class Map extends SimState {
         // init tramlines
         initTramLines();
 
-        if(testModeOn)
+        if (testModeOn)
             initFixedLocParcels();
 
 //        initRandomParcels();
@@ -85,9 +85,10 @@ public class Map extends SimState {
     private void initExpressCenter() {
         InitExpressCentre i = new InitExpressCentre(this);
         i.initExpressCentre();
-//        addExpressCentre("A", new Int2D(10, 40));
-//        addExpressCentre("B", new Int2D(40, 50));
-//        addExpressCentre("C", new Int2D(50, 66));
+//        addExpressCentre("A", new Int2D(gridWidth/2-20, gridHeight/2-20));
+//        addExpressCentre("B", new Int2D(gridWidth/2-20,gridHeight/2+20));
+//        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+50));
+
 //        addExpressCentre("D", new Int2D(90, 50));
 //        addExpressCentre("E", new Int2D(40, 60));
 //        addExpressCentre("F", new Int2D(99, 99));
@@ -148,6 +149,8 @@ public class Map extends SimState {
         init.initTramLine();
 //        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
+//        addTramLine("line",expressCentres.get(2), expressCentres.get(0));
+
 //        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
 //        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
@@ -195,7 +198,7 @@ public class Map extends SimState {
     private void initRandomParcels() {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
-            if (s.hasNeighbour()) {
+            if (s.reachableByGarage()) {
                 for (int i = 0; i < initNumOfParcelsInGarage; i++) {
                     // add a parcel to current station;
                     addRandomParcel(s);
@@ -208,28 +211,27 @@ public class Map extends SimState {
     private void initFixedLocParcels() {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
-            if (s.hasNeighbour()) {
+            if (s.reachableByGarage()) {
                 addFixedLocParcel(s);
             }
         }
     }
 
 
-
     // add parcels with fixed destination and number
     public void addFixedLocParcel(ExpressCentre currExpressCentre) {
         int i = expressCentres.indexOf(currExpressCentre);
         int j = 1;
-        int next = (i+j)%(expressCentres.size());
+        int next = (i + j) % (expressCentres.size());
 
         // add "initNumOfParcelsInGarage" numbers of parcels
         for (int k = 0; k < initNumOfParcelsInGarage; k++) {
-            if (currExpressCentre.hasNeighbour()) {
+            if (currExpressCentre.reachableByGarage()) {
                 if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
                     return;
                 }
                 do {
-                    next = (i+j)%(expressCentres.size());
+                    next = (i + j) % (expressCentres.size());
                     j++;
                 }
                 while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));

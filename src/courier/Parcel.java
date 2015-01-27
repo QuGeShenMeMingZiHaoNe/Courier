@@ -1,6 +1,9 @@
 package courier;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 
 public class Parcel {
@@ -24,36 +27,37 @@ public class Parcel {
 
     @Override
     public String toString() {
-        return "Parcel: " + parcelID + " From "+from+" To "+destination;
+        return "Parcel: " + parcelID + " From " + from + " To " + destination;
     }
 
     public String getTimeSpending() {
         timeSpending = map.schedule.getSteps() - pickUpTime;
-        if(map.testModeOn && !(this instanceof CarCaller)) {
-            outputFile(this + " DELIVERED FROM " + from + " TO " + destination + "\nRELEASE TIME " + (pickUpTime) + " ARRIVED TIME " + (arriveTime) + " TIME SPENDING " + (timeSpending) + "\nPARCEL REMAINING " + map.parcelTotal+"...\n");
-                map.parcelTimeSpendingTotal+=this.timeSpending;
+
+        if (map.testModeOn && !(this instanceof CarCaller)) {
+            outputFile(this + " DELIVERED FROM " + from + " TO " + destination + "\nRELEASE TIME " + (pickUpTime) + " ARRIVED TIME " + (arriveTime) + " TIME SPENDING " + (timeSpending) + "\nPARCEL REMAINING " + map.parcelTotal + "...\n");
+            map.parcelTimeSpendingTotal += this.timeSpending;
 
             // the ending of the output file
-            if(map.parcelTotal == 0) {
-                long timeSpendingAverage = map.parcelTimeSpendingTotal/map.parcelTotalCopy;
-                outputFile("\n\n\n\nTotal spending time: "+ (map.parcelTimeSpendingTotal) + "\nTime Spending Average: "+ (timeSpendingAverage));
+            if (map.parcelTotal == 0) {
+                long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
+                outputFile("\n\n\n\nTotal spending time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending Average: " + (timeSpendingAverage));
                 outputFile("Mode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInGarage + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size());
             }
         }
         return String.valueOf(timeSpending);
     }
 
-    private void outputFile(String write){
+    private void outputFile(String write) {
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/"+ map.mode+ " "+map.initTime+".output", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + map.mode + " " + map.initTime + ".output", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
         writer.println(write);
 
-            writer.close();
+        writer.close();
     }
 
     // TODO: better simulation as the distance does not == car step

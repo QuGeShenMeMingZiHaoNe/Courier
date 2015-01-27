@@ -32,7 +32,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private final int basicCarDisplaySize = 2;
     private boolean moving = true;
     private boolean alterPath = false;
-    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
+//    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
 
 
     public Car(int carID, Int2D location, Map map) {
@@ -165,7 +165,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     break;
                 case AVOID_TRAFFIC_JAM:
                     LinkedList<ExpressCentre> avoids = findTrafficJam();
-                    avoids.addAll(refusedAlterPath);
+//                    avoids.addAll(refusedAlterPath);
                     if (avoids.size() < currStation.neighbours.size()) {
                         setPathGlobal(currStation, targetStation, avoids);
                     }
@@ -192,6 +192,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             if (!tl.okToLeave(currStation))
                 avoids.add(nb);
+
+//            if(!tl.carsOnTramLine.isEmpty()&&!tl.trafficLightOccupant.equals(currStation))
         }
         return avoids;
     }
@@ -213,7 +215,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
             globalPath = tl.getPathGlobal(from, to);
         }
 
-        System.out.println(from+" "+to+" "+globalPath);
         stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
     }
 
@@ -243,7 +244,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
 
                     if (newDistance >  oldDistance) {
-                        refusedAlterPath.add(globalPath.get(1));
+//                        refusedAlterPath.add(globalPath.get(1));
                         globalPath = old;
                 }else{
                     System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n"+ "successfully alter "+ "\n between "+currStation+" "+commonEC);
@@ -291,7 +292,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if(index == path.indexOf(a)){
                 TramLine tl = map.tramLines.getFirst().findTramLine(a,path.get(index+1));
                 if(!tl.carsOnTramLine.isEmpty()) {
-                    distance += tl.carsOnTramLine.getFirst().location.distance(a.location);
+                    distance += tl.carsOnTramLine.getLast().location.distance(a.location);
                     distance += a.location.distance(path.get(index+1).location);
                 }else{
 //                    System.out.println("fdsafdsafdsafsafdsafasfsdafdsafdsafsad!@#$%^&*()^&%$$#@!@!@#$%^&*(*)_(*&*^%$#@");
@@ -426,7 +427,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     tramLine.currLeavingCars = this;
                     leaveStation();
                     tramLine.carsOnTramLine.add(this);
-                    refusedAlterPath = new LinkedList<ExpressCentre>();
+//                    refusedAlterPath = new LinkedList<ExpressCentre>();
                     return;
                 } else {
                     tramLine.tryOccupyTraffic(currStation);
