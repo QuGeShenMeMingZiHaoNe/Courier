@@ -9,11 +9,13 @@ import sim.util.Int2D;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Car extends OvalPortrayal2D implements Steppable {
     public static final int maxSpace = 5;
+    private final int basicCarDisplaySize = 2;
     public Shape shape;
     protected int carID;
     protected int spaceRemaining = maxSpace;
@@ -29,7 +31,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private boolean hasArrived = false;
     private boolean hasLeaved = false;
     private LinkedList<ExpressCentre> globalPath;
-    private final int basicCarDisplaySize = 2;
     private boolean moving = true;
     private boolean alterPath = false;
 //    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
@@ -75,8 +76,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
         s.pArrived.addAll(unload);
 
         if (unload.size() > 0) {
-            System.out.print("Log: Global parcels remaining ");
-            System.out.println(map.parcelTotal);
+            if (map.detailsOn) {
+                System.out.print("Log: Global parcels remaining ");
+                System.out.println(map.parcelTotal);
+            }
         }
     }
 
@@ -90,7 +93,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 map.profit += p.getProfit();
 
                 // if the package is the first package
-                if(carrying.indexOf(p)==0)
+                if (carrying.indexOf(p) == 0)
                     initCarState();
 
                 p.arriveTime = map.schedule.getSteps();
@@ -103,12 +106,18 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     currStation().carCallerSema++;
                     carCallerToUnload.add(p);
                     initCarState();
-                    System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation() + "...");
-
+                    String timeSpending = p.getTimeSpending();
+                    if (map.detailsOn) {
+                        System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + timeSpending + " at " + currStation() + "...");
+                    }
                 } else {
                     map.parcelTotal--;
                     toUnload.add(p);
-                    System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + p.getTimeSpending() + " at " + currStation() + "...");
+                    String timeSpending = p.getTimeSpending();
+
+                    if (map.detailsOn) {
+                        System.out.println("Log: " + this + " has unloaded" + " " + p + " with wight " + p.weight + " and time spending " + timeSpending + " at " + currStation() + "...");
+                    }
                 }
             }
         }
@@ -164,6 +173,9 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     setPathGlobal(currStation, targetStation);
                     break;
                 case AVOID_TRAFFIC_JAM:
+                    if (globalPath == null) {
+                        setPathGlobal(currStation, targetStation);
+                    }
                     LinkedList<ExpressCentre> avoids = findTrafficJam();
 //                    avoids.addAll(refusedAlterPath);
                     if (avoids.size() < currStation.neighbours.size()) {
@@ -190,13 +202,20 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             tl.tryOccupyTraffic(currStation);
 
-            if (!tl.okToLeave(currStation))
-                avoids.add(nb);
+            if (!tl.okToLeave(currStation)) {
+//                if(tl.clearingTheRoad){
+//                    if(!tl.trafficLightOccupant.equals(currStation)&&(tl.visited>(map.tramLineVisitedTotal/map.numOfTramLineExceptGarage)))
+
+                if (tl.visited > (map.tramLineVisitedTotal / map.numOfTramLineExceptGarage))
+                    avoids.add(nb);
+//                }
+            }
 
 //            if(!tl.carsOnTramLine.isEmpty()&&!tl.trafficLightOccupant.equals(currStation))
         }
         return avoids;
     }
+
 
     // leave carpark
     public void leaveStation() {
@@ -243,12 +262,22 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
 
-                    if (newDistance >  oldDistance) {
+                double oldPathIntensity = findPathIntensity(old,commonEC);
+                double newPathIntensity = findPathIntensity(globalPath,commonEC);
+
+//                System.out.println("\n"+visitedPathOld/ globalPath.size()+"\n"+visitedPathNew/ old.size()+"\n");
+
+                if (newDistance > oldDistance) {
 //                        refusedAlterPath.add(globalPath.get(1));
-                        globalPath = old;
-                }else{
-                    System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n"+ "successfully alter "+ "\n between "+currStation+" "+commonEC);
+                    globalPath = old;
+                } else {
+                    System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n" + "successfully alter " + "\n between " + currStation + " " + commonEC);
+                    System.out.println("Parcels Total: " + map.parcelTotal);
                 }
+
+                if(oldPathIntensity<0.5*newPathIntensity)
+                    globalPath = old;
+
             }
         }
 
@@ -260,6 +289,44 @@ public class Car extends OvalPortrayal2D implements Steppable {
             stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
         }
     }
+
+//    private int findPathVisited(LinkedList<ExpressCentre> path) {
+//        Iterator<ExpressCentre> iter = path.iterator();
+//        ExpressCentre first = iter.next();
+//        ExpressCentre second;
+//        int visited = 0;
+//        TramLine tl;
+//        while (iter.hasNext()) {
+//            second = iter.next();
+//            tl = map.tramLines.getFirst().findTramLine(first, second);
+//            visited += tl.visited;
+//            first = second;
+//        }
+//        return visited;
+//    }
+
+    private double findPathIntensity(LinkedList<ExpressCentre> path,ExpressCentre commonEC) {
+        Iterator<ExpressCentre> iter = path.iterator();
+        ExpressCentre first = iter.next();
+        if(!first.equals(commonEC)) {
+            while (iter.hasNext()) {
+                first = iter.next();
+                if (first.equals(commonEC))
+                    break;
+            }
+        }
+        ExpressCentre second;
+        double intensity = 0;
+        TramLine tl;
+        while (iter.hasNext()) {
+            second = iter.next();
+            tl = map.tramLines.getFirst().findTramLine(first, second);
+            intensity += tl.carsOnTramLine.size();
+            first = second;
+        }
+        return intensity;
+    }
+
 
     private ExpressCentre findFirstCommentStation(LinkedList<ExpressCentre> newPath, LinkedList<ExpressCentre> oldPath) {
         LinkedList<ExpressCentre> copyNew = (LinkedList<ExpressCentre>) newPath.clone();
@@ -284,22 +351,23 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     private double calPathDistanceBetween(LinkedList<ExpressCentre> path, ExpressCentre a, ExpressCentre b) {
         double distance = 0;
+        ExpressCentre currStation = currStation();
         // return directly if station a and b
-        if(a.equals(b))
+        if (a.equals(b))
             return distance;
 
         for (int index = path.indexOf(a); index < path.size(); index++) {
-            if(index == path.indexOf(a)){
-                TramLine tl = map.tramLines.getFirst().findTramLine(a,path.get(index+1));
-                if(!tl.carsOnTramLine.isEmpty()) {
-                    distance += tl.carsOnTramLine.getLast().location.distance(a.location);
-                    distance += a.location.distance(path.get(index+1).location);
-                }else{
+            if (index == path.indexOf(a)) {
+                TramLine tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
+                if (!tl.carsOnTramLine.isEmpty()) {
+                    distance += tl.carsOnTramLine.getLast().location.distance(currStation.location);
+                    distance += a.location.distance(path.get(index + 1).location);
+                } else {
 //                    System.out.println("fdsafdsafdsafsafdsafasfsdafdsafdsafsad!@#$%^&*()^&%$$#@!@!@#$%^&*(*)_(*&*^%$#@");
 //                    System.out.println(this+" "+a+" "+b);
                     distance += path.get(index).location.distance(path.get(index + 1).location);
                 }
-            }else {
+            } else {
                 distance += path.get(index).location.distance(path.get(index + 1).location);
             }
 
@@ -327,7 +395,9 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 newParcelAdded = true;
                 parcelsCouldBeLoad.add(p);
                 p.pickUpTime = map.schedule.getSteps();
-                System.out.println("Log: " + p + " with weight " + p.weight + " has been picked up by " + this);
+                if (map.detailsOn) {
+                    System.out.println("Log: " + p + " with weight " + p.weight + " has been picked up by " + this);
+                }
                 break;
             }
         }
@@ -375,7 +445,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         int h = (int) (height);
 
         // draw centered on the origin
-            graphics.fillOval(x, y, w, h);
+        graphics.fillOval(x, y, w, h);
     }
 
     private void initCarState() {
@@ -411,7 +481,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
-//            // can not find a tram Line to destination
+            // can not find a tram Line to destination
             if (tramLine == null) {
                 return;
             }
@@ -427,12 +497,19 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     tramLine.currLeavingCars = this;
                     leaveStation();
                     tramLine.carsOnTramLine.add(this);
+
+                    // tramline vistited ++
+                    if (!map.garages.contains(currStation)) {
+                        map.numOfTramLineExceptGarage++;
+                        tramLine.visited++;
+                    }
+
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();
                     return;
                 } else {
                     tramLine.tryOccupyTraffic(currStation);
                     if (map.mode == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-                        if (!tramLine.okToLeave(currStation)) {
+                        if (!tramLine.okToLeave(currStation) && (tramLine.trafficLightOccupant == currStation)) {
 //                        initCarState();
                             alterPath = true;
                             arriveStation();

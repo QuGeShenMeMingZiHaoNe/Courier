@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInGarage = 100;
-    public static final int initNumOfCarsInStation = 200;
+    public static final int initNumOfParcelsInGarage = 10;
+    public static final int initNumOfCarsInStation = 80;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
@@ -19,9 +19,10 @@ public class Map extends SimState {
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
 
-    public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+        public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
 //    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public final boolean testModeOn = true;
+    public final boolean detailsOn = false;
 
 
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
@@ -40,6 +41,9 @@ public class Map extends SimState {
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
     protected String initTime = new Date().toString();
+    protected int numOfTramLineExceptGarage;
+    protected int tramLineVisitedTotal;
+
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
@@ -80,18 +84,18 @@ public class Map extends SimState {
         initTramLineNet();
 
         parcelTotalCopy = parcelTotal;
+        numOfTramLineExceptGarage = tramLines.size() - garages.size();
     }
 
     private void initExpressCenter() {
         InitExpressCentre i = new InitExpressCentre(this);
         i.initExpressCentre();
-//        addExpressCentre("A", new Int2D(gridWidth/2-20, gridHeight/2-20));
-//        addExpressCentre("B", new Int2D(gridWidth/2-20,gridHeight/2+20));
-//        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+50));
-
-//        addExpressCentre("D", new Int2D(90, 50));
-//        addExpressCentre("E", new Int2D(40, 60));
-//        addExpressCentre("F", new Int2D(99, 99));
+//        addExpressCentre("A", new Int2D(gridWidth/2-10, gridHeight/2-20));
+//        addExpressCentre("B", new Int2D(gridWidth/2-30,gridHeight/2+40));
+//        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+60));
+//        addExpressCentre("D", new Int2D(gridWidth/2-70, gridHeight/2-80));
+//        addExpressCentre("E", new Int2D(gridWidth/2-90,gridHeight/2+90));
+//        addExpressCentre("F", new Int2D(gridWidth/2+60,gridHeight/2+20));
     }
 
 
@@ -149,8 +153,6 @@ public class Map extends SimState {
         init.initTramLine();
 //        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
-//        addTramLine("line",expressCentres.get(2), expressCentres.get(0));
-
 //        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
 //        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
@@ -222,7 +224,7 @@ public class Map extends SimState {
     public void addFixedLocParcel(ExpressCentre currExpressCentre) {
         int i = expressCentres.indexOf(currExpressCentre);
         int j = 1;
-        int next = (i + j) % (expressCentres.size());
+        int next;
 
         // add "initNumOfParcelsInGarage" numbers of parcels
         for (int k = 0; k < initNumOfParcelsInGarage; k++) {
@@ -239,6 +241,14 @@ public class Map extends SimState {
                 currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
                 serialParcelID++;
                 parcelTotal++;
+                if (next % 3 == 1) {
+                    for (int f = 0; f < 10; f++) {
+                        currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
+                        serialParcelID++;
+                        parcelTotal++;
+                    }
+                }
+
             }
         }
     }

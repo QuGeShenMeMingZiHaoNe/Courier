@@ -31,7 +31,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     // the bigger the number, the more busy it is
     private int busy = 990;
     private int count = 0;
-    private long sequence = 100;
+    private long sequence = 300;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -113,7 +113,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         if (expressCentre != null) {
             carCallerSema--;
             expressCentre.pToBeSent.add(new CarCaller(expressCentre, this, map));
-            System.out.println("Log: " + this + " has put a CarCaller in" + expressCentre + "...");
+            if (map.detailsOn)
+                System.out.println("Log: " + this + " has put a CarCaller in" + expressCentre + "...");
         }
     }
 

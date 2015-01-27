@@ -25,7 +25,7 @@ public class BreadFirstSearch {
         path.add(from);
         findAllPossiblePathHelper(from, to, path, 0);
 
-        if(paths.isEmpty())
+        if (paths.isEmpty())
             return null;
         return sortPathByDistance(paths).getFirst();
     }
@@ -37,7 +37,7 @@ public class BreadFirstSearch {
         path.add(from);
         findAllPossiblePathHelper(from, to, path, 0, avoids);
 
-        if(paths.isEmpty())
+        if (paths.isEmpty())
             return null;
         return sortPathByDistance(paths).getFirst();
 

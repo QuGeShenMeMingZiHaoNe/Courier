@@ -34,14 +34,17 @@ public class Parcel {
         timeSpending = map.schedule.getSteps() - pickUpTime;
 
         if (map.testModeOn && !(this instanceof CarCaller)) {
-            outputFile(this + " DELIVERED FROM " + from + " TO " + destination + "\nRELEASE TIME " + (pickUpTime) + " ARRIVED TIME " + (arriveTime) + " TIME SPENDING " + (timeSpending) + "\nPARCEL REMAINING " + map.parcelTotal + "...\n");
             map.parcelTimeSpendingTotal += this.timeSpending;
+            if (map.detailsOn) {
+                outputFile(this + " DELIVERED FROM " + from + " TO " + destination + "\nRELEASE TIME " + (pickUpTime) + " ARRIVED TIME " + (arriveTime) + " TIME SPENDING " + (timeSpending) + "\nPARCEL REMAINING " + map.parcelTotal + "...\n");
+            }
 
             // the ending of the output file
             if (map.parcelTotal == 0) {
                 long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
                 outputFile("\n\n\n\nTotal spending time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending Average: " + (timeSpendingAverage));
                 outputFile("Mode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInGarage + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size());
+                System.out.println("Finish!!!!!!!");
             }
         }
         return String.valueOf(timeSpending);

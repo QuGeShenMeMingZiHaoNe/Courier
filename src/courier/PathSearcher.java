@@ -13,15 +13,36 @@ public class PathSearcher {
 
     // basic type
     public LinkedList<ExpressCentre> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
-        return new AStar(map).findShortestPath(from, to, new LinkedList<ExpressCentre>());
-//        return new BreadFirstSearch(map).findShortestPath(from,to);
+        LinkedList<ExpressCentre> r1 = new AStar(map).findShortestPath(from, to, new LinkedList<ExpressCentre>());
+//        LinkedList<ExpressCentre> r2 = new BreadFirstSearch(map).findShortestPath(from,to);
+//
+//        if(r1!=null&&r2!=null&&!r1.equals(r2)) {
+//            double d1 = calPathDistance(r1);
+//            double d2 = calPathDistance(r2);
+//            if(d1>d2) {
+//                System.out.println("Basic"+"&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(");
+//                System.out.println((d1 < d2) + "" + d1 + " " + r1 + "\n" + d2 + " " + r2 + "\n");
+//            }
+//        }
+        return r1;
 
     }
 
     // type with traffic avoiding
     public LinkedList<ExpressCentre> findAllPossiblePath(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
-        return new AStar(map).findShortestPath(from, to, avoids);
-//        return new BreadFirstSearch(map).findShortestPath(from,to,avoids);
+        LinkedList<ExpressCentre> r1 = new AStar(map).findShortestPath(from, to, avoids);
+//        LinkedList<ExpressCentre> r2 = new BreadFirstSearch(map).findShortestPath(from,to,avoids);
+//
+//        if(r1!=null&&r2!=null&&!r1.equals(r2)) {
+//            double d1 = calPathDistance(r1);
+//            double d2 = calPathDistance(r2);
+//            if(d1>d2) {
+//
+//                System.out.println("Avoiding"+"&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(^&*(");
+//                System.out.println((d1 < d2) + "" + d1 + " " + r1 + "\n" + d2 + " " + r2 + "\n");
+//            }
+//        }
+        return r1;
     }
 
     public double calPathDistance(LinkedList<ExpressCentre> path) {
