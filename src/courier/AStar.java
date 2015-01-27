@@ -66,8 +66,12 @@ public class AStar {
                 if (closeSet.contains(nbSearchNode))
                     continue;
 
-                if(avoidsNB.contains(nb)&&currSearchNode.station.equals(from))
+                if(avoidsNB.contains(nb)&&currSearchNode.station.equals(from)) {
+                    nbSearchNode.cameFrom = currSearchNode;
+                    nbSearchNode.gScore = 9999999999999.9;
+                    nbSearchNode.fScore = nbSearchNode.gScore + nb.location.distance(goal.location);
                     continue;
+                }
 
                 double tempGScore = currSearchNode.gScore + currSearchNode.station.location.distance(nb.location);
 

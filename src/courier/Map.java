@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class Map extends SimState {
     public static final int initNumOfParcelsInGarage = 100;
-    public static final int initNumOfCarsInStation = 5;
+    public static final int initNumOfCarsInStation = 200;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
@@ -72,10 +72,10 @@ public class Map extends SimState {
         // init tramlines
         initTramLines();
 
-        if (testModeOn)
+        if (testModeOn) {
             initFixedLocParcels();
-
 //        initRandomParcels();
+        }
 
         initTramLineNet();
 

@@ -14,11 +14,14 @@ public class PathSearcher {
     // basic type
     public LinkedList<ExpressCentre> findAllPossiblePath(ExpressCentre from, ExpressCentre to) {
         return new AStar(map).findShortestPath(from, to, new LinkedList<ExpressCentre>());
+//        return new BreadFirstSearch(map).findShortestPath(from,to);
+
     }
 
     // type with traffic avoiding
     public LinkedList<ExpressCentre> findAllPossiblePath(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
         return new AStar(map).findShortestPath(from, to, avoids);
+//        return new BreadFirstSearch(map).findShortestPath(from,to,avoids);
     }
 
     public double calPathDistance(LinkedList<ExpressCentre> path) {
