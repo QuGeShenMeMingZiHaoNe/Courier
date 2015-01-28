@@ -92,7 +92,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         for (Parcel p : carrying) {
             if (p.destination.equals(s)) {
                 // TODO: does car caller earn money??
-                map.profit += p.getProfit();
+//                map.profit += p.getProfit();
 
                 // if the package is the first package
                 if (carrying.indexOf(p) == 0)
@@ -109,7 +109,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
                     // find and remove from car caller pick up linkedList,
                     // then add to the carrying of current car
-                    carCallerPickUp.add(currStation.findParcelWithWeightFromCarCallerPickUp(p.weight));
+                    Parcel newP = currStation.findParcelWithWeightFromCarCallerPickUp(p.weight);
+                    newP.pickUpTime = map.schedule.getSteps();
+                    spaceRemaining -= p.weight;
+                    carCallerPickUp.add(newP);
                     carCallerToUnload.add(p);
                     initCarState();
                     String timeSpending = p.getTimeSpending();
@@ -473,6 +476,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
                         } else {
                             p.from.pToBeSentForCarCallerPickUp.add(p);
                             this.carrying.add(new CarCaller(currStation, p.from, p.weight, map));
+                            this.spaceRemaining-=p.weight;
+                            p.pickUpTime = map.schedule.getSteps();
                         }
                     }
                     this.arriveStation();

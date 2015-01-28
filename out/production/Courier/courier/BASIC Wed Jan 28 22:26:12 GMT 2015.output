@@ -1,17 +1,17 @@
 ***********************************************************************************************************
 
-Mode: AVOID_TRAFFIC_JAM
-Car number: 20
-Parcel number: 2880
+Mode: BASIC
+Car number: 100
+Parcel number: 3600
 ExpressCenter: 36
 
 ***********************************************************************************************************
 
-Total Parcels Carrying Time: 12499979
-Time Spending on Carrying in Average: 4340
+Total Parcels Carrying Time: 3601466
+Time Spending on Carrying in Average: 1000
 
 
-Time Spending On Finishing Delivery: 13529
+Time Spending On Finishing Delivery: 22061
 
 ***********************************************************************************************************
 

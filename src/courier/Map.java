@@ -9,20 +9,25 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInGarage = 20;
-    public static final int initNumOfCarsInStation = 100;
+
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
+    public static int initNumOfParcelsInExpressCentre = 100;
+    public static int initNumOfCarsInStation = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-    //    public final static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
+    protected int autoGenParcelByStationsMax;
+    protected boolean autoGenParcelsModeTermination = testModeOn;
+
+
 
     public double modePicker = 0;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
@@ -46,7 +51,7 @@ public class Map extends SimState {
     protected int tramLineVisitedTotal;
     protected long startTime;
     private int serialStationID = 1;
-    private int serialParcelID = 1;
+    protected int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
 
@@ -58,6 +63,24 @@ public class Map extends SimState {
     public static void main(String[] args) {
         doLoop(Map.class, args);
         System.exit(0);
+    }
+
+    public int getInitNumOfParcelsInGarage(){
+        return initNumOfParcelsInExpressCentre;
+    }
+
+    public void setInitNumOfParcelsInGarage(int val){
+        if(val>0)
+            initNumOfParcelsInExpressCentre = val;
+    }
+
+    public int getInitNumOfCarsInStation(){
+        return initNumOfCarsInStation;
+    }
+
+    public void setInitNumOfCarsInStation(int val){
+        if(val>0)
+            initNumOfCarsInStation = val;
     }
 
     public int getDistanceToCentre() {
@@ -125,13 +148,14 @@ public class Map extends SimState {
         initTramLines();
 
         if (testModeOn) {
-            initFixedLocParcels();
+            autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre*expressCentres.size();
+            //            initFixedLocParcels();
 //        initRandomParcels();
         }
 
         initTramLineNet();
 
-        parcelTotalCopy = parcelTotal;
+        parcelTotalCopy = autoGenParcelByStationsMax;
         numOfTramLineExceptGarage = tramLines.size() - garages.size();
         startTime = this.schedule.getSteps();
     }
@@ -250,10 +274,9 @@ public class Map extends SimState {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
             if (s.reachableByGarage()) {
-                for (int i = 0; i < initNumOfParcelsInGarage; i++) {
+                for (int i = 0; i < initNumOfParcelsInExpressCentre; i++) {
                     // add a parcel to current station;
-                    addRandomParcel(s);
-                    parcelTotal++;
+                    new Parcel(this).addRandomParcel(s);
                 }
             }
         }
@@ -263,73 +286,9 @@ public class Map extends SimState {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
             if (s.reachableByGarage()) {
-                addFixedLocParcel(s);
+                new Parcel(this).addFixedLocParcel(s);
             }
         }
-    }
-
-
-    // add parcels with fixed destination and number
-    public void addFixedLocParcel(ExpressCentre currExpressCentre) {
-        int i = expressCentres.indexOf(currExpressCentre);
-        int j = 1;
-        int next;
-
-        // add "initNumOfParcelsInGarage" numbers of parcels
-        for (int k = 0; k < initNumOfParcelsInGarage; k++) {
-            if (currExpressCentre.reachableByGarage()) {
-                if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
-                    return;
-                }
-                do {
-                    next = (i + j) % (expressCentres.size());
-                    j++;
-                }
-                while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
-
-                if (j % 2 == 0) {
-                    currExpressCentre.pToBeSent.addFirst(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
-                } else {
-                    currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
-                }
-                serialParcelID++;
-                parcelTotal++;
-
-                if (next % 3 == 1) {
-                    for (int f = 0; f < 10; f++) {
-                        currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
-                        serialParcelID++;
-                        parcelTotal++;
-                    }
-                }
-
-            }
-        }
-    }
-
-    public void addRandomParcel(ExpressCentre currExpressCentre) {
-        if (currExpressCentre.hasNeighbour()) {
-            if (currExpressCentre.neighbours.containsAll(garages) && currExpressCentre.neighbours.size() == garages.size()) {
-                return;
-            }
-            int next;
-            do {
-                next = random.nextInt(expressCentres.size());
-            }
-            while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
-
-            currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
-            serialParcelID++;
-        }
-    }
-
-    // return a number beyond limit and greater than 0
-    private int getNextInt(int limit) {
-        int result;
-        do {
-            result = random.nextInt(limit);
-        } while (result == 0);
-        return result;
     }
 
     private void initTramLineNet() {

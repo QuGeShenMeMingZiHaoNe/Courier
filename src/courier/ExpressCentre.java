@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 public class ExpressCentre extends OvalPortrayal2D implements Steppable {
-    protected static final int MAX_PACKAGES = 10;
+    protected static final int MAX_PACKAGES = 30;
     public String name;
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
@@ -23,15 +23,16 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected LinkedList<Parcel> pArrived = new LinkedList<Parcel>();
     protected LinkedList<ExpressCentre> neighbours = new LinkedList<ExpressCentre>();
     protected Map map;
+    protected Boolean reachableByGarage;
     // number of car caller of a station can have;
     protected long lastVisitTime = 0;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 990;
+    private int busy = 980;
     private int count = 0;
-    private long sequence = 300;
+    private long sequence = 200;
 
     public ExpressCentre(String name, int stationID, Int2D location, Map map) {
         this.name = name;
@@ -90,7 +91,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return null;
     }
 
-    //
     public LinkedList<ExpressCentre> findNeighbours() {
         return (LinkedList<ExpressCentre>) neighbours.clone();
     }
@@ -121,19 +121,29 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     @Override
     public void step(SimState state) {
+        // if reachableByGarage is null
+        // TODO refactor this reachable eg.put into map init
+        if(reachableByGarage == null){
+            reachableByGarage= reachableByGarage();
+        }
+
+        if (reachableByGarage) {
+
+            // generated parcels
+            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax>0) {
+
+                new Parcel(map).addRandomParcel(this);
+                if(map.autoGenParcelsModeTermination)
+                    map.autoGenParcelByStationsMax--;
+            }
+
 //      if the car park is empty, has package to be sent, and the car caller is empty
         if (map.schedule.getSteps() - lastVisitTime > sequence) {
-            if (reachableByGarage()) {
+                // put parcel into global list to let other cars to pickup
                 if (this.pToBeSent.size() > 0 && this.carPark.size() == 0) {
-//                    callCar();
                     if (map.callCarToPickUpParcels.size() <= map.initNumOfCarsInStation) {
                         map.callCarToPickUpParcels.add(this.pToBeSent.pop());
                     }
-                }
-
-                if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && !map.testModeOn) {
-                    map.addRandomParcel(this);
-                    map.parcelTotal++;
                 }
             }
         }
