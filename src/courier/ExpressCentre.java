@@ -18,8 +18,9 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected int stationID;
     protected List<Car> carPark = new LinkedList<Car>();
     protected Int2D location;
-    protected List<Parcel> pToBeSent = new LinkedList<Parcel>();
-    protected List<Parcel> pArrived = new LinkedList<Parcel>();
+    protected LinkedList<Parcel> pToBeSent = new LinkedList<Parcel>();
+    protected LinkedList<Parcel> pToBeSentForCarCallerPickUp = new LinkedList<Parcel>();
+    protected LinkedList<Parcel> pArrived = new LinkedList<Parcel>();
     protected LinkedList<ExpressCentre> neighbours = new LinkedList<ExpressCentre>();
     protected Map map;
     // number of car caller of a station can have;
@@ -108,24 +109,36 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return !(new PathSearcher(map).findAllPossiblePath(this, b) == null);
     }
 
-    private void callCar() {
-        ExpressCentre expressCentre = findStationWithFreeCar();
-        if (expressCentre != null) {
-            carCallerSema--;
-            expressCentre.pToBeSent.add(new CarCaller(expressCentre, this, map));
-            if (map.detailsOn)
-                System.out.println("Log: " + this + " has put a CarCaller in" + expressCentre + "...");
-        }
-    }
+//    private void callCar() {
+//        ExpressCentre expressCentre = findStationWithFreeCar();
+//        if (expressCentre != null) {
+//            carCallerSema--;
+//            expressCentre.pToBeSent.add(new CarCaller(expressCentre, this, map));
+//            if (map.detailsOn)
+//                System.out.println("Log: " + this + " has put a CarCaller in" + expressCentre + "...");
+//        }
+//    }
+//
+//    private ExpressCentre findStationWithFreeCar() {
+//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
+//        for (ExpressCentre s : map.allStations) {
+//            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
+//                for (Car c : s.carPark) {
+//                    if (c.getCarrying().size() == 0) {
+//                        result.add(s);
+//                    }
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
-    private ExpressCentre findStationWithFreeCar() {
-        for (ExpressCentre s : map.allStations) {
-            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
-                for (Car c : s.carPark) {
-                    if (c.getCarrying().size() == 0) {
-                        return s;
-                    }
-                }
+    public Parcel findParcelWithWeightFromCarCallerPickUp(double weight){
+
+        for(Parcel p : pToBeSentForCarCallerPickUp){
+            if(p.weight == weight) {
+                pToBeSentForCarCallerPickUp.remove(p);
+                return p;
             }
         }
         return null;
@@ -135,9 +148,13 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public void step(SimState state) {
 //      if the car park is empty, has package to be sent, and the car caller is empty
         if (map.schedule.getSteps() - lastVisitTime > sequence) {
-            if (hasNeighbour()) {
-                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && carCallerSema > 0)
-                    callCar();
+            if (reachableByGarage()) {
+                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0){
+//                    callCar();
+                    if(map.callCarToPickUpParcels.size()<=map.initNumOfCarsInStation) {
+                            map.callCarToPickUpParcels.add(this.pToBeSent.pop());
+                    }
+                }
 
                 if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && !map.testModeOn) {
                     map.addRandomParcel(this);

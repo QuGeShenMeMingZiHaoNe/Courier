@@ -21,8 +21,6 @@ public class MapGUI extends GUIState {
     private JFrame displayFrame;
     private SparseGridPortrayal2D mapGridPortrayal = new SparseGridPortrayal2D();
     private NetworkPortrayal2D tramLinePortrayal = new NetworkPortrayal2D();
-    private ImagePortrayal2D backGround;
-    private Image image;
 
 
     public MapGUI(SimState state) {
@@ -38,7 +36,7 @@ public class MapGUI extends GUIState {
     }
 
     public static String getName() {
-        return "Courier";
+        return "Courier: "+Map.mode;
     }
 
 
@@ -87,9 +85,6 @@ public class MapGUI extends GUIState {
 //                });
         tramLinePortrayal.setField(new SpatialNetwork2D(map.mapGrid, map.tramLineNet));
         tramLinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
-
-
-        backGround = new ImagePortrayal2D(image);
 
         // reschedule the displayer
         display.reset();

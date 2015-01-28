@@ -9,20 +9,22 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInGarage = 10;
-    public static final int initNumOfCarsInStation = 80;
+    public static final int initNumOfParcelsInGarage = 200;
+    public static final int initNumOfCarsInStation = 500;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
     private static final int distanceToCentre = 300;
 
+
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
 
-        public final SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//    public final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+        public final static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public static final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public final boolean testModeOn = true;
     public final boolean detailsOn = false;
+    public final long simSeed = 775176008;
 
 
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
@@ -37,6 +39,7 @@ public class Map extends SimState {
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
     protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
     protected LinkedList<Car> cars = new LinkedList<Car>();
+    protected LinkedList<Parcel> callCarToPickUpParcels = new LinkedList<Parcel>();
     protected Network tramLineNet = new Network(false);
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
@@ -48,6 +51,7 @@ public class Map extends SimState {
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
+    protected long startTime;
 
 
     public Map(long seed) {
@@ -85,6 +89,7 @@ public class Map extends SimState {
 
         parcelTotalCopy = parcelTotal;
         numOfTramLineExceptGarage = tramLines.size() - garages.size();
+        startTime = this.schedule.getSteps();
     }
 
     private void initExpressCenter() {
@@ -238,9 +243,14 @@ public class Map extends SimState {
                 }
                 while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
 
-                currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
+                if(j%2 == 0) {
+                    currExpressCentre.pToBeSent.addFirst(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
+                }else{
+                    currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
+                }
                 serialParcelID++;
                 parcelTotal++;
+
                 if (next % 3 == 1) {
                     for (int f = 0; f < 10; f++) {
                         currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));

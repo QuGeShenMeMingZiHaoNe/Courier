@@ -39,7 +39,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Chalk Farm", new Int2D(1264, 573));
         map.addExpressCentre("Chalfont And Latimer", new Int2D(247, 152));
         map.addExpressCentre("Chesham", new Int2D(116, 127));
-        map.addExpressCentre("New Cross Gate", new Int2D(1616, 1362));
+        map.addExpressCentre("New Cross Gate", new Int2D(1638, 1362));
         map.addExpressCentre("Queen's Road Peckham", new Int2D(1636, 1362));
         map.addExpressCentre("Peckham Rye", new Int2D(1606, 1392));
         map.addExpressCentre("Moor Park", new Int2D(438, 238));
@@ -174,7 +174,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Dollis Hill", new Int2D(934, 493));
         map.addExpressCentre("Willesden Green", new Int2D(983, 522));
         map.addExpressCentre("South Tottenham", new Int2D(1894, 395));
-        map.addExpressCentre("Swiss Cottage", new Int2D(884, 436));
+        map.addExpressCentre("Swiss Cottage", new Int2D(1100, 638));
         map.addExpressCentre("Imperial Wharf", new Int2D(946, 1246));
         map.addExpressCentre("Brixton", new Int2D(1334, 1507));
         map.addExpressCentre("Denmark Hill", new Int2D(1355, 1457));
@@ -194,7 +194,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Stepney Green", new Int2D(1879, 891));
         map.addExpressCentre("Barking", new Int2D(2278, 731));
         map.addExpressCentre("East Ham", new Int2D(2248, 762));
-        map.addExpressCentre("Upton Park", new Int2D(2141, 753));
+        map.addExpressCentre("Upton Park", new Int2D(2156, 753));
         map.addExpressCentre("Plaistow", new Int2D(2202, 809));
         map.addExpressCentre("Poplar", new Int2D(2001, 1007));
         map.addExpressCentre("West Ham", new Int2D(2144, 844));
@@ -350,7 +350,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Chancery Lane", new Int2D(1427, 876));
         map.addExpressCentre("Lancaster Gate", new Int2D(1007, 881));
         map.addExpressCentre("Warwick Avenue", new Int2D(699, 730));
-        map.addExpressCentre("Maida Vale", new Int2D(716, 711));
+        map.addExpressCentre("Maida Vale", new Int2D(700, 711));
         map.addExpressCentre("Paddington", new Int2D(853, 714));
         map.addExpressCentre("Barons Court", new Int2D(789, 1056));
         map.addExpressCentre("Gloucester Road", new Int2D(937, 1056));

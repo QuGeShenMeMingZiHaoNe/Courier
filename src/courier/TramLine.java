@@ -22,8 +22,8 @@ public class TramLine implements Steppable {
     protected ExpressCentre trafficLightOccupant;
     protected Car currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
-//    private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInStation);
-    private int maximumCarLeavingBeforeRedLight = 100;
+    private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInStation);
+//    private int maximumCarLeavingBeforeRedLight = 1000;
     protected int quota1 = maximumCarLeavingBeforeRedLight;
     protected int quota2 = maximumCarLeavingBeforeRedLight;
     private String line;
