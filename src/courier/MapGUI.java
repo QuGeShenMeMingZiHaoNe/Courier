@@ -9,7 +9,6 @@ import sim.portrayal.grid.SparseGridPortrayal2D;
 import sim.portrayal.network.NetworkPortrayal2D;
 import sim.portrayal.network.SimpleEdgePortrayal2D;
 import sim.portrayal.network.SpatialNetwork2D;
-import sim.portrayal.simple.ImagePortrayal2D;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +35,7 @@ public class MapGUI extends GUIState {
     }
 
     public static String getName() {
-        return "Courier: "+Map.mode;
+        return "Courier: " + Map.mode;
     }
 
 

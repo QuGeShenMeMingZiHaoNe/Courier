@@ -10,18 +10,17 @@ import java.util.LinkedList;
 
 public class Map extends SimState {
     public static final int initNumOfParcelsInGarage = 200;
-    public static final int initNumOfCarsInStation = 500;
+    public static final int initNumOfCarsInStation = 600;
+    public final static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
-    private static final int distanceToCentre = 300;
 
 
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-
-        public final static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//    public static final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    private static final int distanceToCentre = 300;
+    //    public static final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public final boolean testModeOn = true;
     public final boolean detailsOn = false;
     public final long simSeed = 775176008;
@@ -46,12 +45,11 @@ public class Map extends SimState {
     protected String initTime = new Date().toString();
     protected int numOfTramLineExceptGarage;
     protected int tramLineVisitedTotal;
-
+    protected long startTime;
     private int serialStationID = 1;
     private int serialParcelID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
-    protected long startTime;
 
 
     public Map(long seed) {
@@ -243,9 +241,9 @@ public class Map extends SimState {
                 }
                 while (!(!expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(expressCentres.get(next))));
 
-                if(j%2 == 0) {
+                if (j % 2 == 0) {
                     currExpressCentre.pToBeSent.addFirst(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
-                }else{
+                } else {
                     currExpressCentre.pToBeSent.add(new Parcel(serialParcelID, currExpressCentre, expressCentres.get(next), getNextInt(Car.maxSpace), this));
                 }
                 serialParcelID++;

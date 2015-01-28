@@ -210,15 +210,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
             tl.tryOccupyTraffic(currStation);
 
             if (!tl.okToLeave(currStation)) {
-//                if(tl.clearingTheRoad){
-//                    if(!tl.trafficLightOccupant.equals(currStation)&&(tl.visited>(map.tramLineVisitedTotal/map.numOfTramLineExceptGarage)))
-
-                if (tl.visited > (map.tramLineVisitedTotal / map.numOfTramLineExceptGarage))
-                    avoids.add(nb);
-//                }
+                avoids.add(nb);
             }
-
-//            if(!tl.carsOnTramLine.isEmpty()&&!tl.trafficLightOccupant.equals(currStation))
         }
         return avoids;
     }
@@ -269,14 +262,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
 
-                double oldPathIntensity = findPathIntensity(old,currStation);
-                double newPathIntensity = findPathIntensity(globalPath,currStation);
+                double oldPathIntensity = findPathIntensity(old, currStation);
+                double newPathIntensity = findPathIntensity(globalPath, currStation);
 
-//                System.out.println("\n"+visitedPathOld/ globalPath.size()+"\n"+visitedPathNew/ old.size()+"\n");
-//                if(oldPathIntensity<0.4*newPathIntensity)
-//                    System.out.println("*()_()*()&*()&*()&*()&*()&*()&*())))))))))))****************************************************");
-
-                if (newDistance >= oldDistance || oldPathIntensity<=0.5*newPathIntensity) {
+                if (newDistance >= oldDistance || oldPathIntensity <= 0.5 * newPathIntensity) {
 //                        refusedAlterPath.add(globalPath.get(1));
                     globalPath = old;
                 } else {
@@ -311,10 +300,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 //        return visited;
 //    }
 
-    private double findPathIntensity(LinkedList<ExpressCentre> path,ExpressCentre commonEC) {
+    private double findPathIntensity(LinkedList<ExpressCentre> path, ExpressCentre commonEC) {
         Iterator<ExpressCentre> iter = path.iterator();
         ExpressCentre first = iter.next();
-        if(!first.equals(commonEC)) {
+        if (!first.equals(commonEC)) {
             while (iter.hasNext()) {
                 first = iter.next();
                 if (first.equals(commonEC))
@@ -477,11 +466,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 // TODO globalPath can be set with out using arriveStation
                 // TODO car caller can pick multiple parcels
                 if (this.carrying.isEmpty() || globalPath == null || stationTo == null) {
-                    if(!map.callCarToPickUpParcels.isEmpty()){
+                    if (!map.callCarToPickUpParcels.isEmpty()) {
                         Parcel p = map.callCarToPickUpParcels.pollFirst();
-                        if(p.from.equals(currStation)) {
+                        if (p.from.equals(currStation)) {
                             p.from.pToBeSent.add(p);
-                        }else {
+                        } else {
                             p.from.pToBeSentForCarCallerPickUp.add(p);
                             this.carrying.add(new CarCaller(currStation, p.from, p.weight, map));
                         }
@@ -517,7 +506,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     // tramline vistited ++
                     if (!map.garages.contains(currStation)) {
                         map.numOfTramLineExceptGarage++;
-                        tramLine.visited++;
                     }
 
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();

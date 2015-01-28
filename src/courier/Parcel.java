@@ -45,12 +45,11 @@ public class Parcel {
 
                 long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
                 outputFile("***********************************************************************************************************");
-                outputFile("\nMode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInGarage + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size()+"\n");
+                outputFile("\nMode: " + map.mode + "\nCar number: " + map.initNumOfParcelsInGarage + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size() + "\n");
                 outputFile("***********************************************************************************************************");
-                outputFile("\nTotal Parcels Carrying Time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending on Carrying in Average: " + (timeSpendingAverage)+"\n");
-                outputFile("***********************************************************************************************************");
+                outputFile("\nTotal Parcels Carrying Time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending on Carrying in Average: " + (timeSpendingAverage) + "\n");
                 long finalStep = map.schedule.getSteps();
-                outputFile("\nTime Spending On Finishing Delivery: "+ finalStep+"\n");
+                outputFile("\nTime Spending On Finishing Delivery: " + finalStep + "\n");
                 outputFile("***********************************************************************************************************");
 
                 outputFile("\nThe Longer carrying Time means the car travel with the parcel for longer period.\n" +
@@ -58,6 +57,7 @@ public class Parcel {
                         "with the cars when the cars need to travel longer way to avoid the traffic jam.\n" +
                         "The performance can be well represented by the Total Time Spending On Delivery\n" +
                         "The shorter the time, the better the performance is!\n");
+
                 outputFile("***********************************************************************************************************");
 
                 System.out.println("Finish!!!!!!!");

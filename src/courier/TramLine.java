@@ -11,7 +11,6 @@ import java.util.Random;
 public class TramLine implements Steppable {
     // clear the road when the traffic control right was swapped
     public boolean clearingTheRoad = false;
-    public int visited = 0;
     protected ExpressCentre a;
     protected ExpressCentre b;
     protected int tramLineID;
@@ -23,7 +22,7 @@ public class TramLine implements Steppable {
     protected Car currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
     private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInStation);
-//    private int maximumCarLeavingBeforeRedLight = 1000;
+    //    private int maximumCarLeavingBeforeRedLight = 1000;
     protected int quota1 = maximumCarLeavingBeforeRedLight;
     protected int quota2 = maximumCarLeavingBeforeRedLight;
     private String line;

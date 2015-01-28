@@ -24,7 +24,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected LinkedList<ExpressCentre> neighbours = new LinkedList<ExpressCentre>();
     protected Map map;
     // number of car caller of a station can have;
-    protected int carCallerSema = 1;
     protected long lastVisitTime = 0;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
@@ -109,34 +108,10 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return !(new PathSearcher(map).findAllPossiblePath(this, b) == null);
     }
 
-//    private void callCar() {
-//        ExpressCentre expressCentre = findStationWithFreeCar();
-//        if (expressCentre != null) {
-//            carCallerSema--;
-//            expressCentre.pToBeSent.add(new CarCaller(expressCentre, this, map));
-//            if (map.detailsOn)
-//                System.out.println("Log: " + this + " has put a CarCaller in" + expressCentre + "...");
-//        }
-//    }
-//
-//    private ExpressCentre findStationWithFreeCar() {
-//        LinkedList<ExpressCentre> result = new LinkedList<ExpressCentre>();
-//        for (ExpressCentre s : map.allStations) {
-//            if (s.carPark.size() > 0 && s.pToBeSent.size() == 0 && this.reachable(s)) {
-//                for (Car c : s.carPark) {
-//                    if (c.getCarrying().size() == 0) {
-//                        result.add(s);
-//                    }
-//                }
-//            }
-//        }
-//        return null;
-//    }
+    public Parcel findParcelWithWeightFromCarCallerPickUp(double weight) {
 
-    public Parcel findParcelWithWeightFromCarCallerPickUp(double weight){
-
-        for(Parcel p : pToBeSentForCarCallerPickUp){
-            if(p.weight == weight) {
+        for (Parcel p : pToBeSentForCarCallerPickUp) {
+            if (p.weight == weight) {
                 pToBeSentForCarCallerPickUp.remove(p);
                 return p;
             }
@@ -149,10 +124,10 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 //      if the car park is empty, has package to be sent, and the car caller is empty
         if (map.schedule.getSteps() - lastVisitTime > sequence) {
             if (reachableByGarage()) {
-                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0){
+                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0) {
 //                    callCar();
-                    if(map.callCarToPickUpParcels.size()<=map.initNumOfCarsInStation) {
-                            map.callCarToPickUpParcels.add(this.pToBeSent.pop());
+                    if (map.callCarToPickUpParcels.size() <= map.initNumOfCarsInStation) {
+                        map.callCarToPickUpParcels.add(this.pToBeSent.pop());
                     }
                 }
 
