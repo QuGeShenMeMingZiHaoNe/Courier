@@ -9,23 +9,22 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Map extends SimState {
-    public static final int initNumOfParcelsInGarage = 200;
-    public static final int initNumOfCarsInStation = 600;
-    public final static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public static final int initNumOfParcelsInGarage = 20;
+    public static final int initNumOfCarsInStation = 100;
     private static final int gridWidth = 2800;
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    private static final int distanceToCentre = 300;
-    //    public static final SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
-    public final boolean testModeOn = true;
-    public final boolean detailsOn = false;
-    public final long simSeed = 775176008;
+    public static int distanceToCentre = 300;
+    //    public final static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public static boolean testModeOn = true;
+    public static boolean detailsOn = false;
+    public static boolean readTestSetting = false;
 
-
+    public double modePicker = 0;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
     //    public double retainedProfit = 0;
@@ -59,6 +58,53 @@ public class Map extends SimState {
     public static void main(String[] args) {
         doLoop(Map.class, args);
         System.exit(0);
+    }
+
+    public int getDistanceToCentre() {
+        return distanceToCentre;
+    }
+
+    public void setDistanceToCentre(int val) {
+        if (val > 200)
+            distanceToCentre = val;
+    }
+
+    public SIMULATION_MODE getMode() {
+        return mode;
+    }
+
+    public double getModePicker() {
+        return modePicker;
+    }
+
+    public void setModePicker(double val) {
+        if (val >= 0 && val < 1) {
+            modePicker = 0;
+            mode = (SIMULATION_MODE.BASIC);
+        } else {
+            modePicker = 2;
+            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
+        }
+    }
+
+    public Object domModePicker() {
+        return new sim.util.Interval(0.0, 2.0);
+    }
+
+    public boolean getTestModeOn() {
+        return testModeOn;
+    }
+
+    public void setTestModeOn(boolean on) {
+        testModeOn = on;
+    }
+
+    public boolean getDetailsOn() {
+        return detailsOn;
+    }
+
+    public void setDetailsOn(boolean on) {
+        detailsOn = on;
     }
 
     public void start() {

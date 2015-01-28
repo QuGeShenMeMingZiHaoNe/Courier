@@ -29,7 +29,7 @@ public class Students extends SimState
 
     public double getRandomMultiplier() { return randomMultiplier; }
     public void setRandomMultiplier(double val) { if (randomMultiplier >= 0.0) randomMultiplier = val; }
-    public Object domRandomMultiplier() { return new sim.util.Interval(0.0, 100.0); }
+    public Object domRandomMultiplier() { return new sim.util.Interval(0.0,1.0); }
 
     public double[] getAgitationDistribution()
         {

@@ -65,23 +65,6 @@ public class MapGUI extends GUIState {
         // tell the portrayals what to portray and how to portray them
         mapGridPortrayal.setField(map.mapGrid);
 
-
-        // display of allStations
-//        mapGridPortrayal.setPortrayalForClass(
-//                Station.class, new sim.portrayal.simple.OvalPortrayal2D(Color.BLUE, 1));
-
-        // display of cars
-//        mapGridPortrayal.setPortrayalForClass(
-//                Car.class, new sim.portrayal.simple.OvalPortrayal2D(Color.magenta, 1));
-
-
-//                {
-//                    public Inspector getInspector(LocationWrapper wrapper, GUIState state)
-//                    {
-////                        make the inspector
-//                        return new BigParticleInspector(super.getInspector(wrapper,state), wrapper, state);
-//                    }
-//                });
         tramLinePortrayal.setField(new SpatialNetwork2D(map.mapGrid, map.tramLineNet));
         tramLinePortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
 
@@ -106,12 +89,13 @@ public class MapGUI extends GUIState {
     public void init(Controller c) {
         super.init(c);
 
-        try {
-            new TestReader().read();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (Map.readTestSetting) {
+            try {
+                new TestReader().read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
         display = new Display2D(1000, 700, this);
         displayFrame = display.createFrame();
 
