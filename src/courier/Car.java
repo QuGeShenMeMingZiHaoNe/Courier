@@ -63,7 +63,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     public boolean loadParcel() {
         if (currStation.pToBeSent.size() == 0) return false;
-        parcelLoader();
+        if(spaceRemaining>0)
+            parcelLoader();
         return true;
     }
 
@@ -461,11 +462,13 @@ public class Car extends OvalPortrayal2D implements Steppable {
     // calculate what parcel can be put into the car with the given loading weight
     private void parcelLoader() {
         Parcel newP;
-        while ((newP = fetchFromParcelsToBeSent(spaceRemaining))!=null) {
-            currStation.pToBeSent.remove(newP);
+        newP = fetchFromParcelsToBeSent(spaceRemaining);
+        while (newP!=null) {
             putIn(newP);
             printLogForParcelLoader(newP);
+            newP = fetchFromParcelsToBeSent(spaceRemaining);
         }
+
     }
 
     //  graphics
@@ -527,6 +530,22 @@ public class Car extends OvalPortrayal2D implements Steppable {
             }
         }
     }
+
+    private void oneStep(){
+        // get the next step location
+        Int2D nextStep = this.pathLocal.get(stepCount);
+
+        // move
+        while (this.location.equals(nextStep)) {
+            stepCount++;
+            nextStep = this.pathLocal.get(stepCount);
+        }
+
+        this.location = nextStep;
+        map.mapGrid.setObjectLocation(this, nextStep);
+        stepCount++;
+    }
+
     @Override
     public void step(SimState state) {
         // don't increase cost if the cars in garage
@@ -534,8 +553,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
 //            Int2D d = new Int2D(1, 1);
 //            map.profit -= d.distance(new Int2D(2, 2));
 //        }
-//        System.out.println(spaceRemaining);
-//        System.out.println(carrying);
 
         currStation = currStation();
         if (currStation != null) {
@@ -547,8 +564,14 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 // TODO globalPath can be set with out using arriveStation
                 // TODO car caller can pick multiple parcels
                 // if the car has not carrying any thing that it don't need to leave the station
-                if (this.carrying.isEmpty() || globalPath == null || stationTo == null) {
+                if (this.carrying.isEmpty()) {
                     setUpCarCaller();
+                    this.arriveStation();
+                    return;
+                }
+
+                // this is for catching the situation that both pToBeSent and global parcel boards are empty
+                if(globalPath == null || stationTo == null){
                     this.arriveStation();
                     return;
                 }
@@ -596,6 +619,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 }
             }
 
+
             // delay one step of leaving the car park, Truly leave
             if (hasLeaved) {
 //                if (tramLine.currLeavingCars.equals(this)) {
@@ -612,21 +636,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
             }
         }
 
+        oneStep();
 
-//        if (!carrying.isEmpty()) {
-            // get the next step location
-            Int2D nextStep = this.pathLocal.get(stepCount);
-
-            // move
-            while (this.location.equals(nextStep)) {
-                stepCount++;
-                nextStep = this.pathLocal.get(stepCount);
-            }
-
-            this.location = nextStep;
-            map.mapGrid.setObjectLocation(this, nextStep);
-            stepCount++;
-//        }
     }
 }
 
