@@ -100,7 +100,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
     public boolean reachableByGarage() {
-
         return !(new PathSearcher(map).findAllPossiblePath(this, map.garages.getFirst()) == null);
     }
 
@@ -123,22 +122,22 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public void step(SimState state) {
         // if reachableByGarage is null
         // TODO refactor this reachable eg.put into map init
-        if(reachableByGarage == null){
-            reachableByGarage= reachableByGarage();
+        if (reachableByGarage == null) {
+            reachableByGarage = reachableByGarage();
         }
 
         if (reachableByGarage) {
 
             // generated parcels
-            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax>0) {
+            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax > 0) {
 
                 new Parcel(map).addRandomParcel(this);
-                if(map.autoGenParcelsModeTermination)
+                if (map.autoGenParcelsModeTermination)
                     map.autoGenParcelByStationsMax--;
             }
 
 //      if the car park is empty, has package to be sent, and the car caller is empty
-        if (map.schedule.getSteps() - lastVisitTime > sequence) {
+            if (map.schedule.getSteps() - lastVisitTime > sequence) {
                 // put parcel into global list to let other cars to pickup
                 if (this.pToBeSent.size() > 0 && this.carPark.size() == 0) {
                     if (map.callCarToPickUpParcels.size() <= map.initNumOfCarsInStation) {

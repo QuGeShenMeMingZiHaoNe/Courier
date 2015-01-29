@@ -1,17 +1,16 @@
 ***********************************************************************************************************
 
-Mode: BASIC
+Mode: AVOID_TRAFFIC_JAM
+Random number seed: 859247675
 Car number: 100
 Parcel number: 3600
 ExpressCenter: 36
 
 ***********************************************************************************************************
 
-Total Parcels Carrying Time: 3601466
-Time Spending on Carrying in Average: 1000
-
-
-Time Spending On Finishing Delivery: 22061
+Total Parcels Carrying Time: 8529571
+Time Spending on Carrying in Average: 2369
+Time Spending On Finishing Delivery: 17482
 
 ***********************************************************************************************************
 

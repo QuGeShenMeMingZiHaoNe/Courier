@@ -24,16 +24,13 @@ public class Map extends SimState {
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
-    protected int autoGenParcelByStationsMax;
-    protected boolean autoGenParcelsModeTermination = testModeOn;
-
-
-
     public double modePicker = 0;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
     //    public double retainedProfit = 0;
     public double profitMargin = 2.45;
+    protected int autoGenParcelByStationsMax;
+    protected boolean autoGenParcelsModeTermination = testModeOn;
     protected int parcelTotal = 0;
     protected int serialCarCallerID = 1;
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
@@ -50,8 +47,8 @@ public class Map extends SimState {
     protected int numOfTramLineExceptGarage;
     protected int tramLineVisitedTotal;
     protected long startTime;
-    private int serialStationID = 1;
     protected int serialParcelID = 1;
+    private int serialStationID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
 
@@ -65,54 +62,55 @@ public class Map extends SimState {
         System.exit(0);
     }
 
-    public int getInitNumOfParcelsInGarage(){
-        return initNumOfParcelsInExpressCentre;
-    }
-
-    public void setInitNumOfParcelsInGarage(int val){
-        if(val>0)
-            initNumOfParcelsInExpressCentre = val;
-    }
-
-    public int getInitNumOfCarsInStation(){
-        return initNumOfCarsInStation;
-    }
-
-    public void setInitNumOfCarsInStation(int val){
-        if(val>0)
-            initNumOfCarsInStation = val;
-    }
-
-    public int getDistanceToCentre() {
-        return distanceToCentre;
-    }
-
-    public void setDistanceToCentre(int val) {
-        if (val > 200)
-            distanceToCentre = val;
-    }
-
     public SIMULATION_MODE getMode() {
         return mode;
     }
 
-    public double getModePicker() {
-        return modePicker;
+    public int getNumOfParcelsInEachStations() {
+        return initNumOfParcelsInExpressCentre;
     }
 
-    public void setModePicker(double val) {
-        if (val >= 0 && val < 1) {
-            modePicker = 0;
-            mode = (SIMULATION_MODE.BASIC);
-        } else {
-            modePicker = 2;
-            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
-        }
+    public void setNumOfParcelsInEachStations(int val) {
+        if (val > 0)
+            initNumOfParcelsInExpressCentre = val;
     }
 
-    public Object domModePicker() {
-        return new sim.util.Interval(0.0, 2.0);
+    public int getInitNumOfCarsInStation() {
+        return initNumOfCarsInStation;
     }
+
+    public void setInitNumOfCarsInStation(int val) {
+        if (val > 0)
+            initNumOfCarsInStation = val;
+    }
+
+    public int getMapSize() {
+        return distanceToCentre;
+    }
+
+    public void setMapSize(int val) {
+        if (val > 200)
+            distanceToCentre = val;
+    }
+
+
+//    public double getModePicker() {
+//        return modePicker;
+//    }
+//
+//    public void setModePicker(double val) {
+//        if (val >= 0 && val < 1) {
+//            modePicker = 0;
+//            mode = (SIMULATION_MODE.BASIC);
+//        } else {
+//            modePicker = 2;
+//            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
+//        }
+//    }
+//
+//    public Object domModePicker() {
+//        return new sim.util.Interval(0.0, 2.0);
+//    }
 
     public boolean getTestModeOn() {
         return testModeOn;
@@ -148,7 +146,7 @@ public class Map extends SimState {
         initTramLines();
 
         if (testModeOn) {
-            autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre*expressCentres.size();
+            autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre * expressCentres.size();
             //            initFixedLocParcels();
 //        initRandomParcels();
         }
