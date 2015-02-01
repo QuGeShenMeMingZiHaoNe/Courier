@@ -16,10 +16,9 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Car extends OvalPortrayal2D implements Steppable {
-    public static final int maxSpace = 5;
+    public static final int maxSpace = 18;
     protected int spaceRemaining = maxSpace;
 
     private final int basicCarDisplaySize = 2;
@@ -130,7 +129,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         if (map.parcelTotal == 0) {
             long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
             outputFile("***********************************************************************************************************");
-            outputFile("\nMode: " + map.mode + "\nRandom number seed: " + map.seed() + "\nCar number: " + map.initNumOfParcelsInExpressCentre + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size() + "\n");
+            outputFile("\nMode: " + map.mode + "\nRandom number seed: " + map.seed() + "\nCar number: " + map.getInitNumOfCarsInStation() + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size() + "\n");
             outputFile("***********************************************************************************************************");
             outputFile("\nTotal Parcels Carrying Time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending on Carrying in Average: " + (timeSpendingAverage));
             long finalStep = map.schedule.getSteps();
@@ -278,7 +277,13 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if (!tl.okToLeave(currStation)) {
                 avoids.add(nb);
             }
+//            if(globalPath!=null&&globalPath.indexOf(currStation)>0){
+//                avoids.add(globalPath.get(globalPath.indexOf(currStation) - 1));
+//            }
         }
+//        if(avoids.size()==currStation.neighbours.size()){
+//            initCarState();
+//        }
         return avoids;
     }
 
@@ -322,12 +327,12 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             if (globalPath != null) {
                 ExpressCentre commonEC = findFirstCommentStation(globalPath, old);
-                double oldDistance = calPathDistanceBetween(old, currStation, commonEC);
 
+                double oldDistance = calPathDistanceBetween(old, currStation, commonEC);
                 double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
 
-                double oldPathIntensity = findPathIntensity(old, currStation);
-                double newPathIntensity = findPathIntensity(globalPath, currStation);
+                double oldPathIntensity = findPathIntensity(old);
+                double newPathIntensity = findPathIntensity(globalPath);
 
                 if (newDistance >= oldDistance || oldPathIntensity <= 0.5 * newPathIntensity) {
 //                        refusedAlterPath.add(globalPath.get(1));
@@ -364,13 +369,13 @@ public class Car extends OvalPortrayal2D implements Steppable {
 //        return visited;
 //    }
 
-    private double findPathIntensity(LinkedList<ExpressCentre> path, ExpressCentre commonEC) {
+    private double findPathIntensity(LinkedList<ExpressCentre> path) {
         Iterator<ExpressCentre> iter = path.iterator();
         ExpressCentre first = iter.next();
-        if (!first.equals(commonEC)) {
+        if (!first.equals(currStation)) {
             while (iter.hasNext()) {
                 first = iter.next();
-                if (first.equals(commonEC))
+                if (first.equals(currStation))
                     break;
             }
         }
@@ -417,12 +422,32 @@ public class Car extends OvalPortrayal2D implements Steppable {
         for (int index = path.indexOf(a); index < path.size(); index++) {
             if (index == path.indexOf(a)) {
                 TramLine tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
-                if (!tl.carsOnTramLine.isEmpty()) {
-                    distance += tl.carsOnTramLine.getLast().location.distance(currStation.location);
-                    distance += a.location.distance(path.get(index + 1).location);
+                if (!path.equals(globalPath)) {
+                    // car coming
+                    Car car = tl.carsOnTramLine.getLast();
+                    if(car.stationTo == currStation) {
+                        double carDistance = car.location.distance(currStation.location);
+                        distance+=carDistance;
+
+//                        double dif = globalPath.get(globalPath.indexOf(currStation)+1).location.distance(currStation.location);
+//                        if(carDistance<dif){
+//                            distance = 0;
+//                            return distance;
+//                        }
+                        distance += a.location.distance(path.get(index + 1).location);
+                    }else {
+                        if(!path.equals(globalPath))
+                            System.out.println("wfasfdsaf");
+
+                        // car leaving
+                        car = tl.carsOnTramLine.getFirst();
+                        double carDistance = car.stationTo.location.distance(car.location);
+                        carDistance += car.stationTo.location.distance(currStation.location);
+                        distance += carDistance;
+
+                        distance += a.location.distance(path.get(index + 1).location);
+                    }
                 } else {
-//                    System.out.println("fdsafdsafdsafsafdsafasfsdafdsafdsafsad!@#$%^&*()^&%$$#@!@!@#$%^&*(*)_(*&*^%$#@");
-//                    System.out.println(this+" "+a+" "+b);
                     distance += path.get(index).location.distance(path.get(index + 1).location);
                 }
             } else {
@@ -431,6 +456,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             if (path.get(index + 1).equals(b)) {
                 return distance;
+            }else{
+                // the more station it has to go through the worse prediction it gets
+                if(index<=path.size()-2)
+                    distance += path.get(index+1).location.distance(path.get(index+2).location);
             }
         }
         return distance;
@@ -598,10 +627,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
                     leaveStation();
                     tramLine.carsOnTramLine.add(this);
 
-                    // tramline vistited ++
-                    if (!map.garages.contains(currStation)) {
-                        map.numOfTramLineExceptGarage++;
-                    }
 
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();
                     return;

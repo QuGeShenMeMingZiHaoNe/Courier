@@ -30,7 +30,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 980;
+    private int busy = 300;
     private int count = 0;
     private long sequence = 200;
 

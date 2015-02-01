@@ -217,7 +217,7 @@ public class TramLine implements Steppable {
     }
 
     // the holder station of tram line has no car want to come into asker station
-    private boolean noCarIsComing(ExpressCentre from, ExpressCentre to) {
+    protected boolean noCarIsComing(ExpressCentre from, ExpressCentre to) {
 //        if (to.carPark == null) return true;
 
         for (Car c : from.carPark) {

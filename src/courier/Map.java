@@ -15,12 +15,12 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     public static int initNumOfParcelsInExpressCentre = 100;
-    public static int initNumOfCarsInStation = 100;
+    public static int initNumOfCarsInStation = 20;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+//        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -44,8 +44,6 @@ public class Map extends SimState {
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
     protected String initTime = new Date().toString();
-    protected int numOfTramLineExceptGarage;
-    protected int tramLineVisitedTotal;
     protected long startTime;
     protected int serialParcelID = 1;
     private int serialStationID = 1;
@@ -154,7 +152,6 @@ public class Map extends SimState {
         initTramLineNet();
 
         parcelTotalCopy = autoGenParcelByStationsMax;
-        numOfTramLineExceptGarage = tramLines.size() - garages.size();
         startTime = this.schedule.getSteps();
     }
 
@@ -228,6 +225,9 @@ public class Map extends SimState {
 //        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
 //        addTramLine("line",expressCentres.get(3), expressCentres.get(4));
+
+//        addTramLine("line",expressCentres.get(2), expressCentres.get(0));
+
     }
 
     public void addTramLine(String line, String a, String b) {

@@ -111,9 +111,16 @@ public class Parcel {
             }
             while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
 
+
+
             currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace), map));
             map.serialParcelID++;
             map.parcelTotal++;
+
+
+            if(currExpressCentre.stationID%3==1) {
+                addRandomParcel((map.expressCentres.get(next) ));
+            }
         }
     }
 
