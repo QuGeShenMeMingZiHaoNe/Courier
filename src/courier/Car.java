@@ -9,11 +9,6 @@ import sim.util.Int2D;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -106,18 +101,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
         putIn.pickUpTime = map.schedule.getSteps();
     }
 
-    private void outputFile(String write) {
-        SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
-        PrintWriter writer = null;
-        try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + map.mode + " " + map.initTime + ".output", true)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        writer.println(write);
-
-        writer.close();
-    }
 
     private void tryTerminate() {
         if (map.autoGenParcelsModeTermination && map.autoGenParcelByStationsMax > 0) {
@@ -125,27 +108,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
         // the ending of the output file
         if (map.parcelTotal == 0) {
-            long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
-            outputFile("***********************************************************************************************************");
-            outputFile("\nMode: " + map.mode + "\nRandom number seed: " + map.seed() + "\nCar number: " + map.getInitNumOfCarsInStation() + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size() + "\n");
-            outputFile("***********************************************************************************************************");
-            outputFile("\nTotal Parcels Carrying Time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending on Carrying in Average: " + (timeSpendingAverage));
-            long finalStep = map.schedule.getSteps();
-            outputFile("Time Spending On Finishing Delivery: " + finalStep + "\n");
-            if(map.getMode()==SIMULATION_MODE.AVOID_TRAFFIC_JAM){
-                outputFile("path improvement: " + map.pathImprovement + "\n");
-            }
-            outputFile("***********************************************************************************************************");
-
-            outputFile("\nThe Longer carrying Time means the car travel with the parcel for longer period.\n" +
-                    "The Traffic Avoiding Mode has a longer carrying time as it has to carry the parcels\n" +
-                    "with the cars when the cars need to travel longer way to avoid the traffic jam.\n" +
-                    "The performance can be well represented by the Total Time Spending On Delivery\n" +
-                    "The shorter the time, the better the performance is!\n");
-
-            outputFile("***********************************************************************************************************");
-
-            System.out.println("Finish!!!!!!!");
+            new OutPutResult(map).writeResult();
         }
     }
 
@@ -284,9 +247,9 @@ public class Car extends OvalPortrayal2D implements Steppable {
             TramLine tl = map.tramLines.getFirst().findTramLine(currStation, nb);
 
             //test
-            if (indexCurr > 1 && nb.equals(globalPath.get(indexCurr-1))) {
+            if (indexCurr > 1 && nb.equals(globalPath.get(indexCurr - 1))) {
 
-            }else{
+            } else {
                 tl.tryOccupyTraffic(currStation);
 
             }
@@ -356,7 +319,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 //                        refusedAlterPath.add(globalPath.get(1));
                     globalPath = old;
                 } else {
-                    map.pathImprovement+=(oldDistance-newDistance);
+                    map.pathImprovement += (oldDistance - newDistance);
                     System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n" + "successfully alter " + "\n between " + currStation + " " + commonEC);
                     System.out.println("Parcels Total: " + map.parcelTotal);
                 }
@@ -593,6 +556,47 @@ public class Car extends OvalPortrayal2D implements Steppable {
         stepCount++;
     }
 
+    private void tryLeaveStation(TramLine tramLine) {
+        // allow to leave
+        if (tramLine.okToLeave(currStation)) {
+            if (tramLine.trafficLightOccupant == null)
+                tramLine.tryOccupyTraffic(currStation);
+            // leave the car park one by one -- FIFO
+            if (tramLine.currLeavingCars != null) {
+                return;
+            }
+            tramLine.currLeavingCars = this;
+            tramLine.carsOnTramLine.add(this);
+            leaveStation();
+//                    refusedAlterPath = new LinkedList<ExpressCentre>();
+        } else {
+            // not allow to leave, then ask to leave
+            tramLine.tryOccupyTraffic(currStation);
+            if (map.mode == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+                if (!tramLine.okToLeave(currStation) && (tramLine.trafficLightOccupant == currStation)) {
+//                        initCarState();
+                    alterPath = true;
+                    arriveStation();
+                    alterPath = false;
+                }
+            }
+        }
+    }
+
+    private void afterLeaving(TramLine tramLine) {
+        //                if (tramLine.currLeavingCars.equals(this)) {
+        tramLine.currLeavingCars = null;
+//                }
+        if (tramLine.a.equals(currStation)) {
+            tramLine.quota1--;
+        } else {
+            tramLine.quota2--;
+        }
+        currStation.carPark.remove(this);
+        hasArrived = false;
+        hasLeaved = false;
+    }
+
     @Override
     public void step(SimState state) {
         // don't increase cost if the cars in garage
@@ -634,50 +638,17 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             // prepare for leaving
             if (!hasLeaved) {
-
-                if (tramLine.okToLeave(currStation)) {
-                    if (tramLine.trafficLightOccupant == null)
-                        tramLine.tryOccupyTraffic(currStation);
-                    // leave the car park one by one -- FIFO
-                    if (tramLine.currLeavingCars != null) {
-                        return;
-                    }
-                    tramLine.currLeavingCars = this;
-                    tramLine.carsOnTramLine.add(this);
-                    leaveStation();
-//                    refusedAlterPath = new LinkedList<ExpressCentre>();
-                    return;
-                } else {
-                    tramLine.tryOccupyTraffic(currStation);
-                    if (map.mode == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-                        if (!tramLine.okToLeave(currStation) && (tramLine.trafficLightOccupant == currStation)) {
-//                        initCarState();
-                            alterPath = true;
-                            arriveStation();
-                            alterPath = false;
-                        }
-                    }
-                    return;
-                }
+                tryLeaveStation(tramLine);
+                return;
             }
-
 
             // delay one step of leaving the car park, Truly leave
             if (hasLeaved) {
-//                if (tramLine.currLeavingCars.equals(this)) {
-                tramLine.currLeavingCars = null;
-//                }
-                if (tramLine.a.equals(currStation)) {
-                    tramLine.quota1--;
-                } else {
-                    tramLine.quota2--;
-                }
-                currStation.carPark.remove(this);
-                hasArrived = false;
-                hasLeaved = false;
+                afterLeaving(tramLine);
             }
         }
 
+        // travel on the tramline
         oneStep();
 
     }
