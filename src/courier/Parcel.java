@@ -1,11 +1,5 @@
 package courier;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-
 public class Parcel {
     protected int parcelID;
     protected double weight;
@@ -43,7 +37,6 @@ public class Parcel {
         }
         return String.valueOf(timeSpending);
     }
-
 
 
     // TODO: better simulation as the distance does not == car step
@@ -112,14 +105,13 @@ public class Parcel {
             while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
 
 
-
-            currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace), map));
+            currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace / 8), map));
             map.serialParcelID++;
             map.parcelTotal++;
 
 
-            if(currExpressCentre.stationID%3==1) {
-                addRandomParcel((map.expressCentres.get(next) ));
+            if (currExpressCentre.stationID % 3 == 0) {
+                addRandomParcel((map.expressCentres.get(next)));
             }
         }
     }

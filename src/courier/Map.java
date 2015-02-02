@@ -14,13 +14,13 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 100;
-    public static int initNumOfCarsInStation = 20;
+    public static int initNumOfParcelsInExpressCentre = 200;
+    public static int initNumOfCarsInStation = 80;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-//        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+            public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -49,6 +49,7 @@ public class Map extends SimState {
     private int serialStationID = 1;
     private int serialTramLineID = 1;
     private int serialCarID = 1;
+    protected long pathImprovement = 0;
 
 
     public Map(long seed) {
@@ -159,7 +160,7 @@ public class Map extends SimState {
         InitExpressCentre i = new InitExpressCentre(this);
         i.initExpressCentre();
 //        addExpressCentre("A", new Int2D(gridWidth/2-10, gridHeight/2-20));
-//        addExpressCentre("B", new Int2D(gridWidth/2-30,gridHeight/2+40));
+//        addExpressCentre("B", new Int2D(gridWidth/2-200,gridHeight/2+200));
 //        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+60));
 //        addExpressCentre("D", new Int2D(gridWidth/2-70, gridHeight/2-80));
 //        addExpressCentre("E", new Int2D(gridWidth/2-90,gridHeight/2+90));
@@ -251,7 +252,8 @@ public class Map extends SimState {
     public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
         a.neighbours.add(b);
         b.neighbours.add(a);
-        tramLines.add(new TramLine(line, a, b, serialTramLineID, this));
+        TramLine tl = new TramLine(line, a, b, serialTramLineID, this);
+        tramLines.add(tl);
         serialTramLineID++;
     }
 

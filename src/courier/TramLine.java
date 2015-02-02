@@ -18,7 +18,7 @@ public class TramLine implements Steppable {
     // record of all the cars on the tram line
     protected LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
     // whom is controlling the traffic
-    protected ExpressCentre trafficLightOccupant;
+    protected ExpressCentre trafficLightOccupant = null;
     protected Car currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
     private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInStation);
@@ -188,10 +188,9 @@ public class TramLine implements Steppable {
             if (roadClear()) {
                 clearingTheRoad = false;
             }
-            return;
+//            return;
         }
 
-//        System.out.println(demander);
         if (demander.equals(trafficLightOccupant))
             return;
 
@@ -240,12 +239,12 @@ public class TramLine implements Steppable {
 
     // return the condition of the car to leave the station
     public boolean okToLeave(ExpressCentre asker) {
-        return !clearingTheRoad && trafficLightOccupant.equals(asker);
+        if (trafficLightOccupant == null)
+            return true;
+        return !clearingTheRoad && (trafficLightOccupant.equals(asker));
     }
-
 
     @Override
     public void step(SimState state) {
-
     }
 }

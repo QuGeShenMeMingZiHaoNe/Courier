@@ -1,16 +1,18 @@
 ***********************************************************************************************************
 
-Mode: BASIC
-Random number seed: 1187196167
-Car number: 10
-Parcel number: 18000
+Mode: AVOID_TRAFFIC_JAM
+Random number seed: 1201746424
+Car number: 80
+Parcel number: 7200
 ExpressCenter: 36
 
 ***********************************************************************************************************
 
-Total Parcels Carrying Time: 76890421
-Time Spending on Carrying in Average: 4271
-Time Spending On Finishing Delivery: 1834527
+Total Parcels Carrying Time: 28962461
+Time Spending on Carrying in Average: 4022
+Time Spending On Finishing Delivery: 28563
+
+path improvement: 26738
 
 ***********************************************************************************************************
 

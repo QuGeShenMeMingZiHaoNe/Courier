@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Car extends OvalPortrayal2D implements Steppable {
-    public static final int maxSpace = 18;
+    public static final int maxSpace = 64;
     protected int spaceRemaining = maxSpace;
 
     private final int basicCarDisplaySize = 2;
@@ -62,42 +62,42 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     public boolean loadParcel() {
         if (currStation.pToBeSent.size() == 0) return false;
-        if(spaceRemaining>0)
+        if (spaceRemaining > 0)
             parcelLoader();
         return true;
     }
 
 
     // remove a parcels from carrying
-    private void pickOut(Parcel pickOut){
+    private void pickOut(Parcel pickOut) {
         // arrive time
         pickOut.arriveTime = map.schedule.getSteps();
 
 
         // remove from carrying
-        if(carrying.remove(pickOut)){
+        if (carrying.remove(pickOut)) {
             // restore weight
             spaceRemaining += pickOut.weight;
         }
 
         // add into arrived parcels
-        if(!(pickOut instanceof CarCaller)) {
+        if (!(pickOut instanceof CarCaller)) {
             printParcelUnloadLog(pickOut);
             currStation.pArrived.add(pickOut);
             map.parcelTotal--;
             tryTerminate();
         } else {
-            carCallerConvertParcel((CarCaller)pickOut);
+            carCallerConvertParcel((CarCaller) pickOut);
             printCarCallerUnloadLog((CarCaller) pickOut);
         }
         initCarState();
     }
 
     //  put a parcel into a carrying
-    private void putIn(Parcel putIn){
+    private void putIn(Parcel putIn) {
 
         // put into carrying
-        if(carrying.add(putIn)){
+        if (carrying.add(putIn)) {
             // subtract weight
             spaceRemaining -= putIn.weight;
         }
@@ -119,12 +119,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
         writer.close();
     }
 
-    private void tryTerminate(){
+    private void tryTerminate() {
         if (map.autoGenParcelsModeTermination && map.autoGenParcelByStationsMax > 0) {
-            return ;
+            return;
         }
-
-
         // the ending of the output file
         if (map.parcelTotal == 0) {
             long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
@@ -134,6 +132,9 @@ public class Car extends OvalPortrayal2D implements Steppable {
             outputFile("\nTotal Parcels Carrying Time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending on Carrying in Average: " + (timeSpendingAverage));
             long finalStep = map.schedule.getSteps();
             outputFile("Time Spending On Finishing Delivery: " + finalStep + "\n");
+            if(map.getMode()==SIMULATION_MODE.AVOID_TRAFFIC_JAM){
+                outputFile("path improvement: " + map.pathImprovement + "\n");
+            }
             outputFile("***********************************************************************************************************");
 
             outputFile("\nThe Longer carrying Time means the car travel with the parcel for longer period.\n" +
@@ -148,30 +149,30 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
     }
 
-    private void printCarCallerUnloadLog(CarCaller carCaller){
+    private void printCarCallerUnloadLog(CarCaller carCaller) {
         String timeSpending = carCaller.getTimeSpending();
         if (map.detailsOn) {
             System.out.println("Log: " + this + " has unloaded" + " " + carCaller + " with wight " + carCaller.weight + " and time spending " + timeSpending + " at " + currStation + "...");
-            System.out.println("Log: Global parcels remaining "+map.parcelTotal);
+            System.out.println("Log: Global parcels remaining " + map.parcelTotal);
         }
     }
 
-    private void printParcelUnloadLog(Parcel parcel){
+    private void printParcelUnloadLog(Parcel parcel) {
         String timeSpending = parcel.getTimeSpending();
         if (map.detailsOn) {
-            System.out.println("Log: " + this + " has unloaded" + " " + parcel + " with wight " + parcel.weight + " and time spending " + timeSpending + " at " + currStation+  "...");
-            System.out.println("Log: Global parcels remaining "+map.parcelTotal);
+            System.out.println("Log: " + this + " has unloaded" + " " + parcel + " with wight " + parcel.weight + " and time spending " + timeSpending + " at " + currStation + "...");
+            System.out.println("Log: Global parcels remaining " + map.parcelTotal);
         }
     }
 
-    private void carCallerConvertParcel(CarCaller carCaller){
+    private void carCallerConvertParcel(CarCaller carCaller) {
 
         // find and remove from car caller pick up linkedList,
         // then add to the carrying of current car
         Parcel newP = currStation.findParcelWithWeightFromCarCallerPickUp(carCaller.weight);
-        if(!newP.destination.equals(currStation)) {
+        if (!newP.destination.equals(currStation)) {
             putIn(newP);
-        }else{
+        } else {
 
             currStation.pArrived.add(newP);
             arriveStation();
@@ -181,7 +182,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     // unload parcel
     public void unloadParcel() {
         // when there is a package is unloaded and the package is the first package in the carrying list, then reset the global Path
-        LinkedList<Parcel> carryingCopy = (LinkedList<Parcel>)carrying.clone();
+        LinkedList<Parcel> carryingCopy = (LinkedList<Parcel>) carrying.clone();
         for (Parcel p : carryingCopy) {
             if (p.destination.equals(currStation)) {
                 pickOut(p);
@@ -204,7 +205,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         setAllPath();
     }
 
-    private void firstTimeArrive(){
+    private void firstTimeArrive() {
         moving = false;
         hasArrived = true;
         currStation = currStation();
@@ -230,7 +231,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         unloadParcel();
     }
 
-    private void setAllPath(){
+    private void setAllPath() {
 
         // if there are something to be delivered
         if (!carrying.isEmpty()) {
@@ -269,14 +270,31 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
     private LinkedList<ExpressCentre> findTrafficJam() {
         LinkedList<ExpressCentre> avoids = new LinkedList<ExpressCentre>();
+
+        int indexCurr = -1;
+        if (globalPath != null) {
+            indexCurr = globalPath.indexOf(currStation);
+        }
+
+//        if(indexCurr>1){
+//            avoids.add(globalPath.get(indexCurr - 1));
+//        }
+
         for (ExpressCentre nb : currStation.neighbours) {
             TramLine tl = map.tramLines.getFirst().findTramLine(currStation, nb);
 
-            tl.tryOccupyTraffic(currStation);
+            //test
+            if (indexCurr > 1 && nb.equals(globalPath.get(indexCurr-1))) {
+
+            }else{
+                tl.tryOccupyTraffic(currStation);
+
+            }
 
             if (!tl.okToLeave(currStation)) {
                 avoids.add(nb);
             }
+
 //            if(globalPath!=null&&globalPath.indexOf(currStation)>0){
 //                avoids.add(globalPath.get(globalPath.indexOf(currStation) - 1));
 //            }
@@ -338,6 +356,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
 //                        refusedAlterPath.add(globalPath.get(1));
                     globalPath = old;
                 } else {
+                    map.pathImprovement+=(oldDistance-newDistance);
                     System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n" + "successfully alter " + "\n between " + currStation + " " + commonEC);
                     System.out.println("Parcels Total: " + map.parcelTotal);
                 }
@@ -416,8 +435,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private double calPathDistanceBetween(LinkedList<ExpressCentre> path, ExpressCentre a, ExpressCentre b) {
         double distance = 0;
         // return directly if station a and b
-        if (a.equals(b))
-            return distance;
 
         for (int index = path.indexOf(a); index < path.size(); index++) {
             if (index == path.indexOf(a)) {
@@ -425,9 +442,9 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 if (!path.equals(globalPath)) {
                     // car coming
                     Car car = tl.carsOnTramLine.getLast();
-                    if(car.stationTo == currStation) {
+                    if (car.stationTo.equals(currStation)) {
                         double carDistance = car.location.distance(currStation.location);
-                        distance+=carDistance;
+                        distance += carDistance;
 
 //                        double dif = globalPath.get(globalPath.indexOf(currStation)+1).location.distance(currStation.location);
 //                        if(carDistance<dif){
@@ -435,12 +452,13 @@ public class Car extends OvalPortrayal2D implements Steppable {
 //                            return distance;
 //                        }
                         distance += a.location.distance(path.get(index + 1).location);
-                    }else {
-                        if(!path.equals(globalPath))
-                            System.out.println("wfasfdsaf");
 
+                        //test
+//                        return 0;
+
+                    } else {
                         // car leaving
-                        car = tl.carsOnTramLine.getFirst();
+                        car = tl.carsOnTramLine.getLast();
                         double carDistance = car.stationTo.location.distance(car.location);
                         carDistance += car.stationTo.location.distance(currStation.location);
                         distance += carDistance;
@@ -456,10 +474,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             if (path.get(index + 1).equals(b)) {
                 return distance;
-            }else{
+            } else {
                 // the more station it has to go through the worse prediction it gets
-                if(index<=path.size()-2)
-                    distance += path.get(index+1).location.distance(path.get(index+2).location);
+                if (index <= path.size() - 2)
+                    distance += path.get(index + 1).location.distance(path.get(index + 2).location);
             }
         }
         return distance;
@@ -471,14 +489,14 @@ public class Car extends OvalPortrayal2D implements Steppable {
         return s;
     }
 
-    private void printLogForParcelLoader(Parcel newP){
+    private void printLogForParcelLoader(Parcel newP) {
         if (map.detailsOn) {
-            System.out.println("Log: " + this +" has picked up "+ newP + " with weight " + newP.weight);
+            System.out.println("Log: " + this + " has picked up " + newP + " with weight " + newP.weight);
         }
     }
 
-    private Parcel fetchFromParcelsToBeSent(int weight){
-        LinkedList<Parcel> pToBeSentCopy = (LinkedList<Parcel>)currStation.pToBeSent.clone();
+    private Parcel fetchFromParcelsToBeSent(int weight) {
+        LinkedList<Parcel> pToBeSentCopy = (LinkedList<Parcel>) currStation.pToBeSent.clone();
         for (Parcel p : pToBeSentCopy) {
             if (p.weight <= weight) {
                 currStation.pToBeSent.remove(p);
@@ -492,7 +510,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     private void parcelLoader() {
         Parcel newP;
         newP = fetchFromParcelsToBeSent(spaceRemaining);
-        while (newP!=null) {
+        while (newP != null) {
             putIn(newP);
             printLogForParcelLoader(newP);
             newP = fetchFromParcelsToBeSent(spaceRemaining);
@@ -546,7 +564,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         stationTo = null;
     }
 
-    private void setUpCarCaller(){
+    private void setUpCarCaller() {
         if (!map.callCarToPickUpParcels.isEmpty()) {
             Parcel newP = map.callCarToPickUpParcels.pollFirst();
             // if the asker is the current station
@@ -560,7 +578,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
     }
 
-    private void oneStep(){
+    private void oneStep() {
         // get the next step location
         Int2D nextStep = this.pathLocal.get(stepCount);
 
@@ -600,12 +618,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 }
 
                 // this is for catching the situation that both pToBeSent and global parcel boards are empty
-                if(globalPath == null || stationTo == null){
+                if (globalPath == null || stationTo == null) {
                     this.arriveStation();
                     return;
                 }
             }
-
 
 
             TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
@@ -619,15 +636,15 @@ public class Car extends OvalPortrayal2D implements Steppable {
             if (!hasLeaved) {
 
                 if (tramLine.okToLeave(currStation)) {
+                    if (tramLine.trafficLightOccupant == null)
+                        tramLine.tryOccupyTraffic(currStation);
                     // leave the car park one by one -- FIFO
                     if (tramLine.currLeavingCars != null) {
                         return;
                     }
                     tramLine.currLeavingCars = this;
-                    leaveStation();
                     tramLine.carsOnTramLine.add(this);
-
-
+                    leaveStation();
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();
                     return;
                 } else {
