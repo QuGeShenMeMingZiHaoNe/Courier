@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/AVOID_TRAFFIC_JAM Wed Feb 04 21:50:09 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/AVOID_TRAFFIC_JAM Wed Feb 04 21:52:46 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/AVOID_TRAFFIC_JAM Wed Feb 04 21:55:36 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/AVOID_TRAFFIC_JAM Wed Feb 04 21:57:28 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/AVOID_TRAFFIC_JAM Wed Feb 04 21:59:00 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/BASIC Wed Feb 04 21:49:56 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/BASIC Wed Feb 04 21:52:27 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/BASIC Wed Feb 04 21:55:25 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/BASIC Wed Feb 04 21:57:17 GMT 2015.output" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/BASIC Wed Feb 04 21:58:47 GMT 2015.output" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car_AVOID.java" afterPath="$PROJECT_DIR$/src/courier/Car_AVOID.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car_BASIC.java" afterPath="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/ExpressCentre.java" afterPath="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/OutPutResult.java" afterPath="$PROJECT_DIR$/src/courier/OutPutResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Courier.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,10 +39,22 @@
         <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4815">
-              <caret line="17" column="53" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="53" />
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1527#1542#0" expanded="true" />
+                <element signature="e#1526#1541#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Car_AVOID.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4509018" vertical-offset="1995" max-vertical-offset="4785">
+              <caret line="150" column="21" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,8 +73,8 @@
       <file leaf-file-name="TramLine_BASIC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
-              <caret line="24" column="53" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="3630">
+              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
               <folding>
                 <element signature="e#573#584#0" expanded="true" />
               </folding>
@@ -81,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutPutResult.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OutPutResult.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24545455" vertical-offset="0" max-vertical-offset="840">
-              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="855">
+              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -95,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6540">
-              <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+              <caret line="14" column="45" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,15 +153,15 @@
         <option value="$PROJECT_DIR$/src/courier/Car.java" />
         <option value="$PROJECT_DIR$/src/courier/Car_Avoid.java" />
         <option value="$PROJECT_DIR$/src/courier/Car_BASIC_Avoid.java" />
-        <option value="$PROJECT_DIR$/src/courier/Car_AVOID.java" />
         <option value="$PROJECT_DIR$/src/courier/TramLine.java" />
         <option value="$PROJECT_DIR$/src/courier/Tramline_CONJESTION.java" />
         <option value="$PROJECT_DIR$/src/courier/TramLine_BASIC.java" />
         <option value="$PROJECT_DIR$/src/courier/MapGUI.java" />
         <option value="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
-        <option value="$PROJECT_DIR$/src/courier/Map.java" />
-        <option value="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
         <option value="$PROJECT_DIR$/src/courier/OutPutResult.java" />
+        <option value="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
+        <option value="$PROJECT_DIR$/src/courier/Map.java" />
+        <option value="$PROJECT_DIR$/src/courier/Car_AVOID.java" />
       </list>
     </option>
   </component>
@@ -838,7 +839,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -852,7 +853,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32522407" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32522407" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -860,7 +861,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38412017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2599232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2599232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -904,7 +905,7 @@
           <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1527#1542#0" expanded="true" />
+            <element signature="e#1526#1541#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -923,7 +924,7 @@
           <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1527#1542#0" expanded="true" />
+            <element signature="e#1526#1541#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1102,18 +1103,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="25.0" vertical-offset="1275" max-vertical-offset="4785">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#227#228#0" expanded="true" />
-            <element signature="e#270#271#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sim/util/Interval.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
@@ -1140,23 +1129,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
+    <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="53" />
-          <folding>
-            <element signature="e#573#584#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6540">
-          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="855">
+          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,22 +1145,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4815">
-          <caret line="17" column="53" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
+          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1527#1542#0" expanded="true" />
+            <element signature="e#573#584#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
+    <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24545455" vertical-offset="0" max-vertical-offset="840">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6540">
+          <caret line="14" column="45" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4815">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1526#1541#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4509018" vertical-offset="1995" max-vertical-offset="4785">
+          <caret line="150" column="21" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

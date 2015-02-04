@@ -33,6 +33,7 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
 
         System.out.println("Finish!!!!!!!");
+        System.exit(0);
     }
 
     private void outputFile(String write) {
@@ -45,7 +46,7 @@ public class OutPutResult {
             mode = "BASIC";
         }
         try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_"+map.getInitNumOfCarsInStation()+"_P_"+map.initNumOfParcelsInExpressCentre+"_CG_"+TramLine_BASIC.maximumCarLeavingBeforeRedLight+"_B"+ExpressCentre.busy+ "_S"+map.seed()+".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_"+map.getInitNumOfCarsInStation()+"_P_"+map.initNumOfParcelsInExpressCentre+"_CG_"+map.getCongestionLevel_1_10()+"_B_"+ExpressCentre.busy+ "_S_"+map.seed()+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
