@@ -108,11 +108,6 @@ public class Parcel {
             currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(5), map));
             map.serialParcelID++;
             map.parcelTotal++;
-
-
-            if (currExpressCentre.stationID % 3 == 0) {
-                addRandomParcel((map.expressCentres.get(next)));
-            }
         }
     }
 

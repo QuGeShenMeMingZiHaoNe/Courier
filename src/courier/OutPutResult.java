@@ -28,13 +28,7 @@ public class OutPutResult {
         }
         outputFile("***********************************************************************************************************");
 
-        outputFile("\nThe Longer carrying Time means the car travel with the parcel for longer period.\n" +
-                "The Traffic Avoiding Mode has a longer carrying time as it has to carry the parcels\n" +
-                "with the cars when the cars need to travel longer way to avoid the traffic jam.\n" +
-                "The performance can be well represented by the Total Time Spending On Delivery\n" +
-                "The shorter the time, the better the performance is!\n");
-
-        outputFile("***********************************************************************************************************");
+//        outputFile("***********************************************************************************************************");
 
         System.out.println("Finish!!!!!!!");
     }

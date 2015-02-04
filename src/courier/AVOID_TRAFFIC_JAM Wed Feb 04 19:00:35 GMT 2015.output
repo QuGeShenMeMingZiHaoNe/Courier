@@ -1,0 +1,16 @@
+***********************************************************************************************************
+
+Mode: AVOID_TRAFFIC_JAM
+Random number seed: 1442244330
+Car number: 50
+Parcel number: 36000
+ExpressCenter: 36
+
+***********************************************************************************************************
+
+Total Parcels Delivering Time: 106996196
+Average Parcel Delivering Time : 2972
+Finish Delivery All Parcels: 217980
+Time Saveing by path changing( compare with old path): 134973
+
+***********************************************************************************************************
