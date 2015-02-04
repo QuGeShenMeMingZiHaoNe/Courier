@@ -38,8 +38,14 @@ public class OutPutResult {
     private void outputFile(String write) {
         SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
         PrintWriter writer = null;
+        String mode;
+        if(map.getMode()==SIMULATION_MODE.AVOID_TRAFFIC_JAM){
+            mode = "AVOID";
+        }else {
+            mode = "BASIC";
+        }
         try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + map.mode + " " + map.initTime + ".output", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_"+map.getInitNumOfCarsInStation()+"_P_"+map.initNumOfParcelsInExpressCentre+"_CG_"+TramLine_BASIC.maximumCarLeavingBeforeRedLight+"_B"+ExpressCentre.busy+ "_S"+map.seed()+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }

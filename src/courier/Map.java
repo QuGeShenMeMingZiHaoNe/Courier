@@ -5,6 +5,7 @@ import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
 import sim.util.Int2D;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -43,7 +44,8 @@ public class Map extends SimState {
     protected Network tramLineNet = new Network(false);
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
-    protected String initTime = new Date().toString();
+    private SimpleDateFormat format = new SimpleDateFormat("MM-dd-hh-mm");
+    protected String initTime = format.format(new Date()).toString();
     protected long startTime;
     protected int serialParcelID = 1;
     private int serialStationID = 1;
