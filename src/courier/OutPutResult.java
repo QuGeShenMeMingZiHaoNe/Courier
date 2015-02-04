@@ -23,12 +23,14 @@ public class OutPutResult {
         outputFile("Finish Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
             outputFile("Time Saveing by path changing( compare with old path): " + map.pathImprovement + "\n");
-        }else{
+        } else {
             outputFile("\n");
         }
         outputFile("***********************************************************************************************************");
 
-//        outputFile("***********************************************************************************************************");
+        outputFile("\nThe degree of busy in Express Centre: " + map.expressCentres.getFirst().busy + "\n");
+
+        outputFile("***********************************************************************************************************");
 
         System.out.println("Finish!!!!!!!");
     }

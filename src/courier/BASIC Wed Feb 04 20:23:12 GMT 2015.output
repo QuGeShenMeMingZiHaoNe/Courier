@@ -1,16 +1,20 @@
 ***********************************************************************************************************
 
 Mode: BASIC
-Random number seed: 1442244330
+Random number seed: 1447217587
 Car number: 50
-Parcel number: 36000
+Parcel number: 10800
 ExpressCenter: 36
 
 ***********************************************************************************************************
 
-Total Parcels Delivering Time: 113612334
-Average Parcel Delivering Time : 3155
-Finish Delivery All Parcels: 218679
+Total Parcels Delivering Time: 38578371
+Average Parcel Delivering Time : 3572
+Finish Delivery All Parcels: 45535
 
+
+***********************************************************************************************************
+
+The degree of busy in Express Centre: 900
 
 ***********************************************************************************************************

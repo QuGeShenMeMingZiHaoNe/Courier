@@ -16,7 +16,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected static final int MAX_PACKAGES = 30;
     public String name;
     protected int stationID;
-    protected List<Car> carPark = new LinkedList<Car>();
+    protected List<Car_BASIC> carPark = new LinkedList<Car_BASIC>();
     protected Int2D location;
     protected LinkedList<Parcel> pToBeSent = new LinkedList<Parcel>();
     protected LinkedList<Parcel> pToBeSentForCarCallerPickUp = new LinkedList<Parcel>();
@@ -30,7 +30,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
     // busy indicates how busy the station is, the number should between 1000 and 0,
     // the bigger the number, the more busy it is
-    private int busy = 800;
+    public int busy = 999;
     private int count = 0;
     private long sequence = 200;
 

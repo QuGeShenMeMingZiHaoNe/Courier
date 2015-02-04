@@ -14,13 +14,13 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 1000;
+    public static int initNumOfParcelsInExpressCentre = 300;
     public static int initNumOfCarsInGarage = 50;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
     public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//        public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    //        public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -38,7 +38,7 @@ public class Map extends SimState {
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
     protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
-    protected LinkedList<Car> cars = new LinkedList<Car>();
+    protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
     protected LinkedList<Parcel> callCarToPickUpParcels = new LinkedList<Parcel>();
     protected Network tramLineNet = new Network(false);
     protected long parcelTimeSpendingTotal = 0;
@@ -141,13 +141,15 @@ public class Map extends SimState {
         addGarage();
         allStations.addAll(garages);
 
+        initCars();
+
         // init tramlines
         initTramLines();
 
         if (testModeOn) {
             autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre * expressCentres.size();
-            //            initFixedLocParcels();
-//        initRandomParcels();
+        } else {
+            autoGenParcelByStationsMax = 999999999;
         }
 
         initTramLineNet();
@@ -195,14 +197,6 @@ public class Map extends SimState {
         serialStationID++;
         mapGrid.setObjectLocation(g, loc);
 
-        Car car;
-        for (int i = 0; i < initNumOfCarsInGarage; i++) {
-            car = new Car(serialCarID, loc, this);
-            cars.add(car);
-            serialCarID++;
-            schedule.scheduleRepeating(car);
-            mapGrid.setObjectLocation(car, loc);
-        }
         ExpressCentre closestEC = expressCentres.getFirst();
         double distance = 999999999;
         double tempDistance;
@@ -215,6 +209,28 @@ public class Map extends SimState {
         }
         addTramLine("garage", g, closestEC);
         garages.add(g);
+    }
+
+    private void initCars() {
+        Car_BASIC car;
+        for (int i = 0; i < initNumOfCarsInGarage; i++) {
+            Int2D loc = garages.get(random.nextInt(garages.size())).location;
+
+            if (mode.equals(SIMULATION_MODE.BASIC))
+                car = new Car_BASIC(serialCarID, loc, this);
+
+            else if (mode.equals(SIMULATION_MODE.AVOID_TRAFFIC_JAM))
+                car = new Car_AVOID(serialCarID, loc, this);
+
+            else {
+                car = null;
+            }
+
+            cars.add(car);
+            serialCarID++;
+            schedule.scheduleRepeating(car);
+            mapGrid.setObjectLocation(car, loc);
+        }
     }
 
     private void initTramLines() {
@@ -257,18 +273,6 @@ public class Map extends SimState {
         serialTramLineID++;
     }
 
-    private void initCars() {
-        Car car;
-        for (ExpressCentre s : allStations) {
-            for (int i = 0; i < initNumOfCarsInGarage; i++) {
-                car = new Car(serialCarID, s.location, this);
-                cars.add(car);
-                serialCarID++;
-                schedule.scheduleRepeating(car);
-                mapGrid.setObjectLocation(car, s.location);
-            }
-        }
-    }
 
     private void initRandomParcels() {
         for (ExpressCentre s : expressCentres) {

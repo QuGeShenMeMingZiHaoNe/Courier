@@ -16,13 +16,13 @@ public class TramLine implements Steppable {
     protected int tramLineID;
     protected Map map;
     // record of all the cars on the tram line
-    protected LinkedList<Car> carsOnTramLine = new LinkedList<Car>();
+    protected LinkedList<Car_BASIC> carsOnTramLine = new LinkedList<Car_BASIC>();
     // whom is controlling the traffic
     protected ExpressCentre trafficLightOccupant = null;
-    protected Car currLeavingCars;
+    protected Car_BASIC currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
 //    private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInGarage);
-        private int maximumCarLeavingBeforeRedLight = 1;
+    private int maximumCarLeavingBeforeRedLight = 1;
     protected int quota1 = maximumCarLeavingBeforeRedLight;
     protected int quota2 = maximumCarLeavingBeforeRedLight;
     private String line;
@@ -48,7 +48,7 @@ public class TramLine implements Steppable {
         }
     }
 
-    public LinkedList<Car> getCarsOnTramLine() {
+    public LinkedList<Car_BASIC> getCarsOnTramLine() {
         return carsOnTramLine;
     }
 
@@ -219,7 +219,7 @@ public class TramLine implements Steppable {
     protected boolean noCarIsComing(ExpressCentre from, ExpressCentre to) {
 //        if (to.carPark == null) return true;
 
-        for (Car c : from.carPark) {
+        for (Car_BASIC c : from.carPark) {
             if (c.stationTo != null)
                 if (c.stationTo.equals(to))
                     return false;

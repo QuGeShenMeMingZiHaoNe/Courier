@@ -72,9 +72,9 @@ public class Parcel {
 
                 // dynamically add packages
                 if (j % 2 == 0) {
-                    currExpressCentre.pToBeSent.addFirst(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace), map));
+                    currExpressCentre.pToBeSent.addFirst(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car_BASIC.maxSpace), map));
                 } else {
-                    currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace), map));
+                    currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car_BASIC.maxSpace), map));
                 }
                 map.serialParcelID++;
                 map.parcelTotal++;
@@ -83,7 +83,7 @@ public class Parcel {
                 // in order to increase the randomization of package we add some extra packages
                 if (next % 3 == 1) {
                     for (int f = 0; f < 10; f++) {
-                        currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace), map));
+                        currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car_BASIC.maxSpace), map));
                         map.serialParcelID++;
                         map.parcelTotal++;
                     }

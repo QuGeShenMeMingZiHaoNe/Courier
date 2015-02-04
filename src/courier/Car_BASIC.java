@@ -9,15 +9,14 @@ import sim.util.Int2D;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Car extends OvalPortrayal2D implements Steppable {
-    public static final int maxSpace = 1000;
+public class Car_BASIC extends OvalPortrayal2D implements Steppable {
+    protected static final int maxSpace = 100;
     protected int spaceRemaining = maxSpace;
 
-    private final int basicCarDisplaySize = 2;
-    public Shape shape;
+    protected final int basicCarDisplaySize = 2;
+    protected Shape shape;
     protected int carID;
     protected int speed;
     protected LinkedList<Int2D> pathLocal = new LinkedList<Int2D>();
@@ -25,19 +24,19 @@ public class Car extends OvalPortrayal2D implements Steppable {
     protected ExpressCentre stationTo;
     protected Int2D location;
     protected Map map;
-    Ellipse2D.Double preciseEllipse = new Ellipse2D.Double();
-    private LinkedList<Parcel> carrying = new LinkedList<Parcel>();
-    private int stepCount = 0;
-    private boolean hasArrived = false;
-    private boolean hasLeaved = false;
-    private LinkedList<ExpressCentre> globalPath;
-    private boolean moving = true;
-    private boolean alterPath = false;
-    private ExpressCentre currStation;
+    protected Ellipse2D.Double preciseEllipse = new Ellipse2D.Double();
+    protected LinkedList<Parcel> carrying = new LinkedList<Parcel>();
+    protected int stepCount = 0;
+    protected boolean hasArrived = false;
+    protected boolean hasLeaved = false;
+    protected LinkedList<ExpressCentre> globalPath;
+    protected boolean moving = true;
+    protected boolean alterPath = false;
+    protected ExpressCentre currStation;
 //    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
 
 
-    public Car(int carID, Int2D location, Map map) {
+    public Car_BASIC(int carID, Int2D location, Map map) {
         this.carID = carID;
         this.location = location;
         this.map = map;
@@ -56,7 +55,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     }
 
     public boolean loadParcel() {
-        if (currStation.pToBeSent.size() == 0 ) return false;
+        if (currStation.pToBeSent.size() == 0) return false;
         if (spaceRemaining > 0)
             parcelLoader();
         return true;
@@ -168,7 +167,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         setAllPath();
     }
 
-    private void firstTimeArrive() {
+    protected void firstTimeArrive() {
         moving = false;
         hasArrived = true;
         currStation = currStation();
@@ -204,68 +203,12 @@ public class Car extends OvalPortrayal2D implements Steppable {
 
             // find the final destination of the parcel as target Station.
             ExpressCentre targetStation = p.destination;
-
-
-            switch (map.mode) {
-                // set the current station as station from, the next station as station to.
-                case BASIC:
-                    setPathGlobal(currStation, targetStation);
-                    break;
-                case AVOID_TRAFFIC_JAM:
-                    if (globalPath == null) {
-                        setPathGlobal(currStation, targetStation);
-                    }
-                    LinkedList<ExpressCentre> avoids = findTrafficJam();
-//                    avoids.addAll(refusedAlterPath);
-                    if (avoids.size() < currStation.neighbours.size()) {
-                        setPathGlobal(currStation, targetStation, avoids);
-                    }
-
-                    // when we can not find the path by avoiding traffic jam, we still set the path by
-                    break;
-            }
+            setPathGlobal(currStation, targetStation);
 
             // calculate the path from current station to the next station
             if (stationTo != null)
                 setPathLocal(currStation, stationTo);
         }
-    }
-
-    private LinkedList<ExpressCentre> findTrafficJam() {
-        LinkedList<ExpressCentre> avoids = new LinkedList<ExpressCentre>();
-
-        int indexCurr = -1;
-        if (globalPath != null) {
-            indexCurr = globalPath.indexOf(currStation);
-        }
-
-//        if(indexCurr>1){
-//            avoids.add(globalPath.get(indexCurr - 1));
-//        }
-
-        for (ExpressCentre nb : currStation.neighbours) {
-            TramLine tl = map.tramLines.getFirst().findTramLine(currStation, nb);
-
-            //test
-            if (indexCurr > 1 && nb.equals(globalPath.get(indexCurr - 1))) {
-
-            } else {
-                tl.tryOccupyTraffic(currStation);
-
-            }
-
-            if (!tl.okToLeave(currStation)) {
-                avoids.add(nb);
-            }
-
-//            if(globalPath!=null&&globalPath.indexOf(currStation)>0){
-//                avoids.add(globalPath.get(globalPath.indexOf(currStation) - 1));
-//            }
-        }
-//        if(avoids.size()==currStation.neighbours.size()){
-//            initCarState();
-//        }
-        return avoids;
     }
 
 
@@ -274,11 +217,11 @@ public class Car extends OvalPortrayal2D implements Steppable {
         hasLeaved = true;
     }
 
-    private void setPathLocal(ExpressCentre from, ExpressCentre to) {
+    protected void setPathLocal(ExpressCentre from, ExpressCentre to) {
         pathLocal = map.tramLines.get(0).getPathBetweenNBStations(from, to);
     }
 
-    private void setPathGlobal(ExpressCentre from, ExpressCentre to) {
+    protected void setPathGlobal(ExpressCentre from, ExpressCentre to) {
         TramLine tl = map.tramLines.get(0);
 
         if (globalPath == null) {
@@ -288,165 +231,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
         stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
     }
 
-    private void setPathGlobal(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
-        TramLine tl = map.tramLines.get(0);
-        LinkedList<ExpressCentre> old;
 
-        if (!(globalPath == null)) {
-            old = (LinkedList<ExpressCentre>) globalPath.clone();
-        } else {
-            old = null;
-        }
-
-        if (globalPath == null) {
-            globalPath = tl.getPathGlobal(from, to, avoids);
-
-        }
-
-        if (alterPath) {
-            globalPath = tl.getPathGlobal(from, to, avoids);
-
-            if (globalPath != null) {
-                ExpressCentre commonEC = findFirstCommentStation(globalPath, old);
-
-                double oldDistance = calPathDistanceBetween(old, currStation, commonEC);
-                double newDistance = calPathDistanceBetween(globalPath, currStation, commonEC);
-
-                double oldPathIntensity = findPathIntensity(old);
-                double newPathIntensity = findPathIntensity(globalPath);
-
-//                if (newDistance >= oldDistance) {
-                    if (newDistance >= oldDistance || oldPathIntensity <= 0.5 * newPathIntensity) {
-//                        refusedAlterPath.add(globalPath.get(1));
-                    globalPath = old;
-                } else {
-                    map.pathImprovement += (oldDistance - newDistance);
-                    System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n" + "successfully alter " + "\n between " + currStation + " " + commonEC);
-                    System.out.println("Parcels Total: " + map.parcelTotal);
-                }
-
-            }
-        }
-
-        if (globalPath == null && old != null) {
-            globalPath = old;
-        }
-
-        if (globalPath != null) {
-            stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
-        }
-    }
-
-//    private int findPathVisited(LinkedList<ExpressCentre> path) {
-//        Iterator<ExpressCentre> iter = path.iterator();
-//        ExpressCentre first = iter.next();
-//        ExpressCentre second;
-//        int visited = 0;
-//        TramLine tl;
-//        while (iter.hasNext()) {
-//            second = iter.next();
-//            tl = map.tramLines.getFirst().findTramLine(first, second);
-//            visited += tl.visited;
-//            first = second;
-//        }
-//        return visited;
-//    }
-
-    private double findPathIntensity(LinkedList<ExpressCentre> path) {
-        Iterator<ExpressCentre> iter = path.iterator();
-        ExpressCentre first = iter.next();
-        if (!first.equals(currStation)) {
-            while (iter.hasNext()) {
-                first = iter.next();
-                if (first.equals(currStation))
-                    break;
-            }
-        }
-        ExpressCentre second;
-        double intensity = 0;
-        TramLine tl;
-        while (iter.hasNext()) {
-            second = iter.next();
-            tl = map.tramLines.getFirst().findTramLine(first, second);
-            intensity += tl.carsOnTramLine.size();
-            first = second;
-        }
-        return intensity;
-    }
-
-    private ExpressCentre findFirstCommentStation(LinkedList<ExpressCentre> newPath, LinkedList<ExpressCentre> oldPath) {
-        LinkedList<ExpressCentre> copyNew = (LinkedList<ExpressCentre>) newPath.clone();
-        copyNew.remove(0);
-
-        LinkedList<ExpressCentre> copyOld = new LinkedList<ExpressCentre>();
-        int index = oldPath.indexOf(newPath.getFirst());
-        while (index < oldPath.size()) {
-            copyOld.add(oldPath.get(index));
-            index++;
-        }
-
-        for (ExpressCentre ec : copyNew) {
-            if (copyOld.contains(ec))
-                return ec;
-        }
-
-        System.out.println("log: NEVER GETS HERE");
-        // never come to this state
-        return null;
-    }
-
-    private double calPathDistanceBetween(LinkedList<ExpressCentre> path, ExpressCentre a, ExpressCentre b) {
-        double distance = 0;
-        // return directly if station a and b
-
-        for (int index = path.indexOf(a); index < path.size(); index++) {
-            if (index == path.indexOf(a)) {
-                TramLine tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
-                if (!path.equals(globalPath)) {
-                    // car coming
-                    Car car = tl.carsOnTramLine.getLast();
-                    if (car.stationTo.equals(currStation)) {
-                        double carDistance = car.location.distance(currStation.location);
-                        distance += carDistance;
-
-//                        double dif = globalPath.get(globalPath.indexOf(currStation)+1).location.distance(currStation.location);
-//                        if(carDistance<dif){
-//                            distance = 0;
-//                            return distance;
-//                        }
-                        distance += a.location.distance(path.get(index + 1).location);
-
-                        //test
-//                        return 0;
-
-                    } else {
-                        // car leaving
-                        car = tl.carsOnTramLine.getLast();
-                        double carDistance = car.stationTo.location.distance(car.location);
-                        carDistance += car.stationTo.location.distance(currStation.location);
-                        distance += carDistance;
-
-                        distance += a.location.distance(path.get(index + 1).location);
-                    }
-                } else {
-                    distance += path.get(index).location.distance(path.get(index + 1).location);
-                }
-            } else {
-                distance += path.get(index).location.distance(path.get(index + 1).location);
-            }
-
-            if (path.get(index + 1).equals(b)) {
-                return distance;
-            } else {
-                // the more station it has to go through the worse prediction it gets
-                if (index <= path.size() - 2)
-                    distance += path.get(index + 1).location.distance(path.get(index + 2).location);
-            }
-        }
-        return distance;
-    }
-
-    private ExpressCentre currStation() {
+    protected ExpressCentre currStation() {
         ExpressCentre s;
         s = map.allStations.get(0).findStationByLoc(this.location);
         return s;
@@ -527,7 +313,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         stationTo = null;
     }
 
-    private void setUpCarCaller() {
+    protected void setUpCarCaller() {
         if (!map.callCarToPickUpParcels.isEmpty()) {
             Parcel newP = map.callCarToPickUpParcels.pollFirst();
             // if the asker is the current station
@@ -541,7 +327,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
     }
 
-    private void oneStep() {
+    protected void oneStep() {
         // get the next step location
         Int2D nextStep = this.pathLocal.get(stepCount);
 
@@ -572,18 +358,10 @@ public class Car extends OvalPortrayal2D implements Steppable {
         } else {
             // not allow to leave, then ask to leave
             tramLine.tryOccupyTraffic(currStation);
-            if (map.mode == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-                if (!tramLine.okToLeave(currStation) && (tramLine.trafficLightOccupant == currStation)) {
-//                        initCarState();
-                    alterPath = true;
-                    arriveStation();
-                    alterPath = false;
-                }
-            }
         }
     }
 
-    private void afterLeaving(TramLine tramLine) {
+    protected void afterLeaving(TramLine tramLine) {
         //                if (tramLine.currLeavingCars.equals(this)) {
         tramLine.currLeavingCars = null;
 //                }
