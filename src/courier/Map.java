@@ -1,6 +1,5 @@
 package courier;
 
-import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
@@ -113,12 +112,12 @@ public class Map extends SimState {
 
 
 
-    public int getECBusy_1_999() {
+    public int getExpressCentreBusyLevel_1_999() {
         return ExpressCentre.busy;
     }
 
 
-    public void setECBusy_1_999(int val) {
+    public void setExpressCentreBusyLevel_1_999(int val) {
         if (val > 0 && val <999)
             ExpressCentre.busy = val;
     }

@@ -35,7 +35,7 @@ public class MapGUI extends GUIState {
     }
 
     public static String getName() {
-        return "Courier: ";
+        return "Courier";
     }
 
 
