@@ -105,7 +105,7 @@ public class Parcel {
             while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
 
 
-            currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(Car.maxSpace / 8), map));
+            currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(5), map));
             map.serialParcelID++;
             map.parcelTotal++;
 

@@ -14,8 +14,8 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 200;
-    public static int initNumOfCarsInStation = 100;
+    public static int initNumOfParcelsInExpressCentre = 1000;
+    public static int initNumOfCarsInGarage = 50;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
@@ -75,12 +75,12 @@ public class Map extends SimState {
     }
 
     public int getInitNumOfCarsInStation() {
-        return initNumOfCarsInStation;
+        return initNumOfCarsInGarage;
     }
 
     public void setInitNumOfCarsInStation(int val) {
         if (val > 0)
-            initNumOfCarsInStation = val;
+            initNumOfCarsInGarage = val;
     }
 
     public int getMapSize() {
@@ -196,7 +196,7 @@ public class Map extends SimState {
         mapGrid.setObjectLocation(g, loc);
 
         Car car;
-        for (int i = 0; i < initNumOfCarsInStation; i++) {
+        for (int i = 0; i < initNumOfCarsInGarage; i++) {
             car = new Car(serialCarID, loc, this);
             cars.add(car);
             serialCarID++;
@@ -260,7 +260,7 @@ public class Map extends SimState {
     private void initCars() {
         Car car;
         for (ExpressCentre s : allStations) {
-            for (int i = 0; i < initNumOfCarsInStation; i++) {
+            for (int i = 0; i < initNumOfCarsInGarage; i++) {
                 car = new Car(serialCarID, s.location, this);
                 cars.add(car);
                 serialCarID++;

@@ -1,16 +1,16 @@
 ***********************************************************************************************************
 
 Mode: BASIC
-Random number seed: 1246034324
-Car number: 100
-Parcel number: 7200
+Random number seed: 1438236990
+Car number: 50
+Parcel number: 36000
 ExpressCenter: 36
 
 ***********************************************************************************************************
 
-Total Parcels Carrying Time: 29636928
-Time Spending on Carrying in Average: 4116
-Time Spending On Finishing Delivery: 24948
+Total Parcels Delivering Time: 251853683
+Average Parcel Delivering Time : 6995
+Finish Delivery All Parcels: 26194
 
 
 ***********************************************************************************************************

@@ -18,11 +18,11 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode + "\nRandom number seed: " + map.seed() + "\nCar number: " + map.getInitNumOfCarsInStation() + "\nParcel number: " + map.parcelTotalCopy + "\nExpressCenter: " + map.expressCentres.size() + "\n");
         outputFile("***********************************************************************************************************");
-        outputFile("\nTotal Parcels Carrying Time: " + (map.parcelTimeSpendingTotal) + "\nTime Spending on Carrying in Average: " + (timeSpendingAverage));
+        outputFile("\nTotal Parcels Delivering Time: " + (map.parcelTimeSpendingTotal) + "\nAverage Parcel Delivering Time : " + (timeSpendingAverage));
         long finalStep = map.schedule.getSteps();
-        outputFile("Time Spending On Finishing Delivery: " + finalStep);
+        outputFile("Finish Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-            outputFile("path improvement: " + map.pathImprovement + "\n");
+            outputFile("Time Saveing by path changing( compare with old path): " + map.pathImprovement + "\n");
         }else{
             outputFile("\n");
         }

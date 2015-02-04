@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Car extends OvalPortrayal2D implements Steppable {
-    public static final int maxSpace = 64;
+    public static final int maxSpace = 1000;
     protected int spaceRemaining = maxSpace;
 
     private final int basicCarDisplaySize = 2;
@@ -56,7 +56,7 @@ public class Car extends OvalPortrayal2D implements Steppable {
     }
 
     public boolean loadParcel() {
-        if (currStation.pToBeSent.size() == 0) return false;
+        if (currStation.pToBeSent.size() == 0 ) return false;
         if (spaceRemaining > 0)
             parcelLoader();
         return true;
@@ -315,7 +315,8 @@ public class Car extends OvalPortrayal2D implements Steppable {
                 double oldPathIntensity = findPathIntensity(old);
                 double newPathIntensity = findPathIntensity(globalPath);
 
-                if (newDistance >= oldDistance || oldPathIntensity <= 0.5 * newPathIntensity) {
+//                if (newDistance >= oldDistance) {
+                    if (newDistance >= oldDistance || oldPathIntensity <= 0.5 * newPathIntensity) {
 //                        refusedAlterPath.add(globalPath.get(1));
                     globalPath = old;
                 } else {
@@ -372,7 +373,6 @@ public class Car extends OvalPortrayal2D implements Steppable {
         }
         return intensity;
     }
-
 
     private ExpressCentre findFirstCommentStation(LinkedList<ExpressCentre> newPath, LinkedList<ExpressCentre> oldPath) {
         LinkedList<ExpressCentre> copyNew = (LinkedList<ExpressCentre>) newPath.clone();
