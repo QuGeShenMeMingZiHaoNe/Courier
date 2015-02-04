@@ -11,7 +11,7 @@ public class Car_AVOID extends Car_BASIC {
         super(carID, location, map);
     }
 
-    private void tryLeaveStation(TramLine tramLine) {
+    private void tryLeaveStation(TramLine_BASIC tramLine) {
         // allow to leave
         if (tramLine.okToLeave(currStation)) {
             if (tramLine.trafficLightOccupant == null)
@@ -87,7 +87,7 @@ public class Car_AVOID extends Car_BASIC {
 //        }
 
         for (ExpressCentre nb : currStation.neighbours) {
-            TramLine tl = map.tramLines.getFirst().findTramLine(currStation, nb);
+            TramLine_BASIC tl = map.tramLines.getFirst().findTramLine(currStation, nb);
 
             //test
             if (indexCurr > 1 && nb.equals(globalPath.get(indexCurr - 1))) {
@@ -113,7 +113,7 @@ public class Car_AVOID extends Car_BASIC {
 
 
     private void setPathGlobal(ExpressCentre from, ExpressCentre to, LinkedList<ExpressCentre> avoids) {
-        TramLine tl = map.tramLines.get(0);
+        TramLine_BASIC tl = map.tramLines.get(0);
         LinkedList<ExpressCentre> old;
 
         if (!(globalPath == null)) {
@@ -173,7 +173,7 @@ public class Car_AVOID extends Car_BASIC {
         }
         ExpressCentre second;
         double intensity = 0;
-        TramLine tl;
+        TramLine_BASIC tl;
         while (iter.hasNext()) {
             second = iter.next();
             tl = map.tramLines.getFirst().findTramLine(first, second);
@@ -210,7 +210,7 @@ public class Car_AVOID extends Car_BASIC {
 
         for (int index = path.indexOf(a); index < path.size(); index++) {
             if (index == path.indexOf(a)) {
-                TramLine tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
+                TramLine_BASIC tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
                 if (!path.equals(globalPath)) {
                     // car coming
                     Car_BASIC car = tl.carsOnTramLine.getLast();
@@ -287,7 +287,7 @@ public class Car_AVOID extends Car_BASIC {
             }
 
 
-            TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
+            TramLine_BASIC tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
             // can not find a tram Line to destination
             if (tramLine == null) {

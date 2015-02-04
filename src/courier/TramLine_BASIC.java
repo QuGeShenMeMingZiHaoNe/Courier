@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class TramLine implements Steppable {
+public class TramLine_BASIC implements Steppable {
     // clear the road when the traffic control right was swapped
     public boolean clearingTheRoad = false;
     protected ExpressCentre a;
@@ -22,13 +22,13 @@ public class TramLine implements Steppable {
     protected Car_BASIC currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
 //    private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInGarage);
-    private int maximumCarLeavingBeforeRedLight = 1;
+    public static int maximumCarLeavingBeforeRedLight = 1;
     protected int quota1 = maximumCarLeavingBeforeRedLight;
     protected int quota2 = maximumCarLeavingBeforeRedLight;
     private String line;
 
 
-    public TramLine(String line, ExpressCentre a, ExpressCentre b, int tramLineID, Map map) {
+    public TramLine_BASIC(String line, ExpressCentre a, ExpressCentre b, int tramLineID, Map map) {
         if (a.stationID < b.stationID) {
             this.a = a;
             this.b = b;
@@ -122,7 +122,7 @@ public class TramLine implements Steppable {
             return result;
 
         ExpressCentre c;
-        TramLine temp;
+        TramLine_BASIC temp;
         if (a.stationID < b.stationID) {
             for (int i = 0; i < map.tramLines.size(); i++) {
                 temp = map.tramLines.get(i);
@@ -146,7 +146,7 @@ public class TramLine implements Steppable {
     }
 
     // find the given tram line in map.tramlines
-    public TramLine findTramLine(ExpressCentre a, ExpressCentre b) {
+    public TramLine_BASIC findTramLine(ExpressCentre a, ExpressCentre b) {
 
         if (a == null || b == null) return null;
         if (a.equals(b)) return null;

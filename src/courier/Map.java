@@ -1,5 +1,6 @@
 package courier;
 
+import sim.display.GUIState;
 import sim.engine.SimState;
 import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
@@ -14,13 +15,13 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 300;
-    public static int initNumOfCarsInGarage = 50;
+    public static int initNumOfParcelsInExpressCentre = 200;
+    public static int initNumOfCarsInGarage = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    //        public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+            public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -37,7 +38,7 @@ public class Map extends SimState {
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
-    protected LinkedList<TramLine> tramLines = new LinkedList<TramLine>();
+    protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
     protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
     protected LinkedList<Parcel> callCarToPickUpParcels = new LinkedList<Parcel>();
     protected Network tramLineNet = new Network(false);
@@ -65,6 +66,9 @@ public class Map extends SimState {
         return mode;
     }
 
+    // **********************************Functions**For**Display**BEGIN**************************************** //
+    // **********************************Functions**For**Display**BEGIN**************************************** //
+
     public int getNumOfParcelsInEachStations() {
         return initNumOfParcelsInExpressCentre;
     }
@@ -83,33 +87,60 @@ public class Map extends SimState {
             initNumOfCarsInGarage = val;
     }
 
-    public int getMapSize() {
+    public int getMapSize_300_2000() {
         return distanceToCentre;
     }
 
-    public void setMapSize(int val) {
-        if (val > 200)
+
+    public void setMapSize_300_2000(int val) {
+        if (val > 300)
             distanceToCentre = val;
     }
 
+    public int getCongestionLevel_1_10() {
+        return 11-TramLine_BASIC.maximumCarLeavingBeforeRedLight;
+    }
 
-//    public double getModePicker() {
-//        return modePicker;
+    public void setCongestionLevel_1_10(int val) {
+            if (val >= 1 && val <= 10) {
+                TramLine_BASIC.maximumCarLeavingBeforeRedLight = 11 - val;
+            }
+    }
+
+//    public Object domCongestionLevel_1_10() {
+//        return new sim.util.Interval(0.0, 10.0);
 //    }
-//
-//    public void setModePicker(double val) {
-//        if (val >= 0 && val < 1) {
-//            modePicker = 0;
-//            mode = (SIMULATION_MODE.BASIC);
-//        } else {
-//            modePicker = 2;
-//            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
-//        }
-//    }
-//
-//    public Object domModePicker() {
-//        return new sim.util.Interval(0.0, 2.0);
-//    }
+
+
+
+    public int getECBusy_1_999() {
+        return ExpressCentre.busy;
+    }
+
+
+    public void setECBusy_1_999(int val) {
+        if (val > 0 && val <999)
+            ExpressCentre.busy = val;
+    }
+
+
+    public double getModePicker_BASIC_AVOID() {
+        return modePicker;
+    }
+
+    public void setModePicker_BASIC_AVOID(double val) {
+        if (val >= 0 && val < 1) {
+            modePicker = 0;
+            mode = (SIMULATION_MODE.BASIC);
+        } else {
+            modePicker = 2;
+            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
+        }
+    }
+
+    public Object domModePicker_BASIC_AVOID() {
+        return new sim.util.Interval(0.0, 2.0);
+    }
 
     public boolean getTestModeOn() {
         return testModeOn;
@@ -126,6 +157,10 @@ public class Map extends SimState {
     public void setDetailsOn(boolean on) {
         detailsOn = on;
     }
+
+    // **********************************Functions**For**Display**END*************************************** //
+    // **********************************Functions**For**Display**END*************************************** //
+
 
     public void start() {
         super.start();
@@ -192,7 +227,7 @@ public class Map extends SimState {
 
     // add garage with number of cars
     private void addGarage() {
-        Int2D loc = new Int2D(90, 90);
+        Int2D loc = new Int2D(80, 80);
         Garage g = new Garage("garage", serialStationID, loc, this);
         serialStationID++;
         mapGrid.setObjectLocation(g, loc);
@@ -257,7 +292,7 @@ public class Map extends SimState {
                 ec1.neighbours.add(ec2);
                 ec2.neighbours.add(ec1);
                 if (ec1 != null && ec2 != null) {
-                    TramLine tl = new TramLine(line, ec1, ec2, serialTramLineID, this);
+                    TramLine_BASIC tl = new TramLine_BASIC(line, ec1, ec2, serialTramLineID, this);
                     tramLines.add(tl);
                 }
                 serialTramLineID++;
@@ -268,7 +303,7 @@ public class Map extends SimState {
     public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
         a.neighbours.add(b);
         b.neighbours.add(a);
-        TramLine tl = new TramLine(line, a, b, serialTramLineID, this);
+        TramLine_BASIC tl = new TramLine_BASIC(line, a, b, serialTramLineID, this);
         tramLines.add(tl);
         serialTramLineID++;
     }
@@ -298,7 +333,7 @@ public class Map extends SimState {
     private void initTramLineNet() {
         for (ExpressCentre s : allStations)
             tramLineNet.addNode(s);
-        for (TramLine tl : tramLines) {
+        for (TramLine_BASIC tl : tramLines) {
             tramLineNet.addEdge(tl.a, tl.b, tl.tramLineID);
         }
     }

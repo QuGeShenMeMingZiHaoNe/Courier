@@ -174,7 +174,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
 
         currStation.lastVisitTime = map.schedule.getSteps();
         // remove the car from the road
-        TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
+        TramLine_BASIC tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
         // if the car has not enter the station
 //            if (!currStation.carPark.contains(this))
@@ -222,7 +222,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     protected void setPathGlobal(ExpressCentre from, ExpressCentre to) {
-        TramLine tl = map.tramLines.get(0);
+        TramLine_BASIC tl = map.tramLines.get(0);
 
         if (globalPath == null) {
             globalPath = tl.getPathGlobal(from, to);
@@ -342,7 +342,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         stepCount++;
     }
 
-    private void tryLeaveStation(TramLine tramLine) {
+    private void tryLeaveStation(TramLine_BASIC tramLine) {
         // allow to leave
         if (tramLine.okToLeave(currStation)) {
             if (tramLine.trafficLightOccupant == null)
@@ -361,7 +361,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         }
     }
 
-    protected void afterLeaving(TramLine tramLine) {
+    protected void afterLeaving(TramLine_BASIC tramLine) {
         //                if (tramLine.currLeavingCars.equals(this)) {
         tramLine.currLeavingCars = null;
 //                }
@@ -407,7 +407,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             }
 
 
-            TramLine tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
+            TramLine_BASIC tramLine = map.tramLines.get(0).findTramLine(stationFrom, stationTo);
 
             // can not find a tram Line to destination
             if (tramLine == null) {
