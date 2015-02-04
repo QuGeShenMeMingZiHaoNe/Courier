@@ -14,7 +14,7 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 200;
+    public static int initNumOfParcelsInExpressCentre = 2000;
     public static int initNumOfCarsInGarage = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light

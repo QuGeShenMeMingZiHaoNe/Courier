@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 public class ExpressCentre extends OvalPortrayal2D implements Steppable {
-    protected static final int MAX_PACKAGES = 1000;
+    protected static final int MAX_PACKAGES = 10000000;
     public String name;
     protected int stationID;
     protected List<Car_BASIC> carPark = new LinkedList<Car_BASIC>();

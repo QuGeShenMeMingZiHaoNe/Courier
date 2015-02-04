@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/ExpressCentre.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/ExpressCentre.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/ExpressCentre.java" afterPath="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/MapGUI.java" afterPath="$PROJECT_DIR$/src/courier/MapGUI.java" />
