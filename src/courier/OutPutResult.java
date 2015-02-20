@@ -17,19 +17,21 @@ public class OutPutResult {
         long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
-        outputFile("\nExpressCenter: " + map.expressCentres.size());
-        outputFile("\nParcel number: " + map.parcelTotalCopy);
-        outputFile("\nCar number: " + map.getInitNumOfCarsInStation());
         outputFile("\nRandom number seed: " + map.seed());
+        outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
+        outputFile("\nNumber Of Parcels: " + map.parcelTotalCopy);
+        outputFile("\nNumber Of Cars: " + map.getInitNumOfCarsInStation());
+        outputFile("\nMaximum Car carrying weight: "+Car_BASIC.maxSpace);
         outputFile("\nMap size: " + map.getMapSize_300_2000());
         outputFile("\nThe degree of busy in Express Centre: " + map.expressCentres.getFirst().busy);
         outputFile("\nCongestion Level: " + map.getCongestionLevel_1_10() + "\n");
         outputFile("***********************************************************************************************************");
-        outputFile("\nTotal Parcels Delivering Time: " + (map.parcelTimeSpendingTotal) + "\nAverage Parcel Delivering Time : " + (timeSpendingAverage));
+        outputFile("\nTotal Parcels Delivering Time: " + (map.parcelTimeSpendingTotal));
+        outputFile("\nAverage Parcel Delivering Time : " + (timeSpendingAverage));
         long finalStep = map.schedule.getSteps();
         outputFile("Finish Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-            outputFile("Time Saveing by path changing( compare with old path): " + map.pathImprovement + "\n");
+            outputFile("Time Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
         } else {
             outputFile("\n");
         }
@@ -52,7 +54,7 @@ public class OutPutResult {
             mode = "BASIC";
         }
         try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_CG_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
