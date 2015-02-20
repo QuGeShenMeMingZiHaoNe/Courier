@@ -20,8 +20,8 @@ public class Map extends SimState {
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-//    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-            public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    //    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -99,19 +99,18 @@ public class Map extends SimState {
     }
 
     public int getCongestionLevel_1_10() {
-        return 11-TramLine_BASIC.maximumCarLeavingBeforeRedLight;
+        return 11 - TramLine_BASIC.maximumCarLeavingBeforeRedLight;
     }
 
     public void setCongestionLevel_1_10(int val) {
-            if (val >= 1 && val <= 10) {
-                TramLine_BASIC.maximumCarLeavingBeforeRedLight = 11 - val;
-            }
+        if (val >= 1 && val <= 10) {
+            TramLine_BASIC.maximumCarLeavingBeforeRedLight = 11 - val;
+        }
     }
 
 //    public Object domCongestionLevel_1_10() {
 //        return new sim.util.Interval(0.0, 10.0);
 //    }
-
 
 
     public int getExpressCentreBusyLevel_1_999() {
@@ -120,7 +119,7 @@ public class Map extends SimState {
 
 
     public void setExpressCentreBusyLevel_1_999(int val) {
-        if (val > 0 && val <999)
+        if (val > 0 && val < 999)
             ExpressCentre.busy = val;
     }
 

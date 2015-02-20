@@ -145,7 +145,7 @@ public class Car_AVOID extends Car_BASIC {
                     globalPath = old;
                 } else {
                     map.pathImprovement += (oldDistance - newDistance);
-                    if(map.getDetailsOn()) {
+                    if (map.getDetailsOn()) {
                         System.out.println("\n\n\n\n\n\nLog: old distance " + oldDistance + "  new distance " + newDistance + "\n" + "successfully alter " + "\n between " + currStation + " " + commonEC);
                         System.out.println("Parcels Total: " + map.parcelTotal);
                     }
