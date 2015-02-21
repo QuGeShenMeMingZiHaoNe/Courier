@@ -29,15 +29,12 @@ public class OutPutResult {
         outputFile("\nTotal Parcels Delivering Time: " + (map.parcelTimeSpendingTotal));
         outputFile("\nAverage Parcel Delivering Time : " + (timeSpendingAverage));
         long finalStep = map.schedule.getSteps();
-        outputFile("Finish Delivery All Parcels: " + finalStep);
+        outputFile("\nFinish Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-            outputFile("Time Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
+            outputFile("\nTime Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
         } else {
             outputFile("\n");
         }
-        outputFile("***********************************************************************************************************");
-
-
         outputFile("***********************************************************************************************************");
 
         System.out.println("Finish!!!!!!!");

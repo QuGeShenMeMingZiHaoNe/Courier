@@ -1,0 +1,30 @@
+***********************************************************************************************************
+
+Mode: AVOID_TRAFFIC_JAM
+
+Random number seed: -1401639942
+
+Number Of ExpressCenters: 36
+
+Number Of Parcels: 7200
+
+Number Of Cars: 100
+
+Maximum Car carrying weight: 100
+
+Map size: 300
+
+The degree of busy in Express Centre: 999
+
+Congestion Level: 10
+
+***********************************************************************************************************
+
+Total Parcels Delivering Time: 42351021
+
+Average Parcel Delivering Time : 5882
+Finish Delivery All Parcels: 28696
+Time Saved By Path Changing Path (compare to old path): 20322
+
+***********************************************************************************************************
+***********************************************************************************************************

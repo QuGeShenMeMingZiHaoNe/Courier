@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
 public class Car_BASIC extends OvalPortrayal2D implements Steppable {
-    protected static final int maxSpace = 30;
+    protected static final int maxSpace = 10;
     protected int spaceRemaining = maxSpace;
 
     protected final int basicCarDisplaySize = 2;
