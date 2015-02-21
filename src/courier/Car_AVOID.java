@@ -89,13 +89,14 @@ public class Car_AVOID extends Car_BASIC {
         for (ExpressCentre nb : currStation.neighbours) {
             TramLine_BASIC tl = map.tramLines.getFirst().findTramLine(currStation, nb);
 
-            //test
-            if (indexCurr > 1 && nb.equals(globalPath.get(indexCurr - 1))) {
-
-            } else {
+            //test dont go back to where it came from
+//            if (indexCurr >= 1 && nb.equals(globalPath.get(indexCurr - 1))) {
+//                avoids.add(nb);
+//                continue;
+//            } else {
                 tl.tryOccupyTraffic(currStation);
 
-            }
+//            }
 
             if (!tl.okToLeave(currStation)) {
                 avoids.add(nb);
@@ -211,9 +212,11 @@ public class Car_AVOID extends Car_BASIC {
         // return directly if station a and b
 
         for (int index = path.indexOf(a); index < path.size(); index++) {
+            // look one step forward
             if (index == path.indexOf(a)) {
-                TramLine_BASIC tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
+                // if it is old path
                 if (!path.equals(globalPath)) {
+                    TramLine_BASIC tl = map.tramLines.getFirst().findTramLine(a, path.get(index + 1));
                     // car coming
                     Car_BASIC car = tl.carsOnTramLine.getLast();
                     if (car.stationTo.equals(currStation)) {
@@ -227,8 +230,6 @@ public class Car_AVOID extends Car_BASIC {
 //                        }
                         distance += a.location.distance(path.get(index + 1).location);
 
-                        //test
-//                        return 0;
 
                     } else {
                         // car leaving
@@ -238,6 +239,22 @@ public class Car_AVOID extends Car_BASIC {
                         distance += carDistance;
 
                         distance += a.location.distance(path.get(index + 1).location);
+                    }
+                    // if the cars in the station is over the threshold of traffic light
+                    // test
+                    int countCompetitors = 0;
+                    if(currStation.carPark.size()>TramLine_BASIC.maximumCarLeavingBeforeRedLight){
+                        for(Car_BASIC competitors : currStation.carPark){
+                            if(competitors.globalPath != null) {
+                                // +1 zai zhe li
+                                if(competitors.globalPath.get(competitors.globalPath.indexOf(currStation())+1).equals(b)){
+                                    countCompetitors++;
+                                }
+                            }
+                        }
+                    }
+                    if(countCompetitors>TramLine_BASIC.maximumCarLeavingBeforeRedLight) {
+                        distance += a.location.distance(b.location) * 2 *(countCompetitors/TramLine_BASIC.maximumCarLeavingBeforeRedLight);
                     }
                 } else {
                     distance += path.get(index).location.distance(path.get(index + 1).location);

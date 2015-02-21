@@ -1,14 +1,14 @@
 ***********************************************************************************************************
 
-Mode: BASIC
+Mode: AVOID_TRAFFIC_JAM
 
-Random number seed: -1401639942
+Random number seed: -1393383864
 
 Number Of ExpressCenters: 36
 
 Number Of Parcels: 7200
 
-Number Of Cars: 100
+Number Of Cars: 30
 
 Maximum Car carrying weight: 10
 
@@ -20,11 +20,12 @@ Congestion Level: 10
 
 ***********************************************************************************************************
 
-Total Parcels Delivering Time: 30558283
+Total Parcels Delivering Time: 10753285
 
-Average Parcel Delivering Time : 4244
+Average Parcel Delivering Time : 1493
 
-Finish Delivery All Parcels: 83448
+Finish Delivery All Parcels: 92562
 
-***********************************************************************************************************
+Time Saved By Path Changing Path (compare to old path): 378723
+
 ***********************************************************************************************************

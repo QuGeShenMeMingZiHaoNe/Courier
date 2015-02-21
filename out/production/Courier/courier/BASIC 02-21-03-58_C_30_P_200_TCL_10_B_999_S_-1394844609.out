@@ -2,13 +2,13 @@
 
 Mode: BASIC
 
-Random number seed: -1401639942
+Random number seed: -1394844609
 
 Number Of ExpressCenters: 36
 
 Number Of Parcels: 7200
 
-Number Of Cars: 100
+Number Of Cars: 30
 
 Maximum Car carrying weight: 10
 
@@ -20,11 +20,11 @@ Congestion Level: 10
 
 ***********************************************************************************************************
 
-Total Parcels Delivering Time: 30558283
+Total Parcels Delivering Time: 10713253
 
-Average Parcel Delivering Time : 4244
+Average Parcel Delivering Time : 1487
 
-Finish Delivery All Parcels: 83448
+Finish Delivery All Parcels: 89916
 
-***********************************************************************************************************
+
 ***********************************************************************************************************
