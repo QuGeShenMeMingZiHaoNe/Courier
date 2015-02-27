@@ -297,7 +297,7 @@ public class InitExpressCentre {
         map.addExpressCentre("Hammersmith", new Int2D(664, 1070));
         map.addExpressCentre("Bayswater", new Int2D(942, 835));
         map.addExpressCentre("Warren Street", new Int2D(1225, 783));
-        map.addExpressCentre("Aldgate", new Int2D(1688, 944));
+        map.addExpressCentre("Aldgate", new Int2D(1678, 934));
         map.addExpressCentre("Euston", new Int2D(1272, 723));
         map.addExpressCentre("Farringdon", new Int2D(1440, 806));
         map.addExpressCentre("Barbican", new Int2D(1487, 844));

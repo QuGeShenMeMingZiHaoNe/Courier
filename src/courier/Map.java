@@ -15,13 +15,14 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 200;
-    public static int initNumOfCarsInGarage = 30;
+    public static int initNumOfParcelsInExpressCentre = 5000;
+    public static int initNumOfCarsInGarage = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public static int distanceToCentre = 300;
+    public static int distanceToCentre =300;
     //    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
     public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    // test mode
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -33,6 +34,7 @@ public class Map extends SimState {
     protected int autoGenParcelByStationsMax;
     protected boolean autoGenParcelsModeTermination = testModeOn;
     protected int parcelTotal = 0;
+    protected int parcelArrivedTotal = 0;
     protected int serialCarCallerID = 1;
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();

@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
 public class Car_BASIC extends OvalPortrayal2D implements Steppable {
-    protected static final int maxSpace = 10;
+    protected static final int maxSpace = 100;
     protected int spaceRemaining = maxSpace;
 
     protected final int basicCarDisplaySize = 2;
@@ -50,9 +50,15 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         return carrying;
     }
 
+    public long getAverageDeliverTime(){
+        return map.parcelTimeSpendingTotal / (map.parcelArrivedTotal+1);
+    }
+
+
     public String toString() {
         return "Car :" + carID;
     }
+
 
     public boolean loadParcel() {
         if (currStation.pToBeSent.size() == 0) return false;
@@ -60,6 +66,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             parcelLoader();
         return true;
     }
+
 
 
     // remove a parcels from carrying
@@ -148,6 +155,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         for (Parcel p : carryingCopy) {
             if (p.destination.equals(currStation)) {
                 pickOut(p);
+                map.parcelArrivedTotal++;
                 // if the package is the first package
                 if (carrying.indexOf(p) == 0)
                     initCarState();
