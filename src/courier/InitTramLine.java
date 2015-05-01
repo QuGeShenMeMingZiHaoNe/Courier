@@ -507,5 +507,27 @@ public class InitTramLine {
         map.addTramLine("Victoria", "Stockwell", "Brixton");
         map.addTramLine("Victoria", "Blackhorse Road", "Tottenham Hale");
         map.addTramLine("Waterloo And City", "Waterloo", "Bank");
+
+
+        // external new tramline
+        map.addTramLine("External","Chesham","Amersham");
+        map.addTramLine("External","Uxbridge","Ickenham");
+        map.addTramLine("External","Watford","Rickmansworth");
+        map.addTramLine("External","West Ruislip","Ruislip");
+        map.addTramLine("External","Heathrow Terminal 5","Heathrow Terminal 4");
+        map.addTramLine("External","Southfields","Wimbledon");
+        map.addTramLine("External","Morden","Colliers Wood");
+        map.addTramLine("External","Crystal Palace","West Croydon");
+        map.addTramLine("External","New Cross","Lewisham");
+        map.addTramLine("External","Woolwich Arsenal","Beckton");
+        map.addTramLine("External","Upminster"," Elm Park");
+        map.addTramLine("External","Chigwell","Hainault");
+        map.addTramLine("External","Roding Valley","Grange Hill");
+        map.addTramLine("External","Epping","Debden");
+        map.addTramLine("External","Theydon Bois","Buckhurst Hill");
+        map.addTramLine("External","Southgate","Cockfosters");
+        map.addTramLine("External","High Barnet","Woodside Park");
+//        map.addTramLine("External","","");
+
     }
 }

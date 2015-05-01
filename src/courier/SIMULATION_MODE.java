@@ -1,6 +1,6 @@
 package courier;
 
 public enum SIMULATION_MODE {
-    BASIC, AVOID_TRAFFIC_JAM
+    BASIC, AVOID_TRAFFIC_JAM, REFUGEE_ISLAND
 }
 

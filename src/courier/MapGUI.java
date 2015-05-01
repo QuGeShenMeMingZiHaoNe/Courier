@@ -31,7 +31,30 @@ public class MapGUI extends GUIState {
     }
 
     public static void main(String[] args) {
-        new MapGUI().createController();
+//        try {
+//
+////            javax.swing.UIManager
+////                    .setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+//
+//            javax.swing.UIManager
+//                    .setLookAndFeel(" javax.swing.plaf.metal.MetalLookAndFeel");
+//            //new MapGUI().setVisible(true);
+//            new MapGUI().createController();
+//
+//        } catch (InstantiationException e1) {
+//            // TODO Auto-generated catch block
+//            e1.printStackTrace();
+//        } catch (IllegalAccessException e1) {
+//            // TODO Auto-generated catch block
+//            e1.printStackTrace();
+//        } catch (UnsupportedLookAndFeelException e1) {
+//            // TODO Auto-generated catch block
+//            e1.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//
+//        }
+       new MapGUI().createController();
+
     }
 
     public static String getName() {

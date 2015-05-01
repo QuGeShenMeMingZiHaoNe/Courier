@@ -21,7 +21,8 @@ public class Map extends SimState {
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre =300;
     //    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.REFUGEE_ISLAND;
     // test mode
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
@@ -39,6 +40,7 @@ public class Map extends SimState {
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
+    protected LinkedList<RefugeeIsland> refugee_islands = new LinkedList<RefugeeIsland>();
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
     protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
     protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
@@ -52,6 +54,7 @@ public class Map extends SimState {
     protected int serialParcelID = 1;
     private int serialStationID = 1;
     private int serialTramLineID = 1;
+    protected int serialRefugeeIsland = 1;
     private int serialCarID = 1;
     protected long pathImprovement = 0;
 
@@ -131,12 +134,16 @@ public class Map extends SimState {
     }
 
     public void setModePicker_BASIC_AVOID(double val) {
-        if (val >= 0 && val < 1) {
+        if (val <= 0.5) {
             modePicker = 0;
             mode = (SIMULATION_MODE.BASIC);
-        } else {
-            modePicker = 2;
+        }else if(val <= 1.5 && val >0.5) {
+            modePicker = 1;
             mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
+        }
+        else{
+            modePicker = 2;
+            mode = (SIMULATION_MODE.REFUGEE_ISLAND);
         }
     }
 
@@ -248,6 +255,7 @@ public class Map extends SimState {
         garages.add(g);
     }
 
+
     private void initCars() {
         Car_BASIC car;
         for (int i = 0; i < initNumOfCarsInGarage; i++) {
@@ -258,11 +266,11 @@ public class Map extends SimState {
 
             else if (mode.equals(SIMULATION_MODE.AVOID_TRAFFIC_JAM))
                 car = new Car_AVOID(serialCarID, loc, this);
-
-            else {
+            else if (mode.equals(SIMULATION_MODE.REFUGEE_ISLAND)){
+                car = new Car_BASIC(serialCarID, loc, this);
+            } else {
                 car = null;
             }
-
             cars.add(car);
             serialCarID++;
             schedule.scheduleRepeating(car);
@@ -294,13 +302,20 @@ public class Map extends SimState {
                 ec1.neighbours.add(ec2);
                 ec2.neighbours.add(ec1);
                 if (ec1 != null && ec2 != null) {
-                    TramLine_BASIC tl = new TramLine_BASIC(line, ec1, ec2, serialTramLineID, this);
-                    tramLines.add(tl);
+                    if(mode == SIMULATION_MODE.REFUGEE_ISLAND){
+                        TramLine_REFUGE_ISLAND tl = new TramLine_REFUGE_ISLAND("REFUGEE ISLAND", ec1, ec2, serialTramLineID, this,1);
+                        tramLines.add(tl);
+                    }else {
+                        TramLine_BASIC tl = new TramLine_BASIC(line, ec1, ec2, serialTramLineID, this);
+                        tramLines.add(tl);
+                    }
                 }
                 serialTramLineID++;
             }
         }
     }
+
+
 
     public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
         a.neighbours.add(b);
@@ -323,6 +338,9 @@ public class Map extends SimState {
         }
     }
 
+
+
+
     private void initFixedLocParcels() {
         for (ExpressCentre s : expressCentres) {
             // if the station is not isolated
@@ -337,6 +355,11 @@ public class Map extends SimState {
             tramLineNet.addNode(s);
         for (TramLine_BASIC tl : tramLines) {
             tramLineNet.addEdge(tl.a, tl.b, tl.tramLineID);
+        }
+        if(mode == SIMULATION_MODE.REFUGEE_ISLAND) {
+            for (RefugeeIsland island : refugee_islands) {
+                tramLineNet.addNode(island);
+            }
         }
     }
 

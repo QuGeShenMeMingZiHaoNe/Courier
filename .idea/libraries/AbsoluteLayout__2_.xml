@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="AbsoluteLayout (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/irisskin/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/irisskin/beansbinding-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/irisskin/jflashplayer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/irisskin/JTattoo.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/irisskin/swing-layout-1.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

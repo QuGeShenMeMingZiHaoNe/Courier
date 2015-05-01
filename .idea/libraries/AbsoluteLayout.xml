@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="AbsoluteLayout">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/NEW/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/NEW/beansbinding-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/NEW/jflashplayer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/NEW/JTattoo.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/NEW/swing-layout-1.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

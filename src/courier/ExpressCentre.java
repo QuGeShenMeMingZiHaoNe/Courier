@@ -161,11 +161,11 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
     @Override
-    public final void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
+    public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
         double diamx = info.draw.width * NetworkTest.DIAMETER / 2;
         double diamy = info.draw.height * NetworkTest.DIAMETER / 2;
 
-        graphics.setColor(Color.blue);
+        graphics.setColor(Color.CYAN);
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);
