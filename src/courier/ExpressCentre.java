@@ -34,11 +34,13 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     private int count = 0;
     private long sequence = 200;
 
-    public ExpressCentre(String name, int stationID, Int2D location, Map map) {
+    public ExpressCentre(String name,  Int2D location, Map map) {
         this.name = name;
-        this.stationID = stationID;
+        this.stationID = map.serialStationID;
         this.location = location;
         this.map = map;
+        map.serialStationID++;
+
     }
 
 
@@ -165,7 +167,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         double diamx = info.draw.width * NetworkTest.DIAMETER / 2;
         double diamy = info.draw.height * NetworkTest.DIAMETER / 2;
 
-        graphics.setColor(Color.CYAN);
+        graphics.setColor(Color.BLUE);
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);

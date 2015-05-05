@@ -28,7 +28,7 @@ public class TramLine_BASIC implements Steppable {
     private String line;
 
 
-    public TramLine_BASIC(String line, ExpressCentre a, ExpressCentre b, int tramLineID, Map map) {
+    public TramLine_BASIC(String line, ExpressCentre a, ExpressCentre b, Map map) {
         if (a.stationID < b.stationID) {
             this.a = a;
             this.b = b;
@@ -37,7 +37,7 @@ public class TramLine_BASIC implements Steppable {
             this.b = a;
         }
         this.map = map;
-        this.tramLineID = tramLineID;
+        this.tramLineID = map.serialTramLineID;
         this.line = line;
 
         // randomly assign trafficLightOccupant to one of the station
@@ -46,6 +46,7 @@ public class TramLine_BASIC implements Steppable {
         } else {
             trafficLightOccupant = b;
         }
+        map.serialTramLineID++;
     }
 
 
@@ -84,7 +85,7 @@ public class TramLine_BASIC implements Steppable {
     }
 
     // the helper function of getPathBetweenNBStations
-    private LinkedList<Int2D> buildPath(ExpressCentre a, ExpressCentre b) {
+    protected LinkedList<Int2D> buildPath(ExpressCentre a, ExpressCentre b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
         int xDiff, yDiff, intXStep, intYStep;

@@ -281,7 +281,7 @@ public class SimpleController implements Controller
             spawnPlayThread();
             setPlayState(PS_PLAYING);
             } 
-        else if (getPlayState() == PS_STOPPED) // start stepping
+        else if (getPlayState() == PS_STOPPED) // start oneStep
             {
             // Be careful adding to here -- we should just optionally start
             // the simulation and then set the various icons and change the

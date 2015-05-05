@@ -16,10 +16,10 @@ public class DataReader {
     }
 
     public void initExpressCenter() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/courier/ExpressCenters.data")));
+        BufferedReader br = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/courier/data/ExpressCenters.data")));
         try {
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null && !line.contains("//")) {
                 String[] split = line.split(",");
                 map.addExpressCentre(split[0], new Int2D(Integer.parseInt(split[1]), Integer.parseInt(split[2])));
             }
@@ -29,7 +29,7 @@ public class DataReader {
     }
 
     public void initTramLine() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/courier/TramLines.data")));
+        BufferedReader br = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/courier/data/TramLines.data")));
         try {
             String line;
             while ((line = br.readLine()) != null) {

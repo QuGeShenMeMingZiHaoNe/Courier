@@ -26,7 +26,7 @@ import java.util.prefs.*;
    of a simulation.  Most significantly it provides:
 
    <ul>
-   <li>Playing, stopping, pausing, stepping, and various associated controls
+   <li>Playing, stopping, pausing, oneStep, and various associated controls
    <li>View of the current time and frame rate
    <li>Control of the random number generator
    <li>An HTML "page" of information about the model
@@ -247,7 +247,7 @@ public class Console extends JFrame implements Controller
     long randomSeed = 0; // it'll change.... /* (long) System.currentTimeMillis(); */
 
     /** how many steps we should take on one press of the "step" button.  As this is only relevant
-        when there is NO underlying play thread (stepping happens inside the event loop, with the
+        when there is NO underlying play thread (oneStep happens inside the event loop, with the
         play thread killed), it can be safely set, but only do so from the event loop. */
     int numStepsPerStepButtonPress = 1;
     
@@ -2415,7 +2415,7 @@ public class Console extends JFrame implements Controller
             spawnPlayThread();
             setPlayState(PS_PLAYING);
             } 
-        else if (getPlayState() == PS_STOPPED) // start stepping
+        else if (getPlayState() == PS_STOPPED) // start oneStep
             {
             // Be careful adding to here -- we should just optionally start
             // the simulation and then set the various icons and change the

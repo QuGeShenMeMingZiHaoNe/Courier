@@ -20,7 +20,7 @@ public class Cycle implements Steppable
     boolean alive;
     boolean cpu;
     
-    // Stop stepping the cycle when it dies
+    // Stop oneStep the cycle when it dies
     Stoppable stopper;
     
     // accessors for inspectors - direction

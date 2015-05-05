@@ -31,7 +31,7 @@ import java.lang.ref.*;
    </tt>
 
    In this case, when the underlying Steppable is garbage-collected, then the
-   schedule will automatically stop repeatedly stepping it.  Note that the Stoppable
+   schedule will automatically stop repeatedly oneStep it.  Note that the Stoppable
    is <i>not</i> stored weakly.
 */
 

@@ -7,7 +7,7 @@ public class Garage extends ExpressCentre {
     protected static final int MAX_PACKAGES = 0;
 
     public Garage(String name, int stationID, Int2D location, Map map) {
-        super(name, stationID, location, map);
+        super(name, location, map);
     }
 
     @Override
