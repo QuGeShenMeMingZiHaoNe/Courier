@@ -347,6 +347,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         Int2D nextStep = this.pathLocal.get(stepCount);
 
         // move
+        // TODO get ride of duplicated data
         while (this.location.equals(nextStep)) {
             stepCount++;
             if(stepCount>=pathLocal.size()){
