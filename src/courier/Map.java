@@ -5,6 +5,7 @@ import sim.field.grid.SparseGrid2D;
 import sim.field.network.Network;
 import sim.util.Int2D;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -24,6 +25,7 @@ public class Map extends SimState {
 //    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     public static SIMULATION_MODE mode = SIMULATION_MODE.REFUGEE_ISLAND;
     // test mode
+    public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -77,6 +79,10 @@ public class Map extends SimState {
 
     public int getNumOfParcelsInEachStations() {
         return initNumOfParcelsInExpressCentre;
+    }
+
+    public int getNumOfRefugeeIsland() {
+        return numOfRefugeeIsland;
     }
 
     public void setNumOfParcelsInEachStations(int val) {
@@ -178,7 +184,12 @@ public class Map extends SimState {
         tramLineNet.clear();
 
         // init Express Centres
-        initExpressCenter();
+        DataReader reader = new DataReader(this);
+        try {
+            reader.initExpressCenter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         allStations.addAll(expressCentres);
 
         // init garage
@@ -188,7 +199,11 @@ public class Map extends SimState {
         initCars();
 
         // init tramlines
-        initTramLines();
+        try {
+            reader.initTramLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (testModeOn) {
             autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre * expressCentres.size();
@@ -202,16 +217,16 @@ public class Map extends SimState {
         startTime = this.schedule.getSteps();
     }
 
-    private void initExpressCenter() {
-        InitExpressCentre i = new InitExpressCentre(this);
-        i.initExpressCentre();
-//        addExpressCentre("A", new Int2D(gridWidth/2-10, gridHeight/2-20));
-//        addExpressCentre("B", new Int2D(gridWidth/2-200,gridHeight/2+200));
-//        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+60));
-//        addExpressCentre("D", new Int2D(gridWidth/2-70, gridHeight/2-80));
-//        addExpressCentre("E", new Int2D(gridWidth/2-90,gridHeight/2+90));
-//        addExpressCentre("F", new Int2D(gridWidth/2+60,gridHeight/2+20));
-    }
+//    private void initExpressCenter() {
+//        InitExpressCentre i = new InitExpressCentre(this);
+//        i.initExpressCentre();
+////        addExpressCentre("A", new Int2D(gridWidth/2-10, gridHeight/2-20));
+////        addExpressCentre("B", new Int2D(gridWidth/2-200,gridHeight/2+200));
+////        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+60));
+////        addExpressCentre("D", new Int2D(gridWidth/2-70, gridHeight/2-80));
+////        addExpressCentre("E", new Int2D(gridWidth/2-90,gridHeight/2+90));
+////        addExpressCentre("F", new Int2D(gridWidth/2+60,gridHeight/2+20));
+//    }
 
 
     public void addExpressCentre(String name, Int2D loc) {
@@ -278,19 +293,19 @@ public class Map extends SimState {
         }
     }
 
-    private void initTramLines() {
-        InitTramLine init = new InitTramLine(this);
-        init.initTramLine();
-//        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
-//        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
-//        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
-//        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
-//        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
-//        addTramLine("line",expressCentres.get(3), expressCentres.get(4));
-
-//        addTramLine("line",expressCentres.get(2), expressCentres.get(0));
-
-    }
+//    private void initTramLines() {
+//        InitTramLine init = new InitTramLine(this);
+//        init.initTramLine();
+////        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
+////        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
+////        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
+////        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
+////        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
+////        addTramLine("line",expressCentres.get(3), expressCentres.get(4));
+//
+////        addTramLine("line",expressCentres.get(2), expressCentres.get(0));
+//
+//    }
 
     public void addTramLine(String line, String a, String b) {
 

@@ -62,25 +62,23 @@ public class TramLine_BASIC implements Steppable {
     public LinkedList<Int2D> getPathBetweenNBStations(ExpressCentre a, ExpressCentre b) {
         LinkedList<Int2D> result = new LinkedList<Int2D>();
 
-        if (a.equals(b)) {
-            return result;
-        }
-        ExpressCentre c = null;
+            if (a.equals(b)) {
+                return result;
+            }
+            ExpressCentre c = null;
 
-        if (a.stationID < b.stationID) {
-            result = buildPath(a, b);
-        } else if (a.stationID != b.stationID) {
-            c = a;
-            a = b;
-            b = c;
-            result = buildPath(a, b);
-        }
+            if (a.stationID < b.stationID) {
+                result = buildPath(a, b);
+            } else if (a.stationID != b.stationID) {
+                c = a;
+                a = b;
+                b = c;
+                result = buildPath(a, b);
+            }
 
-        if (c != null) {
-            Collections.reverse(result);
-        }
-//        if (result != null)
-//            result.pop();
+            if (c != null) {
+                Collections.reverse(result);
+            }
 
         return result;
     }

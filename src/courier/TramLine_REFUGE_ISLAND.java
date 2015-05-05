@@ -5,6 +5,7 @@ import sim.portrayal.DrawInfo2D;
 import sim.util.Int2D;
 
 import java.awt.*;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class TramLine_REFUGE_ISLAND extends TramLine_BASIC {
@@ -32,7 +33,44 @@ public class TramLine_REFUGE_ISLAND extends TramLine_BASIC {
         }
 
     }
-
-
+//
+//    // returns the path from station a to station b with islands in between
+//    private LinkedList<ExpressCentre> calPathWithIslands(ExpressCentre a, ExpressCentre b){
+//
+//        if(a.location.getX()<b.location.getX()){
+//
+//        }else {
+//
+//        }
+//
+//        return
+//    }
+//
+//
+//    @Override
+//    // return each coordinates of the path from neighbour station a to b
+//    public LinkedList<Int2D> getPathBetweenNBStations(ExpressCentre a, ExpressCentre b) {
+//        LinkedList<Int2D> result = new LinkedList<Int2D>();
+//
+//        if (a.equals(b)) {
+//            return result;
+//        }
+//        ExpressCentre c = null;
+//
+//        if (a.stationID < b.stationID) {
+//            result = buildPath(a, b);
+//        } else if (a.stationID != b.stationID) {
+//            c = a;
+//            a = b;
+//            b = c;
+//            result = buildPath(a, b);
+//        }
+//
+//        if (c != null) {
+//            Collections.reverse(result);
+//        }
+//
+//        return result;
+//    }
 
 }
