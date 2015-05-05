@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_courier" default="compile.module.courier">
+  <dirname property="module.courier.basedir" file="${ant.file.module_courier}"/>
+  
+  <property name="module.jdk.home.courier" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.courier" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.courier" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.courier" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="courier.output.dir" value="${module.courier.basedir}/out/production/Courier"/>
+  <property name="courier.testoutput.dir" value="${module.courier.basedir}/out/test/Courier"/>
+  
+  <path id="courier.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="courier.module.production.classpath">
+    <path refid="${module.jdk.classpath.courier}"/>
+    <path refid="library.bsh-2.0b4_(2).classpath"/>
+    <path refid="library.absolutelayout.classpath"/>
+    <path refid="library.absolutelayout_(2).classpath"/>
+  </path>
+  
+  <path id="courier.runtime.production.module.classpath">
+    <pathelement location="${courier.output.dir}"/>
+    <path refid="library.bsh-2.0b4_(2).classpath"/>
+    <path refid="library.absolutelayout.classpath"/>
+    <path refid="library.absolutelayout_(2).classpath"/>
+  </path>
+  
+  <path id="courier.module.classpath">
+    <path refid="${module.jdk.classpath.courier}"/>
+    <pathelement location="${courier.output.dir}"/>
+    <path refid="library.bsh-2.0b4_(2).classpath"/>
+    <path refid="library.absolutelayout.classpath"/>
+    <path refid="library.absolutelayout_(2).classpath"/>
+  </path>
+  
+  <path id="courier.runtime.module.classpath">
+    <pathelement location="${courier.testoutput.dir}"/>
+    <pathelement location="${courier.output.dir}"/>
+    <path refid="library.bsh-2.0b4_(2).classpath"/>
+    <path refid="library.absolutelayout.classpath"/>
+    <path refid="library.absolutelayout_(2).classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.courier">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.courier">
+    <patternset refid="excluded.from.module.courier"/>
+  </patternset>
+  
+  <path id="courier.module.sourcepath">
+    <dirset dir="${module.courier.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.courier" depends="compile.module.courier.production,compile.module.courier.tests" description="Compile module Courier"/>
+  
+  <target name="compile.module.courier.production" depends="register.custom.compilers" description="Compile module Courier; production classes">
+    <mkdir dir="${courier.output.dir}"/>
+    <javac2 destdir="${courier.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.courier}/javac">
+      <compilerarg line="${compiler.args.courier}"/>
+      <bootclasspath refid="courier.module.bootclasspath"/>
+      <classpath refid="courier.module.production.classpath"/>
+      <src refid="courier.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.courier"/>
+    </javac2>
+    
+    <copy todir="${courier.output.dir}">
+      <fileset dir="${module.courier.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.courier.tests" depends="register.custom.compilers,compile.module.courier.production" description="compile module Courier; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.courier" description="cleanup module">
+    <delete dir="${courier.output.dir}"/>
+    <delete dir="${courier.testoutput.dir}"/>
+  </target>
+</project>

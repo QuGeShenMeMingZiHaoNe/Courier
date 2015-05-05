@@ -26,7 +26,8 @@ public class Map extends SimState {
     // test mode
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
-    public static boolean refugeeIslandOn = true;
+    public static boolean refugeeIslandOn = false;
+//    public static boolean refugeeIslandOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
     public double modePicker = 0;
@@ -141,10 +142,10 @@ public class Map extends SimState {
     }
 
     public void setModePicker_BASIC_AVOID(double val) {
-        if (val <= 1) {
+        if (val >=0 && val <= 1) {
             modePicker = 0;
             mode = (SIMULATION_MODE.BASIC);
-        } else {
+        } else if (val>1 && val <= 2){
             modePicker = 1;
             mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
         }
@@ -159,9 +160,9 @@ public class Map extends SimState {
         return testModeOn;
     }
 
-    public boolean getRefugeeIslandOn() {
-        return refugeeIslandOn;
-    }
+//    public boolean getRefugeeIslandOn() {
+//        return refugeeIslandOn;
+//    }
 
     public void setTestModeOn(boolean on) {
         testModeOn = on;
