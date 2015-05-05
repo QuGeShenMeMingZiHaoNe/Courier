@@ -11,7 +11,7 @@ public class DataReader {
 
     Map map;
 
-    public DataReader(Map map){
+    public DataReader(Map map) {
         this.map = map;
     }
 
@@ -34,7 +34,7 @@ public class DataReader {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] split = line.split(",");
-                map.addTramLine(split[0],split[1],split[2]);
+                map.addTramLine(split[0], split[1], split[2]);
             }
         } finally {
             br.close();

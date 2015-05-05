@@ -53,7 +53,7 @@ public class MapGUI extends GUIState {
 //        } catch (ClassNotFoundException e) {
 //
 //        }
-       new MapGUI().createController();
+        new MapGUI().createController();
 
     }
 

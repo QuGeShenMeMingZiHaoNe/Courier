@@ -7,9 +7,9 @@ import sim.util.Int2D;
 
 import java.awt.*;
 
-public class RefugeeIsland extends ExpressCentre  {
+public class RefugeeIsland extends ExpressCentre {
     public RefugeeIsland(String name, Int2D location, Map map) {
-        super(name,  location, map);
+        super(name, location, map);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class RefugeeIsland extends ExpressCentre  {
         double diamx = info.draw.width * NetworkTest.DIAMETER / 2;
         double diamy = info.draw.height * NetworkTest.DIAMETER / 2;
 
-        graphics.setColor(new Color(250,222,68));
+        graphics.setColor(new Color(250, 222, 68));
         graphics.fillOval((int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2), (int) (diamx), (int) (diamy));
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);

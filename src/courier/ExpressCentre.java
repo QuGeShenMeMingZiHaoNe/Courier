@@ -34,7 +34,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     private int count = 0;
     private long sequence = 200;
 
-    public ExpressCentre(String name,  Int2D location, Map map) {
+    public ExpressCentre(String name, Int2D location, Map map) {
         this.name = name;
         this.stationID = map.serialStationID;
         this.location = location;

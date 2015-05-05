@@ -51,8 +51,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         return carrying;
     }
 
-    public long getAverageDeliverTime(){
-        return map.parcelTimeSpendingTotal / (map.parcelArrivedTotal+1);
+    public long getAverageDeliverTime() {
+        return map.parcelTimeSpendingTotal / (map.parcelArrivedTotal + 1);
     }
 
 
@@ -67,7 +67,6 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             parcelLoader();
         return true;
     }
-
 
 
     // remove a parcels from carrying
@@ -338,7 +337,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
 
     protected void oneStep() {
 
-        if(this.location == pathLocal.getLast() || stepCount == pathLocal.size()){
+        if (this.location == pathLocal.getLast() || stepCount == pathLocal.size()) {
             stepping = false;
             return;
         }
@@ -350,7 +349,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         // TODO get ride of duplicated data
         while (this.location.equals(nextStep)) {
             stepCount++;
-            if(stepCount>=pathLocal.size()){
+            if (stepCount >= pathLocal.size()) {
                 stepping = false;
                 return;
             }
@@ -405,7 +404,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
 //            map.profit -= d.distance(new Int2D(2, 2));
 //        }
 
-        if(stepping){
+        if (stepping) {
             oneStep();
             return;
         }

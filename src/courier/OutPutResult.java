@@ -21,7 +21,7 @@ public class OutPutResult {
         outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
         outputFile("\nNumber Of Parcels: " + map.parcelTotalCopy);
         outputFile("\nNumber Of Cars: " + map.getInitNumOfCarsInStation());
-        outputFile("\nMaximum Car carrying weight: "+Car_BASIC.maxSpace);
+        outputFile("\nMaximum Car carrying weight: " + Car_BASIC.maxSpace);
         outputFile("\nMap size: " + map.getMapSize_300_2000());
         outputFile("\nThe degree of busy in Express Centre: " + map.expressCentres.getFirst().busy);
         outputFile("\nCongestion Level: " + map.getCongestionLevel_1_10() + "\n");

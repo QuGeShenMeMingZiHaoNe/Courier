@@ -94,7 +94,7 @@ public class Car_AVOID extends Car_BASIC {
 //                avoids.add(nb);
 //                continue;
 //            } else {
-                tl.tryOccupyTraffic(currStation);
+            tl.tryOccupyTraffic(currStation);
 
 //            }
 
@@ -243,18 +243,18 @@ public class Car_AVOID extends Car_BASIC {
                     // if the cars in the station is over the threshold of traffic light
                     // test
                     int countCompetitors = 0;
-                    if(currStation.carPark.size()>TramLine_BASIC.maximumCarLeavingBeforeRedLight){
-                        for(Car_BASIC competitors : currStation.carPark){
-                            if(competitors.globalPath != null) {
+                    if (currStation.carPark.size() > TramLine_BASIC.maximumCarLeavingBeforeRedLight) {
+                        for (Car_BASIC competitors : currStation.carPark) {
+                            if (competitors.globalPath != null) {
                                 // +1 zai zhe li
-                                if(competitors.globalPath.get(competitors.globalPath.indexOf(currStation())+1).equals(b)){
+                                if (competitors.globalPath.get(competitors.globalPath.indexOf(currStation()) + 1).equals(b)) {
                                     countCompetitors++;
                                 }
                             }
                         }
                     }
-                    if(countCompetitors>TramLine_BASIC.maximumCarLeavingBeforeRedLight) {
-                        distance += a.location.distance(b.location) * 2 *(countCompetitors/TramLine_BASIC.maximumCarLeavingBeforeRedLight);
+                    if (countCompetitors > TramLine_BASIC.maximumCarLeavingBeforeRedLight) {
+                        distance += a.location.distance(b.location) * 2 * (countCompetitors / TramLine_BASIC.maximumCarLeavingBeforeRedLight);
                     }
                 } else {
                     distance += path.get(index).location.distance(path.get(index + 1).location);
