@@ -26,7 +26,7 @@ public class Map extends SimState {
     // test mode
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
-    public static boolean refugeeIslandOn = false;
+    public static boolean refugeeIslandOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
     public double modePicker = 0;
@@ -42,7 +42,8 @@ public class Map extends SimState {
     protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
     protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
-//    protected LinkedList<RefugeeIsland> refugee_islands = new LinkedList<RefugeeIsland>();
+    protected LinkedList<RefugeeIsland> refugee_islands = new LinkedList<RefugeeIsland>();
+    protected LinkedList<Double> tramLineHasInit = new LinkedList<Double>();
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
     protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
     protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
@@ -58,6 +59,7 @@ public class Map extends SimState {
     protected int serialTramLineID = 1;
     private int serialCarID = 1;
     protected long pathImprovement = 0;
+    private int carMax = 9999;
 
 
     public Map(long seed) {
@@ -94,7 +96,7 @@ public class Map extends SimState {
     }
 
     public void setInitNumOfCarsInStation(int val) {
-        if (val > 0)
+        if (val > 0 && val < carMax)
             initNumOfCarsInGarage = val;
     }
 
@@ -312,15 +314,29 @@ public class Map extends SimState {
 //
 //    }
 
+    // an id for a pair of express center
+    private double genPairID(int a, int b){
+        return a*Math.PI+b/Math.PI;
+    }
+
     public void addTramLine(String line, String a, String b) {
 
         ExpressCentre ec1 = expressCentres.getFirst().findStationByName(a);
         ExpressCentre ec2 = expressCentres.getFirst().findStationByName(b);
+        ExpressCentre temp;
+        if (ec1 == null || ec2 == null) {
+            return;
+        }
+            if(ec1.stationID > ec2.stationID){
+            temp = ec1;
+            ec1 = ec2;
+            ec2 = temp;
+        }
+        double uniquePairID = genPairID(ec1.stationID, ec2.stationID);
 
         if (ec1 != null && ec2 != null) {
-            if (tramLines.getFirst().findTramLineIndexByNB(ec1, ec2) < 0) {
-
-                if (ec1 != null && ec2 != null) {
+            if (!tramLineHasInit.contains(uniquePairID)) {
+                    tramLineHasInit.add(uniquePairID);
                     if(refugeeIslandOn){
                         addTramLinesWithIsland(line,ec1,ec2);
                     }else {
@@ -329,7 +345,6 @@ public class Map extends SimState {
                         TramLine_BASIC tl = new TramLine_BASIC(line, ec1, ec2, this);
                         tramLines.add(tl);
                     }
-                }
                 serialTramLineID++;
             }
         }
@@ -354,10 +369,11 @@ public class Map extends SimState {
 
         int count = numOfRefugeeIsland;
         while (count>0){
-            Int2D loc = new Int2D(a.location.x+(b.location.x-a.location.x)*count/this.numOfRefugeeIsland,a.location.y+(b.location.y-a.location.y)*count/this.numOfRefugeeIsland);
+            Int2D loc = new Int2D(a.location.x+(b.location.x-a.location.x)*count/(this.numOfRefugeeIsland+1),a.location.y+(b.location.y-a.location.y)*count/(this.numOfRefugeeIsland+1));
             RefugeeIsland island = new RefugeeIsland("RI: "+serialStationID,loc,this);
             count --;
-            expressCentres.add(island);
+
+            refugee_islands.add(island);
             allStations.add(island);
             mapGrid.setObjectLocation(island, loc);
             start.neighbours.add(island);
@@ -366,11 +382,11 @@ public class Map extends SimState {
             tramLines.add(tl);
             start = island;
         }
+            start.neighbours.add(b);
+            b.neighbours.add(start);
+            TramLine_BASIC tl = new TramLine_BASIC(line,start,b,this);
+            tramLines.add(tl);
 
-        start.neighbours.add(b);
-        b.neighbours.add(start);
-        TramLine_BASIC tl = new TramLine_BASIC(line,start,b,this);
-        tramLines.add(tl);
 
     }
 
@@ -405,11 +421,6 @@ public class Map extends SimState {
         for (TramLine_BASIC tl : tramLines) {
             tramLineNet.addEdge(tl.a, tl.b, tl.tramLineID);
         }
-//        if(refugeeIslandOn) {
-//            for (RefugeeIsland island : refugee_islands) {
-//                tramLineNet.addNode(island);
-//            }
-//        }
     }
 
 }

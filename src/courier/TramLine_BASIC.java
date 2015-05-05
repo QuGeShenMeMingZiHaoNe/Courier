@@ -146,6 +146,38 @@ public class TramLine_BASIC implements Steppable {
         return result;
     }
 
+//    // return the index of given tram line in map.tramlines
+//    public boolean tramLineHasBeenAdded(ExpressCentre a, ExpressCentre b) {
+//        boolean result = false;
+//
+//        // if a== b
+//        if (a.equals(b))
+//            return result;
+//
+//        ExpressCentre c;
+//        TramLine_BASIC temp;
+//        if (a.stationID < b.stationID) {
+//            for (int i = 0; i < map.tramLines.size(); i++) {
+//                temp = map.tramLines.get(i);
+//                if (temp.a.stationID == a.stationID && temp.b.stationID == b.stationID) {
+//                    return true;
+//                }
+//            }
+//        } else {
+//            c = a;
+//            a = b;
+//            b = c;
+//            for (int i = 0; i < map.tramLines.size(); i++) {
+//                temp = map.tramLines.get(i);
+//                if (temp.a.stationID == a.stationID && temp.b.stationID == b.stationID) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        return result;
+//    }
+
     // find the given tram line in map.tramlines
     public TramLine_BASIC findTramLine(ExpressCentre a, ExpressCentre b) {
 
