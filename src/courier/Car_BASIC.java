@@ -33,6 +33,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     protected boolean moving = true;
     protected boolean alterPath = false;
     protected ExpressCentre currStation;
+    private boolean stepping = false;
 //    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
 
 
@@ -336,18 +337,30 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     protected void oneStep() {
+
+        if(this.location == pathLocal.getLast() || stepCount == pathLocal.size()){
+            stepping = false;
+            return;
+        }
+
         // get the next step location
         Int2D nextStep = this.pathLocal.get(stepCount);
 
         // move
         while (this.location.equals(nextStep)) {
             stepCount++;
+            if(stepCount>=pathLocal.size()){
+                stepping = false;
+                return;
+            }
             nextStep = this.pathLocal.get(stepCount);
+
         }
 
         this.location = nextStep;
         map.mapGrid.setObjectLocation(this, nextStep);
         stepCount++;
+
     }
 
     private void tryLeaveStation(TramLine_BASIC tramLine) {
@@ -391,6 +404,11 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
 //            map.profit -= d.distance(new Int2D(2, 2));
 //        }
 
+        if(stepping){
+            oneStep();
+            return;
+        }
+
         currStation = currStation();
         if (currStation != null) {
             if (!hasArrived) {
@@ -431,11 +449,12 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             // delay one step of leaving the car park, Truly leave
             if (hasLeaved) {
                 afterLeaving(tramLine);
+                stepping = true;
+
             }
         }
 
         // travel on the tramline
-        oneStep();
 
     }
 }
