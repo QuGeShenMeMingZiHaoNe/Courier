@@ -12,6 +12,11 @@ public class Car_AVOID extends Car_BASIC {
     }
 
     private void tryLeaveStation(TramLine_BASIC tramLine) {
+
+        if(stationTo instanceof RefugeeIsland && ((RefugeeIsland) stationTo).carParkAvailable<=0){
+            return;
+        }
+
         // allow to leave
         if (tramLine.okToLeave(currStation)) {
             if (tramLine.trafficLightOccupant == null)
@@ -22,6 +27,9 @@ public class Car_AVOID extends Car_BASIC {
             }
             tramLine.currLeavingCars = this;
             tramLine.carsOnTramLine.add(this);
+            if(stationTo instanceof RefugeeIsland) {
+                ((RefugeeIsland) stationTo).carParkAvailable--;
+            }
             leaveStation();
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();
         } else {
@@ -329,10 +337,6 @@ public class Car_AVOID extends Car_BASIC {
             if (hasLeaved) {
                 afterLeaving(tramLine);
                 stepping = true;
-                if(currStation instanceof RefugeeIsland){
-                    ((RefugeeIsland) currStation).carLeaveCarPark();
-                    carParkTicket = false;
-                }
             }
         }
 

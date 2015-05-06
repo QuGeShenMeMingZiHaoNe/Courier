@@ -18,6 +18,9 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
         outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
+        if(map.getRefugeeIslandOn()){
+            outputFile("\nRefugee Island carPark available : " + map.carParkAvailable);
+        }
         outputFile("\nRandom number seed: " + map.seed());
         outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
         outputFile("\nNumber Of Parcels: " + map.parcelTotalCopy);
@@ -52,8 +55,12 @@ public class OutPutResult {
             mode = "BASIC";
         }
         try {
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
-        } catch (IOException e) {
+            if(map.getRefugeeIslandOn()) {
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
+            }else {
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
+            }
+            } catch (IOException e) {
             e.printStackTrace();
         }
         writer.println(write);

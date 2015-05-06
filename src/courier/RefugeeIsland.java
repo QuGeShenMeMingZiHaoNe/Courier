@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class RefugeeIsland extends ExpressCentre {
 
-    public static int carParkAvailable;
+    public int carParkAvailable;
 
     public RefugeeIsland(String name, Int2D location, Map map) {
         super(name, location, map);
@@ -26,7 +26,7 @@ public class RefugeeIsland extends ExpressCentre {
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);
 //        graphics.drawString("RI:" + this.stationID + " C:" + carPark.size() , (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
-        graphics.drawString("S:" + name + " C:" + carPark.size() + " P:" + pToBeSent.size() + " A:" + pArrived.size(), (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
+        graphics.drawString("RI:" + name + " Current:" + carPark.size() + " Available:" + carParkAvailable , (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
 
     }
 

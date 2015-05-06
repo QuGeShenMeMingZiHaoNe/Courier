@@ -17,17 +17,17 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     public static int initNumOfParcelsInExpressCentre = 5000;
-    public static int initNumOfCarsInGarage = 300;
+    public static int initNumOfCarsInGarage = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-    //    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
     public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     // test mode
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
-//    public static boolean refugeeIslandOn = false;
-    public static boolean refugeeIslandOn = true;
+    public static boolean refugeeIslandOn = false;
+//    public static boolean refugeeIslandOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
     public double modePicker = 0;
@@ -52,7 +52,7 @@ public class Map extends SimState {
     protected Network tramLineNet = new Network(false);
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
-    private SimpleDateFormat format = new SimpleDateFormat("MM-dd-hh-mm");
+    private SimpleDateFormat format = new SimpleDateFormat("dd-hh-mm-ss");
     protected String initTime = format.format(new Date()).toString();
     protected long startTime;
     protected int serialParcelID = 1;
@@ -61,7 +61,7 @@ public class Map extends SimState {
     private int serialCarID = 1;
     protected long pathImprovement = 0;
     private int carMax = 9999;
-    protected static int carParkAvailable = 1;
+    protected final int carParkAvailable = 100;
 
 
     public Map(long seed) {
