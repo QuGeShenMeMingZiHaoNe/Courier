@@ -33,7 +33,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     protected boolean moving = true;
     protected boolean alterPath = false;
     protected ExpressCentre currStation;
-    private boolean stepping = false;
+    protected boolean stepping = false;
+    protected boolean carParkTicket = false;
 //    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
 
 
@@ -223,6 +224,11 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     // leave carpark
     public void leaveStation() {
         hasLeaved = true;
+
+        if(currStation instanceof RefugeeIsland){
+            ((RefugeeIsland) currStation).carLeaveCarPark();
+            carParkTicket = false;
+        }
     }
 
     protected void setPathLocal(ExpressCentre from, ExpressCentre to) {
@@ -364,15 +370,34 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     private void tryLeaveStation(TramLine_BASIC tramLine) {
+
+
+
+
+//        System.out.println("got a ticket "+ tramLine.okToLeave(currStation)+System.currentTimeMillis());
+
+
         // allow to leave
         if (tramLine.okToLeave(currStation)) {
             if (tramLine.trafficLightOccupant == null)
                 tramLine.tryOccupyTraffic(currStation);
             // leave the car park one by one -- FIFO
+
             if (tramLine.currLeavingCars != null) {
                 return;
             }
+
             tramLine.currLeavingCars = this;
+
+            if(map.getRefugeeIslandOn() && stationTo instanceof RefugeeIsland && !carParkTicket){
+                if(((RefugeeIsland) stationTo).askForCarPark()){
+                    carParkTicket = true;
+                }else{
+                    tramLine.currLeavingCars = null;
+                    return;
+                }
+            }
+
             tramLine.carsOnTramLine.add(this);
             leaveStation();
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();
@@ -380,7 +405,11 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             // not allow to leave, then ask to leave
             tramLine.tryOccupyTraffic(currStation);
         }
+
+
     }
+
+
 
     protected void afterLeaving(TramLine_BASIC tramLine) {
         //                if (tramLine.currLeavingCars.equals(this)) {

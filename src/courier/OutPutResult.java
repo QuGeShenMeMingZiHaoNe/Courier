@@ -17,6 +17,7 @@ public class OutPutResult {
         long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
+        outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
         outputFile("\nRandom number seed: " + map.seed());
         outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
         outputFile("\nNumber Of Parcels: " + map.parcelTotalCopy);

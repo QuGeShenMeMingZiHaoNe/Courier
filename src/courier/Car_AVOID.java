@@ -35,6 +35,7 @@ public class Car_AVOID extends Car_BASIC {
         }
     }
 
+
     public void arriveStation() {
 
         if (!hasArrived) {
@@ -282,6 +283,11 @@ public class Car_AVOID extends Car_BASIC {
 //            map.profit -= d.distance(new Int2D(2, 2));
 //        }
 
+        if (stepping) {
+            oneStep();
+            return;
+        }
+
         currStation = currStation();
         if (currStation != null) {
             if (!hasArrived) {
@@ -322,6 +328,11 @@ public class Car_AVOID extends Car_BASIC {
             // delay one step of leaving the car park, Truly leave
             if (hasLeaved) {
                 afterLeaving(tramLine);
+                stepping = true;
+                if(currStation instanceof RefugeeIsland){
+                    ((RefugeeIsland) currStation).carLeaveCarPark();
+                    carParkTicket = false;
+                }
             }
         }
 

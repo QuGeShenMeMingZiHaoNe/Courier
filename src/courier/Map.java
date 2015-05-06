@@ -17,7 +17,7 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     public static int initNumOfParcelsInExpressCentre = 5000;
-    public static int initNumOfCarsInGarage = 100;
+    public static int initNumOfCarsInGarage = 300;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
@@ -26,8 +26,8 @@ public class Map extends SimState {
     // test mode
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
-    public static boolean refugeeIslandOn = false;
-//    public static boolean refugeeIslandOn = true;
+//    public static boolean refugeeIslandOn = false;
+    public static boolean refugeeIslandOn = true;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
     public double modePicker = 0;
@@ -61,6 +61,7 @@ public class Map extends SimState {
     private int serialCarID = 1;
     protected long pathImprovement = 0;
     private int carMax = 9999;
+    protected static int carParkAvailable = 1;
 
 
     public Map(long seed) {
@@ -160,9 +161,9 @@ public class Map extends SimState {
         return testModeOn;
     }
 
-//    public boolean getRefugeeIslandOn() {
-//        return refugeeIslandOn;
-//    }
+    public boolean getRefugeeIslandOn() {
+        return refugeeIslandOn;
+    }
 
     public void setTestModeOn(boolean on) {
         testModeOn = on;

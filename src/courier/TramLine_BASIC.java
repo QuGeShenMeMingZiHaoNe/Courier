@@ -252,9 +252,15 @@ public class TramLine_BASIC implements Steppable {
 //        if (to.carPark == null) return true;
 
         for (Car_BASIC c : from.carPark) {
-            if (c.stationTo != null)
-                if (c.stationTo.equals(to))
+            if (c.stationTo != null && c.stationTo.equals(to)){
+                if(!map.getRefugeeIslandOn()){
                     return false;
+                }else{
+                    if(c.carParkTicket){
+                        return false;
+                    }
+                }
+            }
         }
         return true;
     }
