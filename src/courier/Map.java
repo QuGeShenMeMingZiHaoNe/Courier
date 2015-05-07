@@ -16,18 +16,20 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
-    public static int initNumOfParcelsInExpressCentre = 5000;
-    public static int initNumOfCarsInGarage = 100;
+    public int initNumOfParcelsInExpressCentre = 5000;
+    public int initNumOfCarsInGarage = 200;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public static int distanceToCentre = 300;
+    public int distanceToCentre = 300;
 //        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     // test mode
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
-    public static boolean refugeeIslandOn = false;
-//    public static boolean refugeeIslandOn = true;
+
+//    public static boolean refugeeIslandOn = false;
+    public static boolean refugeeIslandOn = true;
+
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
     public double modePicker = 0;
@@ -61,7 +63,7 @@ public class Map extends SimState {
     private int serialCarID = 1;
     protected long pathImprovement = 0;
     private int carMax = 9999;
-    protected final int carParkAvailable = 100;
+    protected final int carParkAvailable = 10;
 
 
     public Map(long seed) {
@@ -108,7 +110,7 @@ public class Map extends SimState {
 
 
     public void setMapSize_300_2000(int val) {
-        if (val > 300)
+        if (val >= 300)
             distanceToCentre = val;
     }
 
@@ -372,7 +374,7 @@ public class Map extends SimState {
 
         int count = numOfRefugeeIsland;
         while (count > 0) {
-            Int2D loc = new Int2D(a.location.x + (b.location.x - a.location.x) * count / (this.numOfRefugeeIsland + 1), a.location.y + (b.location.y - a.location.y) * count / (this.numOfRefugeeIsland + 1));
+            Int2D loc = new Int2D(a.location.x + (b.location.x - a.location.x) * (this.numOfRefugeeIsland-count+1) / (this.numOfRefugeeIsland + 1), a.location.y + (b.location.y - a.location.y) * (this.numOfRefugeeIsland-count+1) / (this.numOfRefugeeIsland + 1));
             RefugeeIsland island = new RefugeeIsland("RI: " + serialStationID, loc, this);
             count--;
 

@@ -48,6 +48,15 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         return maxSpace - spaceRemaining;
     }
 
+    public String getFrom(){
+        return stationFrom.name;
+    }
+
+
+    public String getTo(){
+        return stationTo.name;
+    }
+
     public LinkedList<Parcel> getCarrying() {
         return carrying;
     }
