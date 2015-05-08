@@ -3,6 +3,7 @@ package courier;
 import sim.engine.SimState;
 import sim.util.Int2D;
 
+import java.sql.Ref;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -27,9 +28,6 @@ public class Car_AVOID extends Car_BASIC {
             }
             tramLine.currLeavingCars = this;
             tramLine.carsOnTramLine.add(this);
-            if(stationTo instanceof RefugeeIsland) {
-                ((RefugeeIsland) stationTo).carParkAvailable--;
-            }
             leaveStation();
 //                    refusedAlterPath = new LinkedList<ExpressCentre>();
         } else {
@@ -37,6 +35,10 @@ public class Car_AVOID extends Car_BASIC {
             tramLine.tryOccupyTraffic(currStation);
             if (!tramLine.okToLeave(currStation) && (tramLine.trafficLightOccupant == currStation)) {
                 alterPath = true;
+                if(!carParkTicket.equals("NULL")){
+                    ((RefugeeIsland)(map.expressCentres.getFirst().findStationByName(carParkTicket))).carParkAvailable++;
+                    carParkTicket = "NULL";
+                }
                 arriveStation();
                 alterPath = false;
             }

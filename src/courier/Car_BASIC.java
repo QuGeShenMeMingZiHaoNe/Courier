@@ -240,13 +240,13 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         if(currStation instanceof RefugeeIsland){
 //            ((RefugeeIsland) currStation).carLeaveCarPark();
             ((RefugeeIsland) currStation).carParkAvailable++;
-            ((RefugeeIsland) currStation).tickHolder.remove(this);
+//            ((RefugeeIsland) currStation).tickHolder.remove(this);
         }
 
         if(stationTo instanceof RefugeeIsland) {
             ((RefugeeIsland) stationTo).carParkAvailable--;
             carParkTicket = stationTo.name;
-            ((RefugeeIsland) stationTo).tickHolder.add(this);
+//            ((RefugeeIsland) stationTo).tickHolder.add(this);
         }
 
     }
