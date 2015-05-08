@@ -22,7 +22,7 @@ public class TramLine_BASIC implements Steppable {
     protected Car_BASIC currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
 //    private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInGarage);
-    public static int maximumCarLeavingBeforeRedLight = 1;
+    public static int maximumCarLeavingBeforeRedLight = 2;
     protected int quota1 = maximumCarLeavingBeforeRedLight;
     protected int quota2 = maximumCarLeavingBeforeRedLight;
     private String line;
@@ -234,6 +234,7 @@ public class TramLine_BASIC implements Steppable {
                     clearingTheRoad = true;
                 quota2 = 0;
                 quota1 = maximumCarLeavingBeforeRedLight;
+//                giveUpCarParkTickets(b);
             }
         } else {
             // give the traffic to b
@@ -243,8 +244,21 @@ public class TramLine_BASIC implements Steppable {
                     clearingTheRoad = true;
                 quota1 = 0;
                 quota2 = maximumCarLeavingBeforeRedLight;
+//                giveUpCarParkTickets(a);
             }
         }
+    }
+
+    private void giveUpCarParkTickets(ExpressCentre station) {
+//        for(Car_BASIC c:station.carPark){
+//            if(c.carParkTicket){
+//                c.carParkTicket = false;
+//                if(a.equals(station)){
+//
+//                }
+//            }
+//        }
+
     }
 
     // the holder station of tram line has no car want to come into asker station
@@ -253,10 +267,10 @@ public class TramLine_BASIC implements Steppable {
 
         for (Car_BASIC c : from.carPark) {
             if (c.stationTo != null && c.stationTo.equals(to)){
-                if(!map.getRefugeeIslandOn()){
+                if(!(to instanceof RefugeeIsland)){
                     return false;
                 }else{
-                    if(c.carParkTicket){
+                    if( c.carParkTicket.equals(to.name)){
                         return false;
                     }
                 }
@@ -277,9 +291,10 @@ public class TramLine_BASIC implements Steppable {
 
     // return the condition of the car to leave the station
     public boolean okToLeave(ExpressCentre asker) {
-        if (trafficLightOccupant == null)
+        if (trafficLightOccupant == null) {
             return true;
-        return !clearingTheRoad && (trafficLightOccupant.equals(asker));
+        }
+        return (!clearingTheRoad && (trafficLightOccupant.equals(asker)));
     }
 
     @Override

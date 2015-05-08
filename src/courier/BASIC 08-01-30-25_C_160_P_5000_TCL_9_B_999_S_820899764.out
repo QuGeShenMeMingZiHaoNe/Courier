@@ -2,17 +2,15 @@
 
 Mode: BASIC
 
-Refugee Island On: true
+Refugee Island On: false
 
-Refugee Island carPark available : 10
-
-Random number seed: 690569216
+Random number seed: 820899764
 
 Number Of ExpressCenters: 36
 
 Number Of Parcels: 180000
 
-Number Of Cars: 200
+Number Of Cars: 160
 
 Maximum Car carrying weight: 100
 
@@ -20,15 +18,15 @@ Map size: 300
 
 The degree of busy in Express Centre: 999
 
-Congestion Level: 10
+Congestion Level: 9
 
 ***********************************************************************************************************
 
-Total Parcels Delivering Time: 2333431158
+Sum Of All Parcels Delivering Time: 1481330885
 
-Average Parcel Delivering Time : 12963
+Average Parcel Delivering Time For One Parcel : 8229
 
-Time Of Finish Delivery All Parcels: 327927
+System Time Of Finishing Delivery All Parcels: 254954
 
 
 ***********************************************************************************************************

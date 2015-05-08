@@ -6,10 +6,13 @@ import sim.portrayal.DrawInfo2D;
 import sim.util.Int2D;
 
 import java.awt.*;
+import java.util.LinkedList;
 
 public class RefugeeIsland extends ExpressCentre {
 
     public int carParkAvailable;
+
+    protected LinkedList<Car_BASIC> tickHolder = new LinkedList<Car_BASIC>();
 
     public RefugeeIsland(String name, Int2D location, Map map) {
         super(name, location, map);
@@ -30,14 +33,18 @@ public class RefugeeIsland extends ExpressCentre {
 
     }
 
-    public boolean askForCarPark(){
-        if(carParkAvailable>0) {
-            carParkAvailable--;
-            return true;
-        }else{
-            return false;
-        }
+    protected LinkedList<Car_BASIC> getTickHolder(){
+        return tickHolder;
     }
+
+//    public boolean askForCarPark(){
+//        if(carParkAvailable>0) {
+//            carParkAvailable--;
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    }
 
     public void carLeaveCarPark(){
         carParkAvailable++;

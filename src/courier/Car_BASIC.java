@@ -9,6 +9,7 @@ import sim.util.Int2D;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.sql.Ref;
 import java.util.LinkedList;
 
 public class Car_BASIC extends OvalPortrayal2D implements Steppable {
@@ -34,7 +35,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     protected boolean alterPath = false;
     protected ExpressCentre currStation;
     protected boolean stepping = false;
-    protected boolean carParkTicket = false;
+    protected String carParkTicket = "NULL";
 //    private LinkedList<ExpressCentre> refusedAlterPath = new LinkedList<ExpressCentre>();
 
 
@@ -189,6 +190,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         moving = false;
         hasArrived = true;
         currStation = currStation();
+        if(carParkTicket.equals(currStation.name))
+            carParkTicket = "NULL";
 
         currStation.lastVisitTime = map.schedule.getSteps();
         // remove the car from the road
@@ -235,9 +238,21 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         hasLeaved = true;
 
         if(currStation instanceof RefugeeIsland){
-            ((RefugeeIsland) currStation).carLeaveCarPark();
-            carParkTicket = false;
+//            ((RefugeeIsland) currStation).carLeaveCarPark();
+            ((RefugeeIsland) currStation).carParkAvailable++;
+            ((RefugeeIsland) currStation).tickHolder.remove(this);
         }
+
+        if(stationTo instanceof RefugeeIsland) {
+            ((RefugeeIsland) stationTo).carParkAvailable--;
+            carParkTicket = stationTo.name;
+            ((RefugeeIsland) stationTo).tickHolder.add(this);
+        }
+
+    }
+
+    public String getTicket(){
+            return carParkTicket;
     }
 
     protected void setPathLocal(ExpressCentre from, ExpressCentre to) {
@@ -379,30 +394,26 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     private void tryLeaveStation(TramLine_BASIC tramLine) {
-
-        if(stationTo instanceof RefugeeIsland && ((RefugeeIsland) stationTo).carParkAvailable<=0){
-            return;
-        }
-
-
 //        System.out.println("got a ticket "+ tramLine.okToLeave(currStation)+System.currentTimeMillis());
-
 
         // allow to leave
         if (tramLine.okToLeave(currStation)) {
-            if (tramLine.trafficLightOccupant == null)
-                tramLine.tryOccupyTraffic(currStation);
             // leave the car park one by one -- FIFO
+
+            if(tramLine.getTrafficLightOccupant().equals(null))
+                tramLine.tryOccupyTraffic(currStation);
+
 
             if (tramLine.currLeavingCars != null) {
                 return;
             }
 
-            tramLine.currLeavingCars = this;
 
-            if(stationTo instanceof RefugeeIsland) {
-                ((RefugeeIsland) stationTo).carParkAvailable--;
+            if(stationTo instanceof RefugeeIsland && ((RefugeeIsland) stationTo).carParkAvailable<=0){
+                return;
             }
+
+            tramLine.currLeavingCars = this;
 
             tramLine.carsOnTramLine.add(this);
             leaveStation();
@@ -419,6 +430,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
 
     protected void afterLeaving(TramLine_BASIC tramLine) {
         //                if (tramLine.currLeavingCars.equals(this)) {
+
         tramLine.currLeavingCars = null;
 //                }
         if (tramLine.a.equals(currStation)) {
@@ -429,6 +441,9 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         currStation.carPark.remove(this);
         hasArrived = false;
         hasLeaved = false;
+
+
+
     }
 
     @Override
@@ -479,10 +494,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             if (!hasLeaved) {
                 tryLeaveStation(tramLine);
                 return;
-            }
-
-            // delay one step of leaving the car park, Truly leave
-            if (hasLeaved) {
+            }else{
+                // delay one step of leaving the car park, Truly leave
                 afterLeaving(tramLine);
                 stepping = true;
 

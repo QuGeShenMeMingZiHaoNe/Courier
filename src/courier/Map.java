@@ -17,7 +17,7 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     public int initNumOfParcelsInExpressCentre = 5000;
-    public int initNumOfCarsInGarage = 200;
+    public int initNumOfCarsInGarage = 160;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
@@ -27,8 +27,8 @@ public class Map extends SimState {
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
 
-//    public static boolean refugeeIslandOn = false;
-    public static boolean refugeeIslandOn = true;
+    public static boolean refugeeIslandOn = false;
+//    public static boolean refugeeIslandOn = true;
 
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -63,7 +63,7 @@ public class Map extends SimState {
     private int serialCarID = 1;
     protected long pathImprovement = 0;
     private int carMax = 9999;
-    protected final int carParkAvailable = 10;
+    protected final int carParkAvailable = 100;
 
 
     public Map(long seed) {
@@ -192,6 +192,10 @@ public class Map extends SimState {
 
 //        addExpressCentre("A", new Int2D(gridWidth/2-10, gridHeight/2-20));
 //        addExpressCentre("B", new Int2D(gridWidth/2-200,gridHeight/2+200));
+//        addExpressCentre("C", new Int2D(gridWidth/2+50,gridHeight/2+60));
+//        addExpressCentre("D", new Int2D(gridWidth/2-70, gridHeight/2-80));
+//        addExpressCentre("E", new Int2D(gridWidth/2-90,gridHeight/2+90));
+//        addExpressCentre("F", new Int2D(gridWidth/2+60,gridHeight/2+20));
 
         // init Express Centres
         DataReader reader = new DataReader(this);
@@ -200,6 +204,7 @@ public class Map extends SimState {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         allStations.addAll(expressCentres);
 
         // init garage
@@ -211,6 +216,12 @@ public class Map extends SimState {
 
 //        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
+//        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
+//        addTramLine("line",expressCentres.get(3), expressCentres.get(0));
+//        addTramLine("line",expressCentres.get(1), expressCentres.get(4));
+//        addTramLine("line",expressCentres.get(3), expressCentres.get(4));
+//
+//        addTramLine("line",expressCentres.get(2), expressCentres.get(0));
 
         // init tramlines
         try {

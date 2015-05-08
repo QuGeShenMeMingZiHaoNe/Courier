@@ -30,10 +30,10 @@ public class OutPutResult {
         outputFile("\nThe degree of busy in Express Centre: " + map.expressCentres.getFirst().busy);
         outputFile("\nCongestion Level: " + map.getCongestionLevel_1_10() + "\n");
         outputFile("***********************************************************************************************************");
-        outputFile("\nTotal Parcels Delivering Time: " + (map.parcelTimeSpendingTotal));
-        outputFile("\nAverage Parcel Delivering Time : " + (timeSpendingAverage));
+        outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotal));
+        outputFile("\nAverage Parcel Delivering Time For One Parcel : " + (timeSpendingAverage));
         long finalStep = map.schedule.getSteps();
-        outputFile("\nTime Of Finish Delivery All Parcels: " + finalStep);
+        outputFile("\nSystem Time Of Finishing Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
             outputFile("\nTime Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
         } else {
