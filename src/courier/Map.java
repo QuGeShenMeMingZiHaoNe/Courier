@@ -21,8 +21,8 @@ public class Map extends SimState {
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
-        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//    public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+//        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     // test mode
     public int numOfRefugeeIsland = 1;
     public static boolean testModeOn = true;
@@ -50,7 +50,6 @@ public class Map extends SimState {
     protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
     protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
     protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
-    protected LinkedList<Parcel> callCarToPickUpParcels = new LinkedList<Parcel>();
     protected Network tramLineNet = new Network(false);
     protected long parcelTimeSpendingTotal = 0;
     protected int parcelTotalCopy;
@@ -64,7 +63,7 @@ public class Map extends SimState {
     protected long pathImprovement = 0;
     private int carMax = 9999;
     protected final int carParkAvailable = 100;
-
+    protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0,0),this);
 
     public Map(long seed) {
         super(seed);
@@ -241,6 +240,7 @@ public class Map extends SimState {
 
         parcelTotalCopy = autoGenParcelByStationsMax;
         startTime = this.schedule.getSteps();
+        schedule.scheduleRepeating(gec);
     }
 
 //    private void initExpressCenter() {

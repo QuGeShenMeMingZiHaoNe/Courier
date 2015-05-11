@@ -32,7 +32,9 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     // the bigger the number, the more busy it is
     public static int busy = 999;
     private int count = 0;
-    private long sequence = 200;
+    private long visitSequence = 1000;
+    protected int maxGlobalParcel = 3;
+
 
     public ExpressCentre(String name, Int2D location, Map map) {
         this.name = name;
@@ -139,11 +141,13 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
             }
 
 //      if the car park is empty, has package to be sent, and the car caller is empty
-            if (map.schedule.getSteps() - lastVisitTime > sequence) {
+            if (map.schedule.getSteps() - lastVisitTime > visitSequence) {
                 // put parcel into global list to let other cars to pickup
-                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0) {
-                    if (map.callCarToPickUpParcels.size() <= map.initNumOfCarsInGarage) {
-                        map.callCarToPickUpParcels.add(this.pToBeSent.pop());
+                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && maxGlobalParcel>0) {
+                    if (map.gec.callCarToPickUpParcels.size() <= map.initNumOfCarsInGarage) {
+                        maxGlobalParcel--;
+                        Parcel p = this.pToBeSent.pop();
+                        map.gec.callCarToPickUpParcels.add(p);
                     }
                 }
             }

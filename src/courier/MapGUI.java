@@ -125,7 +125,7 @@ public class MapGUI extends GUIState {
         c.registerFrame(displayFrame);
 
         displayFrame.setVisible(true);
-        display.setBackdrop(Color.LIGHT_GRAY);
+        display.setBackdrop(new Color(236,232,208));
 
         display.attach(mapGridPortrayal, "Map");
         display.attach(tramLinePortrayal, "Tram Line");

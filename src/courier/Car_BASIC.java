@@ -150,10 +150,10 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         // find and remove from car caller pick up linkedList,
         // then add to the carrying of current car
         Parcel newP = currStation.findParcelWithWeightFromCarCallerPickUp(carCaller.weight);
+        currStation.maxGlobalParcel++;
         if (!newP.destination.equals(currStation)) {
             putIn(newP);
         } else {
-
             currStation.pArrived.add(newP);
             arriveStation();
         }
@@ -352,15 +352,29 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     protected void setUpCarCaller() {
-        if (!map.callCarToPickUpParcels.isEmpty()) {
-            Parcel newP = map.callCarToPickUpParcels.pollFirst();
+        if (!map.gec.callCarToPickUpParcels.isEmpty()) {
+//            Parcel newP = map.gec.callCarToPickUpParcels.pollFirst();
+            LinkedList<Parcel> newParcels = new LinkedList<Parcel>();
+            Parcel newP = map.gec.callCarToPickUpParcels.getFirst();
+            newParcels.add(newP);
+            for(Parcel p : map.gec.callCarToPickUpParcels){
+                if(p.from.equals(newP.from)){
+                    newParcels.add(p);
+                }
+            }
+            map.gec.callCarToPickUpParcels.removeAll(newParcels);
+
             // if the asker is the current station
             if (newP.from.equals(currStation)) {
-                putIn(newP);
+                for(Parcel p: newParcels) {
+                    putIn(p);
+                }
             } else {
-                newP.from.pToBeSentForCarCallerPickUp.add(newP);
-                CarCaller carCaller = new CarCaller(currStation, newP.from, newP.weight, map);
-                putIn(carCaller);
+                for(Parcel p: newParcels) {
+                    p.from.pToBeSentForCarCallerPickUp.add(p);
+                    CarCaller carCaller = new CarCaller(currStation, p.from, p.weight, map);
+                    putIn(carCaller);
+                }
             }
         }
     }
@@ -498,12 +512,9 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
                 // delay one step of leaving the car park, Truly leave
                 afterLeaving(tramLine);
                 stepping = true;
-
             }
         }
-
         // travel on the tramline
-
     }
 }
 
