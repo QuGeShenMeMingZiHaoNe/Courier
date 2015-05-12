@@ -17,12 +17,12 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     public int initNumOfParcelsInExpressCentre = 5000;
-    public int initNumOfCarsInGarage = 50;
+    public int initNumOfCarsInGarage = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
-//        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     // test mode
     public int numOfRefugeeIsland = 1;
     protected int carMaxSpace = 100;

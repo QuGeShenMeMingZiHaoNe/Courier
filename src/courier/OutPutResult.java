@@ -20,12 +20,13 @@ public class OutPutResult {
         outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
         if(map.getRefugeeIslandOn()){
             outputFile("\nRefugee Island carPark available : " + map.carParkAvailable);
+            outputFile("\nNumber Of Refugee Between Two Stations : " + map.numOfRefugeeIsland);
         }
         outputFile("\nRandom number seed: " + map.seed());
         outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
         outputFile("\nNumber Of Parcels: " + map.parcelTotalCopy);
         outputFile("\nNumber Of Cars: " + map.getInitNumOfCarsInStation());
-        outputFile("\nMaximum Car carrying weight: " + Car_BASIC.maxSpace);
+        outputFile("\nMaximum Car carrying weight: " + map.carMaxSpace);
         outputFile("\nMap size: " + map.getMapSize_300_2000());
         outputFile("\nThe degree of busy in Express Centre: " + map.expressCentres.getFirst().busy);
         outputFile("\nCongestion Level: " + map.getCongestionLevel_1_10() + "\n");
