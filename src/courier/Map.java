@@ -17,7 +17,7 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     public int initNumOfParcelsInExpressCentre = 5000;
-    public int initNumOfCarsInGarage = 160;
+    public int initNumOfCarsInGarage = 50;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
@@ -25,6 +25,7 @@ public class Map extends SimState {
     public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
     // test mode
     public int numOfRefugeeIsland = 1;
+    protected int carMaxSpace = 100;
     public static boolean testModeOn = true;
 
     public static boolean refugeeIslandOn = false;

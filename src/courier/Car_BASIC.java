@@ -13,8 +13,8 @@ import java.sql.Ref;
 import java.util.LinkedList;
 
 public class Car_BASIC extends OvalPortrayal2D implements Steppable {
-    protected static final int maxSpace = 100;
-    protected int spaceRemaining = maxSpace;
+    protected int maxSpace ;
+    protected int spaceRemaining;
 
     protected final int basicCarDisplaySize = 2;
     protected Shape shape;
@@ -43,6 +43,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         this.carID = carID;
         this.location = location;
         this.map = map;
+        maxSpace = map.carMaxSpace;
+        spaceRemaining = maxSpace;
     }
 
     public int getCurrLoading() {
