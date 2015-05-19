@@ -33,7 +33,6 @@ public class Parcel {
 
         if (!(this instanceof CarCaller)) {
             map.parcelTimeSpendingTotal += this.timeSpending;
-
         }
         return String.valueOf(timeSpending);
     }

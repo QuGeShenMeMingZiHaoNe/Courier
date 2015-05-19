@@ -27,11 +27,11 @@ public class Map extends SimState {
     //test one 20-40-60-80-100-120
     protected int carMaxSpace = 100;
 
-    // test two 50-100-150-200-250-300
-    protected int initNumOfCarsInGarage = 300;
+    // test two 10-50-100-150-200-250-300-350-400
+    protected int initNumOfCarsInGarage = 100;
 
     // test three 5-6-7-8-9-10
-    protected int congestionLevel = 10;
+    protected int congestionLevel = 8;
     protected int expressCenterBusyLevel = 10;
     protected boolean testModeOn = true;
 
