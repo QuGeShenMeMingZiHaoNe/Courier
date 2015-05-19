@@ -22,9 +22,9 @@ public class TramLine_BASIC implements Steppable {
     protected Car_BASIC currLeavingCars;
     // when the requirements reach a certain limit then we give the traffic control right to the other station.
 //    private int maximumCarLeavingBeforeRedLight = (int) Math.round(0.1 * map.initNumOfCarsInGarage);
-    public static int maximumCarLeavingBeforeRedLight = 2;
-    protected int quota1 = maximumCarLeavingBeforeRedLight;
-    protected int quota2 = maximumCarLeavingBeforeRedLight;
+    public static int maximumCarLeavingBeforeRedLight;
+    protected int quota1;
+    protected int quota2;
     private String line;
 
 
@@ -47,6 +47,9 @@ public class TramLine_BASIC implements Steppable {
             trafficLightOccupant = b;
         }
         map.serialTramLineID++;
+        maximumCarLeavingBeforeRedLight = 11-map.congestionLevel;
+        quota1 = maximumCarLeavingBeforeRedLight;
+        quota2 = maximumCarLeavingBeforeRedLight;
     }
 
 

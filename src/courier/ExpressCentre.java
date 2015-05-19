@@ -28,9 +28,9 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected long lastVisitTime = 0;
     private int stationDisplaySize = 5;
     public Font nodeFont = new Font("Station", Font.BOLD | Font.ROMAN_BASELINE, stationDisplaySize - 1);
-    // busy indicates how busy the station is, the number should between 1000 and 0,
-    // the bigger the number, the more busy it is
-    public static int busy = 999;
+    // busyLevel indicates how busyLevel the station is, the number should between 1000 and 0,
+    // the bigger the number, the more busyLevel it is
+    public static int busyLevel;
     private int count = 0;
     private long visitSequence = 1000;
     protected int maxGlobalParcel = 3;
@@ -42,7 +42,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         this.location = location;
         this.map = map;
         map.serialStationID++;
-
+        busyLevel = map.expressCenterBusyLevel;
     }
 
 
@@ -156,10 +156,10 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
     private boolean genParcelOrNot() {
         Random random = new Random();
-        // this number indicate how busy the station is
-        int j = random.nextInt(Math.abs(1000 - busy));
+        // this number indicate how busyLevel the station is
+        int j = random.nextInt((10- busyLevel)*25+1);
 
-        // if i is smaller than busy then generalize a parcles
+        // if i is smaller than busyLevel then generalize a parcles
         if (1 > j)
             return true;
         else

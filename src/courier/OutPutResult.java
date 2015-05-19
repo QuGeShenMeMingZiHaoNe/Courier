@@ -28,7 +28,7 @@ public class OutPutResult {
         outputFile("\nNumber Of Cars: " + map.getInitNumOfCarsInStation());
         outputFile("\nMaximum Car carrying weight: " + map.carMaxSpace);
         outputFile("\nMap size: " + map.getMapSize_300_2000());
-        outputFile("\nThe degree of busy in Express Centre: " + map.expressCentres.getFirst().busy);
+        outputFile("\nThe degree of busyLevel in Express Centre: " + map.expressCentres.getFirst().busyLevel);
         outputFile("\nCongestion Level: " + map.getCongestionLevel_1_10() + "\n");
         outputFile("***********************************************************************************************************");
         outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotal));
@@ -57,9 +57,9 @@ public class OutPutResult {
         }
         try {
             if(map.getRefugeeIslandOn()) {
-                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             }else {
-                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busy + "_S_" + map.seed() + ".out", true)));
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             }
             } catch (IOException e) {
             e.printStackTrace();

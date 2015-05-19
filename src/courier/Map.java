@@ -16,20 +16,32 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
+    /**************************** test parameters ****************************/
     public int initNumOfParcelsInExpressCentre = 5000;
-    public int initNumOfCarsInGarage = 100;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
-        public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//    public SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
-    // test mode
-    public int numOfRefugeeIsland = 1;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+
+    //test one 20-40-60-80-100-120
     protected int carMaxSpace = 100;
-    public static boolean testModeOn = true;
+
+    // test two 50-100-150-200-250-300
+    protected int initNumOfCarsInGarage = 300;
+
+    // test three 5-6-7-8-9-10
+    protected int congestionLevel = 10;
+    protected int expressCenterBusyLevel = 10;
+    protected boolean testModeOn = true;
+
+    public int numOfRefugeeIsland = 1;
 
     public static boolean refugeeIslandOn = false;
 //    public static boolean refugeeIslandOn = true;
+
+    /**************************** test parameters ****************************/
+
 
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
@@ -129,14 +141,14 @@ public class Map extends SimState {
 //    }
 
 
-    public int getExpressCentreBusyLevel_1_999() {
-        return ExpressCentre.busy;
+    public int getExpressCentreBusyLevel_0_10() {
+        return expressCenterBusyLevel;
     }
 
 
-    public void setExpressCentreBusyLevel_1_999(int val) {
-        if (val > 0 && val < 999)
-            ExpressCentre.busy = val;
+    public void setExpressCentreBusyLevel_0_10(int val) {
+        if (val >= 0 && val <= 10)
+            ExpressCentre.busyLevel = val;
     }
 
 
