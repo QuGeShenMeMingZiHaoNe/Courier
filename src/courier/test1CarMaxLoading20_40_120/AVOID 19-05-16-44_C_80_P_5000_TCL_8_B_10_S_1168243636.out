@@ -10,7 +10,7 @@ Number Of ExpressCenters: 36
 
 Number Of Parcels: 180000
 
-Number Of Cars: 3200
+Number Of Cars: 80
 
 Maximum Car carrying weight: 100
 
@@ -22,12 +22,12 @@ Congestion Level: 8
 
 ***********************************************************************************************************
 
-Sum Of All Parcels Delivering Time: 673259977
+Sum Of All Parcels Delivering Time: 575553437
 
-Average Parcel Delivering Time For One Parcel : 3740
+Average Parcel Delivering Time For One Parcel : 3197
 
-System Time Of Finishing Delivery All Parcels: 157579
+System Time Of Finishing Delivery All Parcels: 187205
 
-Time Saved By Path Changing Path (compare to old path): 482392
+Time Saved By Path Changing Path (compare to old path): 264872
 
 ***********************************************************************************************************

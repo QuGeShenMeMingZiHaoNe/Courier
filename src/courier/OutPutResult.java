@@ -19,7 +19,7 @@ public class OutPutResult {
         outputFile("\nMode: " + map.mode);
         outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
         if(map.getRefugeeIslandOn()){
-            outputFile("\nRefugee Island carPark available : " + map.carParkAvailable);
+            outputFile("\nRefugee Island carPark available : " + map.RefugeeCarParkNum);
             outputFile("\nNumber Of Refugee Between Two Stations : " + map.numOfRefugeeIsland);
         }
         outputFile("\nRandom number seed: " + map.seed());

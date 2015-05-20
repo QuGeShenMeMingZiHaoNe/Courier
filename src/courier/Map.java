@@ -27,18 +27,26 @@ public class Map extends SimState {
     //test one 20-40-60-80-100-120
     protected int carMaxSpace = 100;
 
-    // test two 10-50-100-150-200-250-300-350-400
-    protected int initNumOfCarsInGarage = 100;
+    // test two 50-150-250-350-450-550
+    protected int initNumOfCarsInGarage = 80;
 
     // test three 5-6-7-8-9-10
     protected int congestionLevel = 8;
-    protected int expressCenterBusyLevel = 10;
-    protected boolean testModeOn = true;
+
+    // test four num of carpark in island 1-2-3-4-5-6-7
+    protected int RefugeeCarParkNum = 7;
 
     public int numOfRefugeeIsland = 1;
 
-    public static boolean refugeeIslandOn = false;
-//    public static boolean refugeeIslandOn = true;
+
+
+    protected int expressCenterBusyLevel = 10;
+    protected boolean testModeOn = true;
+
+
+
+//    public static boolean refugeeIslandOn = false;
+    public static boolean refugeeIslandOn = true;
 
     /**************************** test parameters ****************************/
 
@@ -75,7 +83,6 @@ public class Map extends SimState {
     private int serialCarID = 1;
     protected long pathImprovement = 0;
     private int carMax = 9999;
-    protected final int carParkAvailable = 100;
     protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0,0),this);
 
     public Map(long seed) {
@@ -98,8 +105,27 @@ public class Map extends SimState {
         return initNumOfParcelsInExpressCentre;
     }
 
-    public int getNumOfRefugeeIsland() {
+    public int getNumOfRefugeeIsland_0_5() {
         return numOfRefugeeIsland;
+    }
+
+    public void setNumOfRefugeeIsland_0_5(int val) {
+        if(val>=0 && val <=5){
+            numOfRefugeeIsland = val;
+        }
+    }
+
+    public void setRefugeeCarParkNum_2_7(int val){
+        if(val>=2 && val <=7 && refugeeIslandOn){
+            RefugeeCarParkNum = val;
+        }
+    }
+
+    public int getRefugeeCarParkNum_2_7(){
+        if(refugeeIslandOn)
+            return RefugeeCarParkNum;
+        else
+            return 0;
     }
 
     public void setNumOfParcelsInEachStations(int val) {
@@ -135,6 +161,8 @@ public class Map extends SimState {
             TramLine_BASIC.maximumCarLeavingBeforeRedLight = 11 - val;
         }
     }
+
+
 
 //    public Object domCongestionLevel_1_10() {
 //        return new sim.util.Interval(0.0, 10.0);
