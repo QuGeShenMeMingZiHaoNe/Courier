@@ -9,7 +9,6 @@ import sim.util.Int2D;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
-import java.sql.Ref;
 import java.util.LinkedList;
 
 public class Car_BASIC extends OvalPortrayal2D implements Steppable {
@@ -64,17 +63,42 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         return carrying;
     }
 
-    public long getAverageDeliverTime() {
-        return map.parcelTimeSpendingTotal / (map.parcelArrivedTotal + 1);
+    public long getAverageDeliverTimeSincePickUp() {
+        return map.parcelTimeSpendingTotalSincePickUp / (map.parcelArrivedTotal + 1);
     }
 
+    public long getAverageDeliverTimeSinceGen() {
+        return map.parcelTimeSpendingTotalSinceGen / (map.parcelArrivedTotal + 1);
+    }
 
     public String toString() {
         return "Car :" + carID;
     }
 
 
-    public boolean loadParcel() {
+    public void smartLoadParcel(){
+        if (currStation.pToBeSent.size() == 0 || spaceRemaining==0) return;
+
+        LinkedList<ExpressCentre> futurePath = new LinkedList<ExpressCentre>();
+        boolean startRecord = false;
+        if(globalPath != null) {
+            for (ExpressCentre ec : globalPath) {
+                if (startRecord && !(ec instanceof RefugeeIsland))
+                    futurePath.add(ec);
+                if (ec.equals(currStation))
+                    startRecord = true;
+            }
+        }
+        parcelLoader(futurePath);
+        //TODO
+//        if(futurePath.size()<10&&){
+//
+//        }
+    }
+
+
+
+    public boolean loadParcelBasic() {
         if (currStation.pToBeSent.size() == 0) return false;
         if (spaceRemaining > 0)
             parcelLoader();
@@ -132,7 +156,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     private void printCarCallerUnloadLog(CarCaller carCaller) {
-        String timeSpending = carCaller.getTimeSpending();
+        String timeSpending = carCaller.getTimeSpendingSincePickUp();
         if (map.detailsOn) {
             System.out.println("Log: " + this + " has unloaded" + " " + carCaller + " with wight " + carCaller.weight + " and time spending " + timeSpending + " at " + currStation + "...");
             System.out.println("Log: Global parcels remaining " + map.parcelTotal);
@@ -140,9 +164,10 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
     private void printParcelUnloadLog(Parcel parcel) {
-        String timeSpending = parcel.getTimeSpending();
+        String timeSpendingSincePickUp = parcel.getTimeSpendingSincePickUp();
+        String timeSpendingSinceGen = parcel.getTimeSpendingSinceGen();
         if (map.detailsOn) {
-            System.out.println("Log: " + this + " has unloaded" + " " + parcel + " with wight " + parcel.weight + " and time spending " + timeSpending + " at " + currStation + "...");
+            System.out.println("Log: " + this + " has unloaded" + " " + parcel + " with wight " + parcel.weight + " and time spending since pick up: " + timeSpendingSincePickUp + " time spending since generate: "+ timeSpendingSinceGen + " at " + currStation + "...");
             System.out.println("Log: Global parcels remaining " + map.parcelTotal);
         }
     }
@@ -180,10 +205,13 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     public void arriveStation() {
 
         if (!hasArrived) {
+            // unloadParcel method is in the first time arrive method
             firstTimeArrive();
         }
-        // unloadParcel method is in the first time arrive method
-        loadParcel();
+        if(map.smartLoadingOn) {
+            smartLoadParcel();
+        }
+        loadParcelBasic();
         // set both global and local path
         setAllPath();
     }
@@ -284,15 +312,39 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         }
     }
 
-    private Parcel fetchFromParcelsToBeSent(int weight) {
+    private Parcel fetchFromParcelsToBeSent(int spaceRemaining) {
         LinkedList<Parcel> pToBeSentCopy = (LinkedList<Parcel>) currStation.pToBeSent.clone();
         for (Parcel p : pToBeSentCopy) {
-            if (p.weight <= weight) {
+            if (p.weight <= spaceRemaining) {
                 currStation.pToBeSent.remove(p);
                 return p;
             }
         }
         return null;
+    }
+
+    private LinkedList<Parcel> fetchFromParcelsToBeSent(int spaceRemaining,LinkedList<ExpressCentre> futurePath) {
+        LinkedList<Parcel> pToBeSentCopy = (LinkedList<Parcel>) currStation.pToBeSent.clone();
+        LinkedList<Parcel> pickUp = new LinkedList<Parcel>();
+        for (Parcel p : pToBeSentCopy) {
+            if (p.weight <= spaceRemaining && futurePath.contains(p.destination)) {
+                currStation.pToBeSent.remove(p);
+                pickUp.add(p);
+            }
+        }
+        return pickUp;
+    }
+
+
+    private void parcelLoader(LinkedList<ExpressCentre> futurePath) {
+        LinkedList<Parcel> newPs;
+        newPs = fetchFromParcelsToBeSent(spaceRemaining,futurePath);
+        if(newPs.size()>0){
+            for(Parcel p: newPs){
+                putIn(p);
+                printLogForParcelLoader(p);
+            }
+        }
     }
 
     // calculate what parcel can be put into the car with the given loading weight

@@ -3,7 +3,6 @@ package courier;
 import sim.engine.SimState;
 import sim.util.Int2D;
 
-import java.sql.Ref;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -49,10 +48,13 @@ public class Car_AVOID extends Car_BASIC {
     public void arriveStation() {
 
         if (!hasArrived) {
+            // unloadParcel method is in the first time arrive method
             firstTimeArrive();
         }
-        // unloadParcel method is in the first time arrive method
-        loadParcel();
+        if(map.smartLoadingOn) {
+            smartLoadParcel();
+        }
+        loadParcelBasic();
         // set both global and local path
         setAllPath();
     }

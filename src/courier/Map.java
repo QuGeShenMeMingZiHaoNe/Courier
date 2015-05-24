@@ -28,25 +28,26 @@ public class Map extends SimState {
     protected int carMaxSpace = 100;
 
     // test two 50-150-250-350-450-550
-    protected int initNumOfCarsInGarage = 80;
+    protected int initNumOfCarsInGarage = 150;
 
     // test three 5-6-7-8-9-10
     protected int congestionLevel = 8;
 
     // test four num of carpark in island 1-2-3-4-5-6-7
-    protected int RefugeeCarParkNum = 7;
+    protected int RefugeeCarParkNum = 2;
 
     public int numOfRefugeeIsland = 1;
 
+//    public boolean smartLoadingOn = true;
+    public boolean smartLoadingOn = false;
 
-
-    protected int expressCenterBusyLevel = 10;
+    protected int expressCenterBusyLevel = 6;
     protected boolean testModeOn = true;
 
 
 
-//    public static boolean refugeeIslandOn = false;
-    public static boolean refugeeIslandOn = true;
+    public static boolean refugeeIslandOn = false;
+//    public static boolean refugeeIslandOn = true;
 
     /**************************** test parameters ****************************/
 
@@ -72,7 +73,8 @@ public class Map extends SimState {
     protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
     protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
     protected Network tramLineNet = new Network(false);
-    protected long parcelTimeSpendingTotal = 0;
+    protected long parcelTimeSpendingTotalSincePickUp = 0;
+    protected long parcelTimeSpendingTotalSinceGen = 0;
     protected int parcelTotalCopy;
     private SimpleDateFormat format = new SimpleDateFormat("dd-hh-mm-ss");
     protected String initTime = format.format(new Date()).toString();

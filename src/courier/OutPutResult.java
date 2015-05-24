@@ -14,9 +14,11 @@ public class OutPutResult {
     }
 
     public void writeResult() {
-        long timeSpendingAverage = map.parcelTimeSpendingTotal / map.parcelTotalCopy;
+        long timeSpendingAverageSincePickUp = map.parcelTimeSpendingTotalSincePickUp / map.parcelTotalCopy;
+        long timeSpendingAverageSinceGne = map.parcelTimeSpendingTotalSinceGen / map.parcelTotalCopy;
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
+        outputFile("\nSmarPickUp: "+ map.smartLoadingOn);
         outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
         if(map.getRefugeeIslandOn()){
             outputFile("\nRefugee Island carPark available : " + map.RefugeeCarParkNum);
@@ -31,8 +33,9 @@ public class OutPutResult {
         outputFile("\nThe degree of busyLevel in Express Centre: " + map.expressCentres.getFirst().busyLevel);
         outputFile("\nCongestion Level: " + map.getCongestionLevel_1_10() + "\n");
         outputFile("***********************************************************************************************************");
-        outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotal));
-        outputFile("\nAverage Parcel Delivering Time For One Parcel : " + (timeSpendingAverage));
+        outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotalSincePickUp));
+        outputFile("\nAverage Parcel Delivering Time Since Pick Up: " + (timeSpendingAverageSincePickUp));
+        outputFile("\nAverage Parcel Delivering Time Since Generate: "+ (timeSpendingAverageSinceGne));
         long finalStep = map.schedule.getSteps();
         outputFile("\nSystem Time Of Finishing Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {

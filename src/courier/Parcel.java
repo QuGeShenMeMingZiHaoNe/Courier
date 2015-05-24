@@ -9,6 +9,7 @@ public class Parcel {
     protected long pickUpTime;
     protected long arriveTime;
     protected long timeSpending;
+    protected long generateTime;
 
     Parcel(int parcelID, ExpressCentre from, ExpressCentre destination, double weight, Map map) {
         this.parcelID = parcelID;
@@ -16,7 +17,7 @@ public class Parcel {
         this.destination = destination;
         this.from = from;
         this.map = map;
-
+        this.generateTime = map.schedule.getSteps();
     }
 
     Parcel(Map map) {
@@ -28,15 +29,23 @@ public class Parcel {
         return "Parcel: " + parcelID + " From " + from + " To " + destination;
     }
 
-    public String getTimeSpending() {
+    public String getTimeSpendingSincePickUp() {
         timeSpending = map.schedule.getSteps() - pickUpTime;
 
         if (!(this instanceof CarCaller)) {
-            map.parcelTimeSpendingTotal += this.timeSpending;
+            map.parcelTimeSpendingTotalSincePickUp += this.timeSpending;
         }
         return String.valueOf(timeSpending);
     }
 
+    public String getTimeSpendingSinceGen() {
+        timeSpending = map.schedule.getSteps() - generateTime;
+
+        if (!(this instanceof CarCaller)) {
+            map.parcelTimeSpendingTotalSinceGen += this.timeSpending;
+        }
+        return String.valueOf(timeSpending);
+    }
 
     // TODO: better simulation as the distance does not == car step
     private double getMinimumCost() {
