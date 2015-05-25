@@ -15,7 +15,7 @@ public class OutPutResult {
 
     public void writeResult() {
         long timeSpendingAverageSincePickUp = map.parcelTimeSpendingTotalSincePickUp / map.parcelTotalCopy;
-        long timeSpendingAverageSinceGne = map.parcelTimeSpendingTotalSinceGen / map.parcelTotalCopy;
+        long timeSpendingAverageSinceGen = map.parcelTimeSpendingTotalSinceGen / map.parcelTotalCopy;
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
         outputFile("\nSmarPickUp: "+ map.smartLoadingOn);
@@ -35,16 +35,31 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
         outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotalSincePickUp));
         outputFile("\nAverage Parcel Delivering Time Since Pick Up: " + (timeSpendingAverageSincePickUp));
-        outputFile("\nAverage Parcel Delivering Time Since Generate: "+ (timeSpendingAverageSinceGne));
-        outputFile("\nLongest Deliver time since pick up: " + map.longestDeliverTimeSincePickUp);
-        outputFile("\nLongest Deliver time since generate: " + map.longestDeliverTimeSinceGenerate);
+        outputFile("\nAverage Parcel Delivering Time Since Generate: "+ (timeSpendingAverageSinceGen));
+
+        // sd of pick up
+        double sumSincePickUp = 0;
+        for(Parcel p: map.parcelArrive){
+            sumSincePickUp += (p.timeSpendingSincePickUp-timeSpendingAverageSincePickUp)*(p.timeSpendingSincePickUp-timeSpendingAverageSincePickUp);
+        }
+        double sdSincePickUp = Math.sqrt(sumSincePickUp/map.parcelTotalCopy);
+
+        // sd of generate
+        double sumSinceGen = 0;
+        for(Parcel p: map.parcelArrive){
+            sumSinceGen += (p.timeSpendingSinceGenerate-timeSpendingAverageSinceGen)*(p.timeSpendingSinceGenerate-timeSpendingAverageSinceGen);
+        }
+        double sdSinceGen = Math.sqrt(sumSinceGen/map.parcelTotalCopy);
+
+        outputFile("\nstandard deviation of Deliver time since pick up: " + sdSincePickUp);
+        outputFile("\nstandard deviation of Deliver time since generate: " + sdSinceGen);
         long finalStep = map.schedule.getSteps();
         outputFile("\nSystem Time Of Finishing Delivery All Parcels: " + finalStep);
-        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+//        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
 //            outputFile("\nTime Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
-        } else {
+//        } else {
             outputFile("\n");
-        }
+//        }
         outputFile("***********************************************************************************************************");
 
         System.out.println("Finish!!!!!!!");

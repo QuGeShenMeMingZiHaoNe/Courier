@@ -10,6 +10,8 @@ public class Parcel {
     protected long arriveTime;
     protected long timeSpending;
     protected long generateTime;
+    protected long timeSpendingSincePickUp;
+    protected long timeSpendingSinceGenerate;
 
     Parcel(int parcelID, ExpressCentre from, ExpressCentre destination, double weight, Map map) {
         this.parcelID = parcelID;
@@ -36,6 +38,7 @@ public class Parcel {
         }
         if (!(this instanceof CarCaller)) {
             map.parcelTimeSpendingTotalSincePickUp += this.timeSpending;
+            timeSpendingSincePickUp = timeSpending;
         }
         return String.valueOf(timeSpending);
     }
@@ -47,6 +50,7 @@ public class Parcel {
         }
         if (!(this instanceof CarCaller)) {
             map.parcelTimeSpendingTotalSinceGen += this.timeSpending;
+            timeSpendingSinceGenerate = timeSpending;
         }
         return String.valueOf(timeSpending);
     }

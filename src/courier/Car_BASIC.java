@@ -82,6 +82,12 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
 
         LinkedList<ExpressCentre> futurePath = new LinkedList<ExpressCentre>();
         boolean startRecord = false;
+        if(carrying.isEmpty() && !currStation.pToBeSent.isEmpty()){
+            setPathGlobal(currStation, currStation.pToBeSent.getFirst().destination);
+        }
+        if(!carrying.isEmpty() && globalPath == null){
+            setPathGlobal(currStation,carrying.getFirst().destination);
+        }
         if(globalPath != null) {
             for (ExpressCentre ec : globalPath) {
                 if (startRecord && !(ec instanceof RefugeeIsland))
@@ -129,6 +135,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             currStation.pArrived.add(pickOut);
             map.parcelTotal--;
             tryTerminate();
+            map.parcelArrive.add(pickOut);
         } else {
             carCallerConvertParcel((CarCaller) pickOut);
             printCarCallerUnloadLog((CarCaller) pickOut);

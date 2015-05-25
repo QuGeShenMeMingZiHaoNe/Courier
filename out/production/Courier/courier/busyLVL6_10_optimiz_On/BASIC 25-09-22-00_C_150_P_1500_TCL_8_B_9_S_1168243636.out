@@ -1,6 +1,6 @@
 ***********************************************************************************************************
 
-Mode: AVOID_TRAFFIC_JAM
+Mode: BASIC
 
 SmarPickUp: true
 
@@ -10,11 +10,11 @@ Random number seed: 1168243636
 
 Number Of ExpressCenters: 36
 
-Number Of Parcels: 180000
+Number Of Parcels: 54000
 
-Number Of Cars: 100
+Number Of Cars: 150
 
-Maximum Car carrying weight: 100
+Maximum Car carrying weight: 80
 
 Map size: 300
 
@@ -24,18 +24,15 @@ Congestion Level: 8
 
 ***********************************************************************************************************
 
-Sum Of All Parcels Delivering Time: 552295997
+Sum Of All Parcels Delivering Time: 212084337
 
-Average Parcel Delivering Time Since Pick Up: 3068
+Average Parcel Delivering Time Since Pick Up: 3927
 
-Average Parcel Delivering Time Since Generate: 3637
+Average Parcel Delivering Time Since Generate: 4499
 
-Longest Deliver time since pick up: 14467
+standard deviation of Deliver time since generate: 199.41915655222294
 
-Longest Deliver time since generate: 16200
+System Time Of Finishing Delivery All Parcels: 54888
 
-System Time Of Finishing Delivery All Parcels: 144666
-
-Time Saved By Path Changing Path (compare to old path): 400506
 
 ***********************************************************************************************************

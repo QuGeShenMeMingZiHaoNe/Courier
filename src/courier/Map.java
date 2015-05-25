@@ -17,37 +17,37 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     /**************************** test parameters ****************************/
-    public int initNumOfParcelsInExpressCentre = 5000;
+    public int initNumOfParcelsInExpressCentre = 1500;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+//     public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
 
-    //test one 20-40-60-80-100-120
-    protected int carMaxSpace = 100;
+    // test one 6-7-8-9-10
+    protected int expressCenterBusyLevel = 9;
 
-    // test two 50-150-250-350-450-550
-    protected int initNumOfCarsInGarage = 100;
+//        public boolean smartLoadingOn = true;
+    public boolean smartLoadingOn = false;
 
-    // test three 5-6-7-8-9-10
+    // test two 20-40-60-80-100-120
+    protected int carMaxSpace = 20;
+
+    //  test three 50-150-250-350-450-550
+    protected int initNumOfCarsInGarage = 150;
+
+    // test four 5-6-7-8-9-10
     protected int congestionLevel = 8;
 
-    // test four num of carpark in island 1-2-3-4-5-6-7
+    // test five num of carpark in island 1-2-3-4-5-6-7
+    public static boolean refugeeIslandOn = false;
+    //    public static boolean refugeeIslandOn = true;
+
     protected int RefugeeCarParkNum = 2;
 
     public int numOfRefugeeIsland = 1;
 
-    public boolean smartLoadingOn = true;
-//    public boolean smartLoadingOn = false;
-
-    protected int expressCenterBusyLevel = 9;
     protected boolean testModeOn = true;
-
-
-
-    public static boolean refugeeIslandOn = false;
-//    public static boolean refugeeIslandOn = true;
 
     /**************************** test parameters ****************************/
 
@@ -69,7 +69,7 @@ public class Map extends SimState {
     protected LinkedList<Garage> garages = new LinkedList<Garage>();
     protected LinkedList<RefugeeIsland> refugee_islands = new LinkedList<RefugeeIsland>();
     protected LinkedList<Double> tramLineHasInit = new LinkedList<Double>();
-    protected LinkedList<Parcel> parcels = new LinkedList<Parcel>();
+    protected LinkedList<Parcel> parcelArrive = new LinkedList<Parcel>();
     protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
     protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
     protected Network tramLineNet = new Network(false);
@@ -251,11 +251,7 @@ public class Map extends SimState {
 
         allStations.addAll(expressCentres);
 
-        // init garage
-        addGarage();
-        allStations.addAll(garages);
 
-        initCars();
 
 
 //        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
@@ -274,6 +270,11 @@ public class Map extends SimState {
             e.printStackTrace();
         }
 
+        // init garage
+        addGarage();
+        allStations.addAll(garages);
+
+        initCars();
 
         if (testModeOn) {
             autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre * expressCentres.size();
@@ -331,7 +332,7 @@ public class Map extends SimState {
         double tempDistance;
         for (ExpressCentre ec : expressCentres) {
             tempDistance = loc.distance(ec.location);
-            if (tempDistance < distance) {
+            if (tempDistance < distance && ec.reachable(expressCentres.getLast())) {
                 distance = tempDistance;
                 closestEC = ec;
             }
