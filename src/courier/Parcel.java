@@ -31,7 +31,9 @@ public class Parcel {
 
     public String getTimeSpendingSincePickUp() {
         timeSpending = map.schedule.getSteps() - pickUpTime;
-
+        if(map.longestDeliverTimeSincePickUp < timeSpending){
+            map.longestDeliverTimeSincePickUp = timeSpending;
+        }
         if (!(this instanceof CarCaller)) {
             map.parcelTimeSpendingTotalSincePickUp += this.timeSpending;
         }
@@ -40,7 +42,9 @@ public class Parcel {
 
     public String getTimeSpendingSinceGen() {
         timeSpending = map.schedule.getSteps() - generateTime;
-
+        if(map.longestDeliverTimeSinceGenerate < timeSpending){
+            map.longestDeliverTimeSinceGenerate = timeSpending;
+        }
         if (!(this instanceof CarCaller)) {
             map.parcelTimeSpendingTotalSinceGen += this.timeSpending;
         }

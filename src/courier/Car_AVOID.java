@@ -44,6 +44,20 @@ public class Car_AVOID extends Car_BASIC {
         }
     }
 
+    public void optimizeUnloadParcel(){
+        if(globalPath == null || carrying.isEmpty())
+            return;
+        LinkedList<Parcel> carryingCopy = (LinkedList<Parcel>) carrying.clone();
+        for(Parcel p: carryingCopy){
+            if(!globalPath.contains(p.destination)){
+                carrying.remove(p);
+                currStation.pToBeSent.add(0,p);
+                this.spaceRemaining+=p.weight;
+            }
+        }
+        optimizedLoadParcel();
+    }
+
 
     public void arriveStation() {
 
@@ -52,7 +66,7 @@ public class Car_AVOID extends Car_BASIC {
             firstTimeArrive();
         }
         if(map.smartLoadingOn) {
-            smartLoadParcel();
+            optimizedLoadParcel();
         }
         loadParcelBasic();
         // set both global and local path
@@ -174,6 +188,13 @@ public class Car_AVOID extends Car_BASIC {
 
         if (globalPath != null) {
             stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
+        }
+
+//        System.out.println(globalPath.equals(globalPath) + " " +map.smartLoadingOn);
+
+        if(!globalPath.equals(old) && map.smartLoadingOn){
+//            System.out.println("fdasfsafsafs");
+            optimizeUnloadParcel();
         }
     }
 

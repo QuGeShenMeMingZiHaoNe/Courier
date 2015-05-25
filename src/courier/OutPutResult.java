@@ -36,10 +36,12 @@ public class OutPutResult {
         outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotalSincePickUp));
         outputFile("\nAverage Parcel Delivering Time Since Pick Up: " + (timeSpendingAverageSincePickUp));
         outputFile("\nAverage Parcel Delivering Time Since Generate: "+ (timeSpendingAverageSinceGne));
+        outputFile("\nLongest Deliver time since pick up: " + map.longestDeliverTimeSincePickUp);
+        outputFile("\nLongest Deliver time since generate: " + map.longestDeliverTimeSinceGenerate);
         long finalStep = map.schedule.getSteps();
         outputFile("\nSystem Time Of Finishing Delivery All Parcels: " + finalStep);
         if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
-            outputFile("\nTime Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
+//            outputFile("\nTime Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
         } else {
             outputFile("\n");
         }

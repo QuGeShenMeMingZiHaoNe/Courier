@@ -76,7 +76,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     }
 
 
-    public void smartLoadParcel(){
+    public void optimizedLoadParcel(){
+
         if (currStation.pToBeSent.size() == 0 || spaceRemaining==0) return;
 
         LinkedList<ExpressCentre> futurePath = new LinkedList<ExpressCentre>();
@@ -89,6 +90,10 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
                     startRecord = true;
             }
         }
+//        System.out.println(futurePath.toString());
+        if(futurePath.isEmpty())
+            return;
+
         parcelLoader(futurePath);
         //TODO
 //        if(futurePath.size()<10&&){
@@ -128,7 +133,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             carCallerConvertParcel((CarCaller) pickOut);
             printCarCallerUnloadLog((CarCaller) pickOut);
         }
-        initCarState();
+//        initCarState();
     }
 
     //  put a parcel into a carrying
@@ -195,7 +200,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
                 pickOut(p);
                 map.parcelArrivedTotal++;
                 // if the package is the first package
-                if (carrying.indexOf(p) == 0)
+                if (carryingCopy.indexOf(p) == 0)
                     initCarState();
             }
         }
@@ -209,7 +214,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             firstTimeArrive();
         }
         if(map.smartLoadingOn) {
-            smartLoadParcel();
+            optimizedLoadParcel();
         }
         loadParcelBasic();
         // set both global and local path

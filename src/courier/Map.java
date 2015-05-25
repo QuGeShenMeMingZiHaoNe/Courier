@@ -21,14 +21,14 @@ public class Map extends SimState {
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public int distanceToCentre = 300;
-//    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
 
     //test one 20-40-60-80-100-120
     protected int carMaxSpace = 100;
 
     // test two 50-150-250-350-450-550
-    protected int initNumOfCarsInGarage = 150;
+    protected int initNumOfCarsInGarage = 100;
 
     // test three 5-6-7-8-9-10
     protected int congestionLevel = 8;
@@ -38,10 +38,10 @@ public class Map extends SimState {
 
     public int numOfRefugeeIsland = 1;
 
-//    public boolean smartLoadingOn = true;
-    public boolean smartLoadingOn = false;
+    public boolean smartLoadingOn = true;
+//    public boolean smartLoadingOn = false;
 
-    protected int expressCenterBusyLevel = 6;
+    protected int expressCenterBusyLevel = 9;
     protected boolean testModeOn = true;
 
 
@@ -85,6 +85,8 @@ public class Map extends SimState {
     private int serialCarID = 1;
     protected long pathImprovement = 0;
     private int carMax = 9999;
+    protected long longestDeliverTimeSincePickUp;
+    protected long longestDeliverTimeSinceGenerate;
     protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0,0),this);
 
     public Map(long seed) {
