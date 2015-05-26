@@ -17,33 +17,33 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     /**************************** test parameters ****************************/
-    public int initNumOfParcelsInExpressCentre = 1500;
+    public static int initNumOfParcelsInExpressCentre = 1500;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
-    public int distanceToCentre = 300;
+    public static int distanceToCentre = 300;
 //     public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
     public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
 
-    // test one 6-7-8-9-10
-    protected int expressCenterBusyLevel = 9;
+    // test one 6-7-8-9-10 def 10
+    protected static int expressCenterBusyLevel = 10;
 
 //        public boolean smartLoadingOn = true;
-    public boolean smartLoadingOn = false;
+    public static boolean smartLoadingOn = false;
 
-    // test two 20-40-60-80-100-120
-    protected int carMaxSpace = 20;
+    // test two 20-40-60-80-100-120 def 80
+    protected static int carMaxSpace = 80;
 
-    //  test three 50-150-250-350-450-550
-    protected int initNumOfCarsInGarage = 150;
+    //  test three 50-150-250-350-450-550 def 150
+    protected static int initNumOfCarsInGarage = 150;
 
     // test four 5-6-7-8-9-10
-    protected int congestionLevel = 8;
+    protected static int congestionLevel = 8;
 
-    // test five num of carpark in island 1-2-3-4-5-6-7
     public static boolean refugeeIslandOn = false;
     //    public static boolean refugeeIslandOn = true;
 
-    protected int RefugeeCarParkNum = 2;
+    // test five num of carpark in island 1-2-3-4-5-6-7
+    protected static int refugeeCarParkNum = 2;
 
     public int numOfRefugeeIsland = 1;
 
@@ -51,7 +51,7 @@ public class Map extends SimState {
 
     /**************************** test parameters ****************************/
 
-
+    public static String testType;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
     public double modePicker = 0;
@@ -94,8 +94,31 @@ public class Map extends SimState {
     }
 
     public static void main(String[] args) {
-        doLoop(Map.class, args);
-        System.exit(0);
+//        args = new String[2];
+//        args[0] = "-seed";
+//        args[1] = String.valueOf(1168243636);
+//
+        doLoop(Map.class,args);
+//        Map map = new Map(4);
+//        map.start();
+//        while (true) {
+//            map.schedule.step(map);
+//            if (map.parcelTotal == 0) {
+//                new OutPutResult(map).writeResult();
+//            }
+//        }
+//        System.out.println(map.schedule.getSteps());
+//        System.exit(0);
+    }
+
+    private void tryTerminate() {
+        if (autoGenParcelsModeTermination && autoGenParcelByStationsMax > 0) {
+            return;
+        }
+        // the ending of the output file
+        if (parcelTotal == 0) {
+            new OutPutResult(this).writeResult();
+        }
     }
 
     public SIMULATION_MODE getMode() {
@@ -121,13 +144,13 @@ public class Map extends SimState {
 
     public void setRefugeeCarParkNum_2_7(int val){
         if(val>=2 && val <=7 && refugeeIslandOn){
-            RefugeeCarParkNum = val;
+            refugeeCarParkNum = val;
         }
     }
 
     public int getRefugeeCarParkNum_2_7(){
         if(refugeeIslandOn)
-            return RefugeeCarParkNum;
+            return refugeeCarParkNum;
         else
             return 0;
     }

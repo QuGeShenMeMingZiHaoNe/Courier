@@ -16,7 +16,7 @@ public class RefugeeIsland extends ExpressCentre {
 
     public RefugeeIsland(String name, Int2D location, Map map) {
         super(name, location, map);
-        carParkAvailable = map.RefugeeCarParkNum;
+        carParkAvailable = map.refugeeCarParkNum;
     }
 
     @Override

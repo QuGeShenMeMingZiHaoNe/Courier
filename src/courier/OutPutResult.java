@@ -21,7 +21,7 @@ public class OutPutResult {
         outputFile("\nSmarPickUp: "+ map.smartLoadingOn);
         outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
         if(map.getRefugeeIslandOn()){
-            outputFile("\nRefugee Island carPark available : " + map.RefugeeCarParkNum);
+            outputFile("\nRefugee Island carPark available : " + map.refugeeCarParkNum);
             outputFile("\nNumber Of Refugee Between Two Stations : " + map.numOfRefugeeIsland);
         }
         outputFile("\nRandom number seed: " + map.seed());
@@ -35,7 +35,9 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
         outputFile("\nSum Of All Parcels Delivering Time: " + (map.parcelTimeSpendingTotalSincePickUp));
         outputFile("\nAverage Parcel Delivering Time Since Pick Up: " + (timeSpendingAverageSincePickUp));
+        outputAvgSincePickUp(timeSpendingAverageSincePickUp+"");
         outputFile("\nAverage Parcel Delivering Time Since Generate: "+ (timeSpendingAverageSinceGen));
+        outputAvgSinceGen(timeSpendingAverageSinceGen+"");
 
         // sd of pick up
         double sumSincePickUp = 0;
@@ -43,6 +45,8 @@ public class OutPutResult {
             sumSincePickUp += (p.timeSpendingSincePickUp-timeSpendingAverageSincePickUp)*(p.timeSpendingSincePickUp-timeSpendingAverageSincePickUp);
         }
         double sdSincePickUp = Math.sqrt(sumSincePickUp/map.parcelTotalCopy);
+        outputSDPickUp(sdSincePickUp+"");
+
 
         // sd of generate
         double sumSinceGen = 0;
@@ -50,11 +54,15 @@ public class OutPutResult {
             sumSinceGen += (p.timeSpendingSinceGenerate-timeSpendingAverageSinceGen)*(p.timeSpendingSinceGenerate-timeSpendingAverageSinceGen);
         }
         double sdSinceGen = Math.sqrt(sumSinceGen/map.parcelTotalCopy);
+        outputSDGen(sdSinceGen + "");
+
+
 
         outputFile("\nstandard deviation of Deliver time since pick up: " + sdSincePickUp);
         outputFile("\nstandard deviation of Deliver time since generate: " + sdSinceGen);
         long finalStep = map.schedule.getSteps();
         outputFile("\nSystem Time Of Finishing Delivery All Parcels: " + finalStep);
+        outputFinishTime(finalStep+"");
 //        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
 //            outputFile("\nTime Saved By Path Changing Path (compare to old path): " + map.pathImprovement + "\n");
 //        } else {
@@ -63,7 +71,10 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
 
         System.out.println("Finish!!!!!!!");
-        System.exit(0);
+//        System.exit(0);
+
+
+        map.finish();
     }
 
     private void outputFile(String write) {
@@ -85,7 +96,91 @@ public class OutPutResult {
             e.printStackTrace();
         }
         writer.println(write);
+        writer.close();
+    }
 
+    private void outputAvgSincePickUp(String write){
+        String mode;
+        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+            mode = "AVOID";
+        } else {
+            mode = "BASIC";
+        }
+        PrintWriter writer = null;
+        try{
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_AvgPickUp"+".out", true)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writer.println(write);
+        writer.close();
+    }
+
+    private void outputAvgSinceGen(String write){
+        String mode;
+        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+            mode = "AVOID";
+        } else {
+            mode = "BASIC";
+        }
+        PrintWriter writer = null;
+        try{
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType+ "_" + mode + "_AvgGen"+".out", true)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writer.println(write);
+        writer.close();
+    }
+
+    private void outputFinishTime(String write){
+        String mode;
+        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+            mode = "AVOID";
+        } else {
+            mode = "BASIC";
+        }
+        PrintWriter writer = null;
+        try{
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_FinishTime"+".out", true)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writer.println(write);
+        writer.close();
+    }
+
+    private void outputSDPickUp(String write){
+        String mode;
+        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+            mode = "AVOID";
+        } else {
+            mode = "BASIC";
+        }
+        PrintWriter writer = null;
+        try{
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_SDPickUp"+".out", true)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writer.println(write);
+        writer.close();
+    }
+
+    private void outputSDGen(String write){
+        String mode;
+        if (map.getMode() == SIMULATION_MODE.AVOID_TRAFFIC_JAM) {
+            mode = "AVOID";
+        } else {
+            mode = "BASIC";
+        }
+        PrintWriter writer = null;
+        try{
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_SDGen"+".out", true)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writer.println(write);
         writer.close();
     }
 }

@@ -32,7 +32,7 @@ public class GlobalExpressCenter extends ExpressCentre {
         for(Parcel p: copy) {
             callCarToPickUpParcels.remove(p);
             p.from.pToBeSent.addFirst(p);
-            System.out.println("Parcel been restored: "+p);
+//            System.out.println("Parcel been restored: "+p);
         }
     }
 }
