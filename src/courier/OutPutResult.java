@@ -1,9 +1,6 @@
 package courier;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
 
 public class OutPutResult {
@@ -18,7 +15,7 @@ public class OutPutResult {
         long timeSpendingAverageSinceGen = map.parcelTimeSpendingTotalSinceGen / map.parcelTotalCopy;
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
-        outputFile("\nSmarPickUp: "+ map.smartLoadingOn);
+        outputFile("\nOptimizedPickUp: "+ map.optimizedPickUp);
         outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
         if(map.getRefugeeIslandOn()){
             outputFile("\nRefugee Island carPark available : " + map.refugeeCarParkNum);
@@ -86,11 +83,16 @@ public class OutPutResult {
         } else {
             mode = "BASIC";
         }
+
+        File dir = new File("src/courier/testResult/");
+        dir.mkdir();
+        dir = new File("src/courier/testResult/" + map.testType +"/");
+        dir.mkdir();
         try {
             if(map.getRefugeeIslandOn()) {
-                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/"+ mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             }else {
-                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/"+ mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             }
             } catch (IOException e) {
             e.printStackTrace();
@@ -108,7 +110,7 @@ public class OutPutResult {
         }
         PrintWriter writer = null;
         try{
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_AvgPickUp"+".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/" +  map.testType + "_" + mode + "_AvgPickUp"+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,7 +127,7 @@ public class OutPutResult {
         }
         PrintWriter writer = null;
         try{
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType+ "_" + mode + "_AvgGen"+".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/" +  map.testType+ "_" + mode + "_AvgGen"+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -142,7 +144,7 @@ public class OutPutResult {
         }
         PrintWriter writer = null;
         try{
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_FinishTime"+".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/" +  map.testType + "_" + mode + "_FinishTime"+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -159,7 +161,7 @@ public class OutPutResult {
         }
         PrintWriter writer = null;
         try{
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_SDPickUp"+".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/" +  map.testType + "_" + mode + "_SDPickUp"+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -176,7 +178,7 @@ public class OutPutResult {
         }
         PrintWriter writer = null;
         try{
-            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/" +  map.testType + "_" + mode + "_SDGen"+".out", true)));
+            writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/" +  map.testType + "_" + mode + "_SDGen"+".out", true)));
         } catch (IOException e) {
             e.printStackTrace();
         }

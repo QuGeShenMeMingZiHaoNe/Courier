@@ -220,7 +220,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             // unloadParcel method is in the first time arrive method
             firstTimeArrive();
         }
-        if(map.smartLoadingOn) {
+        if(map.optimizedPickUp) {
             optimizedLoadParcel();
         }
         loadParcelBasic();

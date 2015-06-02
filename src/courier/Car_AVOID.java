@@ -65,7 +65,7 @@ public class Car_AVOID extends Car_BASIC {
             // unloadParcel method is in the first time arrive method
             firstTimeArrive();
         }
-        if(map.smartLoadingOn) {
+        if(map.optimizedPickUp) {
             optimizedLoadParcel();
         }
         loadParcelBasic();
@@ -190,9 +190,9 @@ public class Car_AVOID extends Car_BASIC {
             stationTo = globalPath.get(globalPath.indexOf(currStation) + 1);
         }
 
-//        System.out.println(globalPath.equals(globalPath) + " " +map.smartLoadingOn);
+//        System.out.println(globalPath.equals(globalPath) + " " +map.optimizedPickUp);
 
-        if(!globalPath.equals(old) && map.smartLoadingOn){
+        if(!globalPath.equals(old) && map.optimizedPickUp){
 //            System.out.println("fdasfsafsafs");
             optimizeUnloadParcel();
         }

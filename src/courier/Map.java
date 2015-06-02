@@ -27,8 +27,8 @@ public class Map extends SimState {
     // test one 6-7-8-9-10 def 10
     protected static int expressCenterBusyLevel = 10;
 
-//        public boolean smartLoadingOn = true;
-    public static boolean smartLoadingOn = false;
+//        public boolean optimizedPickUp = true;
+    public static boolean optimizedPickUp = false;
 
     // test two 20-40-60-80-100-120 def 80
     protected static int carMaxSpace = 80;

@@ -1,0 +1,40 @@
+***********************************************************************************************************
+
+Mode: AVOID_TRAFFIC_JAM
+
+SmarPickUp: false
+
+Refugee Island On: false
+
+Random number seed: 1168257409
+
+Number Of ExpressCenters: 36
+
+Number Of Parcels: 54000
+
+Number Of Cars: 150
+
+Maximum Car carrying weight: 80
+
+Map size: 300
+
+The degree of busyLevel in Express Centre: 10
+
+Congestion Level: 5
+
+***********************************************************************************************************
+
+Sum Of All Parcels Delivering Time: 179251426
+
+Average Parcel Delivering Time Since Pick Up: 3319
+
+Average Parcel Delivering Time Since Generate: 21084
+
+standard deviation of Deliver time since pick up: 2237.5158032671793
+
+standard deviation of Deliver time since generate: 11214.039081716242
+
+System Time Of Finishing Delivery All Parcels: 45034
+
+
+***********************************************************************************************************
