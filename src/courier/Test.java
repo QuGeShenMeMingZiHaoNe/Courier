@@ -156,9 +156,9 @@ public class Test {
 
     public static void testIslandCarPark(){
         // Basic
-        Map.refugeeIslandOn = true;
+        Map.numOfRefugeIsland = 1;
         for (int carPark = 1; carPark <= 6; carPark++) {
-            Map.refugeeCarParkNum = carPark;
+            Map.refugeCarParkNum = carPark;
             SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
             state.setJob(carPark);
             state.start();
@@ -170,7 +170,7 @@ public class Test {
         // Avoid
         Map.mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
         for (int carPark = 1; carPark <= 6; carPark++) {
-            Map.refugeeCarParkNum = carPark;
+            Map.refugeCarParkNum = carPark;
             SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
             state.setJob(carPark);
             state.start();

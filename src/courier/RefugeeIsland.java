@@ -16,7 +16,11 @@ public class RefugeeIsland extends ExpressCentre {
 
     public RefugeeIsland(String name, Int2D location, Map map) {
         super(name, location, map);
-        carParkAvailable = map.refugeeCarParkNum;
+        initCarPark();
+    }
+
+    private void initCarPark(){
+        carParkAvailable = map.refugeCarParkNum;
     }
 
     @Override
@@ -36,15 +40,6 @@ public class RefugeeIsland extends ExpressCentre {
     protected LinkedList<Car_BASIC> getTickHolder(){
         return tickHolder;
     }
-
-//    public boolean askForCarPark(){
-//        if(carParkAvailable>0) {
-//            carParkAvailable--;
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
 
     public void carLeaveCarPark(){
         carParkAvailable++;

@@ -133,13 +133,12 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         if (!(pickOut instanceof CarCaller)) {
             printParcelUnloadLog(pickOut);
             currStation.pArrived.add(pickOut);
-            map.parcelTotal--;
-            tryTerminate();
             map.parcelArrive.add(pickOut);
         } else {
             carCallerConvertParcel((CarCaller) pickOut);
             printCarCallerUnloadLog((CarCaller) pickOut);
         }
+
 //        initCarState();
     }
 
@@ -162,7 +161,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             return;
         }
         // the ending of the output file
-        if (map.parcelTotal == 0) {
+        if (map.parcelArrivedTotal == map.parcelTotalCopy) {
             new OutPutResult(map).writeResult();
         }
     }
@@ -205,7 +204,6 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         for (Parcel p : carryingCopy) {
             if (p.destination.equals(currStation)) {
                 pickOut(p);
-                map.parcelArrivedTotal++;
                 // if the package is the first package
                 if (carryingCopy.indexOf(p) == 0)
                     initCarState();

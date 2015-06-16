@@ -16,10 +16,10 @@ public class OutPutResult {
         outputFile("***********************************************************************************************************");
         outputFile("\nMode: " + map.mode);
         outputFile("\nOptimizedPickUp: "+ map.optimizedPickUp);
-        outputFile("\nRefugee Island On: " + map.getRefugeeIslandOn());
-        if(map.getRefugeeIslandOn()){
-            outputFile("\nRefugee Island carPark available : " + map.refugeeCarParkNum);
-            outputFile("\nNumber Of Refugee Between Two Stations : " + map.numOfRefugeeIsland);
+        outputFile("\nRefugee Island On: " + (map.numOfRefugeIsland>0));
+        if(map.numOfRefugeIsland>0){
+            outputFile("\nRefugee Island carPark available : " + map.refugeCarParkNum);
+            outputFile("\nNumber Of Refugee Between Two Stations : " + map.numOfRefugeIsland);
         }
         outputFile("\nRandom number seed: " + map.seed());
         outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
@@ -89,7 +89,7 @@ public class OutPutResult {
         dir = new File("src/courier/testResult/" + map.testType +"/");
         dir.mkdir();
         try {
-            if(map.getRefugeeIslandOn()) {
+            if(map.numOfRefugeIsland>0) {
                 writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/"+ mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             }else {
                 writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType +"/"+ mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));

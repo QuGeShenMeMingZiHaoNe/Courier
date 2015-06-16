@@ -39,13 +39,13 @@ public class Map extends SimState {
     // test four 5-6-7-8-9-10
     protected static int congestionLevel = 8;
 
-    public static boolean refugeeIslandOn = false;
-    //    public static boolean refugeeIslandOn = true;
+//    public static boolean refugeIslandOn = false;
+    //    public static boolean refugeIslandOn = true;
 
     // test five num of carpark in island 1-2-3-4-5-6-7
-    protected static int refugeeCarParkNum = 2;
+    protected static int refugeCarParkNum = 2;
 
-    public int numOfRefugeeIsland = 1;
+    public static int numOfRefugeIsland = 0;
 
     protected boolean testModeOn = true;
 
@@ -116,7 +116,7 @@ public class Map extends SimState {
             return;
         }
         // the ending of the output file
-        if (parcelTotal == 0) {
+        if (parcelArrivedTotal == parcelTotalCopy) {
             new OutPutResult(this).writeResult();
         }
     }
@@ -132,25 +132,25 @@ public class Map extends SimState {
         return initNumOfParcelsInExpressCentre;
     }
 
-    public int getNumOfRefugeeIsland_0_5() {
-        return numOfRefugeeIsland;
+    public int getNumOfRefugeeIsland_0_1() {
+        return numOfRefugeIsland;
     }
 
-    public void setNumOfRefugeeIsland_0_5(int val) {
-        if(val>=0 && val <=5){
-            numOfRefugeeIsland = val;
+    public void setNumOfRefugeeIsland_0_1(int val) {
+        if(val>=0 && val <=1){
+            numOfRefugeIsland = val;
         }
     }
 
     public void setRefugeeCarParkNum_2_7(int val){
-        if(val>=2 && val <=7 && refugeeIslandOn){
-            refugeeCarParkNum = val;
+        if(val>=2 && val <=7 && numOfRefugeIsland>0){
+            refugeCarParkNum = val;
         }
     }
 
     public int getRefugeeCarParkNum_2_7(){
-        if(refugeeIslandOn)
-            return refugeeCarParkNum;
+        if(numOfRefugeIsland>0)
+            return refugeCarParkNum;
         else
             return 0;
     }
@@ -228,10 +228,6 @@ public class Map extends SimState {
 
     public boolean getTestModeOn() {
         return testModeOn;
-    }
-
-    public boolean getRefugeeIslandOn() {
-        return refugeeIslandOn;
     }
 
     public void setTestModeOn(boolean on) {
@@ -423,7 +419,7 @@ public class Map extends SimState {
         if (ec1 != null && ec2 != null) {
             if (!tramLineHasInit.contains(uniquePairID)) {
                 tramLineHasInit.add(uniquePairID);
-                if (refugeeIslandOn) {
+                if (numOfRefugeIsland>0) {
                     addTramLinesWithIsland(line, ec1, ec2);
                 } else {
                     ec1.neighbours.add(ec2);
@@ -438,7 +434,7 @@ public class Map extends SimState {
 
 
     public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
-        if (refugeeIslandOn && !(a instanceof Garage) && !(b instanceof Garage)) {
+        if (numOfRefugeIsland>0 && !(a instanceof Garage) && !(b instanceof Garage)) {
             addTramLinesWithIsland(line, a, b);
         } else {
             a.neighbours.add(b);
@@ -452,9 +448,9 @@ public class Map extends SimState {
         ExpressCentre start;
         start = a;
 
-        int count = numOfRefugeeIsland;
+        int count = numOfRefugeIsland;
         while (count > 0) {
-            Int2D loc = new Int2D(a.location.x + (b.location.x - a.location.x) * (this.numOfRefugeeIsland-count+1) / (this.numOfRefugeeIsland + 1), a.location.y + (b.location.y - a.location.y) * (this.numOfRefugeeIsland-count+1) / (this.numOfRefugeeIsland + 1));
+            Int2D loc = new Int2D(a.location.x + (b.location.x - a.location.x) * (this.numOfRefugeIsland -count+1) / (this.numOfRefugeIsland + 1), a.location.y + (b.location.y - a.location.y) * (this.numOfRefugeIsland -count+1) / (this.numOfRefugeIsland + 1));
             RefugeeIsland island = new RefugeeIsland("RI: " + serialStationID, loc, this);
             count--;
 
