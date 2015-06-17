@@ -8,7 +8,7 @@ public class Parcel {
     protected Map map;
     protected long pickUpTime;
     protected long arriveTime;
-    protected long timeSpending;
+//    protected long timeSpending;
     protected long generateTime;
     protected long timeSpendingSincePickUp;
     protected long timeSpendingSinceGenerate;
@@ -32,27 +32,25 @@ public class Parcel {
     }
 
     public String getTimeSpendingSincePickUp() {
-        timeSpending = map.schedule.getSteps() - pickUpTime;
-        if(map.longestDeliverTimeSincePickUp < timeSpending){
-            map.longestDeliverTimeSincePickUp = timeSpending;
+        timeSpendingSincePickUp = map.schedule.getSteps() - pickUpTime;
+        if(map.longestDeliverTimeSincePickUp < timeSpendingSincePickUp){
+            map.longestDeliverTimeSincePickUp = timeSpendingSincePickUp;
         }
         if (!(this instanceof CarCaller)) {
-            map.parcelTimeSpendingTotalSincePickUp += this.timeSpending;
-            timeSpendingSincePickUp = timeSpending;
+            map.parcelTimeSpendingTotalSincePickUp += timeSpendingSincePickUp;
         }
-        return String.valueOf(timeSpending);
+        return String.valueOf(timeSpendingSincePickUp);
     }
 
     public String getTimeSpendingSinceGen() {
-        timeSpending = map.schedule.getSteps() - generateTime;
-        if(map.longestDeliverTimeSinceGenerate < timeSpending){
-            map.longestDeliverTimeSinceGenerate = timeSpending;
+        timeSpendingSinceGenerate = map.schedule.getSteps() - generateTime;
+        if(map.longestDeliverTimeSinceGenerate < timeSpendingSinceGenerate){
+            map.longestDeliverTimeSinceGenerate = timeSpendingSinceGenerate;
         }
         if (!(this instanceof CarCaller)) {
-            map.parcelTimeSpendingTotalSinceGen += this.timeSpending;
-            timeSpendingSinceGenerate = timeSpending;
+            map.parcelTimeSpendingTotalSinceGen += timeSpendingSinceGenerate;
         }
-        return String.valueOf(timeSpending);
+        return String.valueOf(timeSpendingSinceGenerate);
     }
 
     // TODO: better simulation as the distance does not == car step

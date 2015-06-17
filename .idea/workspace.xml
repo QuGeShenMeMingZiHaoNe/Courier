@@ -7,16 +7,187 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-04-46-57_C_30_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-04-47-09_C_130_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-04-47-36_C_230_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-04-48-21_C_330_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-04-49-38_C_430_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-04-53-34_C_530_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/AVOID 02-05-00-53_C_630_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-45-17_C_30_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-45-22_C_130_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-45-29_C_230_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-45-39_C_330_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-45-52_C_430_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-46-11_C_530_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/BASIC 02-04-46-32_C_630_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_AVOID_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_AVOID_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_AVOID_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_AVOID_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_AVOID_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168243636/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-24-34_C_30_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-24-45_C_130_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-25-12_C_230_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-25-59_C_330_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-27-20_C_430_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-28-57_C_530_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/AVOID 02-04-31-57_C_630_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-22-55_C_30_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-23-00_C_130_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-23-06_C_230_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-23-16_C_330_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-23-30_C_430_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-23-48_C_530_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/BASIC 02-04-24-10_C_630_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_AVOID_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_AVOID_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_AVOID_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_AVOID_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_AVOID_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168257409/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-28-47_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-28-58_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-29-27_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-30-14_C_330_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-31-43_C_430_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-37-00_C_530_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/AVOID 02-05-40-30_C_630_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-27-13_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-27-18_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-27-25_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-27-35_C_330_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-27-48_C_430_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-28-04_C_530_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/BASIC 02-05-28-23_C_630_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_AVOID_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_AVOID_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_AVOID_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_AVOID_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_AVOID_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar1168271169/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-01-05-33_C_150_P_1500_TCL_8_B_10_S_-537943094.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-01-12-57_C_150_P_1500_TCL_8_B_10_S_-537499494.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-01-21-32_C_150_P_1500_TCL_8_B_10_S_-536984563.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-03-11-10_C_150_P_1500_TCL_8_B_10_S_-530406761.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-03-13-37_C_150_P_1500_TCL_8_B_10_S_-530259211.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-03-25-27_C_150_P_1500_TCL_8_B_10_S_-529549306.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-03-29-29_C_150_P_1500_TCL_8_B_10_S_-529307722.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-03-43-51_C_150_P_1500_TCL_8_B_10_S_-528445171.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/BASIC 11-12-08-40_C_150_P_1500_TCL_8_B_10_S_-541355978.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-04-46-57_C_30_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-04-47-09_C_130_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-04-47-36_C_230_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-04-48-21_C_330_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-04-49-38_C_430_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-04-53-34_C_530_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/AVOID 02-05-00-53_C_630_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-45-17_C_30_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-45-22_C_130_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-45-29_C_230_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-45-39_C_330_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-45-52_C_430_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-46-11_C_530_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/BASIC 02-04-46-32_C_630_P_1500_TCL_8_B_10_S_1168243636.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-24-34_C_30_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-24-45_C_130_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-25-12_C_230_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-25-59_C_330_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-27-20_C_430_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-28-57_C_530_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-31-57_C_630_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-22-55_C_30_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-23-00_C_130_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-23-06_C_230_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-23-16_C_330_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-23-30_C_430_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-23-48_C_530_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/BASIC 02-04-24-10_C_630_P_1500_TCL_8_B_10_S_1168257409.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-28-47_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-28-58_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-29-27_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-30-14_C_330_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-31-43_C_430_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-37-00_C_530_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/AVOID 02-05-40-30_C_630_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-27-13_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-27-18_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-27-25_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-27-35_C_330_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-27-48_C_430_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-28-04_C_530_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/BASIC 02-05-28-23_C_630_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-01-05-33_C_150_P_1500_TCL_8_B_10_S_-537943094.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-01-12-57_C_150_P_1500_TCL_8_B_10_S_-537499494.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-01-21-32_C_150_P_1500_TCL_8_B_10_S_-536984563.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-03-11-10_C_150_P_1500_TCL_8_B_10_S_-530406761.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-03-13-37_C_150_P_1500_TCL_8_B_10_S_-530259211.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-03-25-27_C_150_P_1500_TCL_8_B_10_S_-529549306.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-03-29-29_C_150_P_1500_TCL_8_B_10_S_-529307722.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-03-43-51_C_150_P_1500_TCL_8_B_10_S_-528445171.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-12-08-40_C_150_P_1500_TCL_8_B_10_S_-541355978.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/null_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/null_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/null_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/null_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/null/null_BASIC_SDPickUp.out" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Car_BASIC.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/Car_BASIC.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Map.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/Map.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/OutPutResult.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/OutPutResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/RefugeeIsland.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/RefugeeIsland.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/Test.class" afterPath="$PROJECT_DIR$/out/production/Courier/courier/Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car_BASIC.java" afterPath="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/ExpressCentre.java" afterPath="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/OutPutResult.java" afterPath="$PROJECT_DIR$/src/courier/OutPutResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/RefugeeIsland.java" afterPath="$PROJECT_DIR$/src/courier/RefugeeIsland.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Test.java" afterPath="$PROJECT_DIR$/src/courier/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Parcel.java" afterPath="$PROJECT_DIR$/src/courier/Parcel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/data/TramLines.data" afterPath="$PROJECT_DIR$/src/courier/data/TramLines.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_AvgGen.out" afterPath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_AvgGen.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_AvgPickUp.out" afterPath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_AvgPickUp.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_FinishTime.out" afterPath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_FinishTime.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_SDGen.out" afterPath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_SDGen.out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_SDPickUp.out" afterPath="$PROJECT_DIR$/out/production/Courier/courier/testResult/null/null_BASIC_SDPickUp.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Courier.iws" />
@@ -49,105 +220,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="163" column="26" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16061185">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PathSearcher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/PathSearcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Car_AVOID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="177" column="67" selection-start-line="177" selection-start-column="67" selection-end-line="177" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OutPutResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Car_BASIC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="239" column="23" selection-start-line="239" selection-start-column="23" selection-end-line="239" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="-6.4444447">
+              <caret line="65" column="46" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="46" />
+              <folding>
+                <element signature="e#884#892#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExpressCenters.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/data/ExpressCenters.data">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="327" column="0" selection-start-line="327" selection-start-column="0" selection-end-line="327" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parcel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Parcel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/courier/Parcel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.332696">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExpressCentre.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/ExpressCentre.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="139" column="50" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RefugeeIsland.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/courier/RefugeeIsland.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-              <folding>
-                <element signature="e#518#519#0" expanded="true" />
-                <element signature="e#573#574#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -172,7 +262,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sim/app/wcss/tutorial13/Students.java" />
         <option value="$PROJECT_DIR$/src/sim/portrayal/simple/README" />
         <option value="$PROJECT_DIR$/src/sim/app/tutorial7/Tutorial7WithUI.java" />
         <option value="$PROJECT_DIR$/src/courier/Station.java" />
@@ -211,18 +300,19 @@
         <option value="$PROJECT_DIR$/src/courier/BASIC Island 06-11-06-08_C_500_P_5000_TCL_9_B_999_S_682607676.out" />
         <option value="$PROJECT_DIR$/src/courier/data/seed.txt" />
         <option value="$PROJECT_DIR$/src/courier/TramLine_BASIC.java" />
-        <option value="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
         <option value="$PROJECT_DIR$/src/courier/BASIC 19-05-48-24_C_450_P_5000_TCL_8_B_10_S_1168243636.out" />
         <option value="$PROJECT_DIR$/src/courier/BASIC Island 20-09-23-08_C_80_P_5000_TCL_8_B_10_S_1168243636.out" />
         <option value="$PROJECT_DIR$/src/courier/Car_AVOID.java" />
-        <option value="$PROJECT_DIR$/src/courier/Parcel.java" />
         <option value="$PROJECT_DIR$/src/courier/GlobalExpressCenter.java" />
         <option value="$PROJECT_DIR$/src/courier/MapGUI.java" />
+        <option value="$PROJECT_DIR$/src/courier/RefugeeIsland.java" />
         <option value="$PROJECT_DIR$/src/courier/Test.java" />
         <option value="$PROJECT_DIR$/src/courier/OutPutResult.java" />
-        <option value="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
-        <option value="$PROJECT_DIR$/src/courier/RefugeeIsland.java" />
         <option value="$PROJECT_DIR$/src/courier/Map.java" />
+        <option value="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
+        <option value="$PROJECT_DIR$/src/courier/data/TramLines.data" />
+        <option value="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
+        <option value="$PROJECT_DIR$/src/courier/Parcel.java" />
       </list>
     </option>
   </component>
@@ -266,7 +356,6 @@
     <panes>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -335,34 +424,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="testResult" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="courier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -797,8 +865,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3111588" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2599232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3104435" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2599232" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -853,223 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_AvgGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_AvgPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_FinishTime.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_SDGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_AVOID_SDPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_AvgGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_AvgPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_FinishTime.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_SDGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168243636/NumCar_BASIC_SDPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/AVOID 02-04-24-34_C_30_P_1500_TCL_8_B_10_S_1168257409.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_AvgGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_AvgPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_FinishTime.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_SDGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_AVOID_SDPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_AvgGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_AvgPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_FinishTime.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_SDGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168257409/NumCar_BASIC_SDPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_AvgGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_AvgPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_FinishTime.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_SDGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_AVOID_SDPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_AvgGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_AvgPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_FinishTime.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_SDGen.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/NumCar1168271169/NumCar_BASIC_SDPickUp.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/MapGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1084,106 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="32" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sim/util/SimpleProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="464" column="26" selection-start-line="464" selection-start-column="18" selection-end-line="464" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="163" column="26" selection-start-line="163" selection-start-column="26" selection-end-line="163" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Parcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/ExpressCentre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="50" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="177" column="67" selection-start-line="177" selection-start-column="67" selection-end-line="177" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-12-08-40_C_150_P_1500_TCL_8_B_10_S_-541355978.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="52" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/testResult/null/BASIC 11-03-43-51_C_150_P_1500_TCL_8_B_10_S_-528445171.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="239" column="23" selection-start-line="239" selection-start-column="23" selection-end-line="239" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/data/ExpressCenters.data">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="327" column="0" selection-start-line="327" selection-start-column="0" selection-end-line="327" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/data/TramLines.data">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/PathSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="36" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/RefugeeIsland.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1195,10 +946,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-66.666664">
+          <caret line="130" column="44" selection-start-line="130" selection-start-column="44" selection-end-line="130" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="103" selection-start-line="54" selection-start-column="95" selection-end-line="54" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/testResult/null/BASIC 16-10-33-56_C_150_P_1500_TCL_8_B_10_S_-28640354.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-69.18519">
+          <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sim/util/SimpleProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="470" column="0" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/util/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33272728">
+          <caret line="354" column="19" selection-start-line="354" selection-start-column="19" selection-end-line="354" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/PathSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.814815">
+          <caret line="28" column="58" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="35.555557">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16061185">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/data/ExpressCenters.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4444447">
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/data/TramLines.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.111111">
+          <caret line="481" column="48" selection-start-line="481" selection-start-column="48" selection-end-line="481" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/ExpressCentre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8891013">
+          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4444447">
+          <caret line="65" column="46" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="46" />
+          <folding>
+            <element signature="e#884#892#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Parcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.332696">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>

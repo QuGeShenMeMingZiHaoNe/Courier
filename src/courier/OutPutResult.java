@@ -55,8 +55,8 @@ public class OutPutResult {
 
 
 
-        outputFile("\nstandard deviation of Deliver time since pick up: " + sdSincePickUp);
-        outputFile("\nstandard deviation of Deliver time since generate: " + sdSinceGen);
+//        outputFile("\nstandard deviation of Deliver time since pick up: " + sdSincePickUp);
+//        outputFile("\nstandard deviation of Deliver time since generate: " + sdSinceGen);
         long finalStep = map.schedule.getSteps();
         outputFile("\nSystem Time Of Finishing Delivery All Parcels: " + finalStep);
         outputFinishTime(finalStep+"");

@@ -127,6 +127,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         if (carrying.remove(pickOut)) {
             // restore weight
             spaceRemaining += pickOut.weight;
+        }else{
+            System.out.println(pickOut+" Can not be removed!!");
         }
 
         // add into arrived parcels
@@ -134,6 +136,8 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             printParcelUnloadLog(pickOut);
             currStation.pArrived.add(pickOut);
             map.parcelArrive.add(pickOut);
+            map.parcelArrivedTotal++;
+            tryTerminate();
         } else {
             carCallerConvertParcel((CarCaller) pickOut);
             printCarCallerUnloadLog((CarCaller) pickOut);

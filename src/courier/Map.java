@@ -17,7 +17,7 @@ public class Map extends SimState {
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
     /**************************** test parameters ****************************/
-    public static int initNumOfParcelsInExpressCentre = 1500;
+    public static int initNumOfParcelsInExpressCentre = 150000;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
@@ -25,13 +25,13 @@ public class Map extends SimState {
     public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
 
     // test one 6-7-8-9-10 def 10
-    protected static int expressCenterBusyLevel = 10;
+    protected static int expressCenterBusyLevel = 8;
 
 //        public boolean optimizedPickUp = true;
     public static boolean optimizedPickUp = false;
 
     // test two 20-40-60-80-100-120 def 80
-    protected static int carMaxSpace = 80;
+    protected static int carMaxSpace = 60;
 
     //  test three 50-150-250-350-450-550 def 150
     protected static int initNumOfCarsInGarage = 150;
@@ -196,14 +196,14 @@ public class Map extends SimState {
 //    }
 
 
-    public int getExpressCentreBusyLevel_0_10() {
+    public int getExpressCentreBusyLevel_1_10() {
         return expressCenterBusyLevel;
     }
 
 
-    public void setExpressCentreBusyLevel_0_10(int val) {
-        if (val >= 0 && val <= 10)
-            ExpressCentre.busyLevel = val;
+    public void setExpressCentreBusyLevel_1_10(int val) {
+        if (val > 0 && val <= 10)
+            expressCenterBusyLevel = val;
     }
 
 
