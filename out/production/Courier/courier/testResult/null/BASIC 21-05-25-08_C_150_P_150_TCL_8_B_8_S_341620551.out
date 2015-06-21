@@ -2,19 +2,19 @@
 
 Mode: BASIC
 
-OptimizedPickUp: false
+OptimizedPickUp: true
 
 Refugee Island On: false
 
-Random number seed: -17019225
+Random number seed: 341620551
 
-Number Of ExpressCenters: 36
+Number Of ExpressCenters: 34
 
-Number Of Parcels: 54000
+Number Of Parcels: 5100
 
 Number Of Cars: 150
 
-Maximum Car carrying weight: 80
+Maximum Car carrying weight: 60
 
 Map size: 300
 
@@ -24,13 +24,13 @@ Congestion Level: 8
 
 ***********************************************************************************************************
 
-Sum Of All Parcels Delivering Time: 267485078
+Sum Of All Parcels Delivering Time: 12009562
 
-Average Parcel Delivering Time Since Pick Up: 4953
+Average Parcel Delivering Time Since Pick Up: 2354
 
-Average Parcel Delivering Time Since Generate: 5066
+Average Parcel Delivering Time Since Generate: 3486
 
-System Time Of Finishing Delivery All Parcels: 91732
+System Time Of Finishing Delivery All Parcels: 15182
 
 
 ***********************************************************************************************************

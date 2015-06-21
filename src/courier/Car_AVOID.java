@@ -59,12 +59,14 @@ public class Car_AVOID extends Car_BASIC {
     }
 
 
+    @Override
     public void arriveStation() {
 
         if (!hasArrived) {
             // unloadParcel method is in the first time arrive method
             firstTimeArrive();
         }
+        pickupGlobalList();
         if(map.optimizedPickUp) {
             optimizedLoadParcel();
         }
@@ -201,20 +203,25 @@ public class Car_AVOID extends Car_BASIC {
     private double findPathIntensity(LinkedList<ExpressCentre> path) {
         Iterator<ExpressCentre> iter = path.iterator();
         ExpressCentre first = iter.next();
+        int x = 1;
         if (!first.equals(currStation)) {
             while (iter.hasNext()) {
                 first = iter.next();
                 if (first.equals(currStation))
                     break;
+                x++;
             }
         }
+        double diff = path.size()-x;
         ExpressCentre second;
         double intensity = 0;
         TramLine_BASIC tl;
+        double count = 0;
         while (iter.hasNext()) {
             second = iter.next();
             tl = map.tramLines.getFirst().findTramLine(first, second);
-            intensity += tl.carsOnTramLine.size();
+            intensity += tl.carsOnTramLine.size()*((diff-count)/diff);
+            count++;
             first = second;
         }
         return intensity;

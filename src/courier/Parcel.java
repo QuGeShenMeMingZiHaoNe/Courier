@@ -13,13 +13,19 @@ public class Parcel {
     protected long timeSpendingSincePickUp;
     protected long timeSpendingSinceGenerate;
 
-    Parcel(int parcelID, ExpressCentre from, ExpressCentre destination, double weight, Map map) {
-        this.parcelID = parcelID;
+    Parcel(ExpressCentre from, ExpressCentre destination, double weight, Map map) {
+        from.generatingParcel = true;
+
+        this.parcelID = map.serialParcelID;
         this.weight = weight;
         this.destination = destination;
         this.from = from;
         this.map = map;
         this.generateTime = map.schedule.getSteps();
+        map.serialParcelID++;
+        map.parcelTotal++;
+        from.generatingParcel = false;
+
     }
 
     Parcel(Map map) {
@@ -66,72 +72,6 @@ public class Parcel {
         return getMinimumCost() * map.profitMargin;
     }
 
-    // add parcels with fixed destination and number
-    public void addFixedLocParcel(ExpressCentre currExpressCentre) {
-        int i = map.expressCentres.indexOf(currExpressCentre);
-        int j = 1;
-        int next;
 
-        // add "initNumOfParcelsInExpressCentre" numbers of parcels
-        for (int k = 0; k < map.initNumOfParcelsInExpressCentre; k++) {
-            if (currExpressCentre.reachableByGarage()) {
-                if (currExpressCentre.neighbours.containsAll(map.garages) && currExpressCentre.neighbours.size() == map.garages.size()) {
-                    return;
-                }
-                do {
-                    next = (i + j) % (map.expressCentres.size());
-                    j++;
-                }
-                while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
-
-                // dynamically add packages
-                if (j % 2 == 0) {
-                    currExpressCentre.pToBeSent.addFirst(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
-                } else {
-                    currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
-                }
-                map.serialParcelID++;
-                map.parcelTotal++;
-
-
-                // in order to increase the randomization of package we add some extra packages
-                if (next % 3 == 1) {
-                    for (int f = 0; f < 10; f++) {
-                        currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
-                        map.serialParcelID++;
-                        map.parcelTotal++;
-                    }
-                }
-
-            }
-        }
-    }
-
-    public void addRandomParcel(ExpressCentre currExpressCentre) {
-        if (currExpressCentre.hasNeighbour()) {
-            if (currExpressCentre.neighbours.containsAll(map.garages) && currExpressCentre.neighbours.size() == map.garages.size()) {
-                return;
-            }
-            int next;
-            do {
-                next = map.random.nextInt(map.expressCentres.size());
-            }
-            while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
-
-
-            currExpressCentre.pToBeSent.add(new Parcel(map.serialParcelID, currExpressCentre, map.expressCentres.get(next), getNextInt(5), map));
-            map.serialParcelID++;
-            map.parcelTotal++;
-        }
-    }
-
-    // return a number beyond limit and greater than 0
-    private int getNextInt(int limit) {
-        int result;
-        do {
-            result = map.random.nextInt(limit);
-        } while (result == 0);
-        return result;
-    }
 
 }

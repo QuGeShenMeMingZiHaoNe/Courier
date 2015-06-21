@@ -2,7 +2,10 @@ package courier;
 
 public class CarCaller extends Parcel {
     CarCaller(ExpressCentre from, ExpressCentre destination, Double weight, Map map) {
-        super(map.serialCarCallerID, from, destination, weight, map);
+        super(from, destination, weight, map);
+
+        map.serialParcelID--;
+        map.parcelTotal--;
         map.serialCarCallerID++;
     }
 

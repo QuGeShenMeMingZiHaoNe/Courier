@@ -83,6 +83,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         LinkedList<ExpressCentre> futurePath = new LinkedList<ExpressCentre>();
         boolean startRecord = false;
         if(carrying.isEmpty() && !currStation.pToBeSent.isEmpty()){
+
             setPathGlobal(currStation, currStation.pToBeSent.getFirst().destination);
         }
         if(!carrying.isEmpty() && globalPath == null){
@@ -121,7 +122,6 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     private void pickOut(Parcel pickOut) {
         // arrive time
         pickOut.arriveTime = map.schedule.getSteps();
-
 
         // remove from carrying
         if (carrying.remove(pickOut)) {
@@ -164,6 +164,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         if (map.autoGenParcelsModeTermination && map.autoGenParcelByStationsMax > 0) {
             return;
         }
+
         // the ending of the output file
         if (map.parcelArrivedTotal == map.parcelTotalCopy) {
             new OutPutResult(map).writeResult();
@@ -222,12 +223,25 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
             // unloadParcel method is in the first time arrive method
             firstTimeArrive();
         }
+        pickupGlobalList();
         if(map.optimizedPickUp) {
             optimizedLoadParcel();
         }
         loadParcelBasic();
         // set both global and local path
         setAllPath();
+    }
+
+
+    protected void pickupGlobalList(){
+        if(!currStation.infoFromGlobalExpressCenter.isEmpty()){
+            // if the asker is the current station
+                for(Parcel p:  currStation.infoFromGlobalExpressCenter) {
+                    putIn(p);
+                }
+            map.gec.callCarToPickUpParcels.removeAll(currStation.infoFromGlobalExpressCenter);
+            currStation.infoFromGlobalExpressCenter.clear();
+        }
     }
 
     protected void firstTimeArrive() {
@@ -353,7 +367,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
     private void parcelLoader(LinkedList<ExpressCentre> futurePath) {
         LinkedList<Parcel> newPs;
         newPs = fetchFromParcelsToBeSent(spaceRemaining,futurePath);
-        if(newPs.size()>0){
+        if(newPs.size()>=0){
             for(Parcel p: newPs){
                 putIn(p);
                 printLogForParcelLoader(p);
@@ -423,14 +437,18 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
         if (!map.gec.callCarToPickUpParcels.isEmpty()) {
 //            Parcel newP = map.gec.callCarToPickUpParcels.pollFirst();
             LinkedList<Parcel> newParcels = new LinkedList<Parcel>();
-            Parcel newP = map.gec.callCarToPickUpParcels.getFirst();
+            Parcel newP = map.gec.callCarToPickUpParcels.pop();
+            newP.from.infoFromGlobalExpressCenter.remove(newP);
+
             newParcels.add(newP);
             for(Parcel p : map.gec.callCarToPickUpParcels){
                 if(p.from.equals(newP.from)){
                     newParcels.add(p);
+                    p.from.infoFromGlobalExpressCenter.remove(p);
                 }
             }
             map.gec.callCarToPickUpParcels.removeAll(newParcels);
+
 
             // if the asker is the current station
             if (newP.from.equals(currStation)) {
@@ -553,7 +571,7 @@ public class Car_BASIC extends OvalPortrayal2D implements Steppable {
                 // if the car has not carrying any thing that it don't need to leave the station
                 if (this.carrying.isEmpty()) {
                     setUpCarCaller();
-                    this.arriveStation();
+                    arriveStation();
                     return;
                 }
 

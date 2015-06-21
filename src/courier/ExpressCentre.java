@@ -20,6 +20,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     protected Int2D location;
     protected LinkedList<Parcel> pToBeSent = new LinkedList<Parcel>();
     protected LinkedList<Parcel> pToBeSentForCarCallerPickUp = new LinkedList<Parcel>();
+    protected LinkedList<Parcel> infoFromGlobalExpressCenter = new LinkedList<Parcel>();
     protected LinkedList<Parcel> pArrived = new LinkedList<Parcel>();
     protected LinkedList<ExpressCentre> neighbours = new LinkedList<ExpressCentre>();
     protected Map map;
@@ -34,6 +35,8 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     private int count = 0;
     private long visitSequence = 1000;
     protected int maxGlobalParcel = 3;
+    protected boolean generatingParcel = false;
+    int testCount = 0;
 
 
     public ExpressCentre(String name, Int2D location, Map map) {
@@ -122,21 +125,84 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
         return null;
     }
 
+
+
+    // add parcels with fixed destination and number
+    public void addFixedLocParcel(ExpressCentre currExpressCentre) {
+        int i = map.expressCentres.indexOf(currExpressCentre);
+        int j = 1;
+        int next;
+
+        // add "initNumOfParcelsInExpressCentre" numbers of parcels
+        for (int k = 0; k < map.initNumOfParcelsInExpressCentre; k++) {
+            if (currExpressCentre.reachableByGarage()) {
+                if (currExpressCentre.neighbours.containsAll(map.garages) && currExpressCentre.neighbours.size() == map.garages.size()) {
+                    return;
+                }
+                do {
+                    next = (i + j) % (map.expressCentres.size());
+                    j++;
+                }
+                while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
+
+                // dynamically add packages
+                if (j % 2 == 0) {
+                    currExpressCentre.pToBeSent.addFirst(new Parcel(currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
+                } else {
+                    currExpressCentre.pToBeSent.add(new Parcel( currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
+                }
+
+
+                // in order to increase the randomization of package we add some extra packages
+                if (next % 3 == 1) {
+                    for (int f = 0; f < 10; f++) {
+                        currExpressCentre.pToBeSent.add(new Parcel(currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void addRandomParcel(ExpressCentre currExpressCentre) {
+        if (currExpressCentre.hasNeighbour()) {
+            if (currExpressCentre.neighbours.containsAll(map.garages) && currExpressCentre.neighbours.size() == map.garages.size()) {
+                return;
+            }
+            int next;
+            do {
+                next = map.random.nextInt(map.expressCentres.size());
+            }
+            while (!(!map.expressCentres.get(next).equals(currExpressCentre) && currExpressCentre.reachable(map.expressCentres.get(next))));
+
+            currExpressCentre.pToBeSent.add(new Parcel(currExpressCentre, map.expressCentres.get(next), getNextInt(5), map));
+        }
+    }
+
+    // return a number beyond limit and greater than 0
+    private int getNextInt(int limit) {
+        int result;
+        do {
+            result = map.random.nextInt(limit);
+        } while (result == 0);
+        return result;
+    }
+
     @Override
     public void step(SimState state) {
         // if reachableByGarage is null
-        if (reachableByGarage == null) {
-            reachableByGarage = reachableByGarage();
-        }
+//        if (reachableByGarage == null) {
+//            reachableByGarage = reachableByGarage();
+//        }
 
-        if (reachableByGarage) {
+//            if(reachableByGarage){
 
             // generated parcels
-            if (pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax > 0) {
+            if (!generatingParcel && pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax > 0) {
+                addRandomParcel(this);
+                map.autoGenParcelByStationsMax--;
 
-                new Parcel(map).addRandomParcel(this);
-                if (map.autoGenParcelsModeTermination)
-                    map.autoGenParcelByStationsMax--;
+                return;
             }
 
 //      if the car park is empty, has package to be sent, and the car caller is empty
@@ -148,10 +214,10 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
                         maxGlobalParcel--;
                         Parcel p = this.pToBeSent.pop();
                         map.gec.callCarToPickUpParcels.add(p);
+                        infoFromGlobalExpressCenter.add(p);
                     }
                 }
             }
-        }
     }
 
     private boolean genParcelOrNot() {
@@ -164,6 +230,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
             return true;
         else
             return false;
+
     }
 
     @Override

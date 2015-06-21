@@ -16,19 +16,59 @@ public class Map extends SimState {
     private static final int gridHeight = 1800;
     private static final Int2D centre = new Int2D(gridWidth / 2, gridHeight / 2);
 
+    public static String testType;
+    public static boolean detailsOn = false;
+    public static boolean readTestSetting = false;
+    public int modePicker = 1;
+    public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
+    public double profit = 0;
+    //    public double retainedProfit = 0;
+    public double profitMargin = 2.45;
+    protected int autoGenParcelByStationsMax=0;
+    protected boolean testModeOn = true;
+    protected boolean autoGenParcelsModeTermination = testModeOn;
+    protected int parcelTotal = 0;
+    protected int parcelArrivedTotal = 0;
+    protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
+    protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
+    protected LinkedList<Garage> garages = new LinkedList<Garage>();
+    protected LinkedList<RefugeeIsland> refugee_islands = new LinkedList<RefugeeIsland>();
+    protected LinkedList<Double> tramLineHasInit = new LinkedList<Double>();
+    protected LinkedList<Parcel> parcelArrive = new LinkedList<Parcel>();
+    protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
+    protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
+    protected Network tramLineNet = new Network(false);
+    protected long parcelTimeSpendingTotalSincePickUp = 0;
+    protected long parcelTimeSpendingTotalSinceGen = 0;
+    protected int parcelTotalCopy;
+    private SimpleDateFormat format = new SimpleDateFormat("dd-hh-mm-ss");
+    protected String initTime = format.format(new Date()).toString();
+    protected long startTime;
+    protected int serialCarCallerID = 1;
+    protected int serialParcelID = 1;
+    protected int serialStationID = 1;
+    protected int serialTramLineID = 1;
+    private int serialCarID = 1;
+    protected long pathImprovement = 0;
+    private int carMax = 9999;
+    protected long longestDeliverTimeSincePickUp;
+    protected long longestDeliverTimeSinceGenerate;
+    protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0,0),this);
+
     /**************************** test parameters ****************************/
-    public static int initNumOfParcelsInExpressCentre = 150000;
+    public static int initNumOfParcelsInExpressCentre = 150;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
-//     public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+
+    //     public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
     public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
 
     // test one 6-7-8-9-10 def 10
     protected static int expressCenterBusyLevel = 8;
 
-//        public boolean optimizedPickUp = true;
-    public static boolean optimizedPickUp = false;
+    public static boolean optimizedPickUp = true;
+//    public static boolean optimizedPickUp = false;
 
     // test two 20-40-60-80-100-120 def 80
     protected static int carMaxSpace = 60;
@@ -47,47 +87,9 @@ public class Map extends SimState {
 
     public static int numOfRefugeIsland = 0;
 
-    protected boolean testModeOn = true;
 
     /**************************** test parameters ****************************/
 
-    public static String testType;
-    public static boolean detailsOn = false;
-    public static boolean readTestSetting = false;
-    public double modePicker = 0;
-    public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
-    public double profit = 0;
-    //    public double retainedProfit = 0;
-    public double profitMargin = 2.45;
-    protected int autoGenParcelByStationsMax;
-    protected boolean autoGenParcelsModeTermination = testModeOn;
-    protected int parcelTotal = 0;
-    protected int parcelArrivedTotal = 0;
-    protected int serialCarCallerID = 1;
-    protected LinkedList<ExpressCentre> allStations = new LinkedList<ExpressCentre>();
-    protected LinkedList<ExpressCentre> expressCentres = new LinkedList<ExpressCentre>();
-    protected LinkedList<Garage> garages = new LinkedList<Garage>();
-    protected LinkedList<RefugeeIsland> refugee_islands = new LinkedList<RefugeeIsland>();
-    protected LinkedList<Double> tramLineHasInit = new LinkedList<Double>();
-    protected LinkedList<Parcel> parcelArrive = new LinkedList<Parcel>();
-    protected LinkedList<TramLine_BASIC> tramLines = new LinkedList<TramLine_BASIC>();
-    protected LinkedList<Car_BASIC> cars = new LinkedList<Car_BASIC>();
-    protected Network tramLineNet = new Network(false);
-    protected long parcelTimeSpendingTotalSincePickUp = 0;
-    protected long parcelTimeSpendingTotalSinceGen = 0;
-    protected int parcelTotalCopy;
-    private SimpleDateFormat format = new SimpleDateFormat("dd-hh-mm-ss");
-    protected String initTime = format.format(new Date()).toString();
-    protected long startTime;
-    protected int serialParcelID = 1;
-    protected int serialStationID = 1;
-    protected int serialTramLineID = 1;
-    private int serialCarID = 1;
-    protected long pathImprovement = 0;
-    private int carMax = 9999;
-    protected long longestDeliverTimeSincePickUp;
-    protected long longestDeliverTimeSinceGenerate;
-    protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0,0),this);
 
     public Map(long seed) {
         super(seed);
@@ -111,22 +113,29 @@ public class Map extends SimState {
 //        System.exit(0);
     }
 
-    private void tryTerminate() {
-        if (autoGenParcelsModeTermination && autoGenParcelByStationsMax > 0) {
-            return;
-        }
-        // the ending of the output file
-        if (parcelArrivedTotal == parcelTotalCopy) {
-            new OutPutResult(this).writeResult();
-        }
-    }
+    // **********************************Functions**For**Display**BEGIN**************************************** //
+    // **********************************Functions**For**Display**BEGIN**************************************** //
+
 
     public SIMULATION_MODE getMode() {
         return mode;
     }
 
-    // **********************************Functions**For**Display**BEGIN**************************************** //
-    // **********************************Functions**For**Display**BEGIN**************************************** //
+    public int getModePicker_1_BASIC_2_AVOID() {
+        return modePicker;
+    }
+
+    public void setModePicker_1_BASIC_2_AVOID(int val) {
+        if (val <= 1) {
+            modePicker = 1;
+            mode = (SIMULATION_MODE.BASIC);
+        } else {
+            modePicker = 2;
+            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
+        }
+
+    }
+
 
     public int getNumOfParcelsInEachStations() {
         return initNumOfParcelsInExpressCentre;
@@ -207,20 +216,23 @@ public class Map extends SimState {
     }
 
 
-    public double getModePicker_BASIC_AVOID() {
-        return modePicker;
-    }
 
-    public void setModePicker_BASIC_AVOID(double val) {
-        if (val >=0 && val <= 1) {
-            modePicker = 0;
-            mode = (SIMULATION_MODE.BASIC);
-        } else if (val>1 && val <= 2){
-            modePicker = 1;
-            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
-        }
 
-    }
+
+//    public double getModePicker_BASIC_AVOID() {
+//        return modePicker;
+//    }
+//
+//    public void setModePicker_BASIC_AVOID(double val) {
+//        if (val >=0 && val <= 1) {
+//            modePicker = 0;
+//            mode = (SIMULATION_MODE.BASIC);
+//        } else if (val>1 && val <= 2){
+//            modePicker = 1;
+//            mode = (SIMULATION_MODE.AVOID_TRAFFIC_JAM);
+//        }
+//
+//    }
 
     public Object domModePicker_BASIC_AVOID() {
         return new sim.util.Interval(0.0, 2.0);
@@ -295,6 +307,8 @@ public class Map extends SimState {
 
         initCars();
 
+        scheduleExpressCenters();
+
         if (testModeOn) {
             autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre * expressCentres.size();
         } else {
@@ -306,6 +320,12 @@ public class Map extends SimState {
         parcelTotalCopy = autoGenParcelByStationsMax;
         startTime = this.schedule.getSteps();
         schedule.scheduleRepeating(gec);
+        System.out.println(modePicker);
+        if(modePicker<0.5){
+            mode = SIMULATION_MODE.BASIC;
+        }else {
+            mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+        }
     }
 
 //    private void initExpressCenter() {
@@ -332,9 +352,25 @@ public class Map extends SimState {
             if (b) {
                 ExpressCentre expressCentre = new ExpressCentre(name, loc, this);
                 expressCentres.add(expressCentre);
-                schedule.scheduleRepeating(expressCentre);
-                mapGrid.setObjectLocation(expressCentre, loc);
             }
+        }
+    }
+
+    private void scheduleExpressCenters(){
+
+        LinkedList<ExpressCentre> expressCentresCopy = (LinkedList<ExpressCentre>) expressCentres.clone();
+
+        for(ExpressCentre ec:expressCentresCopy) {
+            // if reachableByGarage is null
+            if (ec.reachableByGarage == null) {
+                ec.reachableByGarage = ec.reachableByGarage();
+                if(!ec.reachableByGarage){
+                    expressCentres.remove(ec);
+                    continue;
+                }
+            }
+            schedule.scheduleRepeating(ec);
+            mapGrid.setObjectLocation(ec, ec.location);
         }
     }
 
@@ -472,27 +508,6 @@ public class Map extends SimState {
     }
 
 
-    private void initRandomParcels() {
-        for (ExpressCentre s : expressCentres) {
-            // if the station is not isolated
-            if (s.reachableByGarage()) {
-                for (int i = 0; i < initNumOfParcelsInExpressCentre; i++) {
-                    // add a parcel to current station;
-                    new Parcel(this).addRandomParcel(s);
-                }
-            }
-        }
-    }
-
-
-    private void initFixedLocParcels() {
-        for (ExpressCentre s : expressCentres) {
-            // if the station is not isolated
-            if (s.reachableByGarage()) {
-                new Parcel(this).addFixedLocParcel(s);
-            }
-        }
-    }
 
     private void initTramLineNet() {
         for (ExpressCentre s : allStations)

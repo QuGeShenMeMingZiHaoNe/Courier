@@ -9,7 +9,6 @@ public class GlobalExpressCenter extends ExpressCentre {
     protected LinkedList<Parcel> callCarToPickUpParcels = new LinkedList<Parcel>();
 
     private int restoreTime = 5000;
-    private int lastTimeVisit =0;
 
     public GlobalExpressCenter(String name, Int2D location, Map map) {
         super(name, location, map);
@@ -19,20 +18,20 @@ public class GlobalExpressCenter extends ExpressCentre {
     public void step(SimState state) {
         if(lastVisitTime>restoreTime){
             lastVisitTime=0;
-                returnParcels();
+//                returnParcels();
         }
         lastVisitTime++;
     }
 
-    private void returnParcels(){
-        if(callCarToPickUpParcels.isEmpty()){
-            return;
-        }
-        LinkedList<Parcel> copy = (LinkedList<Parcel>) callCarToPickUpParcels.clone();
-        for(Parcel p: copy) {
-            callCarToPickUpParcels.remove(p);
-            p.from.pToBeSent.addFirst(p);
-//            System.out.println("Parcel been restored: "+p);
-        }
-    }
+//    private void returnParcels(){
+//        if(callCarToPickUpParcels.isEmpty()){
+//            return;
+//        }
+//        LinkedList<Parcel> copy = (LinkedList<Parcel>) callCarToPickUpParcels.clone();
+//        for(Parcel p: copy) {
+//            callCarToPickUpParcels.remove(p);
+//            p.from.pToBeSent.addFirst(p);
+////            System.out.println("Parcel been restored: "+p);
+//        }
+//    }
 }

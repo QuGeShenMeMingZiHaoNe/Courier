@@ -45,6 +45,7 @@ public class Test {
 
     public static void testBusyLVL() {
         {
+            Map.optimizedPickUp = false;
             // Basic
             for (int lvl = 6; lvl <= 10; lvl++) {
                 Map.expressCenterBusyLevel = lvl;
