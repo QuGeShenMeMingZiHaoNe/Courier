@@ -19,7 +19,7 @@ public class RefugeeIsland extends ExpressCentre {
         initCarPark();
     }
 
-    private void initCarPark(){
+    private void initCarPark() {
         carParkAvailable = map.refugeCarParkNum;
     }
 
@@ -33,15 +33,15 @@ public class RefugeeIsland extends ExpressCentre {
         graphics.setFont(nodeFont.deriveFont(nodeFont.getSize2D() * (float) info.draw.width));
         graphics.setColor(Color.black);
 //        graphics.drawString("RI:" + this.stationID + " C:" + carPark.size() , (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
-        graphics.drawString(name + " Current:" + carPark.size() + " Available:" + carParkAvailable , (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
+        graphics.drawString(name + " Current:" + carPark.size() + " Available:" + carParkAvailable, (int) (info.draw.x - diamx / 2), (int) (info.draw.y - diamy / 2));
 
     }
 
-    protected LinkedList<Car_BASIC> getTickHolder(){
+    protected LinkedList<Car_BASIC> getTickHolder() {
         return tickHolder;
     }
 
-    public void carLeaveCarPark(){
+    public void carLeaveCarPark() {
         carParkAvailable++;
     }
 

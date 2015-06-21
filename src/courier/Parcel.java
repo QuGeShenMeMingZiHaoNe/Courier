@@ -8,7 +8,7 @@ public class Parcel {
     protected Map map;
     protected long pickUpTime;
     protected long arriveTime;
-//    protected long timeSpending;
+    //    protected long timeSpending;
     protected long generateTime;
     protected long timeSpendingSincePickUp;
     protected long timeSpendingSinceGenerate;
@@ -39,7 +39,7 @@ public class Parcel {
 
     public String getTimeSpendingSincePickUp() {
         timeSpendingSincePickUp = map.schedule.getSteps() - pickUpTime;
-        if(map.longestDeliverTimeSincePickUp < timeSpendingSincePickUp){
+        if (map.longestDeliverTimeSincePickUp < timeSpendingSincePickUp) {
             map.longestDeliverTimeSincePickUp = timeSpendingSincePickUp;
         }
         if (!(this instanceof CarCaller)) {
@@ -50,7 +50,7 @@ public class Parcel {
 
     public String getTimeSpendingSinceGen() {
         timeSpendingSinceGenerate = map.schedule.getSteps() - generateTime;
-        if(map.longestDeliverTimeSinceGenerate < timeSpendingSinceGenerate){
+        if (map.longestDeliverTimeSinceGenerate < timeSpendingSinceGenerate) {
             map.longestDeliverTimeSinceGenerate = timeSpendingSinceGenerate;
         }
         if (!(this instanceof CarCaller)) {
@@ -71,7 +71,6 @@ public class Parcel {
     public double getProfit() {
         return getMinimumCost() * map.profitMargin;
     }
-
 
 
 }

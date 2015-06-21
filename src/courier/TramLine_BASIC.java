@@ -47,7 +47,7 @@ public class TramLine_BASIC implements Steppable {
             trafficLightOccupant = b;
         }
         map.serialTramLineID++;
-        maximumCarLeavingBeforeRedLight = 11-map.congestionLevel;
+        maximumCarLeavingBeforeRedLight = 11 - map.congestionLevel;
         quota1 = maximumCarLeavingBeforeRedLight;
         quota2 = maximumCarLeavingBeforeRedLight;
     }
@@ -269,11 +269,11 @@ public class TramLine_BASIC implements Steppable {
 //        if (to.carPark == null) return true;
 
         for (Car_BASIC c : from.carPark) {
-            if (c.stationTo != null && c.stationTo.equals(to)){
-                if(!(to instanceof RefugeeIsland)){
+            if (c.stationTo != null && c.stationTo.equals(to)) {
+                if (!(to instanceof RefugeeIsland)) {
                     return false;
-                }else{
-                    if( c.carParkTicket.equals(to.name)){
+                } else {
+                    if (c.carParkTicket.equals(to.name)) {
                         return false;
                     }
                 }

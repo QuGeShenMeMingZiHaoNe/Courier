@@ -16,8 +16,8 @@ public class GlobalExpressCenter extends ExpressCentre {
 
     @Override
     public void step(SimState state) {
-        if(lastVisitTime>restoreTime){
-            lastVisitTime=0;
+        if (lastVisitTime > restoreTime) {
+            lastVisitTime = 0;
 //                returnParcels();
         }
         lastVisitTime++;

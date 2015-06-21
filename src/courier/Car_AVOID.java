@@ -13,7 +13,7 @@ public class Car_AVOID extends Car_BASIC {
 
     private void tryLeaveStation(TramLine_BASIC tramLine) {
 
-        if(stationTo instanceof RefugeeIsland && ((RefugeeIsland) stationTo).carParkAvailable<=0){
+        if (stationTo instanceof RefugeeIsland && ((RefugeeIsland) stationTo).carParkAvailable <= 0) {
             return;
         }
 
@@ -34,8 +34,8 @@ public class Car_AVOID extends Car_BASIC {
             tramLine.tryOccupyTraffic(currStation);
             if (!tramLine.okToLeave(currStation) && (tramLine.trafficLightOccupant == currStation)) {
                 alterPath = true;
-                if(!carParkTicket.equals("NULL")){
-                    ((RefugeeIsland)(map.expressCentres.getFirst().findStationByName(carParkTicket))).carParkAvailable++;
+                if (!carParkTicket.equals("NULL")) {
+                    ((RefugeeIsland) (map.expressCentres.getFirst().findStationByName(carParkTicket))).carParkAvailable++;
                     carParkTicket = "NULL";
                 }
                 arriveStation();
@@ -44,15 +44,15 @@ public class Car_AVOID extends Car_BASIC {
         }
     }
 
-    public void optimizeUnloadParcel(){
-        if(globalPath == null || carrying.isEmpty())
+    public void optimizeUnloadParcel() {
+        if (globalPath == null || carrying.isEmpty())
             return;
         LinkedList<Parcel> carryingCopy = (LinkedList<Parcel>) carrying.clone();
-        for(Parcel p: carryingCopy){
-            if(!globalPath.contains(p.destination)){
+        for (Parcel p : carryingCopy) {
+            if (!globalPath.contains(p.destination)) {
                 carrying.remove(p);
-                currStation.pToBeSent.add(0,p);
-                this.spaceRemaining+=p.weight;
+                currStation.pToBeSent.add(0, p);
+                this.spaceRemaining += p.weight;
             }
         }
         optimizedLoadParcel();
@@ -67,7 +67,7 @@ public class Car_AVOID extends Car_BASIC {
             firstTimeArrive();
         }
         pickupGlobalList();
-        if(map.optimizedPickUp) {
+        if (map.optimizedPickUp) {
             optimizedLoadParcel();
         }
         loadParcelBasic();
@@ -194,7 +194,7 @@ public class Car_AVOID extends Car_BASIC {
 
 //        System.out.println(globalPath.equals(globalPath) + " " +map.optimizedPickUp);
 
-        if(!globalPath.equals(old) && map.optimizedPickUp){
+        if (!globalPath.equals(old) && map.optimizedPickUp) {
 //            System.out.println("fdasfsafsafs");
             optimizeUnloadParcel();
         }
@@ -212,7 +212,7 @@ public class Car_AVOID extends Car_BASIC {
                 x++;
             }
         }
-        double diff = path.size()-x;
+        double diff = path.size() - x;
         ExpressCentre second;
         double intensity = 0;
         TramLine_BASIC tl;
@@ -220,7 +220,7 @@ public class Car_AVOID extends Car_BASIC {
         while (iter.hasNext()) {
             second = iter.next();
             tl = map.tramLines.getFirst().findTramLine(first, second);
-            intensity += tl.carsOnTramLine.size()*((diff-count)/diff);
+            intensity += tl.carsOnTramLine.size() * ((diff - count) / diff);
             count++;
             first = second;
         }

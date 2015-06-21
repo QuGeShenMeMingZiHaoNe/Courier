@@ -3,15 +3,16 @@ package courier;
 import sim.engine.SimState;
 
 public class Test {
-//    private static  int s1 = 1168243636;
+    //    private static  int s1 = 1168243636;
 //    private static int s1 = 1168257409;
     private static int s1 = 1168271169;
     private static int job = 0;
 
 
-    public Test(){
+    public Test() {
 
     }
+
     public static void main(String[] args) {
 //        Map.testType = "IslandCarPark";
 //        testIslandCarPark();
@@ -71,15 +72,15 @@ public class Test {
         }
     }
 
-    public static void testOPickUpWithBUsyLVL(){
+    public static void testOPickUpWithBUsyLVL() {
         Map.optimizedPickUp = true;
         testBusyLVL();
     }
 
-    public static void testCarLoad(){
+    public static void testCarLoad() {
         {
             // Basic
-            for (int carLoad = 20; carLoad <= 120; carLoad+=20) {
+            for (int carLoad = 20; carLoad <= 120; carLoad += 20) {
                 Map.carMaxSpace = carLoad;
                 SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
                 state.setJob(carLoad);
@@ -91,7 +92,7 @@ public class Test {
 
             // Avoid
             Map.mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-            for (int carLoad = 20; carLoad <= 120; carLoad+=20) {
+            for (int carLoad = 20; carLoad <= 120; carLoad += 20) {
                 Map.carMaxSpace = carLoad;
                 SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
                 state.setJob(carLoad);
@@ -103,10 +104,10 @@ public class Test {
         }
     }
 
-    public static void testNumCar(){
+    public static void testNumCar() {
         {
             // Basic
-            for (int numCar = 30; numCar <= 630; numCar+=100) {
+            for (int numCar = 30; numCar <= 630; numCar += 100) {
                 Map.initNumOfCarsInGarage = numCar;
                 SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
                 state.setJob(numCar);
@@ -118,7 +119,7 @@ public class Test {
 
             // Avoid
             Map.mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-            for (int numCar = 30; numCar <= 630; numCar+=100) {
+            for (int numCar = 30; numCar <= 630; numCar += 100) {
                 Map.initNumOfCarsInGarage = numCar;
                 SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
                 state.setJob(numCar);
@@ -130,20 +131,20 @@ public class Test {
         }
     }
 
-    public static void testConLVL(){
-            // Basic
-            for (int conLVL = 5; conLVL <= 10; conLVL++) {
-                Map.congestionLevel = conLVL;
-                SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
-                state.setJob(conLVL);
-                state.start();
-                do
-                    if (!state.schedule.step(state)) break; while (state.schedule.getSteps() < 99999999);
-                state.finish();
-            }
+    public static void testConLVL() {
+        // Basic
+        for (int conLVL = 5; conLVL <= 10; conLVL++) {
+            Map.congestionLevel = conLVL;
+            SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
+            state.setJob(conLVL);
+            state.start();
+            do
+                if (!state.schedule.step(state)) break; while (state.schedule.getSteps() < 99999999);
+            state.finish();
+        }
 
-            // Avoid
-            Map.mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+        // Avoid
+        Map.mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
         for (int conLVL = 5; conLVL <= 10; conLVL++) {
             Map.congestionLevel = conLVL;
             SimState state = new Map(s1); // MyModel is our SimState subclass state.nameThread();
@@ -155,7 +156,7 @@ public class Test {
         }
     }
 
-    public static void testIslandCarPark(){
+    public static void testIslandCarPark() {
         // Basic
         Map.numOfRefugeIsland = 1;
         for (int carPark = 1; carPark <= 6; carPark++) {
@@ -180,9 +181,10 @@ public class Test {
             state.finish();
         }
     }
+
     public static class BusyLVL extends Thread {
 
-        public void run(){
+        public void run() {
             Map.testType = "BusyLVL";
             testBusyLVL();
         }
@@ -190,7 +192,7 @@ public class Test {
 
     public static class OPickUp extends Thread {
 
-        public void run(){
+        public void run() {
             Map.testType = "OPickUp";
             testOPickUpWithBUsyLVL();
         }
@@ -198,7 +200,7 @@ public class Test {
 
     public static class CarLoad extends Thread {
 
-        public void run(){
+        public void run() {
             Map.testType = "CarLoad";
             testCarLoad();
         }
@@ -206,7 +208,7 @@ public class Test {
 
     public static class NumCar extends Thread {
 
-        public void run(){
+        public void run() {
 
             Map.testType = "NumCar";
             testNumCar();
@@ -215,7 +217,7 @@ public class Test {
 
     public static class ConLVL extends Thread {
 
-        public void run(){
+        public void run() {
             Map.testType = "ConLVL";
             testConLVL();
         }
@@ -223,7 +225,7 @@ public class Test {
 
     public static class IslandCarPark extends Thread {
 
-        public void run(){
+        public void run() {
             Map.testType = "IslandCarPark";
             testIslandCarPark();
         }

@@ -126,7 +126,6 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
     }
 
 
-
     // add parcels with fixed destination and number
     public void addFixedLocParcel(ExpressCentre currExpressCentre) {
         int i = map.expressCentres.indexOf(currExpressCentre);
@@ -149,7 +148,7 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
                 if (j % 2 == 0) {
                     currExpressCentre.pToBeSent.addFirst(new Parcel(currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
                 } else {
-                    currExpressCentre.pToBeSent.add(new Parcel( currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
+                    currExpressCentre.pToBeSent.add(new Parcel(currExpressCentre, map.expressCentres.get(next), getNextInt(map.carMaxSpace), map));
                 }
 
 
@@ -197,33 +196,33 @@ public class ExpressCentre extends OvalPortrayal2D implements Steppable {
 
 //            if(reachableByGarage){
 
-            // generated parcels
-            if (!generatingParcel && pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax > 0) {
-                addRandomParcel(this);
-                map.autoGenParcelByStationsMax--;
+        // generated parcels
+        if (!generatingParcel && pToBeSent.size() < MAX_PACKAGES && genParcelOrNot() && map.autoGenParcelByStationsMax > 0) {
+            addRandomParcel(this);
+            map.autoGenParcelByStationsMax--;
 
-                return;
-            }
+            return;
+        }
 
 //      if the car park is empty, has package to be sent, and the car caller is empty
-            // TODO we only check for one garage!! What if we have more garages
-            if (map.schedule.getSteps() - lastVisitTime > visitSequence || !map.garages.getFirst().carPark.isEmpty()) {
-                // put parcel into global list to let other cars to pickup
-                if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && maxGlobalParcel>0) {
-                    if (map.gec.callCarToPickUpParcels.size() <= map.initNumOfCarsInGarage) {
-                        maxGlobalParcel--;
-                        Parcel p = this.pToBeSent.pop();
-                        map.gec.callCarToPickUpParcels.add(p);
-                        infoFromGlobalExpressCenter.add(p);
-                    }
+        // TODO we only check for one garage!! What if we have more garages
+        if (map.schedule.getSteps() - lastVisitTime > visitSequence || !map.garages.getFirst().carPark.isEmpty()) {
+            // put parcel into global list to let other cars to pickup
+            if (this.pToBeSent.size() > 0 && this.carPark.size() == 0 && maxGlobalParcel > 0) {
+                if (map.gec.callCarToPickUpParcels.size() <= map.initNumOfCarsInGarage) {
+                    maxGlobalParcel--;
+                    Parcel p = this.pToBeSent.pop();
+                    map.gec.callCarToPickUpParcels.add(p);
+                    infoFromGlobalExpressCenter.add(p);
                 }
             }
+        }
     }
 
     private boolean genParcelOrNot() {
         Random random = new Random();
         // this number indicate how busyLevel the station is
-        int j = random.nextInt((10- busyLevel)*25+1);
+        int j = random.nextInt((10 - busyLevel) * 25 + 1);
 
         // if i is smaller than busyLevel then generalize a parcles
         if (1 > j)

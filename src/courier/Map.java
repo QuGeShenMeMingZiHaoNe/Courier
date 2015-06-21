@@ -24,7 +24,7 @@ public class Map extends SimState {
     public double profit = 0;
     //    public double retainedProfit = 0;
     public double profitMargin = 2.45;
-    protected int autoGenParcelByStationsMax=0;
+    protected int autoGenParcelByStationsMax = 0;
     protected boolean testModeOn = true;
     protected boolean autoGenParcelsModeTermination = testModeOn;
     protected int parcelTotal = 0;
@@ -53,10 +53,12 @@ public class Map extends SimState {
     private int carMax = 9999;
     protected long longestDeliverTimeSincePickUp;
     protected long longestDeliverTimeSinceGenerate;
-    protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0,0),this);
+    protected GlobalExpressCenter gec = new GlobalExpressCenter("Global Express Center", new Int2D(0, 0), this);
 
-    /**************************** test parameters ****************************/
-    public static int initNumOfParcelsInExpressCentre = 150;
+    /****************************
+     * test parameters
+     ****************************/
+    public static int initNumOfParcelsInExpressCentre = 1500;
     // Simulation mode, basic mod means set a destination without changing,
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
@@ -71,7 +73,7 @@ public class Map extends SimState {
 //    public static boolean optimizedPickUp = false;
 
     // test two 20-40-60-80-100-120 def 80
-    protected static int carMaxSpace = 60;
+    protected static int carMaxSpace = 80;
 
     //  test three 50-150-250-350-450-550 def 150
     protected static int initNumOfCarsInGarage = 150;
@@ -88,7 +90,9 @@ public class Map extends SimState {
     public static int numOfRefugeIsland = 0;
 
 
-    /**************************** test parameters ****************************/
+    /****************************
+     * test parameters
+     ****************************/
 
 
     public Map(long seed) {
@@ -100,7 +104,7 @@ public class Map extends SimState {
 //        args[0] = "-seed";
 //        args[1] = String.valueOf(1168243636);
 //
-        doLoop(Map.class,args);
+        doLoop(Map.class, args);
 //        Map map = new Map(4);
 //        map.start();
 //        while (true) {
@@ -146,19 +150,19 @@ public class Map extends SimState {
     }
 
     public void setNumOfRefugeeIsland_0_1(int val) {
-        if(val>=0 && val <=1){
+        if (val >= 0 && val <= 1) {
             numOfRefugeIsland = val;
         }
     }
 
-    public void setRefugeeCarParkNum_2_7(int val){
-        if(val>=2 && val <=7 && numOfRefugeIsland>0){
+    public void setRefugeeCarParkNum_2_7(int val) {
+        if (val >= 2 && val <= 7 && numOfRefugeIsland > 0) {
             refugeCarParkNum = val;
         }
     }
 
-    public int getRefugeeCarParkNum_2_7(){
-        if(numOfRefugeIsland>0)
+    public int getRefugeeCarParkNum_2_7() {
+        if (numOfRefugeIsland > 0)
             return refugeCarParkNum;
         else
             return 0;
@@ -189,7 +193,7 @@ public class Map extends SimState {
     }
 
     public int getCongestionLevel_1_10() {
-        return 11 - TramLine_BASIC.maximumCarLeavingBeforeRedLight;
+        return congestionLevel;
     }
 
     public void setCongestionLevel_1_10(int val) {
@@ -197,7 +201,6 @@ public class Map extends SimState {
             TramLine_BASIC.maximumCarLeavingBeforeRedLight = 11 - val;
         }
     }
-
 
 
 //    public Object domCongestionLevel_1_10() {
@@ -214,9 +217,6 @@ public class Map extends SimState {
         if (val > 0 && val <= 10)
             expressCenterBusyLevel = val;
     }
-
-
-
 
 
 //    public double getModePicker_BASIC_AVOID() {
@@ -283,8 +283,6 @@ public class Map extends SimState {
         allStations.addAll(expressCentres);
 
 
-
-
 //        addTramLine("line",expressCentres.get(0), expressCentres.get(1));
 //        addTramLine("line",expressCentres.get(1), expressCentres.get(2));
 //        addTramLine("line",expressCentres.get(2), expressCentres.get(3));
@@ -305,9 +303,9 @@ public class Map extends SimState {
         addGarage();
         allStations.addAll(garages);
 
-        initCars();
-
         scheduleExpressCenters();
+
+        initCars();
 
         if (testModeOn) {
             autoGenParcelByStationsMax = initNumOfParcelsInExpressCentre * expressCentres.size();
@@ -321,9 +319,9 @@ public class Map extends SimState {
         startTime = this.schedule.getSteps();
         schedule.scheduleRepeating(gec);
         System.out.println(modePicker);
-        if(modePicker<0.5){
+        if (modePicker < 0.5) {
             mode = SIMULATION_MODE.BASIC;
-        }else {
+        } else {
             mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
         }
     }
@@ -356,15 +354,15 @@ public class Map extends SimState {
         }
     }
 
-    private void scheduleExpressCenters(){
+    private void scheduleExpressCenters() {
 
         LinkedList<ExpressCentre> expressCentresCopy = (LinkedList<ExpressCentre>) expressCentres.clone();
 
-        for(ExpressCentre ec:expressCentresCopy) {
+        for (ExpressCentre ec : expressCentresCopy) {
             // if reachableByGarage is null
             if (ec.reachableByGarage == null) {
                 ec.reachableByGarage = ec.reachableByGarage();
-                if(!ec.reachableByGarage){
+                if (!ec.reachableByGarage) {
                     expressCentres.remove(ec);
                     continue;
                 }
@@ -455,7 +453,7 @@ public class Map extends SimState {
         if (ec1 != null && ec2 != null) {
             if (!tramLineHasInit.contains(uniquePairID)) {
                 tramLineHasInit.add(uniquePairID);
-                if (numOfRefugeIsland>0) {
+                if (numOfRefugeIsland > 0) {
                     addTramLinesWithIsland(line, ec1, ec2);
                 } else {
                     ec1.neighbours.add(ec2);
@@ -470,7 +468,7 @@ public class Map extends SimState {
 
 
     public void addTramLine(String line, ExpressCentre a, ExpressCentre b) {
-        if (numOfRefugeIsland>0 && !(a instanceof Garage) && !(b instanceof Garage)) {
+        if (numOfRefugeIsland > 0 && !(a instanceof Garage) && !(b instanceof Garage)) {
             addTramLinesWithIsland(line, a, b);
         } else {
             a.neighbours.add(b);
@@ -486,7 +484,7 @@ public class Map extends SimState {
 
         int count = numOfRefugeIsland;
         while (count > 0) {
-            Int2D loc = new Int2D(a.location.x + (b.location.x - a.location.x) * (this.numOfRefugeIsland -count+1) / (this.numOfRefugeIsland + 1), a.location.y + (b.location.y - a.location.y) * (this.numOfRefugeIsland -count+1) / (this.numOfRefugeIsland + 1));
+            Int2D loc = new Int2D(a.location.x + (b.location.x - a.location.x) * (this.numOfRefugeIsland - count + 1) / (this.numOfRefugeIsland + 1), a.location.y + (b.location.y - a.location.y) * (this.numOfRefugeIsland - count + 1) / (this.numOfRefugeIsland + 1));
             RefugeeIsland island = new RefugeeIsland("RI: " + serialStationID, loc, this);
             count--;
 
@@ -506,7 +504,6 @@ public class Map extends SimState {
 
 
     }
-
 
 
     private void initTramLineNet() {
