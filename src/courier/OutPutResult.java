@@ -24,7 +24,7 @@ public class OutPutResult {
         outputFile("\nRandom number seed: " + map.seed());
         outputFile("\nNumber Of ExpressCenters: " + map.expressCentres.size());
         outputFile("\nNumber Of Parcels: " + map.parcelTotalCopy);
-        outputFile("\nNumber Of Cars: " + map.getInitNumOfCarsInStation());
+        outputFile("\nNumber Of Cars: " + map.getInitNumOfCarsInGarage());
         outputFile("\nMaximum Car carrying weight: " + map.carMaxSpace);
         outputFile("\nMap size: " + map.getMapSize_300_2000());
         outputFile("\nThe degree of busyLevel in Express Centre: " + map.expressCentres.getFirst().busyLevel);
@@ -89,9 +89,9 @@ public class OutPutResult {
         dir.mkdir();
         try {
             if (map.numOfRefugeIsland > 0) {
-                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType + "/" + mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType + "/" + mode + " Island " + map.initTime + "_C_" + map.getInitNumOfCarsInGarage() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             } else {
-                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType + "/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInStation() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
+                writer = new PrintWriter(new BufferedWriter(new FileWriter("src/courier/testResult/" + map.testType + "/" + mode + " " + map.initTime + "_C_" + map.getInitNumOfCarsInGarage() + "_P_" + map.initNumOfParcelsInExpressCentre + "_TCL_" + map.getCongestionLevel_1_10() + "_B_" + ExpressCentre.busyLevel + "_S_" + map.seed() + ".out", true)));
             }
         } catch (IOException e) {
             e.printStackTrace();

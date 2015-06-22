@@ -19,7 +19,7 @@ public class Map extends SimState {
     public static String testType;
     public static boolean detailsOn = false;
     public static boolean readTestSetting = false;
-    public int modePicker = 1;
+    public int modePicker = 2;
     public SparseGrid2D mapGrid = new SparseGrid2D(gridWidth, gridHeight);
     public double profit = 0;
     //    public double retainedProfit = 0;
@@ -63,8 +63,8 @@ public class Map extends SimState {
     // AVOID_TRAFFIC_JAM mode will recalculate the path if it come to red light
     public static int distanceToCentre = 300;
 
-    //     public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
-    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
+    public static SIMULATION_MODE mode = SIMULATION_MODE.AVOID_TRAFFIC_JAM;
+//    public static SIMULATION_MODE mode = SIMULATION_MODE.BASIC;
 
     // test one 6-7-8-9-10 def 10
     protected static int expressCenterBusyLevel = 8;
@@ -173,11 +173,11 @@ public class Map extends SimState {
             initNumOfParcelsInExpressCentre = val;
     }
 
-    public int getInitNumOfCarsInStation() {
+    public int getInitNumOfCarsInGarage() {
         return initNumOfCarsInGarage;
     }
 
-    public void setInitNumOfCarsInStation(int val) {
+    public void setInitNumOfCarsInGarage(int val) {
         if (val > 0 && val < carMax)
             initNumOfCarsInGarage = val;
     }
@@ -233,9 +233,16 @@ public class Map extends SimState {
 //        }
 //
 //    }
+//
+//    public Object domModePicker_BASIC_AVOID() {
+//        return new sim.util.Interval(0.0, 2.0);
+//    }
 
-    public Object domModePicker_BASIC_AVOID() {
-        return new sim.util.Interval(0.0, 2.0);
+    public boolean getOptimizedPickUp(){
+        return optimizedPickUp;
+    }
+    public void setOptimizedPickUp(boolean on) {
+        optimizedPickUp = on;
     }
 
     public boolean getTestModeOn() {
@@ -253,6 +260,8 @@ public class Map extends SimState {
     public void setDetailsOn(boolean on) {
         detailsOn = on;
     }
+
+
 
     // **********************************Functions**For**Display**END*************************************** //
     // **********************************Functions**For**Display**END*************************************** //
@@ -318,7 +327,7 @@ public class Map extends SimState {
         parcelTotalCopy = autoGenParcelByStationsMax;
         startTime = this.schedule.getSteps();
         schedule.scheduleRepeating(gec);
-        System.out.println(modePicker);
+        System.out.println(mode);
         if (modePicker < 0.5) {
             mode = SIMULATION_MODE.BASIC;
         } else {

@@ -119,13 +119,12 @@ public class Car_AVOID extends Car_BASIC {
             TramLine_BASIC tl = map.tramLines.getFirst().findTramLine(currStation, nb);
 
             //test dont go back to where it came from
-//            if (indexCurr >= 1 && nb.equals(globalPath.get(indexCurr - 1))) {
-//                avoids.add(nb);
-//                continue;
-//            } else {
-            tl.tryOccupyTraffic(currStation);
-
-//            }
+            if (indexCurr >= 1 && nb.equals(globalPath.get(indexCurr - 1))) {
+                avoids.add(nb);
+                continue;
+            } else {
+                tl.tryOccupyTraffic(currStation);
+            }
 
             if (!tl.okToLeave(currStation)) {
                 avoids.add(nb);

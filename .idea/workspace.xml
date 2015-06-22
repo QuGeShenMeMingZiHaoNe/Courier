@@ -7,30 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc638152-e29c-402d-b248-60eeec07d621" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/README" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-31-15_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-31-20_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-31-26_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-33-07_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-33-12_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-33-18_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/BASIC 16-10-33-29_C_330_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/NumCar_BASIC_AvgGen.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/NumCar_BASIC_AvgPickUp.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/NumCar_BASIC_FinishTime.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/NumCar_BASIC_SDGen.out" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/courier/testResult/NumCar/NumCar_BASIC_SDPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-31-15_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-31-20_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-31-26_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-33-07_C_30_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-33-12_C_130_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-33-18_C_230_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/BASIC 16-10-33-29_C_330_P_1500_TCL_8_B_10_S_1168271169.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/NumCar_BASIC_AvgGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/NumCar_BASIC_AvgPickUp.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/NumCar_BASIC_FinishTime.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/NumCar_BASIC_SDGen.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Courier/courier/testResult/NumCar/NumCar_BASIC_SDPickUp.out" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car_AVOID.java" afterPath="$PROJECT_DIR$/src/courier/Car_AVOID.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Car_BASIC.java" afterPath="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/ExpressCentre.java" afterPath="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/GlobalExpressCenter.java" afterPath="$PROJECT_DIR$/src/courier/GlobalExpressCenter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Map.java" afterPath="$PROJECT_DIR$/src/courier/Map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/MapGUI.java" afterPath="$PROJECT_DIR$/src/courier/MapGUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/OutPutResult.java" afterPath="$PROJECT_DIR$/src/courier/OutPutResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Parcel.java" afterPath="$PROJECT_DIR$/src/courier/Parcel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/RefugeeIsland.java" afterPath="$PROJECT_DIR$/src/courier/RefugeeIsland.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/Test.java" afterPath="$PROJECT_DIR$/src/courier/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/courier/TramLine_BASIC.java" afterPath="$PROJECT_DIR$/src/courier/TramLine_BASIC.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Courier.iws" />
@@ -63,21 +55,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="81.74074">
-              <caret line="337" column="7" selection-start-line="337" selection-start-column="7" selection-end-line="337" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.58364314">
+              <caret line="329" column="33" selection-start-line="329" selection-start-column="33" selection-end-line="329" selection-end-column="33" />
+              <folding>
+                <element signature="e#7491#7492#0" expanded="true" />
+                <element signature="e#7529#7530#0" expanded="true" />
+                <element signature="e#7578#7579#0" expanded="true" />
+                <element signature="e#7614#7615#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClickMeToRun.jar" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClickMeToRun.jar">
+          <provider selected="true" editor-type-id="LargeFileEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OutPutResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="105" column="27" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TramLine_BASIC.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Car_AVOID.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.074074">
+              <caret line="125" column="49" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TramLine_BASIC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06725664">
-              <caret line="24" column="53" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="63" column="30" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -144,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/courier/BASIC Island 20-09-23-08_C_80_P_5000_TCL_8_B_10_S_1168243636.out" />
         <option value="$PROJECT_DIR$/src/courier/MapGUI.java" />
         <option value="$PROJECT_DIR$/src/courier/RefugeeIsland.java" />
-        <option value="$PROJECT_DIR$/src/courier/OutPutResult.java" />
         <option value="$PROJECT_DIR$/src/courier/data/TramLines.data" />
         <option value="$PROJECT_DIR$/src/courier/Parcel.java" />
         <option value="$PROJECT_DIR$/src/courier/CarCaller.java" />
@@ -152,6 +175,7 @@
         <option value="$PROJECT_DIR$/src/courier/ExpressCentre.java" />
         <option value="$PROJECT_DIR$/src/courier/GlobalExpressCenter.java" />
         <option value="$PROJECT_DIR$/src/courier/Car_BASIC.java" />
+        <option value="$PROJECT_DIR$/src/courier/OutPutResult.java" />
         <option value="$PROJECT_DIR$/src/courier/Car_AVOID.java" />
         <option value="$PROJECT_DIR$/src/courier/Map.java" />
       </list>
@@ -196,8 +220,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,6 +272,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,11 +319,11 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/courier/test/Loding20_120" />
       <recent name="$PROJECT_DIR$/src/courier/test/busyLVL6_10_optimiz_On" />
       <recent name="$PROJECT_DIR$/src/courier/test/busyLVL6_10_optimiz_off" />
       <recent name="$PROJECT_DIR$/src/courier/busyLVL6_10_optimiz_On" />
-      <recent name="$PROJECT_DIR$/src/courier/busyLVL6_10_optimiz_off" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MapGUI">
@@ -531,7 +555,7 @@
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="JAR_PATH" value="$PROJECT_DIR$/src/lib/irisskin/AbsoluteLayout.jar" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/ClickMeToRun.jar" />
       <envs />
       <method />
     </configuration>
@@ -662,7 +686,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -684,8 +708,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41058657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24071702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33547926" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24071702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -719,6 +743,48 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#7491#7492#0" expanded="true" />
+            <element signature="e#7529#7530#0" expanded="true" />
+            <element signature="e#7578#7579#0" expanded="true" />
+            <element signature="e#7614#7615#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="30" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="337" column="7" selection-start-line="337" selection-start-column="7" selection-end-line="337" selection-end-column="7" />
+          <folding>
+            <element signature="e#7491#7492#0" expanded="true" />
+            <element signature="e#7529#7530#0" expanded="true" />
+            <element signature="e#7578#7579#0" expanded="true" />
+            <element signature="e#7614#7615#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/Car_BASIC.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -756,7 +822,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="61" column="46" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
-          <folding />
+          <folding>
+            <element signature="e#7491#7492#0" expanded="true" />
+            <element signature="e#7529#7530#0" expanded="true" />
+            <element signature="e#7578#7579#0" expanded="true" />
+            <element signature="e#7614#7615#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -877,14 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="35.555557">
-          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/data/ExpressCenters.data">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.4444447">
@@ -930,7 +993,7 @@
         <state vertical-scroll-proportion="0.33333334">
           <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
           <folding>
-            <element signature="e#8965#8966#0" expanded="true" />
+            <element signature="e#8965#8966#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -999,27 +1062,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
+    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6296296">
-          <caret line="231" column="20" selection-start-line="231" selection-start-column="18" selection-end-line="231" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="30" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="30" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/OutPutResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="27" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/courier/Car_AVOID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.074074">
+          <caret line="125" column="49" selection-start-line="125" selection-start-column="49" selection-end-line="125" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClickMeToRun.jar">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/courier/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="81.74074">
-          <caret line="337" column="7" selection-start-line="337" selection-start-column="7" selection-end-line="337" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/courier/TramLine_BASIC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06725664">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="53" />
-          <folding />
+        <state vertical-scroll-proportion="0.58364314">
+          <caret line="329" column="33" selection-start-line="329" selection-start-column="33" selection-end-line="329" selection-end-column="33" />
+          <folding>
+            <element signature="e#7491#7492#0" expanded="true" />
+            <element signature="e#7529#7530#0" expanded="true" />
+            <element signature="e#7578#7579#0" expanded="true" />
+            <element signature="e#7614#7615#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
